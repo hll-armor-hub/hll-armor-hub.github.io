@@ -293,10 +293,10 @@ function switchGameVersion(version) {
                     footer.style.display = 'none';
                 }
 
-                // Hide theme toggle when in Vietnam mode
-                const themeToggle = document.querySelector('.theme-toggle');
-                if (themeToggle) {
-                    themeToggle.style.display = 'none';
+                // Hide theme selector when in Vietnam mode
+                const themeSelector = document.querySelector('.theme-selector');
+                if (themeSelector) {
+                    themeSelector.style.display = 'none';
                 }
 
                 // Apply jungle theme to the body
@@ -330,10 +330,10 @@ function switchGameVersion(version) {
                     footer.style.display = 'block';
                 }
 
-                // Show theme toggle when back to WWII mode
-                const themeToggle = document.querySelector('.theme-toggle');
-                if (themeToggle) {
-                    themeToggle.style.display = 'flex';
+                // Show theme selector when back to WWII mode
+                const themeSelector = document.querySelector('.theme-selector');
+                if (themeSelector) {
+                    themeSelector.style.display = 'block';
                 }
 
                 // Remove jungle theme from the body
@@ -1327,7 +1327,7 @@ const tankDatabase = {
 
 
 // DOM Elements
-const themeToggle = document.getElementById('themeToggle');
+const themeSelect = document.getElementById('themeSelect');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
 
@@ -1361,59 +1361,27 @@ function setTheme(theme) {
     currentTheme = theme;
     localStorage.setItem('theme', theme);
     
-    // Update theme toggle icon and text
-    const icon = themeToggle.querySelector('i');
-    const text = themeToggle.querySelector('span');
-    
-    switch(theme) {
-        case 'theme-default':
-            icon.className = 'fas fa-sun';
-            text.textContent = 'Default';
-            break;
-        case 'theme-marines':
-            icon.className = 'fas fa-anchor';
-            text.textContent = 'Marines';
-            break;
-        case 'theme-german':
-            icon.className = 'fas fa-cross';
-            text.textContent = 'German';
-            break;
-        case 'theme-soviet':
-            icon.className = 'fas fa-star';
-            text.textContent = 'Soviet';
-            break;
-        case 'theme-japan':
-            icon.className = 'fas fa-circle';
-            text.textContent = 'Japan';
-            break;
-        case 'theme-unhinged':
-            icon.className = 'fas fa-bomb';
-            text.textContent = 'Unhinged';
-            break;
-        case 'theme-britain':
-            icon.className = 'fas fa-crown';
-            text.textContent = 'Britain';
-            break;
-
+    // Update theme dropdown selection
+    if (themeSelect) {
+        themeSelect.value = theme;
     }
 }
 
 // Initialize theme
 setTheme(currentTheme);
 
-// Force reset to default theme if needed (uncomment the line below if you want to reset to dark theme)
-setTheme('theme-default');
-
-// Theme toggle event - cycle through themes
-themeToggle.addEventListener('click', () => {
-    const themes = ['theme-default', 'theme-marines', 'theme-german', 'theme-soviet', 'theme-japan', 'theme-unhinged', 'theme-britain'];
-    const currentIndex = themes.indexOf(currentTheme);
-    const nextIndex = (currentIndex + 1) % themes.length;
-    setTheme(themes[nextIndex]);
+// Theme dropdown event - direct theme selection
+themeSelect.addEventListener('change', (e) => {
+    setTheme(e.target.value);
 });
 
 // Navigation Management
 function showSection(sectionId, updateHash = true) {
+    // Prevent navigation when in fullscreen mode (except when exiting fullscreen)
+    if (document.body.classList.contains('fullscreen-mode') && sectionId !== 'ranging') {
+        return; // Block navigation to other sections when in fullscreen
+    }
+    
     // Close scope viewer if it's open
     const scopeViewer = document.getElementById('scopeViewer');
     if (scopeViewer && scopeViewer.classList.contains('active')) {
@@ -1524,7 +1492,7 @@ function create360Viewer(tank) {
                     <span>360° View Not Available</span>
                 </div>
                 <div class="tank-360-indicator">
-                    <span class="tank-360-angle">0°</span>
+                    <span class="tank-360-angle">45°</span>
                 </div>
             </div>
             <div class="tank-360-controls">
@@ -1554,8 +1522,8 @@ function rotateTank(tankId, direction) {
         return;
     }
     
-    // Get current angle from data attribute or default to 0
-    let currentAngle = parseInt(image.getAttribute('data-current-angle')) || 0;
+    // Get current angle from data attribute or default to 45
+    let currentAngle = parseInt(image.getAttribute('data-current-angle')) || 45;
     
     // Calculate new angle (8 images for 360 degrees, so 45 degrees per image)
     const angleStep = 45;
@@ -1686,7 +1654,7 @@ function startDrag(event, tankId) {
     const viewer = document.querySelector(`.tank-360-viewer[data-tank-id="${tankId}"]`);
     if (viewer) {
         const image = viewer.querySelector('.tank-360-image');
-        dragStartAngle = parseInt(image.getAttribute('data-current-angle')) || 0;
+        dragStartAngle = parseInt(image.getAttribute('data-current-angle')) || 45;
     }
     
     // Change cursor
@@ -1744,7 +1712,7 @@ function startTouchDrag(event, tankId) {
         const viewer = document.querySelector(`.tank-360-viewer[data-tank-id="${tankId}"]`);
         if (viewer) {
             const image = viewer.querySelector('.tank-360-image');
-            dragStartAngle = parseInt(image.getAttribute('data-current-angle')) || 0;
+            dragStartAngle = parseInt(image.getAttribute('data-current-angle')) || 45;
         }
     }
 }
@@ -3758,8 +3726,15 @@ function expandTile(clickedTile, updateHash = true) {
     // Check if we're on mobile (screen width <= 768px)
     const isMobile = window.innerWidth <= 768;
     
-    // On mobile, don't expand - just scroll to the tile
-    if (isMobile) {
+    // Check if this is artillery calculator or armor sights for full-screen mode
+    const tileTitle = clickedTile.querySelector('h3');
+    const isFullscreenTool = tileTitle && (
+        tileTitle.textContent.includes('Artillery Calculator') || 
+        tileTitle.textContent.includes('Armor Sights')
+    );
+    
+    // On mobile, for fullscreen tools, still allow expansion
+    if (isMobile && !isFullscreenTool) {
         clickedTile.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
     }
@@ -3782,6 +3757,13 @@ function expandTile(clickedTile, updateHash = true) {
             tile.classList.add('minimized');
         }
     });
+    
+    // Enable full-screen mode for artillery calculator and armor sights
+    if (isFullscreenTool) {
+        document.body.classList.add('fullscreen-mode');
+        addFullscreenCloseButton(clickedTile);
+        disableNavigationInFullscreen();
+    }
     
     // Prevent body scrolling when tile is expanded
     document.body.style.overflow = 'hidden';
@@ -3830,8 +3812,108 @@ function closeExpandedTile(closeButton) {
 
 }
 
+// Full-screen mode functions
+function addFullscreenCloseButton(tile) {
+    // Remove any existing fullscreen close button
+    const existingBtn = document.querySelector('.fullscreen-close-btn');
+    if (existingBtn) {
+        existingBtn.remove();
+    }
+    
+    // Create new fullscreen close button
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'fullscreen-close-btn';
+    closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+    closeBtn.title = 'Return to Ranging';
+    closeBtn.onclick = () => exitFullscreenMode();
+    
+    document.body.appendChild(closeBtn);
+}
+
+function exitFullscreenMode() {
+    // Remove fullscreen mode class
+    document.body.classList.remove('fullscreen-mode');
+    
+    // Remove fullscreen close button
+    const fullscreenCloseBtn = document.querySelector('.fullscreen-close-btn');
+    if (fullscreenCloseBtn) {
+        fullscreenCloseBtn.remove();
+    }
+    
+    // Re-enable navigation
+    enableNavigationAfterFullscreen();
+    
+    // Close all expanded tiles and return to ranging
+    closeAllExpandedTiles();
+    
+    // Restore body scrolling
+    document.body.style.overflow = '';
+    
+    // Navigate back to ranging section
+    showSection('ranging');
+}
+
+// Disable navigation when in fullscreen mode
+function disableNavigationInFullscreen() {
+    // Disable all nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.style.pointerEvents = 'none';
+        link.style.opacity = '0.5';
+    });
+    
+    // Disable logo click
+    const logoContainer = document.querySelector('.logo-container');
+    if (logoContainer) {
+        logoContainer.style.pointerEvents = 'none';
+        logoContainer.style.opacity = '0.5';
+    }
+    
+    // Disable overview cards
+    const overviewCards = document.querySelectorAll('.overview-card');
+    overviewCards.forEach(card => {
+        card.style.pointerEvents = 'none';
+        card.style.opacity = '0.5';
+    });
+}
+
+// Re-enable navigation when exiting fullscreen mode
+function enableNavigationAfterFullscreen() {
+    // Re-enable all nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.style.pointerEvents = '';
+        link.style.opacity = '';
+    });
+    
+    // Re-enable logo click
+    const logoContainer = document.querySelector('.logo-container');
+    if (logoContainer) {
+        logoContainer.style.pointerEvents = '';
+        logoContainer.style.opacity = '';
+    }
+    
+    // Re-enable overview cards
+    const overviewCards = document.querySelectorAll('.overview-card');
+    overviewCards.forEach(card => {
+        card.style.pointerEvents = '';
+        card.style.opacity = '';
+    });
+}
+
 // Function to close all expanded tiles (for navigation)
 function closeAllExpandedTiles() {
+    // Exit fullscreen mode if active
+    if (document.body.classList.contains('fullscreen-mode')) {
+        document.body.classList.remove('fullscreen-mode');
+        const fullscreenCloseBtn = document.querySelector('.fullscreen-close-btn');
+        if (fullscreenCloseBtn) {
+            fullscreenCloseBtn.remove();
+        }
+        // Re-enable navigation when exiting fullscreen
+        enableNavigationAfterFullscreen();
+    }
+    
     // Close expanded ranging tool tiles
     const expandedRangingTiles = document.querySelectorAll('.ranging-tool.expanded');
     expandedRangingTiles.forEach(tile => {

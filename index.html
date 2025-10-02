@@ -1,11 +1,28 @@
----
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hell Let Loose Armor Hub</title>
+    
+    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <meta property="og:title" content="Hell Let Loose Armor Hub">
+    <meta property="og:description" content="Master tank warfare in Hell Let Loose with comprehensive guides, ranging tools, and tactical knowledge.">
+    <meta property="og:image" content="./Project/images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-White.png">
+    <meta property="og:image:alt" content="Hell Let Loose Armor Hub - Tank Warfare Guide">
+    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Hell Let Loose Armor Hub">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hell Let Loose Armor Hub">
+    <meta name="twitter:description" content="Master tank warfare in Hell Let Loose with comprehensive guides, ranging tools, and tactical knowledge.">
+    <meta name="twitter:image" content="./Project/images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-White.png">
+    <meta name="twitter:image:alt" content="Hell Let Loose Armor Hub - Tank Warfare Guide">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Project/images/HLL_Icons/Map Markers/icn_tank_marker.png">
     
     <!-- Preload critical resources -->
     <link rel="preload" href="styles.css" as="style">
@@ -50,10 +67,17 @@
                     </div>
                 </div>
                 <div class="header-controls">
-                                    <button class="theme-toggle" id="themeToggle">
-                    <i class="fas fa-sun"></i>
-                    <span>Default</span>
-                </button>
+                    <div class="theme-selector">
+                        <select id="themeSelect" class="theme-dropdown">
+                            <option value="theme-default">☀️ Default</option>
+                            <option value="theme-soviet">🔨 Motherland</option>
+                            <option value="theme-german">⚡ Blitzkrieg</option>
+                            <option value="theme-marines">🪂 Airborne</option>
+                            <option value="theme-britain">🔥 Red Devils</option>
+                            <option value="theme-japan">🌅 Rising Sun</option>
+                            <option value="theme-unhinged">💥 Raz Mode</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </header>
@@ -117,7 +141,7 @@
                         <div class="video-card">
                             <div class="video-header">
                                 <h3><i class="fas fa-crosshairs"></i> Gunner POV</h3>
-                                <p>Learn from experienced tank gunners</p>
+                                <p>Learn from Fresh!</p>
                             </div>
                             <div class="video-wrapper">
                                 <iframe 
@@ -138,7 +162,7 @@
                         <div class="video-card">
                             <div class="video-header">
                                 <h3><i class="fas fa-eye"></i> Spotter POV</h3>
-                                <p>Master the art of spotting and coordination</p>
+                                <p>Master the art of spotting and coordination from Raz</p>
                             </div>
                             <div class="video-wrapper">
                                 <iframe 
@@ -164,7 +188,8 @@
             <section id="tanks" class="section">
                 <div class="section-header">
                     <h2>Tank Database</h2>
-                    <p>Complete guide to all tanks in Hell Let Loose. Tank data is for <strong>U17</strong>.</p>
+                    <p>Complete guide to all tanks in Hell Let Loose</p>
+                    <p class="update-info">Data as of Update 17</p>
                 </div>
                 
                 <!-- Faction Filter with Compact Type Filter -->
@@ -267,10 +292,6 @@
                     <div class="ranging-tools">
                         <!-- Tile 1: Artillery Calculator -->
                         <div class="ranging-tool" onclick="expandTile(this)">
-                            <button class="expand-btn" onclick="event.stopPropagation(); expandTile(this.parentElement)">
-                                <i class="fas fa-expand-arrows-alt"></i>
-                                Expand
-                            </button>
                             <h3>Artillery Calculator</h3>
                             <div class="calculator">
                                 <div class="input-group">
@@ -328,10 +349,6 @@
                         
                         <!-- Tile 3: Armor Sights -->
                         <div class="ranging-tool" onclick="expandTile(this)">
-                            <button class="expand-btn" onclick="event.stopPropagation(); expandTile(this.parentElement)">
-                                <i class="fas fa-expand-arrows-alt"></i>
-                                Expand
-                            </button>
                             <h3>Armor Sights</h3>
                             <div class="calculator">
                                 <div class="sights-content">
@@ -755,7 +772,7 @@
                                  </div>
                                  <p class="creator-description">Hey! My name is Mike aka makL. I'm a punk rocker that likes to play games. I also like talkin bout books and movies especially ones from the 80s. I drink and I curse so it aint kid friendly in here.</p>
                                  <div class="creator-links">
-                                     <a href="https://www.twitch.tv/makll" target="_blank" class="creator-link social-link">
+                                     <a href="https://www.twitch.tv/makl_" target="_blank" class="creator-link social-link">
                                          <i class="fab fa-twitch"></i>
                                          Twitch
                                      </a>
@@ -831,6 +848,7 @@
                 <p>&copy; 2025 Hell Let Loose Armor Hub. All rights reserved.</p>
                 <p>This is a fan-made resource for Hell Let Loose players.</p>
                 <p>Created by <a href="https://www.youtube.com/@Raz_Bora" target="_blank">RazBora</a> & <a href="https://www.youtube.com/@TheFreshBakedGoods" target="_blank">TheFreshBakedGoods</a></p>
+                <p>Special thanks to <a href="https://mattw.io/" target="_blank">Winston</a> for development support</p>
             </div>
         </footer>
     </div>

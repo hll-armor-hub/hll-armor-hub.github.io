@@ -1096,7 +1096,7 @@ const tankDatabase = {
             icon: "fas fa-tank",
             has360View: true,
             images360: {
-                prefix: "Project/images/360/Churchill/",
+                prefix: "Project/images/360/Churchill3/",
                 suffix: ".webp"
             },
             detailedStats: {

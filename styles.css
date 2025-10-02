@@ -3484,6 +3484,18 @@ body.theme-unhinged .expand-close-btn:hover {
     color: var(--text-secondary);
 }
 
+.sights-note {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border-radius: 6px;
+    border-left: 4px solid var(--primary-color);
+    font-weight: 500;
+}
+
 .sights-instructions {
     background: rgba(0, 0, 0, 0.1);
     border-radius: 8px;

@@ -3329,9 +3329,9 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     position: fixed;
     top: 18rem;
     right: 2rem;
-    background: var(--accent);
+    background: #ff4444;
     color: white;
-    border: none;
+    border: 2px solid #ffffff;
     padding: 0.75rem 1rem;
     border-radius: 8px;
     font-size: 1rem;
@@ -3343,8 +3343,23 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 }
 
 .expand-close-btn:hover {
-    background: var(--accent-secondary);
+    background: #ff6666;
     transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Raz Mode - Fix close button visibility */
+body.theme-unhinged .expand-close-btn {
+    background: #ff0000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.8) !important;
+}
+
+body.theme-unhinged .expand-close-btn:hover {
+    background: #ff3333 !important;
+    color: #ffffff !important;
+    box-shadow: 0 6px 16px rgba(255, 0, 0, 0.9) !important;
 }
 
 .light-mode .ranging-tool {
@@ -4870,6 +4885,136 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 .light-mode .tactics-tips li::before {
     color: var(--accent);
+}
+
+/* Driving Guide Section Styling */
+.driving-guide-section {
+    margin-top: 2rem;
+    background: rgba(var(--accent-rgb), 0.05);
+    border: 1px solid rgba(var(--accent-rgb), 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.driving-guide-header {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(var(--accent-rgb), 0.1);
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.driving-guide-header:hover {
+    background: rgba(var(--accent-rgb), 0.15);
+}
+
+.driving-toggle-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.driving-toggle-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    user-select: none;
+}
+
+.driving-toggle-icon {
+    font-size: 1.2rem;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.driving-guide-content {
+    padding: 1.5rem;
+}
+
+.driving-guide-section h4 {
+    color: var(--accent);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+}
+
+.driving-intro {
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.driving-topic {
+    margin-bottom: 2rem;
+}
+
+.driving-topic h5 {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.driving-topic p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+
+.driving-topic p em {
+    color: var(--text-secondary);
+    font-style: italic;
+    background: rgba(var(--accent-rgb), 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 0.5rem 0;
+}
+
+.driving-conclusion {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(var(--accent-rgb), 0.3);
+}
+
+.driving-conclusion p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.author-signature {
+    font-weight: 600;
+    color: var(--accent);
+    font-style: italic;
+    text-align: right;
+    margin-top: 1rem;
+}
+
+/* Light mode adjustments for driving guide */
+.light-mode .driving-guide-section {
+    background: rgba(var(--accent-rgb), 0.08);
+    border-color: rgba(var(--accent-rgb), 0.3);
+}
+
+.light-mode .driving-guide-header {
+    background: rgba(var(--accent-rgb), 0.12);
+    border-bottom-color: rgba(var(--accent-rgb), 0.3);
+}
+
+.light-mode .driving-guide-header:hover {
+    background: rgba(var(--accent-rgb), 0.18);
+}
+
+.light-mode .driving-topic p em {
+    background: rgba(var(--accent-rgb), 0.15);
 }
 
 /* Community Banner Styles */

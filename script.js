@@ -522,6 +522,25 @@ const tankDatabase = {
             images360: {
                 prefix: "Project/images/360/greyhound/",
                 suffix: ".webp"
+            },
+            detailedStats: {
+                hullHealth: 600,
+                turretHealth: 400,
+                engineHealth: 400,
+                trackHealth: 600,
+                apDamage: 400,
+                explosionDamage: 100,
+                explosionRadius: 1000,
+                reloadSpeed: 4.0,
+                maxSpeed: 80,
+                yawRate: 12.0,
+                pitchRate: 8.0,
+                pitchAngleMin: -10.0,
+                pitchAngleMax: 20.0,
+                gearSwitchTime: 0.5,
+                maxShellsAP: 52,
+                maxShellsHE: 52,
+                fuelCost: 200
             }
         }
     ],
@@ -657,6 +676,25 @@ const tankDatabase = {
             images360: {
                 prefix: "Project/images/360/panzer-ii/",
                 suffix: ".webp"
+            },
+            detailedStats: {
+                hullHealth: 400,
+                turretHealth: 300,
+                engineHealth: 300,
+                trackHealth: 400,
+                apDamage: 200,
+                explosionDamage: 100,
+                explosionRadius: 1000,
+                reloadSpeed: 3.0,
+                maxSpeed: 40,
+                yawRate: 15.0,
+                pitchRate: 10.0,
+                pitchAngleMin: -8.0,
+                pitchAngleMax: 25.0,
+                gearSwitchTime: 0.4,
+                maxShellsAP: 180,
+                maxShellsHE: 180,
+                fuelCost: 150
             }
         },
         {
@@ -676,6 +714,25 @@ const tankDatabase = {
             images360: {
                 prefix: "Project/images/360/puma/",
                 suffix: ".webp"
+            },
+            detailedStats: {
+                hullHealth: 500,
+                turretHealth: 400,
+                engineHealth: 400,
+                trackHealth: 500,
+                apDamage: 600,
+                explosionDamage: 100,
+                explosionRadius: 1000,
+                reloadSpeed: 5.0,
+                maxSpeed: 85,
+                yawRate: 18.0,
+                pitchRate: 12.0,
+                pitchAngleMin: -8.0,
+                pitchAngleMax: 20.0,
+                gearSwitchTime: 0.3,
+                maxShellsAP: 50,
+                maxShellsHE: 50,
+                fuelCost: 300
             }
         }
     ],
@@ -811,6 +868,25 @@ const tankDatabase = {
             images360: {
                 prefix: "Project/images/360/ba-10-scout-car/",
                 suffix: ".webp"
+            },
+            detailedStats: {
+                hullHealth: 300,
+                turretHealth: 200,
+                engineHealth: 200,
+                trackHealth: 300,
+                apDamage: 300,
+                explosionDamage: 100,
+                explosionRadius: 1000,
+                reloadSpeed: 4.0,
+                maxSpeed: 53,
+                yawRate: 15.0,
+                pitchRate: 10.0,
+                pitchAngleMin: -8.0,
+                pitchAngleMax: 20.0,
+                gearSwitchTime: 0.5,
+                maxShellsAP: 50,
+                maxShellsHE: 50,
+                fuelCost: 200
             }
         }
     ],
@@ -832,6 +908,25 @@ const tankDatabase = {
             images360: {
                 prefix: "Project/images/360/daimler/",
                 suffix: ".webp"
+            },
+            detailedStats: {
+                hullHealth: 400,
+                turretHealth: 300,
+                engineHealth: 300,
+                trackHealth: 400,
+                apDamage: 500,
+                explosionDamage: 100,
+                explosionRadius: 1000,
+                reloadSpeed: 4.0,
+                maxSpeed: 80,
+                yawRate: 16.0,
+                pitchRate: 11.0,
+                pitchAngleMin: -8.0,
+                pitchAngleMax: 20.0,
+                gearSwitchTime: 0.4,
+                maxShellsAP: 52,
+                maxShellsHE: 52,
+                fuelCost: 250
             }
          },
                                             {
@@ -1064,7 +1159,7 @@ const tankDatabase = {
          },
                                   {
              name: "Sherman Firefly",
-             type: "Medium Tank",
+             type: "Heavy Tank",
              faction: "Great Britain",
                          armor: "Front: 63mm, Sides: 38mm, Rear: 38mm",
              gun: "76.2mm QF 17-pounder",
@@ -1416,6 +1511,11 @@ function showSection(sectionId, updateHash = true) {
     // Update URL hash if requested
     if (updateHash) {
         window.location.hash = sectionId;
+    }
+    
+    // Scroll to top when showing overview section (unless it's a hash route)
+    if (sectionId === 'overview' && updateHash) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
     
     // Initialize practice tanks when identification section is shown
@@ -2911,6 +3011,10 @@ function handleHashChange() {
     // If no hash or invalid hash, default to overview
     if (!hash || !validSections.includes(section)) {
         showSection('overview', false);
+        // Scroll to top on initial load when no hash routing
+        if (!hash) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
         return;
     }
     
@@ -2965,6 +3069,20 @@ function expandArmorSights() {
         const title = tool.querySelector('h3');
         if (title && title.textContent.includes('Armor Sights')) {
             expandTile(tool, false);
+            
+            // Set default active states for filters
+            const factionBtns = tool.querySelectorAll('.faction-filter-btn');
+            const typeBtns = tool.querySelectorAll('.type-filter-btn');
+            
+            // Remove active from all faction buttons and set "All" as active
+            factionBtns.forEach(btn => btn.classList.remove('active'));
+            const allFactionBtn = tool.querySelector('.faction-filter-btn[data-faction="all"]');
+            if (allFactionBtn) allFactionBtn.classList.add('active');
+            
+            // Remove active from all type buttons and set "All Types" as active
+            typeBtns.forEach(btn => btn.classList.remove('active'));
+            const allTypeBtn = tool.querySelector('.type-filter-btn[data-tank-type="all"]');
+            if (allTypeBtn) allTypeBtn.classList.add('active');
         }
     });
 }
@@ -2988,7 +3106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Display initial content
     displayTanks('all', 'all');
     initializePracticeTanks();
-    startNewPractice();
+    // Don't start practice immediately - let user select difficulty first
     
     // Initialize background switching functionality
     initializeBackgroundSwitching();
@@ -3057,6 +3175,8 @@ document.addEventListener('keydown', (e) => {
 // Add loading animation
 window.addEventListener('load', () => {
     document.body.style.opacity = '1';
+    // Ensure page starts at top on initial load
+    window.scrollTo(0, 0);
 });
 
 
@@ -3522,13 +3642,11 @@ function openScopeView(tankName, updateHash = true) {
         testScopeImg.onload = function() {
             // Tank has a scope image, show white background
             whiteBackground.style.display = 'block';
-
         };
         
         testScopeImg.onerror = function() {
             // Tank doesn't have a scope image, hide white background
             whiteBackground.style.display = 'none';
-
         };
         
         // Start testing the scope image
@@ -3536,17 +3654,47 @@ function openScopeView(tankName, updateHash = true) {
     } else if (whiteBackground) {
         // No tank directory found, hide white background
         whiteBackground.style.display = 'none';
-
     }
     
-    // Show/hide the ranging overlay based on tank type
+    // Show/hide the ranging overlay based on tank type and specific tank
     if (overlayImage) {
-        if (tankType === 'Heavy Tank' || tankType === 'Medium Tank') {
+        if (tankName === 'Puma') {
+            // Use Puma-specific overlay
+            overlayImage.src = 'Project/images/HLL_Icons/pumarananging.png';
+            overlayImage.alt = 'Puma Ranging Overlay';
             overlayImage.style.display = 'block';
-
+        } else if (tankName === 'Daimler' || tankName === 'Greyhound') {
+            // Use scout vehicle ranging overlay for Daimler and Greyhound
+            overlayImage.src = 'Project/images/HLL_Icons/scoutvehicleranging.png';
+            overlayImage.alt = 'Scout Vehicle Ranging Overlay';
+            overlayImage.style.display = 'block';
+        } else if (tankName === 'BA-10 Scout Car') {
+            // Use BA-10 specific sight overlay
+            overlayImage.src = 'Project/images/HLL_Icons/ba10sight.png';
+            overlayImage.alt = 'BA-10 Sight Overlay';
+            overlayImage.style.display = 'block';
+        } else if (tankName === 'Tetrarch') {
+            // Use light tank ranging overlay for Tetrarch
+            overlayImage.src = 'Project/images/HLL_Icons/lighttankranging.png';
+            overlayImage.alt = 'Light Tank Ranging Overlay';
+            overlayImage.style.display = 'block';
+        } else if (tankName === 'Panzer II') {
+            // Use Luchs sight overlay for Panzer II
+            overlayImage.src = 'Project/images/HLL_Icons/luchssight.png';
+            overlayImage.alt = 'Luchs Sight Overlay';
+            overlayImage.style.display = 'block';
+        } else if (tankName === 'M5A1 Stuart' || tankName === 'M3 Stuart \'Honey\'' || tankName === 'T-70') {
+            // Use light tank overlay for specific light tanks
+            overlayImage.src = 'Project/images/HLL_Icons/lighttankranging.png';
+            overlayImage.alt = 'Light Tank Ranging Overlay';
+            overlayImage.style.display = 'block';
+        } else if (tankType === 'Heavy Tank' || tankType === 'Medium Tank') {
+            // Use default heavy tank overlay
+            overlayImage.src = 'Project/images/HLL_Icons/Heavytankranging.png';
+            overlayImage.alt = 'Heavy Tank Ranging Overlay';
+            overlayImage.style.display = 'block';
         } else {
             overlayImage.style.display = 'none';
-
         }
     }
     
@@ -3998,6 +4146,25 @@ function scrollToTop() {
             top: 0,
             behavior: 'auto'
         });
+    }
+}
+
+// Toggle driving guide section
+function toggleDrivingGuide() {
+    const content = document.getElementById('drivingGuideContent');
+    const icon = document.querySelector('.driving-toggle-icon');
+    const text = document.querySelector('.driving-toggle-text');
+    
+    if (content.style.display === 'none' || content.style.display === '') {
+        content.style.display = 'block';
+        icon.textContent = '▲';
+        icon.style.transform = 'rotate(180deg)';
+        text.textContent = 'less';
+    } else {
+        content.style.display = 'none';
+        icon.textContent = '▼';
+        icon.style.transform = 'rotate(0deg)';
+        text.textContent = 'more';
     }
 }
 

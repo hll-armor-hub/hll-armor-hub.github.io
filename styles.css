@@ -9,7 +9,7 @@
     --accent-secondary-light: #b71c1c;
     --border-light: #e0e0e0;
     --shadow-light: rgba(0, 0, 0, 0.1);
-    
+
     /* Default Theme - Blue with Orange (Current) */
     --bg-primary-default: #0a0e1a;
     --bg-secondary-default: #1a1f2e;
@@ -19,7 +19,7 @@
     --accent-secondary-default: #ff8533;
     --border-default: #2a3441;
     --shadow-default: rgba(255, 255, 255, 0.05);
-    
+
     /* US Airborne Theme - Green, Brown, and Yellow (101st Airborne) */
     --bg-primary-marines: #4F4C38;
     --bg-secondary-marines: #6B6C3B;
@@ -29,7 +29,7 @@
     --accent-secondary-marines: #C3AE85;
     --border-marines: #6B6C3B;
     --shadow-marines: rgba(195, 174, 133, 0.1);
-    
+
     /* Blitzkrieg Theme - Dark Gray, Steel, and Olive */
     --bg-primary-german: #1C1C1C;
     --bg-secondary-german: #555E64;
@@ -39,7 +39,7 @@
     --accent-secondary-german: #6A6F58;
     --border-german: #555E64;
     --shadow-german: rgba(106, 111, 88, 0.1);
-    
+
     /* Motherland Theme - Earth Tones and Red (Soviet Motherland) */
     --bg-primary-soviet: #8B7D4F;
     --bg-secondary-soviet: #6B5C4E;
@@ -49,7 +49,7 @@
     --accent-secondary-soviet: #A02725;
     --border-soviet: #4E553E;
     --shadow-soviet: rgba(160, 39, 37, 0.1);
-    
+
     /* Rising Sun Theme - Japanese Red, White, and Black */
     --bg-primary-japan: #BC002D;
     --bg-secondary-japan: #000000;
@@ -59,7 +59,7 @@
     --accent-secondary-japan: #ffffff;
     --border-japan: #000000;
     --shadow-japan: rgba(255, 255, 255, 0.1);
-    
+
     /* Raz Mode Theme - Razbora Colors (White, YouTube Red, Black) */
     --bg-primary-unhinged: #000000;
     --bg-secondary-unhinged: #ff0000;
@@ -69,7 +69,7 @@
     --accent-secondary-unhinged: #ffffff;
     --border-unhinged: #ff0000;
     --shadow-unhinged: rgba(255, 255, 255, 0.1);
-    
+
     /* Red Devils Theme - Dark Red, Golden Brown, and Olive Green */
     --bg-primary-britain: #781C1C;
     --bg-secondary-britain: #4F5B36;
@@ -79,7 +79,7 @@
     --accent-secondary-britain: #9C8B64;
     --border-britain: #4F5B36;
     --shadow-britain: rgba(156, 139, 100, 0.1);
-    
+
     /* Common Colors */
     --success: #4caf50;
     --warning: #ff9800;
@@ -103,10 +103,9 @@ body {
 
 /* Default Theme - Blue with Orange */
 body.theme-default {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, #1a1f2e 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #1a1f2e 50%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
 }
@@ -118,24 +117,22 @@ body.theme-default::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
             rgba(59, 130, 246, 0.03) 2px,
             rgba(59, 130, 246, 0.03) 4px
-        );
+    );
     pointer-events: none;
     z-index: -1;
 }
 
 /* US Airborne Theme - Green, Brown, and Yellow (101st Airborne) */
 body.theme-marines {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(195, 174, 133, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(195, 174, 133, 0.1) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, #4F4C38 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(195, 174, 133, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(195, 174, 133, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #4F4C38 50%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
 }
@@ -147,24 +144,22 @@ body.theme-marines::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
             rgba(195, 174, 133, 0.03) 2px,
             rgba(195, 174, 133, 0.03) 4px
-        );
+    );
     pointer-events: none;
     z-index: -1;
 }
 
 /* Blitzkrieg Theme - Dark Gray, Steel, and Olive */
 body.theme-german {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(106, 111, 88, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(106, 111, 88, 0.1) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, #1C1C1C 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(106, 111, 88, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(106, 111, 88, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #1C1C1C 50%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
 }
@@ -176,24 +171,22 @@ body.theme-german::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
             rgba(106, 111, 88, 0.03) 2px,
             rgba(106, 111, 88, 0.03) 4px
-        );
+    );
     pointer-events: none;
     z-index: -1;
 }
 
 /* Motherland Theme - Earth Tones and Red (Soviet Motherland) */
 body.theme-soviet {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(160, 39, 37, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(139, 125, 79, 0.1) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, #8B7D4F 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(160, 39, 37, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 125, 79, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #8B7D4F 50%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
 }
@@ -205,24 +198,22 @@ body.theme-soviet::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
             rgba(160, 39, 37, 0.03) 2px,
             rgba(160, 39, 37, 0.03) 4px
-        );
+    );
     pointer-events: none;
     z-index: -1;
 }
 
 /* US Airborne Theme - Green, Brown, and Yellow (101st Airborne) */
 body.theme-marines {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(195, 174, 133, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(195, 174, 133, 0.1) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, #4F4C38 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(195, 174, 133, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(195, 174, 133, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #4F4C38 50%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
 }
@@ -234,24 +225,22 @@ body.theme-marines::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
             rgba(195, 174, 133, 0.03) 2px,
             rgba(195, 174, 133, 0.03) 4px
-        );
+    );
     pointer-events: none;
     z-index: -1;
 }
 
 /* Rising Sun Theme - Japanese Red, White, and Black */
 body.theme-japan {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.1) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, #BC002D 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #BC002D 50%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
 }
@@ -263,24 +252,22 @@ body.theme-japan::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
             rgba(255, 255, 255, 0.03) 2px,
             rgba(255, 255, 255, 0.03) 4px
-        );
+    );
     pointer-events: none;
     z-index: -1;
 }
 
 /* Raz Mode Theme - Razbora Colors (White, Red, Black) */
 body.theme-unhinged {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, #000000 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #000000 50%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
 }
@@ -292,24 +279,22 @@ body.theme-unhinged::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
             rgba(255, 255, 255, 0.03) 2px,
             rgba(255, 255, 255, 0.03) 4px
-        );
+    );
     pointer-events: none;
     z-index: -1;
 }
 
 /* Red Devils Theme - Dark Red, Golden Brown, and Olive Green */
 body.theme-britain {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(156, 139, 100, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(79, 91, 54, 0.1) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, #781C1C 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(156, 139, 100, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(79, 91, 54, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #781C1C 50%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
 }
@@ -321,14 +306,13 @@ body.theme-britain::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
             rgba(156, 139, 100, 0.03) 2px,
             rgba(156, 139, 100, 0.03) 4px
-        );
+    );
     pointer-events: none;
     z-index: -1;
 }
@@ -577,14 +561,13 @@ body.theme-japan .armor-hub-text {
 
 /* Light Mode */
 body.light-mode {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(211, 47, 47, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(211, 47, 47, 0.05) 0%, transparent 50%),
-        linear-gradient(135deg, var(--bg-primary) 0%, #e8e8e8 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(211, 47, 47, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(211, 47, 47, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #e8e8e8 50%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="%23f0f0f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8.5"/><circle cx="10" cy="10" r="2.5"/></svg>') 10 10, auto;
-    
+
     --bg-primary: var(--bg-primary-light);
     --bg-secondary: var(--bg-secondary-light);
     --text-primary: var(--text-primary-light);
@@ -602,14 +585,13 @@ body.light-mode::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: 
-        repeating-linear-gradient(
+    background-image: repeating-linear-gradient(
             45deg,
             transparent,
             transparent 2px,
             rgba(0, 0, 0, 0.02) 2px,
             rgba(0, 0, 0, 0.02) 4px
-        );
+    );
     pointer-events: none;
     z-index: -1;
 }
@@ -623,15 +605,14 @@ body.light-mode::before {
 /* Header Styles */
 /* Header with high z-index to ensure proper layering */
 .header {
-    background: 
-        linear-gradient(135deg, var(--accent), var(--accent-secondary)),
-        repeating-linear-gradient(
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary)),
+    repeating-linear-gradient(
             45deg,
             transparent,
             transparent 10px,
             rgba(0, 0, 0, 0.1) 10px,
             rgba(0, 0, 0, 0.1) 20px
-        );
+    );
     padding: 1.5rem 0;
     box-shadow: 0 4px 20px var(--shadow);
     position: sticky;
@@ -648,29 +629,26 @@ body.light-mode::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
     pointer-events: none;
 }
 
 .light-mode .header {
-    background: 
-        linear-gradient(135deg, var(--accent), var(--accent-secondary)),
-        repeating-linear-gradient(
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary)),
+    repeating-linear-gradient(
             45deg,
             transparent,
             transparent 10px,
             rgba(255, 255, 255, 0.1) 10px,
             rgba(255, 255, 255, 0.1) 20px
-        );
+    );
     box-shadow: 0 4px 20px var(--shadow);
 }
 
 .light-mode .header::before {
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(0, 0, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 50%, rgba(0, 0, 0, 0.05) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 50%, rgba(0, 0, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(0, 0, 0, 0.05) 0%, transparent 50%);
 }
 
 .header-content {
@@ -823,20 +801,18 @@ body.light-mode::before {
     font-weight: 900;
     font-size: 2.2rem;
     color: var(--text-primary);
-    text-shadow: 
-        3px 3px 0px #000000,
-        6px 6px 0px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(255, 255, 255, 0.5);
+    text-shadow: 3px 3px 0px #000000,
+    6px 6px 0px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.5);
     letter-spacing: 4px;
     position: relative;
     transition: all 0.3s ease;
 }
 
 .light-mode .armor-hub-text {
-    text-shadow: 
-        3px 3px 0px #000000,
-        6px 6px 0px rgba(0, 0, 0, 0.5),
-        0 0 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 3px 3px 0px #000000,
+    6px 6px 0px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Unified hover effect for entire logo container */
@@ -849,11 +825,10 @@ body.light-mode::before {
 }
 
 .logo-container:hover .armor-hub-text {
-    text-shadow: 
-        3px 3px 0px #000000,
-        6px 6px 0px rgba(0, 0, 0, 0.5),
-        0 0 30px rgba(255, 255, 255, 0.8),
-        0 0 40px rgba(255, 68, 68, 0.5);
+    text-shadow: 3px 3px 0px #000000,
+    6px 6px 0px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 68, 68, 0.5);
 }
 
 .theme-toggle {
@@ -867,9 +842,8 @@ body.light-mode::before {
     font-size: 1rem;
     position: relative;
     backdrop-filter: blur(10px);
-    box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -895,9 +869,8 @@ body.light-mode::before {
     background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.6);
     transform: scale(1.05);
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .theme-toggle:hover::before {
@@ -907,17 +880,15 @@ body.light-mode::before {
 .light-mode .theme-toggle {
     background: rgba(0, 0, 0, 0.15);
     border: 3px solid rgba(0, 0, 0, 0.4);
-    box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .light-mode .theme-toggle:hover {
     background: rgba(0, 0, 0, 0.25);
     border-color: rgba(0, 0, 0, 0.6);
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Soviet theme toggle styling - ensure text is visible */
@@ -925,18 +896,16 @@ body.theme-soviet .theme-toggle {
     background: rgba(0, 0, 0, 0.3);
     border: 3px solid rgba(255, 215, 0, 0.6);
     color: #ffffff;
-    box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 215, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 215, 0, 0.2);
 }
 
 body.theme-soviet .theme-toggle:hover {
     background: rgba(0, 0, 0, 0.4);
     border-color: rgba(255, 215, 0, 0.8);
     color: #ffffff;
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 215, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 215, 0, 0.3);
 }
 
 /* Japanese theme toggle styling - ensure text is visible */
@@ -944,18 +913,16 @@ body.theme-japan .theme-toggle {
     background: rgba(0, 0, 0, 0.3);
     border: 3px solid rgba(188, 0, 45, 0.6);
     color: #ffffff;
-    box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(188, 0, 45, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(188, 0, 45, 0.2);
 }
 
 body.theme-japan .theme-toggle:hover {
     background: rgba(0, 0, 0, 0.4);
     border-color: rgba(188, 0, 45, 0.8);
     color: #ffffff;
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(188, 0, 45, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(188, 0, 45, 0.3);
 }
 
 /* Theme Dropdown Selector */
@@ -974,9 +941,8 @@ body.theme-japan .theme-toggle:hover {
     font-size: 1rem;
     position: relative;
     backdrop-filter: blur(10px);
-    box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
     min-width: 140px;
     appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF9800' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -990,18 +956,16 @@ body.theme-japan .theme-toggle:hover {
     background: rgba(255, 255, 255, 0.25);
     border-color: rgba(255, 255, 255, 0.6);
     transform: scale(1.05);
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .theme-dropdown:focus {
     outline: none;
     border-color: rgba(255, 152, 0, 0.8);
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3),
-        0 0 0 2px rgba(255, 152, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 0 0 2px rgba(255, 152, 0, 0.3);
 }
 
 .theme-dropdown option {
@@ -1014,17 +978,15 @@ body.theme-japan .theme-toggle:hover {
 .light-mode .theme-dropdown {
     background: rgba(0, 0, 0, 0.15);
     border: 3px solid rgba(0, 0, 0, 0.4);
-    box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .light-mode .theme-dropdown:hover {
     background: rgba(0, 0, 0, 0.25);
     border-color: rgba(0, 0, 0, 0.6);
-    box-shadow: 
-        0 6px 20px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Navigation Styles - Ensure proper z-index */
@@ -1104,8 +1066,14 @@ body.theme-japan .theme-toggle:hover {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .section-header {
@@ -1216,7 +1184,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     .fullscreen-mode .ranging-tool.expanded {
         padding: 1rem;
     }
-    
+
     .fullscreen-close-btn {
         top: 0.5rem;
         left: 50%;
@@ -1533,16 +1501,16 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
         margin-top: 2rem;
         padding: 1.5rem;
     }
-    
+
     .tutorial-video-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .tutorial-video-card {
         padding: 1rem;
     }
-    
+
     .tutorial-videos-section h3 {
         font-size: 1.25rem;
     }
@@ -1638,11 +1606,11 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 /* Pulse animation for play icon */
 @keyframes pulse {
-    0%, 100% { 
+    0%, 100% {
         transform: scale(1);
         opacity: 1;
     }
-    50% { 
+    50% {
         transform: scale(1.1);
         opacity: 0.8;
     }
@@ -1674,7 +1642,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./Project/images/360/panther/1.webp');
+    background-image: url('images/360/panther/1.webp');
     background-size: cover;
     background-position: center 0%;
     background-repeat: no-repeat;
@@ -1721,13 +1689,14 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     position: relative;
     overflow: hidden;
 }
+
 .ranging-card .card-background-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./Project/images/360/sherman-75-jumbo/7.webp');
+    background-image: url('images/360/sherman-75-jumbo/7.webp');
     background-size: cover;
     background-position: center 0%;
     background-repeat: no-repeat;
@@ -1738,6 +1707,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     border-radius: 15px;
     clip-path: inset(0 0 0 0);
 }
+
 .ranging-card i,
 .ranging-card h3,
 .ranging-card p {
@@ -1745,18 +1715,21 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     z-index: 15;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
+
 .ranging-card:hover i,
 .ranging-card:hover h3,
 .ranging-card:hover p {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
     z-index: 15;
 }
+
 .ranging-card:hover .card-background-image {
     opacity: 0.9;
     filter: grayscale(0%);
     transform: scale(1.3);
     z-index: 10;
 }
+
 .ranging-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(255, 193, 7, 0.5);
@@ -1768,13 +1741,14 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     position: relative;
     overflow: hidden;
 }
+
 .community-card .card-background-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./Project/images/360/sherman-76-jumbo/7.webp');
+    background-image: url('images/360/sherman-76-jumbo/7.webp');
     background-size: cover;
     background-position: center 0%;
     background-repeat: no-repeat;
@@ -1785,6 +1759,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     border-radius: 15px;
     clip-path: inset(0 0 0 0);
 }
+
 .community-card i,
 .community-card h3,
 .community-card p {
@@ -1792,18 +1767,21 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     z-index: 15;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
+
 .community-card:hover i,
 .community-card:hover h3,
 .community-card:hover p {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
     z-index: 15;
 }
+
 .community-card:hover .card-background-image {
     opacity: 0.9;
     filter: grayscale(0%);
     transform: scale(1.3);
     z-index: 10;
 }
+
 .community-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 150, 255, 0.4);
@@ -1815,13 +1793,14 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     position: relative;
     overflow: hidden;
 }
+
 .tactics-card .card-background-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./Project/images/360/tiger-i/1.webp');
+    background-image: url('images/360/tiger-i/1.webp');
     background-size: cover;
     background-position: center 0%;
     background-repeat: no-repeat;
@@ -1832,6 +1811,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     border-radius: 15px;
     clip-path: inset(0 0 0 0);
 }
+
 .tactics-card i,
 .tactics-card h3,
 .tactics-card p {
@@ -1839,18 +1819,21 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     z-index: 15;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
+
 .tactics-card:hover i,
 .tactics-card:hover h3,
 .tactics-card:hover p {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
     z-index: 15;
 }
+
 .tactics-card:hover .card-background-image {
     opacity: 0.9;
     filter: grayscale(0%);
     transform: scale(1.3);
     z-index: 10;
 }
+
 .tactics-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(76, 175, 80, 0.5);
@@ -1875,7 +1858,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     filter: drop-shadow(0 2px 4px rgba(255, 68, 68, 0.3));
     animation: pulse 3s ease-in-out infinite;
     /* Replace icon with tank marker image */
-    background-image: url('./Project/images/HLL_Icons/Map Markers/icn_tank_marker.png');
+    background-image: url('images/HLL_Icons/Map Markers/icn_tank_marker.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -1884,9 +1867,9 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     display: inline-block;
     /* Use mask to apply theme color to the icon */
     background-color: var(--accent);
-    mask: url('./Project/images/HLL_Icons/Map Markers/icn_tank_marker.png') no-repeat center;
+    mask: url('images/HLL_Icons/Map Markers/icn_tank_marker.png') no-repeat center;
     mask-size: contain;
-    -webkit-mask: url('./Project/images/HLL_Icons/Map Markers/icn_tank_marker.png') no-repeat center;
+    -webkit-mask: url('images/HLL_Icons/Map Markers/icn_tank_marker.png') no-repeat center;
     -webkit-mask-size: contain;
 }
 
@@ -1895,15 +1878,19 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     filter: drop-shadow(0 4px 8px rgba(211, 47, 47, 0.5));
     /* Light mode tank marker with accent color */
     background-color: var(--accent);
-    mask: url('./Project/images/HLL_Icons/Map Markers/icn_tank_marker.png') no-repeat center;
+    mask: url('images/HLL_Icons/Map Markers/icn_tank_marker.png') no-repeat center;
     mask-size: contain;
-    -webkit-mask: url('./Project/images/HLL_Icons/Map Markers/icn_tank_marker.png') no-repeat center;
+    -webkit-mask: url('images/HLL_Icons/Map Markers/icn_tank_marker.png') no-repeat center;
     -webkit-mask-size: contain;
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
 }
 
 .featured-card h3 {
@@ -1932,18 +1919,16 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     color: var(--text-secondary);
 }
 
-
-
 /* Responsive design for featured card */
 @media (max-width: 768px) {
     .featured-card i {
         font-size: 3rem;
     }
-    
+
     .featured-card h3 {
         font-size: 1.8rem;
     }
-    
+
     .featured-card p {
         font-size: 1rem;
     }
@@ -2023,8 +2008,12 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 }
 
 @keyframes globeRotate {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 .light-mode .faction-btn {
@@ -2285,8 +2274,12 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 }
 
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .comparison-tank-content {
@@ -2558,23 +2551,23 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .comparison-vs {
         order: -1;
         height: auto;
         margin: 1rem 0;
     }
-    
+
     .vs-circle {
         width: 50px;
         height: 50px;
         font-size: 1rem;
     }
-    
+
     .comparison-stats-grid {
         grid-template-columns: 1fr 1fr;
     }
-    
+
     .tank-selection-grid {
         grid-template-columns: 1fr;
     }
@@ -2593,11 +2586,11 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
         min-width: 140px;
         padding: 0.6rem 1rem;
     }
-    
+
     .faction-text {
         font-size: 0.8rem;
     }
-    
+
     .faction-flag {
         width: 20px;
         height: 14px;
@@ -2610,11 +2603,11 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
         padding: 0.5rem 0.8rem;
         gap: 0.5rem;
     }
-    
+
     .faction-text {
         font-size: 0.75rem;
     }
-    
+
     .faction-flag {
         width: 18px;
         height: 12px;
@@ -2974,13 +2967,11 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     color: var(--text-secondary);
 }
 
-
-
 @media (max-width: 768px) {
     .tank-details-content {
         grid-template-columns: 1fr;
     }
-    
+
     .tank-card.expanded {
         margin: 1rem 0;
     }
@@ -3030,7 +3021,6 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     transition: opacity 0.3s ease;
 }
 
-
 /* Only show background selector when tank card is expanded */
 .tank-card.expanded .background-selector {
     display: flex;
@@ -3071,21 +3061,21 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 /* Background Image Classes */
 .tank-image.bg-grass {
-    background: url('./Project/images/360/backgrounds/Grass.jpg') center center !important;
+    background: url('images/360/backgrounds/Grass.jpg') center center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     z-index: 1;
 }
 
 .tank-image.bg-snow {
-    background: url('./Project/images/360/backgrounds/Snow.jpg') center center !important;
+    background: url('images/360/backgrounds/Snow.jpg') center center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     z-index: 1;
 }
 
 .tank-image.bg-desert {
-    background: url('./Project/images/360/backgrounds/desert.jpg') center center !important;
+    background: url('images/360/backgrounds/desert.jpg') center center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     z-index: 1;
@@ -3233,13 +3223,10 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     color: var(--text-secondary);
 }
 
-
-
 .chart-container {
     overflow-x: auto;
     width: 100%;
 }
-
 
 /* Ranging Section */
 .ranging-content {
@@ -3710,7 +3697,6 @@ body.theme-unhinged .expand-close-btn:hover {
     margin: 0;
 }
 
-
 .close-scope-btn {
     background: #ff0000;
     border: 3px solid #ffffff;
@@ -3897,12 +3883,6 @@ body.theme-unhinged .expand-close-btn:hover {
     pointer-events: none;
 }
 
-
-
-
-
-
-
 .scope-info {
     text-align: left;
     color: var(--text-secondary);
@@ -4056,8 +4036,6 @@ body.theme-unhinged .expand-close-btn:hover {
     left: 0;
     font-size: 0.7rem;
 }
-
-
 
 /* Enhanced Expanded Tile Styling */
 .ranging-tool.expanded {
@@ -4572,16 +4550,16 @@ body.theme-unhinged .expand-close-btn:hover {
         align-items: center;
         gap: 0.75rem;
     }
-    
+
     .difficulty-btn {
         min-width: 200px;
         padding: 0.75rem 1rem;
     }
-    
+
     .difficulty-text {
         font-size: 0.9rem;
     }
-    
+
     .difficulty-desc {
         font-size: 0.75rem;
     }
@@ -4592,15 +4570,15 @@ body.theme-unhinged .expand-close-btn:hover {
         min-width: 180px;
         padding: 0.5rem 0.75rem;
     }
-    
+
     .difficulty-icon {
         font-size: 1.25rem;
     }
-    
+
     .difficulty-text {
         font-size: 0.85rem;
     }
-    
+
     .difficulty-desc {
         font-size: 0.7rem;
     }
@@ -5078,9 +5056,8 @@ body.theme-unhinged .expand-close-btn:hover {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: 
-        radial-gradient(circle at center, #FFD700 0%, #FFA500 100%),
-        linear-gradient(45deg, #000000 0%, #333333 100%);
+    background: radial-gradient(circle at center, #FFD700 0%, #FFA500 100%),
+    linear-gradient(45deg, #000000 0%, #333333 100%);
     position: relative;
     border: 4px solid #FFD700;
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
@@ -5176,8 +5153,12 @@ body.theme-unhinged .expand-close-btn:hover {
 }
 
 @keyframes arrowSlide {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(5px); }
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
 }
 
 /* Responsive design for community banner */
@@ -5188,15 +5169,15 @@ body.theme-unhinged .expand-close-btn:hover {
         padding: 2rem;
         gap: 1.5rem;
     }
-    
+
     .banner-text h3 {
         font-size: 1.5rem;
     }
-    
+
     .banner-features {
         justify-content: center;
     }
-    
+
     .banner-arrow {
         display: none;
     }
@@ -5235,9 +5216,8 @@ body.theme-unhinged .expand-close-btn:hover {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: 
-        radial-gradient(circle at center, #FFD700 0%, #FFA500 100%),
-        linear-gradient(45deg, #000000 0%, #333333 100%);
+    background: radial-gradient(circle at center, #FFD700 0%, #FFA500 100%),
+    linear-gradient(45deg, #000000 0%, #333333 100%);
     position: relative;
     border: 5px solid #FFD700;
     box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
@@ -5245,8 +5225,12 @@ body.theme-unhinged .expand-close-btn:hover {
 }
 
 @keyframes logoGlow {
-    0%, 100% { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4); }
-    50% { box-shadow: 0 8px 35px rgba(255, 215, 0, 0.6); }
+    0%, 100% {
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 35px rgba(255, 215, 0, 0.6);
+    }
 }
 
 .draft-haus-logo-large::before {
@@ -5385,8 +5369,6 @@ body.theme-unhinged .expand-close-btn:hover {
     color: var(--text-secondary);
 }
 
-
-
 /* Footer */
 .footer {
     background-color: var(--bg-secondary);
@@ -5443,72 +5425,70 @@ body.theme-unhinged .expand-close-btn:hover {
     .header-content {
         padding: 0 1rem;
     }
-    
+
     .logo h1 {
         font-size: 1.2rem;
     }
-    
+
     .nav-list {
         padding: 0 1rem;
         flex-direction: column;
     }
-    
+
     .nav-link {
         text-align: center;
     }
-    
+
     .main-content {
         padding: 1rem;
     }
-    
+
     .section-header h2 {
         font-size: 2rem;
     }
-    
+
     .overview-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .faction-filter {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .tank-grid {
         grid-template-columns: 1fr;
     }
-    
-    
+
     .ranging-tools {
         grid-template-columns: 1fr;
     }
-    
+
     .identification-content {
         grid-template-columns: 1fr;
     }
-    
+
     .practice-options {
         grid-template-columns: 1fr;
     }
-    
+
     .tactics-content {
         grid-template-columns: 1fr;
     }
-    
+
     .strategy-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .community-hero {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 2rem;
     }
-    
+
     .community-features-grid {
         grid-template-columns: 1fr;
     }
-    
 
 }
 
@@ -5517,23 +5497,23 @@ body.theme-unhinged .expand-close-btn:hover {
         flex-direction: column;
         gap: 0.5rem;
     }
-    
+
     .logo h1 {
         font-size: 1rem;
     }
-    
+
     .section-header h2 {
         font-size: 1.5rem;
     }
-    
+
     .overview-card {
         padding: 1.5rem;
     }
-    
+
     .tank-info {
         padding: 1rem;
     }
-    
+
     .tank-stats {
         grid-template-columns: 1fr;
     }
@@ -5551,8 +5531,6 @@ body.theme-unhinged .expand-close-btn:hover {
 .tank-card:hover .tank-photo {
     transform: scale(1.05);
 }
-
-
 
 /* 360 Degree Tank Viewer Styles */
 .tank-360-viewer {
@@ -5774,25 +5752,23 @@ body.theme-unhinged .expand-close-btn:hover {
     .tank-360-viewer {
         height: 150px;
     }
-    
+
     .tank-360-btn {
         width: 35px;
         height: 35px;
         font-size: 1rem;
     }
-    
+
     .tank-360-indicator {
         font-size: 0.8rem;
         padding: 3px 10px;
     }
-    
+
     .tank-360-badge {
         font-size: 0.7rem;
         padding: 1px 6px;
     }
 }
-
-
 
 /* Content Creators Section */
 .content-creators-section {
@@ -5967,21 +5943,21 @@ body.theme-unhinged .expand-close-btn:hover {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
-    
+
     .creator-card {
         padding: 1.25rem;
     }
-    
+
     .creator-header {
         flex-direction: column;
         text-align: center;
         gap: 1rem;
     }
-    
+
     .creator-avatar {
         margin-right: 0;
     }
-    
+
     .creator-links {
         justify-content: center;
     }
@@ -5992,22 +5968,21 @@ body.theme-unhinged .expand-close-btn:hover {
         padding: 1.5rem;
         margin-top: 2rem;
     }
-    
+
     .content-creators-section h3 {
         font-size: 1.75rem;
     }
-    
+
     .creator-links {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .creator-link {
         width: 100%;
         justify-content: center;
     }
 }
-
 
 /* FIRST BLOOD CELEBRATION ANIMATIONS */
 #first-blood-celebration {
@@ -6077,9 +6052,15 @@ body.theme-unhinged .expand-close-btn:hover {
 
 /* Screen Shake Animation */
 @keyframes screenShake {
-    0%, 100% { transform: translateX(0); }
-    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
-    20%, 40%, 60%, 80% { transform: translateX(10px); }
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
 }
 
 /* Explosion Particles */
@@ -6133,9 +6114,15 @@ body.theme-unhinged .expand-close-btn:hover {
 }
 
 @keyframes screenFlash {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
 
 /* Tank Explosion */
@@ -6180,20 +6167,44 @@ body.theme-unhinged .expand-close-btn:hover {
 }
 
 @keyframes fireExpand {
-    0% { transform: scale(0); opacity: 1; }
-    50% { transform: scale(2); opacity: 1; }
-    100% { transform: scale(3); opacity: 0; }
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
 }
 
 @keyframes smokeRise {
-    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-    50% { transform: translate(-50%, -50%) scale(1) translateY(-20px); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(2) translateY(-100px); opacity: 0; }
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1) translateY(-20px);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2) translateY(-100px);
+        opacity: 0;
+    }
 }
 
 @keyframes debrisScatter {
-    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1) translate(50px, -25px) rotate(360deg); opacity: 0; }
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1) translate(50px, -25px) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* Matrix Rain */
@@ -6205,41 +6216,77 @@ body.theme-unhinged .expand-close-btn:hover {
 }
 
 @keyframes matrixFall {
-    0% { transform: translateY(-100%); opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0; }
+    0% {
+        transform: translateY(-100%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
 }
 
 /* Sound Waves */
 @keyframes soundWave {
-    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
 }
 
 @keyframes waveExpand {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(3); opacity: 0; }
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
 }
 
 /* Achievement Animations */
 @keyframes achievementPop {
-    0% { transform: scale(0) rotate(-180deg); }
-    50% { transform: scale(1.2) rotate(0deg); }
-    100% { transform: scale(1) rotate(0deg); }
+    0% {
+        transform: scale(0) rotate(-180deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
 }
 
 @keyframes iconBounce {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 @keyframes textGlow {
-    0% { text-shadow: 0 0 20px rgba(255, 68, 68, 0.8); }
-    100% { text-shadow: 0 0 30px rgba(255, 68, 68, 1), 0 0 40px rgba(255, 68, 68, 0.5); }
+    0% {
+        text-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 30px rgba(255, 68, 68, 1), 0 0 40px rgba(255, 68, 68, 0.5);
+    }
 }
 
 @keyframes statPulse {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
 }
 
 /* Vietnam Section Styling */
@@ -6258,10 +6305,9 @@ body.theme-unhinged .expand-close-btn:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(34, 139, 34, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(25, 25, 112, 0.05) 0%, transparent 50%);
+    background: radial-gradient(circle at 20% 80%, rgba(34, 139, 34, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(25, 25, 112, 0.05) 0%, transparent 50%);
     pointer-events: none;
     z-index: 1;
 }
@@ -6279,20 +6325,23 @@ body.vietnam-jungle-theme::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        radial-gradient(circle at 10% 20%, rgba(34, 139, 34, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(85, 107, 47, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(0, 100, 0, 0.08) 0%, transparent 60%),
-        radial-gradient(circle at 80% 10%, rgba(34, 139, 34, 0.1) 0%, transparent 30%),
-        radial-gradient(circle at 20% 90%, rgba(85, 107, 47, 0.1) 0%, transparent 30%);
+    background: radial-gradient(circle at 10% 20%, rgba(34, 139, 34, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(85, 107, 47, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(0, 100, 0, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 80% 10%, rgba(34, 139, 34, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 20% 90%, rgba(85, 107, 47, 0.1) 0%, transparent 30%);
     pointer-events: none;
     z-index: -1;
     animation: jungleAmbience 20s ease-in-out infinite;
 }
 
 @keyframes jungleAmbience {
-    0%, 100% { opacity: 0.8; }
-    50% { opacity: 1; }
+    0%, 100% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+    }
 }
 
 /* Vietnam section specific jungle styling */
@@ -6301,19 +6350,17 @@ body.vietnam-jungle-theme .vietnam-section {
 }
 
 body.vietnam-jungle-theme .vietnam-section::before {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(34, 139, 34, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(85, 107, 47, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(0, 100, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 60% 60%, rgba(34, 139, 34, 0.1) 0%, transparent 40%);
+    background: radial-gradient(circle at 20% 80%, rgba(34, 139, 34, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(85, 107, 47, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(0, 100, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 60% 60%, rgba(34, 139, 34, 0.1) 0%, transparent 40%);
 }
 
 body.vietnam-jungle-theme .vietnam-title {
     color: #90ee90 !important;
-    text-shadow: 
-        4px 4px 0px #0f1f0f,
-        8px 8px 0px rgba(15, 31, 15, 0.5),
-        0 0 30px rgba(144, 238, 144, 0.5) !important;
+    text-shadow: 4px 4px 0px #0f1f0f,
+    8px 8px 0px rgba(15, 31, 15, 0.5),
+    0 0 30px rgba(144, 238, 144, 0.5) !important;
 }
 
 body.vietnam-jungle-theme .coming-soon-banner {
@@ -6429,7 +6476,7 @@ body.vietnam-jungle-theme .logo-left::before {
     display: block;
     width: 300px;
     height: 300px;
-    background-image: url('./Project/images/Hell Let loose Logos/Logo HLLV - Horizontal Logo Lockup - White (1).png');
+    background-image: url('images/Hell Let loose Logos/Logo HLLV - Horizontal Logo Lockup - White (1).png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -6533,10 +6580,9 @@ body.vietnam-jungle-theme .logo-left::before {
     font-weight: 900;
     font-size: 4rem;
     color: var(--text-primary);
-    text-shadow: 
-        4px 4px 0px #000000,
-        8px 8px 0px rgba(0, 0, 0, 0.5),
-        0 0 30px rgba(255, 255, 255, 0.5);
+    text-shadow: 4px 4px 0px #000000,
+    8px 8px 0px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(255, 255, 255, 0.5);
     letter-spacing: 6px;
     margin-bottom: 2rem;
 }
@@ -6599,25 +6645,25 @@ body.vietnam-jungle-theme .logo-left::before {
 }
 
 /* ARMOR HUB Easter Egg Theme */
-body.pornhub-theme {
+body.secret-theme {
     background: #000000 !important;
     color: #ffffff !important;
 }
 
-body.pornhub-theme .header {
+body.secret-theme .header {
     background: #000000 !important;
     border-bottom: 2px solid #ff9000 !important;
 }
 
-body.pornhub-theme .logo-left::before {
+body.secret-theme .logo-left::before {
     display: none !important;
 }
 
-body.pornhub-theme .logo-right::before {
+body.secret-theme .logo-right::before {
     display: none !important;
 }
 
-body.pornhub-theme .armor-hub-text {
+body.secret-theme .armor-hub-text {
     background: linear-gradient(to right, #ffffff 0%, #ffffff 55%, #ff9000 65%, #ff9000 100%) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
@@ -6626,153 +6672,152 @@ body.pornhub-theme .armor-hub-text {
     border-radius: 4px !important;
     padding: 0.5rem 1rem !important;
     font-weight: 900 !important;
-    text-shadow: 1px 1px 0px rgba(0,0,0,0.3) !important;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3) !important;
     text-shadow: none !important;
 }
 
-body.pornhub-theme .nav {
+body.secret-theme .nav {
     background: #000000 !important;
     border-top: 2px solid #ff9000 !important;
 }
 
-body.pornhub-theme .nav-link {
+body.secret-theme .nav-link {
     color: #ffffff !important;
 }
 
-body.pornhub-theme .nav-link:hover,
-body.pornhub-theme .nav-link.active {
+body.secret-theme .nav-link:hover,
+body.secret-theme .nav-link.active {
     color: #ff9000 !important;
     background: rgba(255, 144, 0, 0.1) !important;
 }
 
-body.pornhub-theme .section {
+body.secret-theme .section {
     background: #000000 !important;
 }
 
-body.pornhub-theme .tank-card {
+body.secret-theme .tank-card {
     background: #1a1a1a !important;
     border: 2px solid #ff9000 !important;
 }
 
-body.pornhub-theme .tank-card:hover {
+body.secret-theme .tank-card:hover {
     border-color: #ffaa00 !important;
     box-shadow: 0 8px 25px rgba(255, 144, 0, 0.3) !important;
 }
 
-body.pornhub-theme .tank-name {
+body.secret-theme .tank-name {
     color: #ff9000 !important;
 }
 
-body.pornhub-theme .tank-faction {
+body.secret-theme .tank-faction {
     color: #ffffff !important;
 }
 
-body.pornhub-theme .tank-360-badge {
+body.secret-theme .tank-360-badge {
     background: #ff9000 !important;
     color: #000000 !important;
 }
 
-body.pornhub-theme .stat-label {
+body.secret-theme .stat-label {
     color: #ff9000 !important;
 }
 
-body.pornhub-theme .stat-value {
+body.secret-theme .stat-value {
     color: #ffffff !important;
 }
 
-body.pornhub-theme .tank-description {
+body.secret-theme .tank-description {
     color: #cccccc !important;
 }
 
-body.pornhub-theme .faction-btn {
+body.secret-theme .faction-btn {
     background: #1a1a1a !important;
     color: #ffffff !important;
     border: 2px solid #ff9000 !important;
 }
 
-body.pornhub-theme .faction-btn:hover,
-body.pornhub-theme .faction-btn.active {
+body.secret-theme .faction-btn:hover,
+body.secret-theme .faction-btn.active {
     background: #ff9000 !important;
     color: #000000 !important;
 }
 
-body.pornhub-theme .filter-btn {
+body.secret-theme .filter-btn {
     background: #1a1a1a !important;
     color: #ffffff !important;
     border: 2px solid #ff9000 !important;
 }
 
-body.pornhub-theme .filter-btn:hover,
-body.pornhub-theme .filter-btn.active {
+body.secret-theme .filter-btn:hover,
+body.secret-theme .filter-btn.active {
     background: #ff9000 !important;
     color: #000000 !important;
 }
 
-body.pornhub-theme .tank-expand-btn {
+body.secret-theme .tank-expand-btn {
     background: #ff9000 !important;
     color: #000000 !important;
 }
 
-body.pornhub-theme .tank-expand-btn:hover {
+body.secret-theme .tank-expand-btn:hover {
     background: #ffaa00 !important;
 }
 
-body.pornhub-theme .tank-details {
+body.secret-theme .tank-details {
     background: #1a1a1a !important;
     border: 2px solid #ff9000 !important;
 }
 
-body.pornhub-theme .tank-details-header h2 {
+body.secret-theme .tank-details-header h2 {
     color: #ff9000 !important;
 }
 
-body.pornhub-theme .tank-stats-table {
+body.secret-theme .tank-stats-table {
     background: #000000 !important;
     border: 1px solid #ff9000 !important;
 }
 
-body.pornhub-theme .tank-stats-table th {
+body.secret-theme .tank-stats-table th {
     background: #ff9000 !important;
     color: #000000 !important;
 }
 
-body.pornhub-theme .tank-stats-table td {
+body.secret-theme .tank-stats-table td {
     color: #ffffff !important;
     border: 1px solid #333333 !important;
 }
 
-
-body.pornhub-theme .calculator-section {
+body.secret-theme .calculator-section {
     background: #1a1a1a !important;
     border: 2px solid #ff9000 !important;
 }
 
-body.pornhub-theme .calculate-btn {
+body.secret-theme .calculate-btn {
     background: #ff9000 !important;
     color: #000000 !important;
 }
 
-body.pornhub-theme .calculate-btn:hover {
+body.secret-theme .calculate-btn:hover {
     background: #ffaa00 !important;
 }
 
-body.pornhub-theme .practice-section {
+body.secret-theme .practice-section {
     background: #1a1a1a !important;
     border: 2px solid #ff9000 !important;
 }
 
-body.pornhub-theme .practice-option {
+body.secret-theme .practice-option {
     background: #1a1a1a !important;
     color: #ffffff !important;
     border: 2px solid #ff9000 !important;
 }
 
-body.pornhub-theme .practice-option:hover {
+body.secret-theme .practice-option:hover {
     background: #ff9000 !important;
     color: #000000 !important;
 }
 
-body.pornhub-theme .footer {
+body.secret-theme .footer {
     background: #000000 !important;
     border-top: 2px solid #ff9000 !important;
     color: #ffffff !important;
@@ -6791,7 +6836,7 @@ body.pornhub-theme .footer {
 }
 
 /* Easter egg deactivation button */
-.pornhub-deactivate {
+.secret-deactivate {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -6806,11 +6851,11 @@ body.pornhub-theme .footer {
     display: none !important;
 }
 
-body.pornhub-theme .pornhub-deactivate {
+body.secret-theme .secret-deactivate {
     display: block !important;
 }
 
-.pornhub-deactivate:hover {
+.secret-deactivate:hover {
     background: #ffaa00 !important;
 }
 
@@ -6819,13 +6864,14 @@ body.pornhub-theme .pornhub-deactivate {
     position: relative;
     overflow: hidden;
 }
+
 .tanks-card .card-background-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./Project/images/360/backgrounds/tanks.png');
+    background-image: url('images/360/backgrounds/tanks.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -6836,6 +6882,7 @@ body.pornhub-theme .pornhub-deactivate {
     border-radius: 15px;
     clip-path: inset(0 0 0 0);
 }
+
 .tanks-card i,
 .tanks-card h3,
 .tanks-card p {
@@ -6843,18 +6890,21 @@ body.pornhub-theme .pornhub-deactivate {
     z-index: 15;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
+
 .tanks-card:hover i,
 .tanks-card:hover h3,
 .tanks-card:hover p {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
     z-index: 15;
 }
+
 .tanks-card:hover .card-background-image {
     opacity: 0.9;
     filter: grayscale(0%);
     transform: scale(1.2);
     z-index: 10;
 }
+
 .tanks-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(255, 165, 0, 0.4);
@@ -6875,13 +6925,14 @@ body.pornhub-theme .pornhub-deactivate {
     position: relative;
     overflow: hidden;
 }
+
 .featured-card .card-background-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('./Project/images/360/backgrounds/tanks.webp');
+    background-image: url('images/360/backgrounds/tanks.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -6892,6 +6943,7 @@ body.pornhub-theme .pornhub-deactivate {
     border-radius: 15px;
     clip-path: inset(0 0 0 0);
 }
+
 .featured-card i,
 .featured-card h3,
 .featured-card p {
@@ -6899,12 +6951,14 @@ body.pornhub-theme .pornhub-deactivate {
     z-index: 15;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
+
 .featured-card:hover i,
 .featured-card:hover h3,
 .featured-card:hover p {
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
     z-index: 15;
 }
+
 .featured-card:hover .card-background-image {
     opacity: 0.9;
     filter: grayscale(0%);
@@ -6919,8 +6973,13 @@ body.pornhub-theme .pornhub-deactivate {
 
 /* Mobile-optimized pulse animation */
 @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.01); } /* Smaller scale change */
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.01);
+    }
+    /* Smaller scale change */
 }
 
 /* Mobile Touch Experience & Layout Improvements */
@@ -6933,14 +6992,14 @@ body.pornhub-theme .pornhub-deactivate {
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
-    
+
     /* Better touch spacing between cards */
     .overview-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 1rem;
     }
-    
+
     /* Larger faction buttons for touch */
     .faction-btn {
         min-height: 48px; /* iOS recommended minimum */
@@ -6948,42 +7007,42 @@ body.pornhub-theme .pornhub-deactivate {
         padding: 0.8rem 1.2rem;
         margin: 0.5rem;
     }
-    
+
     /* Larger filter buttons */
     .filter-toggle {
         min-height: 48px;
         padding: 0.8rem 1.2rem;
         font-size: 1rem;
     }
-    
+
     /* Better touch spacing for tank cards */
     .tank-card {
         margin-bottom: 1.5rem;
         padding: 1.5rem;
         border-radius: 12px;
     }
-    
+
     /* Optimized tank grid for mobile */
     .tank-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 1rem;
     }
-    
+
     /* Larger practice option buttons */
     .practice-option {
         min-height: 48px;
         padding: 1rem 1.5rem;
         margin: 0.5rem 0;
     }
-    
+
     /* Better mobile practice layout */
     .practice-options {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0 1rem;
     }
-    
+
     /* Larger navigation links */
     .nav-link {
         padding: 1rem 1.5rem;
@@ -6995,14 +7054,14 @@ body.pornhub-theme .pornhub-deactivate {
         margin: 0;
         text-align: center;
     }
-    
+
     /* Better mobile navigation */
     .nav-list {
         flex-direction: column;
         gap: 0.5rem;
         padding: 1rem;
     }
-    
+
     /* Better touch spacing for 360 controls */
     .tank-360-btn {
         min-width: 44px;
@@ -7010,27 +7069,27 @@ body.pornhub-theme .pornhub-deactivate {
         padding: 0.5rem;
         font-size: 0.8rem;
     }
-    
+
     /* Larger expand buttons */
     .tank-expand-btn {
         min-height: 48px;
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
-    
+
     /* Better touch spacing for video cards */
     .video-card {
         margin-bottom: 1.5rem;
         padding: 1.5rem;
     }
-    
+
     /* Mobile-optimized video grid */
     .video-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 1rem;
     }
-    
+
     /* Larger difficulty buttons */
     .difficulty-btn {
         min-height: 48px;
@@ -7038,35 +7097,34 @@ body.pornhub-theme .pornhub-deactivate {
         margin: 0.5rem;
         font-size: 1rem;
     }
-    
+
     /* Better mobile spacing for sections */
     .section {
         padding: 1.5rem 1rem;
     }
-    
+
     .section-header {
         margin-bottom: 2rem;
         text-align: center;
     }
-    
+
     .section-header h2 {
         font-size: 2rem;
         margin-bottom: 1rem;
     }
-    
-    
+
     /* Mobile-optimized header */
     .header-content {
         padding: 0 1rem;
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .logo h1 {
         font-size: 1.5rem;
         text-align: center;
     }
-    
+
     /* Better mobile faction filter */
     .faction-filter {
         flex-direction: column;
@@ -7074,7 +7132,7 @@ body.pornhub-theme .pornhub-deactivate {
         gap: 1rem;
         padding: 1rem;
     }
-    
+
     /* Mobile-optimized filter dropdown */
     .filter-dropdown-content {
         position: fixed;
@@ -7085,7 +7143,7 @@ body.pornhub-theme .pornhub-deactivate {
         max-width: 300px;
         z-index: 10000;
     }
-    
+
     /* Performance optimizations for mobile */
     .overview-card,
     .tank-card,
@@ -7094,7 +7152,7 @@ body.pornhub-theme .pornhub-deactivate {
         transition: all 0.2s ease; /* Faster transitions on mobile */
         will-change: transform; /* Optimize for transforms */
     }
-    
+
     /* Optimize hover effects for mobile */
     .overview-card:hover,
     .tank-card:hover,
@@ -7102,7 +7160,7 @@ body.pornhub-theme .pornhub-deactivate {
         transform: translateY(-2px); /* Smaller movement on mobile */
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
-    
+
     /* Reduce background image scaling on mobile for performance */
     .identification-card:hover .card-background-image,
     .ranging-card:hover .card-background-image,
@@ -7112,18 +7170,18 @@ body.pornhub-theme .pornhub-deactivate {
         transform: scale(1.1); /* Smaller scale on mobile */
         transition: all 0.3s ease;
     }
-    
+
     /* Optimize 360 viewer for mobile */
     .tank-360-viewer {
         transition: height 0.2s ease; /* Faster height transitions */
         will-change: height;
     }
-    
+
     .tank-360-image {
         transition: all 0.1s ease; /* Faster image transitions */
         will-change: transform;
     }
-    
+
     /* Optimize backdrop filters for mobile */
     .overview-card,
     .tank-card,
@@ -7132,27 +7190,27 @@ body.pornhub-theme .pornhub-deactivate {
     .filter-toggle {
         backdrop-filter: blur(5px); /* Reduced blur for performance */
     }
-    
+
     /* Reduce box-shadow complexity on mobile */
     .overview-card,
     .tank-card,
     .video-card {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
-    
+
     /* Optimize text shadows for mobile */
     .overview-card h3,
     .tank-card h3,
     .section-header h2 {
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Simpler shadows */
     }
-    
+
     /* Reduce gradient complexity on mobile */
     .featured-card::before {
         background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
         opacity: 0.8;
     }
-    
+
     /* Optimize button hover states for mobile */
     .faction-btn:hover,
     .filter-toggle:hover,
@@ -7160,14 +7218,14 @@ body.pornhub-theme .pornhub-deactivate {
         transform: scale(1.02); /* Smaller scale on mobile */
         transition: all 0.2s ease;
     }
-    
+
     /* Reduce complex CSS filters on mobile */
     .tank-360-btn {
         filter: none; /* Remove complex filters on mobile */
         background: rgba(255, 255, 255, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.4);
     }
-    
+
     /* Optimize mobile scrolling */
     .tank-grid,
     .practice-content {
@@ -7333,14 +7391,14 @@ body.pornhub-theme .pornhub-deactivate {
     line-height: 1.3 !important;
 }
 
-        /* B33R Clan Branding Icon */
-        .clan-branding-icon {
-            width: 4px;
-            height: 4px;
-            margin-right: 8px;
-            vertical-align: middle;
-            filter: brightness(1.2) contrast(1.1);
-        }
+/* B33R Clan Branding Icon */
+.clan-branding-icon {
+    width: 4px;
+    height: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+    filter: brightness(1.2) contrast(1.1);
+}
 
 /* Updated Strategy Grid Layout */
 .strategy-grid {
@@ -7408,30 +7466,30 @@ body.pornhub-theme .pornhub-deactivate {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .health-components {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .health-component {
         padding: 0.8rem;
     }
-    
+
     .health-icon {
         width: 40px;
         height: 40px;
     }
-    
+
     .tank-types-components {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .tank-type-component {
         padding: 0.8rem;
     }
-    
+
     .tank-type-icon {
         width: 40px;
         height: 40px;
@@ -7442,7 +7500,6 @@ body.pornhub-theme .pornhub-deactivate {
 .expand-close-btn {
     display: none;
 }
-
 
 .scope-magnify-btn {
     display: none;
@@ -7475,7 +7532,7 @@ body.pornhub-theme .pornhub-deactivate {
         padding: 12px 20px !important;
         font-size: 16px !important; /* Prevents iOS zoom on focus */
     }
-    
+
     /* Larger touch targets for close buttons */
     .close-scope-btn,
     .close-comparison {
@@ -7483,7 +7540,7 @@ body.pornhub-theme .pornhub-deactivate {
         height: 64px !important;
         font-size: 32px !important;
     }
-    
+
     /* Reposition scope close button for mobile - center bottom */
     .close-scope-btn {
         position: fixed !important;
@@ -7493,56 +7550,54 @@ body.pornhub-theme .pornhub-deactivate {
         right: auto !important;
         transform: translateX(-50%) !important; /* Center horizontally */
     }
-    
+
     /* Keep centered on hover */
     .close-scope-btn:hover {
         transform: translateX(-50%) !important;
     }
-    
+
     /* ========================================
        MOBILE HEADER/LOGO FIXES
        ======================================== */
-    
     /* Stack logo vertically on mobile */
     .logo-container {
         flex-direction: column !important;
         align-items: center !important;
         gap: 0.5rem !important;
     }
-    
+
     /* Make Hell Let Loose logo smaller on mobile */
     .hll-logo {
         height: 60px !important;
         width: auto !important;
     }
-    
+
     /* Position Armor Hub text below logo */
     .armor-hub-text {
         position: static !important;
         margin-top: 0.5rem !important;
         font-size: 1.2rem !important;
     }
-    
+
     /* Remove the decorative line on mobile */
     .logo-container::after {
         display: none !important;
     }
-    
+
     /* Touch-friendly navigation */
     .nav-links {
         gap: 0.5rem !important;
     }
-    
+
     .nav-link {
         padding: 14px 18px !important;
         font-size: 16px !important;
         margin: 4px 0 !important;
     }
-    
+
     /* ========================================
        IDENTIFICATION TAB MOBILE FIXES
        ======================================== */
-    
     /* Make practice area taller and prevent stacking */
     .practice-area {
         min-height: 800px !important;
@@ -7553,7 +7608,7 @@ body.pornhub-theme .pornhub-deactivate {
         gap: 2rem !important;
         padding: 2rem 1rem !important;
     }
-    
+
     /* Give tank image more space */
     .practice-tank {
         min-height: 300px !important;
@@ -7561,7 +7616,7 @@ body.pornhub-theme .pornhub-deactivate {
         margin-bottom: 2rem !important;
         flex-shrink: 0 !important;
     }
-    
+
     .practice-tank img {
         max-width: 100% !important;
         width: 100% !important;
@@ -7569,7 +7624,7 @@ body.pornhub-theme .pornhub-deactivate {
         min-height: 250px !important;
         object-fit: contain !important;
     }
-    
+
     /* Practice options spacing */
     .practice-options {
         display: flex !important;
@@ -7578,7 +7633,7 @@ body.pornhub-theme .pornhub-deactivate {
         width: 100% !important;
         margin-top: 2rem !important;
     }
-    
+
     .practice-option {
         width: 100% !important;
         min-height: 56px !important;
@@ -7586,44 +7641,44 @@ body.pornhub-theme .pornhub-deactivate {
         font-size: 16px !important;
         margin: 0 !important;
     }
-    
+
     /* Difficulty selector spacing */
     .difficulty-selector {
         margin-bottom: 2rem !important;
     }
-    
+
     .difficulty-buttons {
         display: flex !important;
         flex-direction: column !important;
         gap: 1rem !important;
         width: 100% !important;
     }
-    
+
     .difficulty-btn {
         width: 100% !important;
         min-height: 60px !important;
         padding: 16px !important;
         font-size: 16px !important;
     }
-    
+
     /* Identification tips mobile */
     .identification-tips-section {
         margin-top: 2rem !important;
         padding: 1.5rem !important;
     }
-    
+
     .identification-tips-section ul {
         grid-template-columns: 1fr !important;
         gap: 1rem !important;
     }
-    
+
     .identification-tips-section li {
         padding: 0.75rem 0 !important;
         padding-left: 2rem !important;
         font-size: 15px !important;
         line-height: 1.5 !important;
     }
-    
+
     /* Start practice button */
     .start-practice-btn {
         width: 100% !important;
@@ -7632,31 +7687,46 @@ body.pornhub-theme .pornhub-deactivate {
         margin-top: 2rem !important;
         margin-bottom: 1rem !important;
     }
-    
+
     /* Game area container */
     .game-area-container {
         padding: 1.5rem !important;
         min-height: 900px !important;
     }
-    
+
     /* Achievement section spacing */
     .achievement-section {
         margin-top: 2rem !important;
         padding: 1rem !important;
     }
-    
+
     /* Improve text readability on mobile */
     body {
         font-size: 16px !important; /* Base font size to prevent zoom */
         line-height: 1.6 !important;
     }
-    
-    h1 { font-size: 2rem !important; }
-    h2 { font-size: 1.75rem !important; }
-    h3 { font-size: 1.5rem !important; }
-    h4 { font-size: 1.25rem !important; }
-    p { font-size: 16px !important; line-height: 1.6 !important; }
-    
+
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    h3 {
+        font-size: 1.5rem !important;
+    }
+
+    h4 {
+        font-size: 1.25rem !important;
+    }
+
+    p {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+    }
+
     /* Larger input fields for better touch */
     input[type="text"],
     input[type="number"],
@@ -7665,160 +7735,160 @@ body.pornhub-theme .pornhub-deactivate {
         font-size: 16px !important; /* Prevents iOS zoom */
         padding: 12px !important;
     }
-    
+
     /* Touch-friendly tank cards */
     .tank-card {
         padding: 1.5rem !important;
         margin-bottom: 1.5rem !important;
     }
-    
+
     .tank-name {
         font-size: 1.5rem !important;
         margin-bottom: 1rem !important;
     }
-    
+
     /* Better spacing for finger navigation */
     .tank-grid {
         gap: 1.5rem !important;
         padding: 1rem !important;
     }
-    
+
     /* Optimize 360° viewer for touch */
     .tank-360-viewer {
         height: 250px !important; /* Larger viewing area */
         touch-action: pan-y pinch-zoom; /* Enable smooth touch scrolling */
     }
-    
+
     .tank-360-btn {
         min-width: 44px !important;
         min-height: 44px !important;
         padding: 12px !important;
         font-size: 18px !important;
     }
-    
+
     /* Touch-friendly filter buttons */
     .filter-buttons {
         gap: 12px !important;
         padding: 1rem !important;
         flex-wrap: wrap !important;
     }
-    
+
     /* Scope viewer mobile optimization */
     .scope-viewer {
         padding: 1rem !important;
     }
-    
+
     .scope-content {
         max-width: 100% !important;
         padding: 1rem !important;
     }
-    
+
     .scope-image-container {
         touch-action: pan-x pan-y pinch-zoom !important;
     }
-    
+
     /* Better modal positioning */
     .scope-viewer.active {
         align-items: flex-start !important;
         padding-top: 60px !important; /* Account for header */
     }
-    
+
     /* Touch-friendly comparison panel */
     .comparison-header {
         padding: 1.5rem !important;
     }
-    
+
     .comparison-controls {
         gap: 12px !important;
     }
-    
+
     .clear-comparison,
     .close-comparison {
         min-width: 48px !important;
         min-height: 48px !important;
         padding: 12px !important;
     }
-    
+
     /* Practice mode mobile optimization */
     .practice-options {
         gap: 12px !important;
         padding: 1rem !important;
     }
-    
+
     .practice-option {
         min-height: 56px !important;
         padding: 16px !important;
         font-size: 16px !important;
     }
-    
+
     /* Artillery calculator mobile */
     .input-group {
         margin-bottom: 1.5rem !important;
     }
-    
+
     .input-group label {
         font-size: 16px !important;
         margin-bottom: 8px !important;
     }
-    
+
     .calculate-btn {
         width: 100% !important;
         min-height: 56px !important;
         font-size: 18px !important;
         margin-top: 1rem !important;
     }
-    
+
     /* Strategy cards mobile spacing */
     .strategy-card {
         padding: 1.5rem !important;
         margin-bottom: 1.5rem !important;
     }
-    
+
     .strategy-card h4 {
         font-size: 1.25rem !important;
         margin-bottom: 1rem !important;
     }
-    
+
     .strategy-card li {
         margin-bottom: 1rem !important;
         line-height: 1.6 !important;
     }
-    
+
     /* Tank selection grid for scopes */
     .tank-selection-grid {
         gap: 12px !important;
         padding: 1rem !important;
     }
-    
+
     .tank-option {
         min-height: 60px !important;
         padding: 12px !important;
     }
-    
+
     /* Community section mobile */
     .creator-card {
         padding: 1.5rem !important;
     }
-    
+
     .creator-link {
         min-height: 48px !important;
         padding: 12px 20px !important;
         font-size: 16px !important;
     }
-    
+
     /* Video cards mobile */
     .video-card,
     .tutorial-video-card {
         padding: 1rem !important;
     }
-    
+
     /* Better scrolling for overflows */
     .tank-details-content,
     .comparison-stats,
     .artillery-results {
         -webkit-overflow-scrolling: touch !important;
     }
-    
+
     /* Prevent text selection on interactive elements */
     .tank-card,
     .overview-card,
@@ -7826,26 +7896,25 @@ body.pornhub-theme .pornhub-deactivate {
     .btn {
         -webkit-user-select: none !important;
         user-select: none !important;
-        -webkit-tap-highlight-color: rgba(0,0,0,0.1) !important;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1) !important;
     }
-    
+
     /* Allow text selection in content areas */
     p, li, .health-description, .tank-type-description {
         -webkit-user-select: text !important;
         user-select: text !important;
     }
-    
+
     /* ========================================
        RANGING TAB MOBILE FIXES
        ======================================== */
-    
     /* Fix ranging tools grid for mobile */
     .ranging-tools {
         grid-template-columns: 1fr !important;
         gap: 1.5rem !important;
         padding: 1rem !important;
     }
-    
+
     /* Adjust ranging tool height for mobile */
     .ranging-tool {
         height: auto !important;
@@ -7853,34 +7922,34 @@ body.pornhub-theme .pornhub-deactivate {
         padding: 1.5rem !important;
         cursor: default !important; /* Remove pointer cursor */
     }
-    
+
     /* Prevent click expansion on mobile */
     .ranging-tool:active,
     .ranging-tool:hover {
         transform: none !important;
     }
-    
+
     /* Hide expand button on mobile - tiles don't expand */
     .expand-btn {
         display: none !important;
     }
-    
+
     /* Artillery calculator mobile */
     .ranging-tool h3 {
         font-size: 1.5rem !important;
         margin-bottom: 1.5rem !important;
     }
-    
+
     .input-group {
         margin-bottom: 1.5rem !important;
     }
-    
+
     .input-group label {
         display: block !important;
         margin-bottom: 0.5rem !important;
         font-size: 16px !important;
     }
-    
+
     .input-group input,
     .input-group select {
         width: 100% !important;
@@ -7888,7 +7957,7 @@ body.pornhub-theme .pornhub-deactivate {
         font-size: 16px !important;
         padding: 12px !important;
     }
-    
+
     /* Artillery results table mobile */
     .arty-table {
         font-size: 14px !important;
@@ -7896,19 +7965,19 @@ body.pornhub-theme .pornhub-deactivate {
         overflow-x: auto !important;
         display: block !important;
     }
-    
+
     .arty-table th,
     .arty-table td {
         padding: 8px 4px !important;
         font-size: 14px !important;
     }
-    
+
     /* Armor sights mobile */
     .sights-selector h4 {
         font-size: 1.25rem !important;
         margin-bottom: 1rem !important;
     }
-    
+
     .tank-faction-filter,
     .tank-type-filter {
         display: flex !important;
@@ -7916,7 +7985,7 @@ body.pornhub-theme .pornhub-deactivate {
         gap: 8px !important;
         margin-bottom: 1rem !important;
     }
-    
+
     .faction-filter-btn,
     .type-filter-btn {
         min-height: 44px !important;
@@ -7925,40 +7994,40 @@ body.pornhub-theme .pornhub-deactivate {
         flex: 1 1 auto !important;
         min-width: 80px !important;
     }
-    
+
     .tank-selection-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px !important;
         max-height: 400px !important;
         overflow-y: auto !important;
     }
-    
+
     .tank-option {
         min-height: 80px !important;
         padding: 12px !important;
         font-size: 14px !important;
     }
-    
+
     .tank-option img {
         max-width: 60px !important;
         height: auto !important;
     }
-    
+
     /* Sights instructions mobile */
     .sights-instructions {
         padding: 1rem !important;
         font-size: 14px !important;
     }
-    
+
     .sights-instructions ul {
         padding-left: 1.5rem !important;
     }
-    
+
     .sights-instructions li {
         margin-bottom: 0.75rem !important;
         line-height: 1.5 !important;
     }
-    
+
     /* Hide close button on mobile - tiles don't expand */
     .expand-close-btn {
         display: none !important;
@@ -7972,36 +8041,36 @@ body.pornhub-theme .pornhub-deactivate {
         animation-duration: 0.2s !important;
         transition-duration: 0.2s !important;
     }
-    
+
     /* Optimize images for mobile */
     img {
         image-rendering: optimizeSpeed;
         image-rendering: -webkit-optimize-contrast;
     }
-    
+
     /* Reduce box shadows on mobile */
     .tank-card,
     .overview-card,
     .strategy-card {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
     }
-    
+
     /* Optimize grid layouts for mobile */
     .tank-grid {
         grid-template-columns: 1fr !important;
         gap: 0.5rem !important;
     }
-    
+
     .overview-grid {
         grid-template-columns: 1fr !important;
         gap: 1rem !important;
     }
-    
+
     /* Disable complex gradients on mobile */
     .tank-card {
         background: var(--card-bg) !important;
     }
-    
+
     /* Optimize font loading */
     .tank-name,
     .logo {
@@ -8015,7 +8084,7 @@ body.pornhub-theme .pornhub-deactivate {
     .tank-card:hover {
         will-change: transform;
     }
-    
+
     /* Enable GPU acceleration for smooth animations */
     .tank-card,
     .overview-card {

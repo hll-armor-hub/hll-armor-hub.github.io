@@ -48,40 +48,40 @@
     <!-- End Cloudflare Web Analytics -->
 </head>
 <body class="dark-mode">
-<div class="container">
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <!-- Game Version Dropdown -->
-            <div class="game-version-dropdown">
-                <button class="game-version-toggle" id="gameVersionToggle">
-                    <span class="current-version">HLL: WWII</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-                <div class="game-version-menu" id="gameVersionMenu">
-                    <div class="version-option active" data-version="wwii">
-                        <span>HLL: WWII</span>
-                        <i class="fas fa-check"></i>
-                    </div>
-                    <div class="version-option" data-version="vietnam">
-                        <span>HLL: V</span>
-                        <i class="fas fa-clock"></i>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <!-- Game Version Dropdown -->
+                <div class="game-version-dropdown">
+                    <button class="game-version-toggle" id="gameVersionToggle">
+                        <span class="current-version">HLL: WWII</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="game-version-menu" id="gameVersionMenu">
+                        <div class="version-option active" data-version="wwii">
+                            <span>HLL: WWII</span>
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="version-option" data-version="vietnam">
+                            <span>HLL: V</span>
+                            <i class="fas fa-clock"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="logo">
-                <div class="logo-container" onclick="showSection('overview')">
-                    <div class="logo-left">
+                
+                <div class="logo">
+                    <div class="logo-container" onclick="showSection('overview')">
+                        <div class="logo-left">
                         <img src="images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-White.png"
                              alt="Hell Let Loose" class="hll-logo hll-logo-white">
                         <img src="images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-Black.png"
                              alt="Hell Let Loose" class="hll-logo hll-logo-black">
+                        </div>
+                        <div class="armor-hub-text">ARMOR HUB</div>
                     </div>
-                    <div class="armor-hub-text">ARMOR HUB</div>
                 </div>
-            </div>
-            <div class="header-controls">
+                <div class="header-controls">
                 <div class="theme-selector">
                     <select id="themeSelect" class="theme-dropdown">
                         <option value="theme-default">☀️ Default</option>
@@ -93,142 +93,143 @@
                         <option value="theme-unhinged">💥 Raz Mode</option>
                     </select>
                 </div>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Navigation -->
-    <nav class="nav">
-        <ul class="nav-list">
-            <li><a href="#overview" class="nav-link active">Overview</a></li>
-            <li><a href="#tactics" class="nav-link">Getting Started</a></li>
-            <li><a href="#tanks" class="nav-link">Tanks</a></li>
-            <li><a href="#ranging" class="nav-link">Ranging</a></li>
-            <li><a href="#identification" class="nav-link">Identification</a></li>
-            <li><a href="#community" class="nav-link">Community</a></li>
-        </ul>
-    </nav>
+        <!-- Navigation -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="#overview" class="nav-link active">Overview</a></li>
+                <li><a href="#tactics" class="nav-link">Getting Started</a></li>
+                <li><a href="#tanks" class="nav-link">Tanks</a></li>
+                <li><a href="#ranging" class="nav-link">Ranging</a></li>
+                <li><a href="#identification" class="nav-link">Identification</a></li>
+                <li><a href="#community" class="nav-link">Community</a></li>
+            </ul>
+        </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Overview Section -->
-        <section id="overview" class="section active">
-            <div class="section-header">
-                <h2>Armor Overview</h2>
-                <p>Master the art of tank warfare in Hell Let Loose</p>
-            </div>
-            <div class="overview-grid">
-                <div class="overview-card featured-card" onclick="showSection('tanks')">
-                    <div class="card-background-image"></div>
-                    <i></i>
-                    <h3>Tanks</h3>
-                    <p>Complete database of all tanks with detailed stats, armor values, and combat analysis.</p>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h2>Armor Overview</h2>
+                    <p>Master the art of tank warfare in Hell Let Loose</p>
                 </div>
-                <div class="overview-card tactics-card" onclick="showSection('tactics')">
-                    <div class="card-background-image"></div>
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Getting Started</h3>
-                    <p>Essential fundamentals and beginner-friendly tips for new tank crews.</p>
-                </div>
-                <div class="overview-card identification-card" onclick="showSection('identification')">
-                    <div class="card-background-image"></div>
-                    <i class="fas fa-crosshairs"></i>
-                    <h3>Identification</h3>
-                    <p>Learn to identify enemy tanks at a glance and understand their capabilities.</p>
-                </div>
-                <div class="overview-card ranging-card" onclick="showSection('ranging')">
-                    <div class="card-background-image"></div>
-                    <i class="fas fa-bullseye"></i>
-                    <h3>Ranging</h3>
-                    <p>Perfect your ranging skills to hit targets at any distance.</p>
-                </div>
+                                 <div class="overview-grid">
+                     <div class="overview-card featured-card" onclick="showSection('tanks')">
+                         <div class="card-background-image"></div>
+                         <i></i>
+                         <h3>Tanks</h3>
+                         <p>Complete database of all tanks with detailed stats, armor values, and combat analysis.</p>
+                     </div>
+                     <div class="overview-card tactics-card" onclick="showSection('tactics')">
+                         <div class="card-background-image"></div>
+                         <i class="fas fa-graduation-cap"></i>
+                         <h3>Getting Started</h3>
+                         <p>Essential fundamentals and beginner-friendly tips for new tank crews.</p>
+                     </div>
+                     <div class="overview-card identification-card" onclick="showSection('identification')">
+                         <div class="card-background-image"></div>
+                         <i class="fas fa-crosshairs"></i>
+                         <h3>Identification</h3>
+                         <p>Learn to identify enemy tanks at a glance and understand their capabilities.</p>
+                     </div>
+                     <div class="overview-card ranging-card" onclick="showSection('ranging')">
+                         <div class="card-background-image"></div>
+                         <i class="fas fa-bullseye"></i>
+                         <h3>Ranging</h3>
+                         <p>Perfect your ranging skills to hit targets at any distance.</p>
+                     </div>
                 <div class="overview-card community-card" onclick="showSection('community')">
                     <div class="card-background-image"></div>
                     <i class="fas fa-users"></i>
                     <h3>Community</h3>
                     <p>Connect with other tank crews, share strategies, and join the community.</p>
                 </div>
-            </div>
-
-            <!-- Featured Videos Section -->
-            <div class="video-section">
-                <div class="video-grid">
-                    <div class="video-card">
-                        <div class="video-header">
+                 </div>
+                
+                <!-- Featured Videos Section -->
+                <div class="video-section">
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-header">
                             <h3><i class="fas fa-crosshairs"></i> Gunner POV</h3>
                             <p>Learn from Fresh!</p>
-                        </div>
-                        <div class="video-wrapper">
-                            <iframe
+                            </div>
+                            <div class="video-wrapper">
+                                <iframe 
                                     src="https://www.youtube.com/embed/5-aNBReclIA?start=2516"
                                     title="Tank Gunner POV - Hell Let Loose"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen>
-                            </iframe>
-                        </div>
+                                </iframe>
+                            </div>
                         <div class="video-footer">
                             <a href="https://www.youtube.com/watch?v=5-aNBReclIA&t=2516s" target="_blank"
                                class="video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
                         </div>
-                    </div>
-
-                    <div class="video-card">
-                        <div class="video-header">
+                        </div>
+                        
+                        <div class="video-card">
+                            <div class="video-header">
                             <h3><i class="fas fa-eye"></i> Spotter POV</h3>
                             <p>Master the art of spotting and coordination from Raz</p>
-                        </div>
-                        <div class="video-wrapper">
-                            <iframe
+                            </div>
+                            <div class="video-wrapper">
+                                <iframe 
                                     src="https://www.youtube.com/embed/6kJuoydeDVc?start=424"
                                     title="Tank Spotter POV - Hell Let Loose"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen>
-                            </iframe>
-                        </div>
+                                </iframe>
+                            </div>
                         <div class="video-footer">
                             <a href="https://www.youtube.com/watch?v=6kJuoydeDVc&t=424s" target="_blank"
                                class="video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
                         </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </section>
+            </section>
 
-        <!-- Tanks Section -->
-        <section id="tanks" class="section">
+            <!-- Tanks Section -->
+            <section id="tanks" class="section">
             <div class="section-header">
                 <h2>Tank Database</h2>
                 <p>Complete guide to all tanks in Hell Let Loose</p>
-                <p class="update-info">Data as of Update 17</p>
+                <p class="update-info">Data as of Update 18</p>
+                <p class="update-info" style="font-size: 0.85rem; opacity: 0.7; font-style: italic; margin-top: 0.5rem;">As of U18, recon vehicles have not received any adjustments</p>
             </div>
-
-            <!-- Faction Filter with Compact Type Filter -->
-            <div class="faction-filter">
-                <div class="filter-group">
-                    <button class="faction-btn active" data-faction="all">
-                        <span class="faction-text">All Factions</span>
-                        <span class="faction-flag flag-globe"></span>
-                    </button>
-                    <button class="faction-btn" data-faction="usa">
-                        <span class="faction-text">USA</span>
-                    </button>
-                    <button class="faction-btn" data-faction="germany">
-                        <span class="faction-text">Germany</span>
-                    </button>
-                    <button class="faction-btn" data-faction="soviet">
-                        <span class="faction-text">Soviet Union</span>
-                    </button>
-                    <button class="faction-btn" data-faction="british">
-                        <span class="faction-text">Great Britain</span>
-                    </button>
-                </div>
+                
+                <!-- Faction Filter with Compact Type Filter -->
+                <div class="faction-filter">
+                    <div class="filter-group">
+                        <button class="faction-btn active" data-faction="all">
+                            <span class="faction-text">All Factions</span>
+                            <span class="faction-flag flag-globe"></span>
+                        </button>
+                        <button class="faction-btn" data-faction="usa">
+                            <span class="faction-text">USA</span>
+                        </button>
+                        <button class="faction-btn" data-faction="germany">
+                            <span class="faction-text">Germany</span>
+                        </button>
+                        <button class="faction-btn" data-faction="soviet">
+                            <span class="faction-text">Soviet Union</span>
+                        </button>
+                        <button class="faction-btn" data-faction="british">
+                            <span class="faction-text">Great Britain</span>
+                        </button>
+                    </div>
                 <div class="filter-controls">
                     <div class="filter-dropdown">
                         <button class="filter-toggle" id="filterToggle">
@@ -250,7 +251,7 @@
                         <span>Compare</span>
                     </button>
                 </div>
-            </div>
+                </div>
 
             <!-- Simple Comparison Panel -->
             <div class="comparison-panel" id="comparisonPanel">
@@ -264,8 +265,8 @@
                         <button class="close-comparison" id="closeComparison">
                             <i class="fas fa-times"></i>
                         </button>
-                    </div>
                 </div>
+                            </div>
                 <div class="comparison-content">
                     <div class="comparison-tanks">
                         <div class="comparison-tank" id="tank1">
@@ -273,18 +274,18 @@
                                 <h4 id="tank1Name">Select First Tank</h4>
                                 <p id="tank1Type">Click a tank tile to compare</p>
                             </div>
-                        </div>
+                            </div>
                         <div class="comparison-vs">
                             <div class="vs-circle">
                                 <span>VS</span>
-                            </div>
+                        </div>
                         </div>
                         <div class="comparison-tank" id="tank2">
                             <div class="comparison-tank-info">
                                 <h4 id="tank2Name">Select Second Tank</h4>
                                 <p id="tank2Type">Click another tank tile to compare</p>
-                            </div>
-                        </div>
+                    </div>
+                    </div>
                     </div>
                     <div class="comparison-stats" id="comparisonStats">
                         <!-- Comparison stats will be populated here -->
@@ -295,204 +296,204 @@
             <!-- Tank Grid -->
             <div class="tank-grid" id="tankGrid">
                 <!-- Tanks will be populated by JavaScript -->
-            </div>
-        </section>
+                </div>
+            </section>
 
-        <!-- Ranging Section -->
-        <section id="ranging" class="section">
-            <div class="section-header">
-                <h2>Ranging Guide</h2>
-                <p>Master the art of accurate tank gunnery</p>
-            </div>
-            <div class="ranging-content">
-                <div class="ranging-tools">
-                    <!-- Tile 1: Artillery Calculator -->
-                    <div class="ranging-tool" onclick="expandTile(this)">
-                        <h3>Artillery Calculator</h3>
-                        <div class="calculator">
-                            <div class="input-group">
-                                <label for="artyDistance">Distance (meters):</label>
+            <!-- Ranging Section -->
+            <section id="ranging" class="section">
+                <div class="section-header">
+                    <h2>Ranging Guide</h2>
+                    <p>Master the art of accurate tank gunnery</p>
+                </div>
+                <div class="ranging-content">
+                    <div class="ranging-tools">
+                        <!-- Tile 1: Artillery Calculator -->
+                        <div class="ranging-tool" onclick="expandTile(this)">
+                            <h3>Artillery Calculator</h3>
+                            <div class="calculator">
+                                <div class="input-group">
+                                    <label for="artyDistance">Distance (meters):</label>
                                 <input type="number" id="artyDistance" min="100" max="1600" step="50"
                                        placeholder="Enter distance (100-1600m)">
-                            </div>
-                            <div class="input-group">
-                                <label for="artyFaction">Faction:</label>
-                                <select id="artyFaction">
-                                    <option value="usa">USA</option>
-                                    <option value="german">Germany</option>
-                                    <option value="soviet">Soviet Union</option>
-                                    <option value="british">Great Britain</option>
-                                </select>
-                            </div>
-                            <button class="calculate-btn" id="artyCalculateBtn">Calculate</button>
-
-                            <!-- Most Recent Calculation Display -->
-                            <div class="recent-calculation" id="recentCalculation">
-                                <p>No calculation performed yet</p>
-                            </div>
-
-                            <!-- Results Table -->
-                            <div class="arty-results">
-                                <h4>Saved Results</h4>
-                                <table class="arty-table">
-                                    <thead>
-                                    <tr>
-                                        <th>Result</th>
-                                        <th>Distance</th>
-                                        <th>Faction</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="artyResultsBody">
-                                    <tr class="no-results">
-                                        <td colspan="4">No calculations saved yet</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Tile 2: SPA Calculator (WIP) -->
-                    <div class="ranging-tool">
-                        <h3>SPA Calculator <span class="wip-badge">WIP</span></h3>
-                        <div class="calculator">
-                            <div class="wip-message">
-                                <p>Self-Propelled Artillery calculator coming soon!</p>
-                                <p>This tool will help calculate artillery trajectories and firing solutions.</p>
+                                </div>
+                                <div class="input-group">
+                                    <label for="artyFaction">Faction:</label>
+                                    <select id="artyFaction">
+                                        <option value="usa">USA</option>
+                                        <option value="german">Germany</option>
+                                        <option value="soviet">Soviet Union</option>
+                                        <option value="british">Great Britain</option>
+                                    </select>
+                                </div>
+                                <button class="calculate-btn" id="artyCalculateBtn">Calculate</button>
+                                
+                                <!-- Most Recent Calculation Display -->
+                                <div class="recent-calculation" id="recentCalculation">
+                                    <p>No calculation performed yet</p>
+                                </div>
+                                
+                                <!-- Results Table -->
+                                <div class="arty-results">
+                                    <h4>Saved Results</h4>
+                                    <table class="arty-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Result</th>
+                                                <th>Distance</th>
+                                                <th>Faction</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="artyResultsBody">
+                                            <tr class="no-results">
+                                                <td colspan="4">No calculations saved yet</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Tile 3: Armor Sights -->
-                    <div class="ranging-tool" onclick="expandTile(this)">
-                        <h3>Armor Sights</h3>
-                        <div class="calculator">
-                            <div class="sights-content">
-                                <div class="sights-selector">
-                                    <h4>Select Tank for Scope View</h4>
+                        
+                        <!-- Tile 2: SPA Calculator (WIP) -->
+                        <div class="ranging-tool">
+                            <h3>SPA Calculator <span class="wip-badge">WIP</span></h3>
+                            <div class="calculator">
+                                <div class="wip-message">
+                                    <p>Self-Propelled Artillery calculator coming soon!</p>
+                                    <p>This tool will help calculate artillery trajectories and firing solutions.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tile 3: Armor Sights -->
+                        <div class="ranging-tool" onclick="expandTile(this)">
+                            <h3>Armor Sights</h3>
+                            <div class="calculator">
+                                <div class="sights-content">
+                                    <div class="sights-selector">
+                                        <h4>Select Tank for Scope View</h4>
                                     <p class="sights-description">Choose any tank from the available factions to view
                                         its scope image with ranging markers. This tool helps you practice estimating
                                         distances using tank sights.</p>
                                     <p class="sights-note"><strong>Note:</strong> These sights are based on AP rounds
                                         only</p>
-
-                                    <div class="tank-faction-filter">
-                                        <button class="faction-filter-btn active" data-faction="all">All</button>
-                                        <button class="faction-filter-btn" data-faction="usa">USA</button>
-                                        <button class="faction-filter-btn" data-faction="germany">Germany</button>
-                                        <button class="faction-filter-btn" data-faction="soviet">Soviet</button>
-                                        <button class="faction-filter-btn" data-faction="british">Britain</button>
+                                        
+                                        <div class="tank-faction-filter">
+                                            <button class="faction-filter-btn active" data-faction="all">All</button>
+                                            <button class="faction-filter-btn" data-faction="usa">USA</button>
+                                            <button class="faction-filter-btn" data-faction="germany">Germany</button>
+                                            <button class="faction-filter-btn" data-faction="soviet">Soviet</button>
+                                            <button class="faction-filter-btn" data-faction="british">Britain</button>
+                                        </div>
+                                        
+                                        <div class="tank-type-filter">
+                                            <button class="type-filter-btn active" data-tank-type="all">All Types</button>
+                                            <button class="type-filter-btn" data-tank-type="heavy">Heavy</button>
+                                            <button class="type-filter-btn" data-tank-type="medium">Medium</button>
+                                            <button class="type-filter-btn" data-tank-type="light">Light</button>
+                                            <button class="type-filter-btn" data-tank-type="recon">Recon</button>
+                                        </div>
+                                        
+                                        <div class="tank-selection-grid" id="tankSelectionGrid">
+                                            <!-- Will be populated by JavaScript -->
+                                        </div>
+                                        
+                                        <div class="sights-instructions">
+                                            <h5>How to Use:</h5>
+                                            <ul>
+                                                <li>Select a faction to filter tanks</li>
+                                                <li>Click on any tank to open its scope view</li>
+                                                <li>Click on the scope image to add ranging markers</li>
+                                                <li>Markers appear every 100m for distance estimation</li>
+                                                <li>Use this to practice ranging in-game</li>
+                                            </ul>
+                                        </div>
                                     </div>
-
-                                    <div class="tank-type-filter">
-                                        <button class="type-filter-btn active" data-tank-type="all">All Types</button>
-                                        <button class="type-filter-btn" data-tank-type="heavy">Heavy</button>
-                                        <button class="type-filter-btn" data-tank-type="medium">Medium</button>
-                                        <button class="type-filter-btn" data-tank-type="light">Light</button>
-                                        <button class="type-filter-btn" data-tank-type="recon">Recon</button>
-                                    </div>
-
-                                    <div class="tank-selection-grid" id="tankSelectionGrid">
-                                        <!-- Will be populated by JavaScript -->
-                                    </div>
-
-                                    <div class="sights-instructions">
-                                        <h5>How to Use:</h5>
-                                        <ul>
-                                            <li>Select a faction to filter tanks</li>
-                                            <li>Click on any tank to open its scope view</li>
-                                            <li>Click on the scope image to add ranging markers</li>
-                                            <li>Markers appear every 100m for distance estimation</li>
-                                            <li>Use this to practice ranging in-game</li>
-                                        </ul>
-                                    </div>
+                                    
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Identification Section -->
-        <section id="identification" class="section">
-            <div class="section-header">
-                <h2>Tank Identification Guide</h2>
-                <p>Learn to identify tanks quickly and accurately</p>
-            </div>
-            <div class="identification-content">
-                <div class="identification-practice">
-                    <h3>Practice Identification</h3>
-
-                    <!-- Identification Tips Section -->
-                    <div class="identification-tips-section">
-                        <h4>Identification Tips</h4>
-                        <ul>
-                            <li>Look at the silhouette and overall shape</li>
-                            <li>Check the turret design and gun barrel</li>
-                            <li>Observe the suspension and track system</li>
-                            <li>Note the engine deck and exhaust</li>
-                            <li>Pay attention to the commander's cupola</li>
-                            <li>Count the road wheels and their spacing</li>
-                            <li>Identify the main gun caliber and length</li>
-                            <li>Look for distinctive markings or camouflage</li>
-                            <li>Check the presence of side skirts or armor</li>
-                            <li>Note the overall size and proportions</li>
-                        </ul>
-                    </div>
-
-                    <!-- Game Area Container -->
-                    <div class="game-area-container">
-                        <!-- Difficulty Selector -->
-                        <div class="difficulty-selector">
-                            <h4>Select Difficulty:</h4>
-                            <div class="difficulty-buttons">
+            <!-- Identification Section -->
+            <section id="identification" class="section">
+                <div class="section-header">
+                    <h2>Tank Identification Guide</h2>
+                    <p>Learn to identify tanks quickly and accurately</p>
+                </div>
+                                <div class="identification-content">
+                    <div class="identification-practice">
+                        <h3>Practice Identification</h3>
+                        
+                        <!-- Identification Tips Section -->
+                        <div class="identification-tips-section">
+                            <h4>Identification Tips</h4>
+                            <ul>
+                                <li>Look at the silhouette and overall shape</li>
+                                <li>Check the turret design and gun barrel</li>
+                                <li>Observe the suspension and track system</li>
+                                <li>Note the engine deck and exhaust</li>
+                                <li>Pay attention to the commander's cupola</li>
+                                <li>Count the road wheels and their spacing</li>
+                                <li>Identify the main gun caliber and length</li>
+                                <li>Look for distinctive markings or camouflage</li>
+                                <li>Check the presence of side skirts or armor</li>
+                                <li>Note the overall size and proportions</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Game Area Container -->
+                        <div class="game-area-container">
+                            <!-- Difficulty Selector -->
+                            <div class="difficulty-selector">
+                                <h4>Select Difficulty:</h4>
+                                <div class="difficulty-buttons">
                                 <button class="difficulty-btn active" data-difficulty="easy"
                                         onclick="setDifficulty('easy')">
-                                    <span class="difficulty-icon">🟢</span>
-                                    <span class="difficulty-text">Easy</span>
-                                    <span class="difficulty-desc">Different tank types</span>
-                                </button>
+                                        <span class="difficulty-icon">🟢</span>
+                                        <span class="difficulty-text">Easy</span>
+                                        <span class="difficulty-desc">Different tank types</span>
+                                    </button>
                                 <button class="difficulty-btn" data-difficulty="medium"
                                         onclick="setDifficulty('medium')">
-                                    <span class="difficulty-icon">🟡</span>
-                                    <span class="difficulty-text">Medium</span>
-                                    <span class="difficulty-desc">Similar tank types</span>
-                                </button>
-                                <button class="difficulty-btn" data-difficulty="hard" onclick="setDifficulty('hard')">
-                                    <span class="difficulty-icon">🔴</span>
-                                    <span class="difficulty-text">Hard</span>
-                                    <span class="difficulty-desc">Different angles + similar tanks</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="practice-area">
-                            <div class="practice-tank" id="practiceTank">
-                                <div id="practiceTankImage">
-                                    <img src="" alt="Tank to identify">
-                                </div>
-                                <div class="practice-options" id="practiceOptions">
-                                    <!-- Will be populated by JavaScript -->
+                                        <span class="difficulty-icon">🟡</span>
+                                        <span class="difficulty-text">Medium</span>
+                                        <span class="difficulty-desc">Similar tank types</span>
+                                    </button>
+                                    <button class="difficulty-btn" data-difficulty="hard" onclick="setDifficulty('hard')">
+                                        <span class="difficulty-icon">🔴</span>
+                                        <span class="difficulty-text">Hard</span>
+                                        <span class="difficulty-desc">Different angles + similar tanks</span>
+                                    </button>
                                 </div>
                             </div>
+                            
+                            <div class="practice-area">
+                                <div class="practice-tank" id="practiceTank">
+                                    <div id="practiceTankImage">
+                                        <img src="" alt="Tank to identify">
+                                    </div>
+                                    <div class="practice-options" id="practiceOptions">
+                                        <!-- Will be populated by JavaScript -->
+                                    </div>
+                                </div>
                             <button class="calculate-btn start-practice-btn" onclick="startNewPractice()">Start
                                 Practice
                             </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Getting Started Section -->
-        <section id="tactics" class="section">
-            <div class="section-header">
-                <h2>Getting Started in Tanking</h2>
-                <p>Essential fundamentals and beginner-friendly tips for new tank crews</p>
-            </div>
+            <!-- Getting Started Section -->
+            <section id="tactics" class="section">
+                <div class="section-header">
+                    <h2>Getting Started in Tanking</h2>
+                    <p>Essential fundamentals and beginner-friendly tips for new tank crews</p>
+                </div>
 
             <!-- Tutorial Videos Section -->
             <div class="tutorial-videos-section">
@@ -532,18 +533,18 @@
                 </div>
             </div>
 
-            <div class="tactics-content">
-                <div class="tactics-strategies">
-                    <h3>Essential Fundamentals</h3>
-                    <div class="strategy-grid">
-                        <div class="strategy-card">
-                            <h4>Tanker Roles</h4>
-                            <p>Understanding the roles and who does what</p>
-                            <div class="role-info">
-                                <div class="role-item">
+                <div class="tactics-content">
+                    <div class="tactics-strategies">
+                        <h3>Essential Fundamentals</h3>
+                                                 <div class="strategy-grid">
+                             <div class="strategy-card">
+                                 <h4>Tanker Roles</h4>
+                                 <p>Understanding the roles and who does what</p>
+                                 <div class="role-info">
+                                     <div class="role-item">
                                     <img src="images/HLL_Icons/Roles/icn_tankCommand.png"
                                          alt="Tank Commander Icon" class="role-icon" loading="lazy">
-                                    <div class="role-details">
+                                         <div class="role-details">
                                         <strong>Tank Commander</strong> - The "Squad Leader" of the tank crew. This
                                         individual can spot and mark things on the map. They can play any role in the
                                         tank, but is recommended to play as the spotter as they are typically pre
@@ -551,12 +552,12 @@
                                         on the map. The Tank Commander role has two sub classes. One with a sub machine
                                         gun and one with a pistol and repair torch. Personally, I recommend the
                                         submachine gun as it's able to combat most satchels if timed correctly.
-                                    </div>
-                                </div>
-                                <div class="role-item">
+                                         </div>
+                                     </div>
+                                     <div class="role-item">
                                     <img src="images/HLL_Icons/Roles/icn_tankCrew.png" alt="Tank Crewman Icon"
                                          class="role-icon" loading="lazy">
-                                    <div class="role-details">
+                                         <div class="role-details">
                                         <strong>Tank Crewman</strong> - The tank crewman are simply the "other two"
                                         squad mates in a tanker squad. These crewman can also play any role in the tank
                                         however it is recommended that they play as driver or gunner. This said, there
@@ -566,49 +567,61 @@
                                         unit comes with no repair torch, and the second one (once you earn level three)
                                         gets the repair torch. In ever single scenario you should always equip the
                                         repair torch class.
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="strategy-card health-management-card">
-                            <h4>Health Management</h4>
-                            <p>Monitor all four health bars - each affects combat capability in critical ways.</p>
+                                         </div>
+                                     </div>
+                                     <div class="role-item" style="margin-top: 1.5rem; position: relative;">
+                                    <img src="images/HLL_Icons/Roles/icn_tankCrew.png" alt="Tank Technician Icon"
+                                         class="role-icon" loading="lazy">
+                                         <div class="role-details">
+                                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                            <strong>Tank Technician</strong>
+                                            <span style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1)); border: 1px solid var(--accent); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">New in U18</span>
+                                        </div>
+                                        <span>The Tank Technician is a new role that allows the tanker subclass to now build support assets for armor. The Technician (unlocked at level 7 crewman) can now build four barricades (25 supplies each), one repair station (50 supplies each), and one tank ammo depot (50 supplies each). These can utilize existing supplies across the battlefield to support your armor units.</span>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="strategy-card health-management-card">
+                                 <h4>Health Management</h4>
+                                 <p>Monitor all four health bars - each affects combat capability in critical ways.</p>
+                            <p style="margin-top: 1rem; padding: 0.75rem; background: rgba(255, 152, 0, 0.1); border-left: 3px solid var(--accent); border-radius: 4px;"><strong>U18 Update:</strong> Damage is now modular. Tankers must repair each component individually by looking at it and starting repairs. Repair stations prioritize components as they always have, starting with tracks.</p>
                             <div class="health-components">
                                 <div class="health-component">
                                     <img src="images/HLL_Icons/Unsorted/T_HUD_Status_Body_80.png"
                                          alt="Hull Icon" class="health-icon" loading="lazy">
-                                    <div class="health-content">
-                                        <h5 class="health-title">Hull</h5>
+                                         <div class="health-content">
+                                             <h5 class="health-title">Hull</h5>
                                         <p class="health-description">This is considered the overall health of the tank.
                                             Use this to gauge how much health your vehicle has.</p>
-                                    </div>
-                                </div>
+                                         </div>
+                                     </div>
                                 <div class="health-component">
                                     <img src="images/HLL_Icons/Unsorted/T_HUD_Status_Turret_80.png"
                                          alt="Turret Icon" class="health-icon" loading="lazy">
-                                    <div class="health-content">
-                                        <h5 class="health-title">Turret</h5>
+                                         <div class="health-content">
+                                             <h5 class="health-title">Turret</h5>
                                         <p class="health-description">A damaged turret will slow the rotation of the
                                             gun, as well as prevent the use from your coaxial machine gun if your tank
                                             has one.</p>
-                                    </div>
-                                </div>
+                                         </div>
+                                     </div>
                                 <div class="health-component">
                                     <img src="images/HLL_Icons/Unsorted/T_HUD_Status_Engine_80.png"
                                          alt="Engine Icon" class="health-icon" loading="lazy">
-                                    <div class="health-content">
-                                        <h5 class="health-title">Engine</h5>
+                                         <div class="health-content">
+                                             <h5 class="health-title">Engine</h5>
                                         <p class="health-description"><strong>CRITICAL COMPONENT!</strong> Once this
                                             goes down your engine will begin smoking and the tank will turn off. To
                                             restore this, you must repair the engine back to 100% and then turn over the
                                             tank again to start moving.</p>
-                                    </div>
-                                </div>
+                                         </div>
+                                     </div>
                                 <div class="health-component">
                                     <img src="images/HLL_Icons/Unsorted/T_HUD_Status_Tracks_80.png"
                                          alt="Tracks Icon" class="health-icon" loading="lazy">
-                                    <div class="health-content">
-                                        <h5 class="health-title">Tracks</h5>
+                                         <div class="health-content">
+                                             <h5 class="health-title">Tracks</h5>
                                         <p class="health-description">Damaged tracks limit the mobility of the tank,
                                             however are not fully crucial. The tank can still move and spin fully but
                                             will remain stuck in first gear.</p>
@@ -663,23 +676,61 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="strategy-card">
-                            <h4>Always Peek Cover</h4>
+                        <div class="strategy-card" style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.08), rgba(255, 152, 0, 0.03)); border: 1px solid rgba(255, 152, 0, 0.2);">
+                            <h4><i class="fas fa-crosshairs"></i> Infantry Weapon Damage (vs Tanks) - Update 18 Changes</h4>
+                            <p>Know your enemy's firepower to assess threats and prioritize targets:</p>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                                <div style="padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 152, 0, 0.15);">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-rocket" style="color: var(--accent); font-size: 1.2rem;"></i>
+                                        <strong style="color: var(--accent);">Rocket Launchers</strong>
+                                    </div>
+                                    <p style="margin: 0 0 0.75rem 0; color: var(--text-secondary); font-size: 0.95rem;">Approx. <strong style="color: #fff;">300 damage</strong> per hit</p>
+                                    <div style="background: rgba(220, 53, 69, 0.15); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #dc3545; margin-bottom: 0.75rem;">
+                                        <p style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #ff6b6b;">High Threat - Shots to Kill:</p>
+                                        <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; font-size: 0.85rem; line-height: 1.6;">
+                                            <li><strong>4 shots</strong> to kill Heavy tanks</li>
+                                            <li><strong>3 shots</strong> to kill Medium tanks</li>
+                                            <li><strong>2 shots</strong> to kill Light tanks</li>
+                                        </ul>
+                                    </div>
+                                    <p style="margin: 0; font-size: 0.85rem; opacity: 0.9; line-height: 1.5;"><strong>Note:</strong> PIAT/Panzerschreck can pen any side of medium tanks or below, whereas Bazookas can only pen back of mediums and below. Think "medium" rounds for PIAT/Panzerschreck and "light" rounds for Bazookas.</p>
+                                </div>
+                                <div style="padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 152, 0, 0.15);">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-bullseye" style="color: var(--accent); font-size: 1.2rem;"></i>
+                                        <strong style="color: var(--accent);">AT Rifles</strong>
+                                    </div>
+                                    <p style="margin: 0 0 0.75rem 0; color: var(--text-secondary); font-size: 0.95rem;">Approx. <strong style="color: #fff;">64 damage</strong> per hit</p>
+                                    <div style="background: rgba(255, 193, 7, 0.15); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ffc107;">
+                                        <p style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #ffd54f;">Medium Threat - Shots to Kill:</p>
+                                        <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; font-size: 0.85rem; line-height: 1.6;">
+                                            <li><strong>19 shots</strong> for Heavy tanks</li>
+                                            <li><strong>15 shots</strong> for Cromwell Mk.IV</li>
+                                            <li><strong>14 shots</strong> for Medium tanks</li>
+                                            <li><strong>10 shots</strong> for Light tanks</li>
+                                        </ul>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="strategy-card">
+                                 <h4>Always Peek Cover</h4>
                             <p>Position your tank so only the turret is visible (Hull down), or peek cover to where you
                                 can back up quickly.</p>
-                            <ul>
+                                 <ul>
                                 <li>Use terrain to better ricochet, as the higher you are the easier it is to bounce
                                     shots
                                 </li>
-                                <li>Keep hull behind cover and only expose turret if possible</li>
-                                <li>Use reverse to quickly escape if you get shot first</li>
-                            </ul>
-                        </div>
-                        <div class="strategy-card">
-                            <h4>Survivability & Positioning</h4>
-                            <p>Never stay out in the open, always have an escape route.</p>
-                            <ul>
-                                <li>Always be moving from cover to cover</li>
+                                     <li>Keep hull behind cover and only expose turret if possible</li>
+                                     <li>Use reverse to quickly escape if you get shot first</li>
+                                 </ul>
+                             </div>
+                             <div class="strategy-card">
+                                 <h4>Survivability & Positioning</h4>
+                                 <p>Never stay out in the open, always have an escape route.</p>
+                                 <ul>
+                                     <li>Always be moving from cover to cover</li>
                                 <li>Have a quick escape route by either quickly moving forward in first gear (especially
                                     with the panther) or quickly reversing (Tiger I, 76 Jumbo) depending on which gears
                                     work quicker on your respective tank
@@ -690,21 +741,21 @@
                                 <li>You have a big gun, use it for range. You cannot turn around fast enough in a fight,
                                     but you can the further away you are
                                 </li>
-                            </ul>
-                        </div>
-                        <div class="strategy-card">
-                            <h4>Communication & Coordination</h4>
-                            <p>Master crew communication and team coordination for maximum combat effectiveness.</p>
-                            <ul>
-                                <li>Maintain constant crew communication</li>
-                                <li>Coordinate with other tank crews</li>
-                                <li>Use proper radio protocols</li>
-                                <li>Share intelligence and positions</li>
-                            </ul>
+                                 </ul>
+                             </div>
+                            <div class="strategy-card">
+                                <h4>Communication & Coordination</h4>
+                                <p>Master crew communication and team coordination for maximum combat effectiveness.</p>
+                                <ul>
+                                    <li>Maintain constant crew communication</li>
+                                    <li>Coordinate with other tank crews</li>
+                                    <li>Use proper radio protocols</li>
+                                    <li>Share intelligence and positions</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="tactics-tips">
+                    <div class="tactics-tips">
                     <h3>Pro Tips from BEER Clan</h3>
                     <ul>
                         <li><strong>Communication Tactics:</strong> Often times people will be overcommited to "legit"
@@ -731,7 +782,7 @@
                         <li><strong>Retreat Timing:</strong> Know when to disengage - survival and repositioning beats
                             dying for a single kill
                         </li>
-                    </ul>
+                        </ul>
 
                     <div class="driving-guide-section">
                         <div class="driving-guide-header" onclick="toggleDrivingGuide()">
@@ -848,246 +899,246 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Community Section -->
-        <section id="community" class="section">
-            <div class="section-header">
-                <h2>Join Draft Haus Community</h2>
-                <p>Connect with fellow tankers and support this guide</p>
-            </div>
-            <div class="community-content">
-                <div class="community-hero">
-                    <div class="community-logo-large">
-                        <div class="draft-haus-logo-large"></div>
                     </div>
-                    <div class="community-info">
-                        <h3>Draft Haus</h3>
+                </div>
+            </section>
+
+            <!-- Community Section -->
+            <section id="community" class="section">
+                <div class="section-header">
+                    <h2>Join Draft Haus Community</h2>
+                    <p>Connect with fellow tankers and support this guide</p>
+                </div>
+                <div class="community-content">
+                    <div class="community-hero">
+                        <div class="community-logo-large">
+                            <div class="draft-haus-logo-large"></div>
+                        </div>
+                        <div class="community-info">
+                            <h3>Draft Haus</h3>
                         <p class="community-description">A military-themed gaming community focused on Hell Let Loose
                             and tactical gameplay. Join our Discord to connect with fellow tankers, play on our
                             dedicated server, and support this comprehensive armor guide.</p>
-                        <a href="https://discord.com/invite/drafthaus" target="_blank" class="discord-join-btn">
-                            <i class="fab fa-discord"></i>
-                            Join Our Discord
-                        </a>
+                            <a href="https://discord.com/invite/drafthaus" target="_blank" class="discord-join-btn">
+                                <i class="fab fa-discord"></i>
+                                Join Our Discord
+                            </a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="community-features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🎮</div>
-                        <h4>Hell Let Loose Server</h4>
+                    
+                    <div class="community-features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🎮</div>
+                            <h4>Hell Let Loose Server</h4>
                         <p>Play on our dedicated HLL server with custom settings, active admins, and a friendly
                             community of tank enthusiasts.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">👑</div>
-                        <h4>VIP Access</h4>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">👑</div>
+                            <h4>VIP Access</h4>
                         <p>Get VIP status by subscribing within our discord. Skip the queue to the Draft Haus HLL
                             server. You can also become a VIP by helping us seed the server for FREE!</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🏆</div>
-                        <h4>Community Events</h4>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🏆</div>
+                            <h4>Community Events</h4>
                         <p>Participate in tank tournaments, competitive matches, and community events organized by Draft
                             Haus.</p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Content Creators Section -->
-                <div class="content-creators-section">
-                    <h3>Featured Content Creators</h3>
+                    
+                    <!-- Content Creators Section -->
+                    <div class="content-creators-section">
+                        <h3>Featured Content Creators</h3>
                     <p>Check out our community's top Hell Let Loose content creators for gameplay, tutorials, and tank
                         warfare guides!</p>
-
-                    <div class="creators-grid">
-                        <div class="creator-card">
-                            <div class="creator-header">
-                                <div class="creator-avatar">
-                                    <i class="fab fa-youtube"></i>
-                                </div>
-                                <div class="creator-info">
-                                    <h4>RazBora</h4>
-                                    <span class="creator-tag">Tank Specialist</span>
-                                </div>
-                            </div>
+                        
+                                                 <div class="creators-grid">
+                             <div class="creator-card">
+                                 <div class="creator-header">
+                                     <div class="creator-avatar">
+                                         <i class="fab fa-youtube"></i>
+                                     </div>
+                                     <div class="creator-info">
+                                         <h4>RazBora</h4>
+                                         <span class="creator-tag">Tank Specialist</span>
+                                     </div>
+                                 </div>
                             <p class="creator-description">Expert tank gameplay, advanced tactics, and comprehensive
                                 Hell Let Loose tutorials. Master the art of armored warfare with detailed guides and
                                 high-level gameplay.</p>
-                            <div class="creator-links">
+                                 <div class="creator-links">
                                 <a href="https://www.youtube.com/@Raz_Bora" target="_blank"
                                    class="creator-link youtube-link">
-                                    <i class="fab fa-youtube"></i>
-                                    YouTube
-                                </a>
-                                <a href="https://x.com/razborattv" target="_blank" class="creator-link social-link">
-                                    <i class="fab fa-twitter"></i>
-                                    Twitter
-                                </a>
+                                         <i class="fab fa-youtube"></i>
+                                         YouTube
+                                     </a>
+                                     <a href="https://x.com/razborattv" target="_blank" class="creator-link social-link">
+                                         <i class="fab fa-twitter"></i>
+                                         Twitter
+                                     </a>
                                 <a href="https://www.twitch.tv/raz_bora" target="_blank"
                                    class="creator-link social-link">
-                                    <i class="fab fa-twitch"></i>
-                                    Twitch
-                                </a>
+                                         <i class="fab fa-twitch"></i>
+                                         Twitch
+                                     </a>
                                 <a href="https://www.tiktok.com/@raz_bora?lang=en" target="_blank"
                                    class="creator-link social-link">
-                                    <i class="fab fa-tiktok"></i>
-                                    TikTok
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="creator-card">
-                            <div class="creator-header">
-                                <div class="creator-avatar">
-                                    <i class="fab fa-youtube"></i>
-                                </div>
-                                <div class="creator-info">
-                                    <h4>TheFreshBakedGoods</h4>
-                                    <span class="creator-tag">Tutorial Master</span>
-                                </div>
-                            </div>
+                                         <i class="fab fa-tiktok"></i>
+                                         TikTok
+                                     </a>
+                                 </div>
+                             </div>
+                             
+                             <div class="creator-card">
+                                 <div class="creator-header">
+                                     <div class="creator-avatar">
+                                         <i class="fab fa-youtube"></i>
+                                     </div>
+                                     <div class="creator-info">
+                                         <h4>TheFreshBakedGoods</h4>
+                                         <span class="creator-tag">Tutorial Master</span>
+                                     </div>
+                                 </div>
                             <p class="creator-description">In-depth Hell Let Loose tutorials, strategic gameplay
                                 analysis, and comprehensive guides for both new and experienced players. Learn from the
                                 best!</p>
-                            <div class="creator-links">
+                                 <div class="creator-links">
                                 <a href="https://www.youtube.com/@TheFreshBakedGoods" target="_blank"
                                    class="creator-link youtube-link">
-                                    <i class="fab fa-youtube"></i>
-                                    YouTube
-                                </a>
+                                         <i class="fab fa-youtube"></i>
+                                         YouTube
+                                     </a>
                                 <a href="https://www.tiktok.com/@thefreshbakedgoods?lang=en" target="_blank"
                                    class="creator-link social-link">
-                                    <i class="fab fa-tiktok"></i>
-                                    TikTok
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="creator-card">
-                            <div class="creator-header">
-                                <div class="creator-avatar">
-                                    <i class="fab fa-twitch"></i>
-                                </div>
-                                <div class="creator-info">
-                                    <h4>sushiicatt</h4>
-                                    <span class="creator-tag">Streamer</span>
-                                </div>
-                            </div>
+                                         <i class="fab fa-tiktok"></i>
+                                         TikTok
+                                     </a>
+                                 </div>
+                             </div>
+                             
+                             <div class="creator-card">
+                                 <div class="creator-header">
+                                     <div class="creator-avatar">
+                                         <i class="fab fa-twitch"></i>
+                                     </div>
+                                     <div class="creator-info">
+                                         <h4>sushiicatt</h4>
+                                         <span class="creator-tag">Streamer</span>
+                                     </div>
+                                 </div>
                             <p class="creator-description">Hi! My name is Amelia, but I get called sushii a ton! I'm
                                 currently 22 years old and living in the Netherlands! I'm a huge cat lover and a HUGE
                                 metal head who loves to attend concerts. Please recommend me bands, love to have a chat
                                 with fellow metal heads. I love to make people laugh and genuinely have a good time
                                 altogether!</p>
-                            <div class="creator-links">
+                                 <div class="creator-links">
                                 <a href="https://www.twitch.tv/sushiicattt" target="_blank"
                                    class="creator-link social-link">
-                                    <i class="fab fa-twitch"></i>
-                                    Twitch
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="creator-card">
-                            <div class="creator-header">
-                                <div class="creator-avatar">
-                                    <i class="fab fa-twitch"></i>
-                                </div>
-                                <div class="creator-info">
-                                    <h4>makL_</h4>
-                                    <span class="creator-tag">Streamer</span>
-                                </div>
-                            </div>
+                                         <i class="fab fa-twitch"></i>
+                                         Twitch
+                                     </a>
+                                 </div>
+                             </div>
+                             
+                             <div class="creator-card">
+                                 <div class="creator-header">
+                                     <div class="creator-avatar">
+                                         <i class="fab fa-twitch"></i>
+                                     </div>
+                                     <div class="creator-info">
+                                         <h4>makL_</h4>
+                                         <span class="creator-tag">Streamer</span>
+                                     </div>
+                                 </div>
                             <p class="creator-description">Hey! My name is Mike aka makL. I'm a punk rocker that likes
                                 to play games. I also like talkin bout books and movies especially ones from the 80s. I
                                 drink and I curse so it aint kid friendly in here.</p>
-                            <div class="creator-links">
+                                 <div class="creator-links">
                                 <a href="https://www.twitch.tv/makl_" target="_blank" class="creator-link social-link">
-                                    <i class="fab fa-twitch"></i>
-                                    Twitch
-                                </a>
-                            </div>
-                        </div>
+                                         <i class="fab fa-twitch"></i>
+                                         Twitch
+                                     </a>
+                                 </div>
+                             </div>
+                         </div>
                     </div>
+
                 </div>
+            </section>
 
-            </div>
-        </section>
-
-        <!-- Vietnam Section -->
-        <section id="vietnam" class="section vietnam-section">
-            <div class="vietnam-hero">
-                <div class="vietnam-logo">
+            <!-- Vietnam Section -->
+            <section id="vietnam" class="section vietnam-section">
+                <div class="vietnam-hero">
+                    <div class="vietnam-logo">
                     <img src="images/Hell Let loose Logos/Logo HLLV - Horizontal Logo Lockup - White (1).png"
                          alt="Hell Let Loose Vietnam" class="hllv-logo hllv-logo-white">
                     <img src="images/Hell Let loose Logos/Logo HLLV - Horizontal Logo Lockup - Black (1).png"
                          alt="Hell Let Loose Vietnam" class="hllv-logo hllv-logo-black">
-                </div>
-                <div class="vietnam-content">
-                    <h1 class="vietnam-title">ARMOR HUB</h1>
-                    <div class="coming-soon-banner">
-                        <h2>COMING IN 2026</h2>
-                        <p>Experience the next chapter of Hell Let Loose with Vietnam-era armored warfare</p>
-                        <div class="vietnam-features">
-                            <div class="feature">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>Vietnam-Era Tanks</span>
+                    </div>
+                    <div class="vietnam-content">
+                        <h1 class="vietnam-title">ARMOR HUB</h1>
+                        <div class="coming-soon-banner">
+                            <h2>COMING IN 2026</h2>
+                            <p>Experience the next chapter of Hell Let Loose with Vietnam-era armored warfare</p>
+                            <div class="vietnam-features">
+                                <div class="feature">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Vietnam-Era Tanks</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-map"></i>
+                                    <span>Jungle Warfare</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-crosshairs"></i>
+                                    <span>New Combat Mechanics</span>
+                                </div>
                             </div>
-                            <div class="feature">
-                                <i class="fas fa-map"></i>
-                                <span>Jungle Warfare</span>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-crosshairs"></i>
-                                <span>New Combat Mechanics</span>
-                            </div>
-                        </div>
-
-                        <!-- Vietnam Video Section -->
-                        <div class="vietnam-video-section">
-                            <h3>Vietnam Armor Preview</h3>
-                            <div class="vietnam-video-wrapper">
-                                <iframe
-                                        src="https://www.youtube.com/embed/3gepqNoAbBY"
+                            
+                            <!-- Vietnam Video Section -->
+                            <div class="vietnam-video-section">
+                                <h3>Vietnam Armor Preview</h3>
+                                <div class="vietnam-video-wrapper">
+                                    <iframe 
+                                        src="https://www.youtube.com/embed/3gepqNoAbBY" 
                                         title="Hell Let Loose Vietnam Armor Preview"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen>
-                                </iframe>
+                                    </iframe>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
 
-    <!-- Easter Egg Trigger Area -->
-    <div class="easter-egg-trigger" id="easterEggTrigger"></div>
-
-    <!-- ARMOR HUB Theme Deactivation Button -->
+        <!-- Easter Egg Trigger Area -->
+        <div class="easter-egg-trigger" id="easterEggTrigger"></div>
+        
+            <!-- ARMOR HUB Theme Deactivation Button -->
     <button class="secret-deactivate" id="secretDeactivate" onclick="deactivateSecretTheme()">Exit ARMOR HUB Mode
     </button>
 
-    <!-- Audio for victory sound -->
-    <audio id="victorySound" preload="auto">
+        <!-- Audio for victory sound -->
+        <audio id="victorySound" preload="auto">
         <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT"
                 type="audio/wav">
-    </audio>
+        </audio>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Hell Let Loose Armor Hub. All rights reserved.</p>
-            <p>This is a fan-made resource for Hell Let Loose players.</p>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Hell Let Loose Armor Hub. All rights reserved.</p>
+                <p>This is a fan-made resource for Hell Let Loose players.</p>
             <p>Created by <a href="https://www.youtube.com/@Raz_Bora" target="_blank">RazBora</a> & <a
                     href="https://www.youtube.com/@TheFreshBakedGoods" target="_blank">TheFreshBakedGoods</a></p>
             <p>Special thanks to <a href="https://mattw.io/" target="_blank">Winston</a> for development support</p>
-        </div>
-    </footer>
-</div>
+            </div>
+        </footer>
+    </div>
 
 <!-- Scope Viewer Modal -->
 <div class="scope-viewer" id="scopeViewer">

@@ -221,19 +221,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const gameVersionToggle = document.getElementById('gameVersionToggle');
     const gameVersionMenu = document.getElementById('gameVersionMenu');
     const versionOptions = document.querySelectorAll('.version-option');
-
+    
     if (gameVersionToggle && gameVersionMenu) {
         // Toggle dropdown
         gameVersionToggle.addEventListener('click', function (e) {
             e.stopPropagation();
             gameVersionMenu.classList.toggle('active');
         });
-
+        
         // Close dropdown when clicking outside
         document.addEventListener('click', function () {
             gameVersionMenu.classList.remove('active');
         });
-
+        
         // Handle version selection
         versionOptions.forEach(option => {
             option.addEventListener('click', function (e) {
@@ -248,17 +248,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function switchGameVersion(version) {
     if (version === currentGameVersion) return;
-
+    
     currentGameVersion = version;
-
+    
     // Update dropdown display
     const currentVersionSpan = document.querySelector('.current-version');
     const versionOptions = document.querySelectorAll('.version-option');
-
+    
     if (currentVersionSpan) {
         currentVersionSpan.textContent = version === 'wwii' ? 'HLL: WWII' : 'HLL: V';
     }
-
+    
     // Update active states
     versionOptions.forEach(option => {
         option.classList.remove('active');
@@ -266,14 +266,14 @@ function switchGameVersion(version) {
             option.classList.add('active');
         }
     });
-
+    
     // Switch sections
     const allSections = document.querySelectorAll('.section');
     const vietnamSection = document.getElementById('vietnam');
     const navigation = document.querySelector('.nav');
     const logoContainer = document.querySelector('.logo-container');
     const footer = document.querySelector('.footer');
-
+    
     if (version === 'vietnam') {
         // Hide all WWII sections
         allSections.forEach(section => {
@@ -281,70 +281,70 @@ function switchGameVersion(version) {
                 section.classList.remove('active');
             }
         });
-
+        
         // Show Vietnam section
         if (vietnamSection) {
             vietnamSection.classList.add('active');
         }
-
-        // Hide navigation, logo click functionality, and footer
-        if (navigation) {
-            navigation.style.display = 'none';
-        }
-        if (logoContainer) {
-            logoContainer.style.pointerEvents = 'none';
-            logoContainer.style.opacity = '0.5';
-        }
-        if (footer) {
-            footer.style.display = 'none';
-        }
+        
+                        // Hide navigation, logo click functionality, and footer
+                if (navigation) {
+                    navigation.style.display = 'none';
+                }
+                if (logoContainer) {
+                    logoContainer.style.pointerEvents = 'none';
+                    logoContainer.style.opacity = '0.5';
+                }
+                if (footer) {
+                    footer.style.display = 'none';
+                }
 
         // Hide theme selector when in Vietnam mode
         const themeSelector = document.querySelector('.theme-selector');
         if (themeSelector) {
             themeSelector.style.display = 'none';
-        }
+                }
 
-        // Apply jungle theme to the body
-        document.body.classList.add('vietnam-jungle-theme');
-
+                // Apply jungle theme to the body
+                document.body.classList.add('vietnam-jungle-theme');
+        
         // Update navigation
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => link.classList.remove('active'));
-
+        
     } else {
         // Hide Vietnam section
         if (vietnamSection) {
             vietnamSection.classList.remove('active');
         }
-
+        
         // Show overview section (default WWII)
         const overviewSection = document.getElementById('overview');
         if (overviewSection) {
             overviewSection.classList.add('active');
         }
-
-        // Show navigation, restore logo click functionality, and show footer
-        if (navigation) {
-            navigation.style.display = 'flex';
-        }
-        if (logoContainer) {
-            logoContainer.style.pointerEvents = 'auto';
-            logoContainer.style.opacity = '1';
-        }
-        if (footer) {
-            footer.style.display = 'block';
-        }
+        
+                        // Show navigation, restore logo click functionality, and show footer
+                if (navigation) {
+                    navigation.style.display = 'flex';
+                }
+                if (logoContainer) {
+                    logoContainer.style.pointerEvents = 'auto';
+                    logoContainer.style.opacity = '1';
+                }
+                if (footer) {
+                    footer.style.display = 'block';
+                }
 
         // Show theme selector when back to WWII mode
         const themeSelector = document.querySelector('.theme-selector');
         if (themeSelector) {
             themeSelector.style.display = 'block';
-        }
+                }
 
-        // Remove jungle theme from the body
-        document.body.classList.remove('vietnam-jungle-theme');
-
+                // Remove jungle theme from the body
+                document.body.classList.remove('vietnam-jungle-theme');
+        
         // Update navigation
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
@@ -366,7 +366,7 @@ const tankDatabase = {
             armor: "Front: 63mm, Sides: 38mm, Rear: 38mm",
             gun: "75mm M3",
             penetration: "Front: 76mm, Sides: 89mm",
-            speed: "24 km/h",
+            speed: "29 km/h",
             crew: "3",
             description: "The workhorse of the US Army. Balanced armor and firepower with good mobility.",
             weakSpots: "Turret ring, sides, rear",
@@ -378,22 +378,22 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 800,
-                turretHealth: 700,
-                engineHealth: 500,
-                trackHealth: 800,
-                apDamage: 600,
+                hullHealth: 890,
+                turretHealth: 790,
+                engineHealth: 420,
+                trackHealth: 710,
+                apDamage: 650,
                 explosionDamage: 100,
                 explosionRadius: 1000,
                 reloadSpeed: 6.0,
-                maxSpeed: 24,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -7.1,
+                maxSpeed: 29,
+                yawRate: 14.0,
+                pitchRate: 5.0,
+                pitchAngleMin: -10.0,
                 pitchAngleMax: 25.0,
-                gearSwitchTime: 0.8,
+                gearSwitchTime: 0.7,
                 maxShellsAP: 35,
-                maxShellsHE: 30,
+                maxShellsHE: 35,
                 fuelCost: 200
             }
         },
@@ -404,7 +404,7 @@ const tankDatabase = {
             armor: "Front: 101mm, Sides: 76mm, Rear: 51mm",
             gun: "75mm M3",
             penetration: "Front: 76mm, Sides: 89mm",
-            speed: "18 km/h",
+            speed: "20 km/h",
             crew: "3",
             description: "Heavily armored Sherman variant with thick frontal armor for breakthrough operations.",
             weakSpots: "Sides, rear. This tank has a 75mm gun so this cannot pen heavy tank armor from the front. This tank almost should never be used as the price of fuel is not logical as compared to a 76 jumbo",
@@ -416,23 +416,23 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 900,
-                turretHealth: 700,
-                engineHealth: 600,
-                trackHealth: 900,
-                apDamage: 800,
+                hullHealth: 1170,
+                turretHealth: 1050,
+                engineHealth: 550,
+                trackHealth: 910,
+                apDamage: 700,
                 explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 8.0,
-                maxSpeed: 18,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -7.1,
+                explosionRadius: 1200,
+                reloadSpeed: 6.0,
+                maxSpeed: 20,
+                yawRate: 14.0,
+                pitchRate: 6.0,
+                pitchAngleMin: -10.0,
                 pitchAngleMax: 25.0,
-                gearSwitchTime: 0.8,
+                gearSwitchTime: 0.9,
                 maxShellsAP: 25,
                 maxShellsHE: 60,
-                fuelCost: 600
+                fuelCost: 500
             }
         },
         {
@@ -442,7 +442,7 @@ const tankDatabase = {
             armor: "Front: 101mm, Sides: 76mm, Rear: 51mm",
             gun: "76mm M1A1",
             penetration: "Front: 116mm, Sides: 139mm",
-            speed: "18 km/h",
+            speed: "20 km/h",
             crew: "3",
             description: "Heavily armored Sherman with improved 76mm gun for better anti-tank capability.",
             weakSpots: "Sides, rear",
@@ -454,22 +454,22 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 900,
-                turretHealth: 700,
-                engineHealth: 600,
-                trackHealth: 900,
+                hullHealth: 1190,
+                turretHealth: 1070,
+                engineHealth: 550,
+                trackHealth: 910,
                 apDamage: 800,
                 explosionDamage: 100,
-                explosionRadius: 1000,
+                explosionRadius: 1200,
                 reloadSpeed: 8.0,
-                maxSpeed: 18,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -7.1,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 25,
-                maxShellsHE: 60,
+                maxSpeed: 20,
+                yawRate: 12.0,
+                pitchRate: 5.0,
+                pitchAngleMin: -8.0,
+                pitchAngleMax: 23.0,
+                gearSwitchTime: 0.9,
+                maxShellsAP: 45,
+                maxShellsHE: 30,
                 fuelCost: 600
             }
         },
@@ -480,7 +480,7 @@ const tankDatabase = {
             armor: "Front: 44mm, Sides: 25mm, Rear: 25mm",
             gun: "37mm M6",
             penetration: "Front: 61mm, Sides: 76mm",
-            speed: "31 km/h",
+            speed: "34 km/h",
             crew: "3",
             description: "Fast light tank with light armor but excellent mobility.",
             weakSpots: "All sides vulnerable",
@@ -492,20 +492,20 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 600,
-                turretHealth: 400,
-                engineHealth: 400,
-                trackHealth: 600,
-                apDamage: 400,
-                explosionDamage: 100,
-                explosionRadius: 1000,
+                hullHealth: 620,
+                turretHealth: 550,
+                engineHealth: 290,
+                trackHealth: 490,
+                apDamage: 420,
+                explosionDamage: 90,
+                explosionRadius: 800,
                 reloadSpeed: 4.0,
-                maxSpeed: 31,
-                yawRate: 10.0,
+                maxSpeed: 34,
+                yawRate: 14.0,
                 pitchRate: 6.0,
-                pitchAngleMin: -7.1,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.8,
+                pitchAngleMin: -12.0,
+                pitchAngleMax: 20.0,
+                gearSwitchTime: 0.6,
                 maxShellsAP: 50,
                 maxShellsHE: 50,
                 fuelCost: 150
@@ -530,23 +530,23 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 600,
-                turretHealth: 400,
-                engineHealth: 400,
-                trackHealth: 600,
-                apDamage: 400,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 4.0,
-                maxSpeed: 80,
-                yawRate: 12.0,
-                pitchRate: 8.0,
-                pitchAngleMin: -10.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.5,
-                maxShellsAP: 52,
-                maxShellsHE: 52,
-                fuelCost: 200
+                hullHealth: null,
+                turretHealth: null,
+                engineHealth: null,
+                trackHealth: null,
+                apDamage: null,
+                explosionDamage: null,
+                explosionRadius: null,
+                reloadSpeed: null,
+                maxSpeed: null,
+                yawRate: null,
+                pitchRate: null,
+                pitchAngleMin: null,
+                pitchAngleMax: null,
+                gearSwitchTime: null,
+                maxShellsAP: null,
+                maxShellsHE: null,
+                fuelCost: null
             }
         }
     ],
@@ -558,7 +558,7 @@ const tankDatabase = {
             armor: "Front: 80mm, Sides: 30mm, Rear: 20mm",
             gun: "75mm KwK 40",
             penetration: "Front: 98mm, Sides: 121mm",
-            speed: "22 km/h",
+            speed: "27 km/h",
             crew: "3",
             description: "Versatile medium tank with good balance of armor, firepower, and mobility.",
             weakSpots: "Sides, rear",
@@ -570,22 +570,22 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 800,
-                turretHealth: 700,
-                engineHealth: 500,
-                trackHealth: 800,
-                apDamage: 600,
+                hullHealth: 910,
+                turretHealth: 830,
+                engineHealth: 430,
+                trackHealth: 710,
+                apDamage: 750,
                 explosionDamage: 100,
                 explosionRadius: 1000,
                 reloadSpeed: 6.0,
-                maxSpeed: 22,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -10.5,
-                pitchAngleMax: 13.0,
+                maxSpeed: 27,
+                yawRate: 10.0,
+                pitchRate: 5.0,
+                pitchAngleMin: -8.0,
+                pitchAngleMax: 20.0,
                 gearSwitchTime: 0.8,
-                maxShellsAP: 41,
-                maxShellsHE: 41,
+                maxShellsAP: 50,
+                maxShellsHE: 35,
                 fuelCost: 200
             }
         },
@@ -596,7 +596,7 @@ const tankDatabase = {
             armor: "Front: 80mm, Sides: 40mm, Rear: 40mm",
             gun: "75mm KwK 42",
             penetration: "Front: 149mm, Sides: 185mm",
-            speed: "18 km/h",
+            speed: "26 km/h",
             crew: "3",
             description: "Excellent heavy tank with sloped armor and powerful long-barreled 75mm gun.",
             weakSpots: "Sides, rear. Very slow reverse gear and third to fourth gear. Be very mindful of RPM's as you speed up",
@@ -608,22 +608,22 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 900,
-                turretHealth: 700,
-                engineHealth: 600,
-                trackHealth: 900,
+                hullHealth: 1170,
+                turretHealth: 990,
+                engineHealth: 550,
+                trackHealth: 910,
                 apDamage: 800,
                 explosionDamage: 100,
-                explosionRadius: 1000,
+                explosionRadius: 1200,
                 reloadSpeed: 8.0,
-                maxSpeed: 18,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -6.5,
-                pitchAngleMax: 28.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 41,
-                maxShellsHE: 41,
+                maxSpeed: 26,
+                yawRate: 12.0,
+                pitchRate: 5.0,
+                pitchAngleMin: -8.0,
+                pitchAngleMax: 18.0,
+                gearSwitchTime: 0.85,
+                maxShellsAP: 40,
+                maxShellsHE: 40,
                 fuelCost: 600
             }
         },
@@ -634,7 +634,7 @@ const tankDatabase = {
             armor: "Front: 100mm, Sides: 80mm, Rear: 80mm",
             gun: "88mm KwK 36",
             penetration: "Front: 165mm, Sides: 198mm",
-            speed: "18 km/h",
+            speed: "23 km/h",
             crew: "3",
             description: "Fearsome heavy tank with thick armor and devastating 88mm gun.",
             weakSpots: "Sides, rear",
@@ -646,22 +646,22 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 900,
-                turretHealth: 700,
-                engineHealth: 600,
-                trackHealth: 900,
-                apDamage: 800,
+                hullHealth: 1220,
+                turretHealth: 1070,
+                engineHealth: 570,
+                trackHealth: 950,
+                apDamage: 850,
                 explosionDamage: 100,
-                explosionRadius: 1000,
+                explosionRadius: 1200,
                 reloadSpeed: 8.0,
-                maxSpeed: 18,
+                maxSpeed: 23,
                 yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -5.5,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 41,
-                maxShellsHE: 41,
+                pitchRate: 4.5,
+                pitchAngleMin: -8.0,
+                pitchAngleMax: 15.0,
+                gearSwitchTime: 1.0,
+                maxShellsAP: 55,
+                maxShellsHE: 40,
                 fuelCost: 600
             }
         },
@@ -672,7 +672,7 @@ const tankDatabase = {
             armor: "Front: 30mm, Sides: 15mm, Rear: 15mm",
             gun: "20mm KwK 30",
             penetration: "Front: 23mm, Sides: 29mm",
-            speed: "40 km/h",
+            speed: "37 km/h",
             crew: "3",
             description: "Light tank with minimal armor and anti-infantry armament.",
             weakSpots: "All sides vulnerable",
@@ -684,22 +684,22 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 400,
-                turretHealth: 300,
-                engineHealth: 300,
-                trackHealth: 400,
-                apDamage: 200,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 3.0,
-                maxSpeed: 40,
-                yawRate: 15.0,
-                pitchRate: 10.0,
-                pitchAngleMin: -8.0,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.4,
-                maxShellsAP: 180,
-                maxShellsHE: 180,
+                hullHealth: 600,
+                turretHealth: 520,
+                engineHealth: 280,
+                trackHealth: 470,
+                apDamage: 180,
+                explosionDamage: 90,
+                explosionRadius: 800,
+                reloadSpeed: 8.0,
+                maxSpeed: 37,
+                yawRate: 22.0,
+                pitchRate: 8.0,
+                pitchAngleMin: -9.0,
+                pitchAngleMax: 18.0,
+                gearSwitchTime: 0.6,
+                maxShellsAP: 0,
+                maxShellsHE: 20,
                 fuelCost: 150
             }
         },
@@ -722,23 +722,23 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 500,
-                turretHealth: 400,
-                engineHealth: 400,
-                trackHealth: 500,
-                apDamage: 600,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 5.0,
-                maxSpeed: 85,
-                yawRate: 18.0,
-                pitchRate: 12.0,
-                pitchAngleMin: -8.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.3,
-                maxShellsAP: 50,
-                maxShellsHE: 50,
-                fuelCost: 300
+                hullHealth: null,
+                turretHealth: null,
+                engineHealth: null,
+                trackHealth: null,
+                apDamage: null,
+                explosionDamage: null,
+                explosionRadius: null,
+                reloadSpeed: null,
+                maxSpeed: null,
+                yawRate: null,
+                pitchRate: null,
+                pitchAngleMin: null,
+                pitchAngleMax: null,
+                gearSwitchTime: null,
+                maxShellsAP: null,
+                maxShellsHE: null,
+                fuelCost: null
             }
         }
     ],
@@ -750,7 +750,7 @@ const tankDatabase = {
             armor: "Front: 45mm, Sides: 45mm, Rear: 45mm",
             gun: "76.2mm F-34",
             penetration: "Front: 76mm, Sides: 89mm",
-            speed: "24 km/h",
+            speed: "31 km/h",
             crew: "3",
             description: "Revolutionary tank with sloped armor and good mobility.",
             weakSpots: "Sides, rear",
@@ -762,22 +762,22 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 800,
-                turretHealth: 700,
-                engineHealth: 500,
-                trackHealth: 800,
-                apDamage: 600,
+                hullHealth: 890,
+                turretHealth: 830,
+                engineHealth: 420,
+                trackHealth: 700,
+                apDamage: 750,
                 explosionDamage: 100,
                 explosionRadius: 1000,
                 reloadSpeed: 6.0,
-                maxSpeed: 24,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -10.5,
-                pitchAngleMax: 13.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 47,
-                maxShellsHE: 50,
+                maxSpeed: 31,
+                yawRate: 15.0,
+                pitchRate: 6.0,
+                pitchAngleMin: -5.0,
+                pitchAngleMax: 29.0,
+                gearSwitchTime: 0.9,
+                maxShellsAP: 40,
+                maxShellsHE: 45,
                 fuelCost: 200
             }
         },
@@ -788,7 +788,7 @@ const tankDatabase = {
             armor: "Front: 120mm, Sides: 90mm, Rear: 60mm",
             gun: "85mm D-5T",
             penetration: "Front: 102mm, Sides: 119mm",
-            speed: "18 km/h",
+            speed: "21 km/h",
             crew: "3",
             description: "Heavy breakthrough tank with thick armor and good firepower.",
             weakSpots: "Sides, rear",
@@ -800,22 +800,22 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 900,
-                turretHealth: 700,
-                engineHealth: 600,
-                trackHealth: 900,
+                hullHealth: 1220,
+                turretHealth: 1060,
+                engineHealth: 570,
+                trackHealth: 950,
                 apDamage: 800,
                 explosionDamage: 100,
-                explosionRadius: 1000,
+                explosionRadius: 1200,
                 reloadSpeed: 8.0,
-                maxSpeed: 18,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -5.5,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 41,
-                maxShellsHE: 41,
+                maxSpeed: 21,
+                yawRate: 8.0,
+                pitchRate: 4.5,
+                pitchAngleMin: -4.0,
+                pitchAngleMax: 22.0,
+                gearSwitchTime: 1.0,
+                maxShellsAP: 40,
+                maxShellsHE: 35,
                 fuelCost: 600
             }
         },
@@ -826,7 +826,7 @@ const tankDatabase = {
             armor: "Front: 35mm, Sides: 35mm, Rear: 25mm",
             gun: "45mm 20-K",
             penetration: "Front: 51mm, Sides: 61mm",
-            speed: "28 km/h",
+            speed: "32 km/h",
             crew: "3",
             description: "Light tank with minimal armor and small crew.",
             weakSpots: "All sides vulnerable",
@@ -838,22 +838,22 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 600,
-                turretHealth: 400,
-                engineHealth: 400,
-                trackHealth: 600,
+                hullHealth: 630,
+                turretHealth: 550,
+                engineHealth: 290,
+                trackHealth: 490,
                 apDamage: 400,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 8.0,
-                maxSpeed: 28,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -5.5,
+                explosionDamage: 90,
+                explosionRadius: 800,
+                reloadSpeed: 4.0,
+                maxSpeed: 32,
+                yawRate: 10.0,
+                pitchRate: 5.0,
+                pitchAngleMin: -6.0,
                 pitchAngleMax: 20.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 57,
-                maxShellsHE: 50,
+                gearSwitchTime: 0.7,
+                maxShellsAP: 45,
+                maxShellsHE: 45,
                 fuelCost: 150
             }
         },
@@ -876,31 +876,31 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 300,
-                turretHealth: 200,
-                engineHealth: 200,
-                trackHealth: 300,
-                apDamage: 300,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 4.0,
-                maxSpeed: 53,
-                yawRate: 15.0,
-                pitchRate: 10.0,
-                pitchAngleMin: -8.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.5,
-                maxShellsAP: 50,
-                maxShellsHE: 50,
-                fuelCost: 200
+                hullHealth: null,
+                turretHealth: null,
+                engineHealth: null,
+                trackHealth: null,
+                apDamage: null,
+                explosionDamage: null,
+                explosionRadius: null,
+                reloadSpeed: null,
+                maxSpeed: null,
+                yawRate: null,
+                pitchRate: null,
+                pitchAngleMin: null,
+                pitchAngleMax: null,
+                gearSwitchTime: null,
+                maxShellsAP: null,
+                maxShellsHE: null,
+                fuelCost: null
             }
         }
     ],
-    british: [
-        {
-            name: "Daimler",
-            type: "Recon Vehicle",
-            faction: "Great Britain",
+         british: [
+                  {
+             name: "Daimler",
+             type: "Recon Vehicle",
+             faction: "Great Britain",
             armor: "Front: 16mm, Sides: 16mm, Rear: 16mm",
             gun: "40mm QF 2-pounder",
             penetration: "Front: 57mm, Sides: 71mm",
@@ -916,73 +916,73 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 400,
-                turretHealth: 300,
-                engineHealth: 300,
-                trackHealth: 400,
-                apDamage: 500,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 4.0,
-                maxSpeed: 80,
-                yawRate: 16.0,
-                pitchRate: 11.0,
-                pitchAngleMin: -8.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.4,
-                maxShellsAP: 52,
-                maxShellsHE: 52,
-                fuelCost: 250
+                hullHealth: null,
+                turretHealth: null,
+                engineHealth: null,
+                trackHealth: null,
+                apDamage: null,
+                explosionDamage: null,
+                explosionRadius: null,
+                reloadSpeed: null,
+                maxSpeed: null,
+                yawRate: null,
+                pitchRate: null,
+                pitchAngleMin: null,
+                pitchAngleMax: null,
+                gearSwitchTime: null,
+                maxShellsAP: null,
+                maxShellsHE: null,
+                fuelCost: null
             }
-        },
-        {
-            name: "M3 Stuart 'Honey'",
-            type: "Light Tank",
-            faction: "Great Britain",
-            armor: "Front: 38mm, Sides: 25mm, Rear: 25mm",
-            gun: "37mm M6",
-            penetration: "Front: 61mm, Sides: 76mm",
-            speed: "28 km/h",
-            crew: "3",
-            description: "Fast light tank with light armor but excellent mobility.",
-            weakSpots: "All sides vulnerable",
-            strengths: "Very fast, good for scouting",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
+         },
+                                            {
+              name: "M3 Stuart 'Honey'",
+              type: "Light Tank",
+              faction: "Great Britain",
+                          armor: "Front: 38mm, Sides: 25mm, Rear: 25mm",
+              gun: "37mm M6",
+              penetration: "Front: 61mm, Sides: 76mm",
+            speed: "36 km/h",
+              crew: "3",
+             description: "Fast light tank with light armor but excellent mobility.",
+             weakSpots: "All sides vulnerable",
+             strengths: "Very fast, good for scouting",
+              icon: "fas fa-tank",
+              has360View: true,
+                          images360: {
                 prefix: "images/360/m3-stuart-honey/",
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 600,
-                turretHealth: 400,
-                engineHealth: 400,
-                trackHealth: 600,
-                apDamage: 400,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 8.0,
-                maxSpeed: 28,
-                yawRate: 10.0,
+                hullHealth: 610,
+                turretHealth: 540,
+                engineHealth: 290,
+                trackHealth: 480,
+                apDamage: 420,
+                explosionDamage: 90,
+                explosionRadius: 800,
+                reloadSpeed: 4.0,
+                maxSpeed: 36,
+                yawRate: 14.0,
                 pitchRate: 6.0,
-                pitchAngleMin: -7.1,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.8,
+                pitchAngleMin: -12.0,
+                pitchAngleMax: 20.0,
+                gearSwitchTime: 0.6,
                 maxShellsAP: 50,
                 maxShellsHE: 50,
                 fuelCost: 150
             }
-        },
-        {
-            name: "Tetrarch",
-            type: "Light Tank",
-            faction: "Great Britain",
-            armor: "Front: 14mm, Sides: 10mm, Rear: 10mm",
-            gun: "40mm QF 2-pounder",
-            penetration: "Front: 57mm, Sides: 71mm",
-            speed: "28 km/h",
-            crew: "3",
-            description: "Ultra-light tank designed for airborne operations with minimal armor.",
+          },
+                                  {
+                           name: "Tetrarch",
+              type: "Light Tank",
+              faction: "Great Britain",
+             armor: "Front: 14mm, Sides: 10mm, Rear: 10mm",
+             gun: "40mm QF 2-pounder",
+             penetration: "Front: 57mm, Sides: 71mm",
+            speed: "39 km/h",
+             crew: "3",
+             description: "Ultra-light tank designed for airborne operations with minimal armor.",
             weakSpots: "All sides vulnerable",
             strengths: "Very fast, airborne capable",
             icon: "fas fa-tank",
@@ -992,34 +992,34 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 600,
-                turretHealth: 400,
-                engineHealth: 400,
-                trackHealth: 600,
-                apDamage: 400,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 8.0,
-                maxSpeed: 28,
+                hullHealth: 610,
+                turretHealth: 530,
+                engineHealth: 290,
+                trackHealth: 480,
+                apDamage: 380,
+                explosionDamage: 90,
+                explosionRadius: 800,
+                reloadSpeed: 4.0,
+                maxSpeed: 39,
                 yawRate: 10.0,
-                pitchRate: 6.0,
-                pitchAngleMin: -7.1,
+                pitchRate: 5.5,
+                pitchAngleMin: -10.0,
                 pitchAngleMax: 25.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 35,
-                maxShellsHE: 30,
+                gearSwitchTime: 0.7,
+                maxShellsAP: 40,
+                maxShellsHE: 40,
                 fuelCost: 150
             }
-        },
-        {
-            name: "Cromwell",
-            type: "Medium Tank",
-            faction: "Great Britain",
-            armor: "Front: 76mm, Sides: 32mm, Rear: 32mm",
-            gun: "75mm QF Mk V",
-            penetration: "Front: 91mm, Sides: 114mm",
-            speed: "25 km/h",
-            crew: "3",
+         },
+                                  {
+             name: "Cromwell",
+             type: "Medium Tank",
+             faction: "Great Britain",
+                         armor: "Front: 76mm, Sides: 32mm, Rear: 32mm",
+             gun: "75mm QF Mk V",
+             penetration: "Front: 91mm, Sides: 114mm",
+            speed: "30 km/h",
+             crew: "3",
             description: "Fast medium tank with good mobility and balanced firepower.",
             weakSpots: "Sides, rear",
             strengths: "Excellent speed, good firepower",
@@ -1030,33 +1030,33 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 800,
-                turretHealth: 700,
-                engineHealth: 500,
-                trackHealth: 800,
-                apDamage: 600,
+                hullHealth: 930,
+                turretHealth: 810,
+                engineHealth: 440,
+                trackHealth: 730,
+                apDamage: 750,
                 explosionDamage: 100,
                 explosionRadius: 1000,
                 reloadSpeed: 6.0,
-                maxSpeed: 25,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -7.1,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 30,
-                maxShellsHE: 55,
+                maxSpeed: 30,
+                yawRate: 14.0,
+                pitchRate: 6.0,
+                pitchAngleMin: -12.0,
+                pitchAngleMax: 20.0,
+                gearSwitchTime: 0.7,
+                maxShellsAP: 40,
+                maxShellsHE: 35,
                 fuelCost: 200
             }
-        },
-        {
-            name: "Crusader Mk III",
-            type: "Medium Tank",
-            faction: "Great Britain",
+         },
+                                  {
+             name: "Crusader Mk III",
+             type: "Medium Tank",
+             faction: "Great Britain",
             armor: "Front: 49mm, Sides: 28mm, Rear: 28mm",
             gun: "57mm QF 6-pounder",
             penetration: "Front: 81mm, Sides: 101mm",
-            speed: "25 km/h",
+            speed: "27 km/h",
             crew: "3",
             description: "Medium tank with good anti-tank capability and decent mobility.",
             weakSpots: "Sides, rear",
@@ -1068,34 +1068,34 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 800,
-                turretHealth: 700,
-                engineHealth: 500,
-                trackHealth: 800,
-                apDamage: 600,
+                hullHealth: 910,
+                turretHealth: 790,
+                engineHealth: 420,
+                trackHealth: 710,
+                apDamage: 700,
                 explosionDamage: 100,
                 explosionRadius: 1000,
                 reloadSpeed: 6.0,
-                maxSpeed: 25,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -7.1,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.8,
+                maxSpeed: 27,
+                yawRate: 20.0,
+                pitchRate: 6.5,
+                pitchAngleMin: -12.0,
+                pitchAngleMax: 30.0,
+                gearSwitchTime: 0.9,
                 maxShellsAP: 30,
-                maxShellsHE: 55,
+                maxShellsHE: 35,
                 fuelCost: 200
             }
-        },
-        {
-            name: "Churchill Mk III",
-            type: "Heavy Tank",
-            faction: "Great Britain",
-            armor: "Front: 102mm, Sides: 76mm, Rear: 51mm",
-            gun: "57mm QF 6-pounder",
-            penetration: "Front: 81mm, Sides: 101mm",
-            speed: "18 km/h",
-            crew: "3",
+         },
+                                  {
+             name: "Churchill Mk III",
+             type: "Heavy Tank",
+             faction: "Great Britain",
+                         armor: "Front: 102mm, Sides: 76mm, Rear: 51mm",
+             gun: "57mm QF 6-pounder",
+             penetration: "Front: 81mm, Sides: 101mm",
+            speed: "20 km/h",
+             crew: "3",
             description: "Heavily armored infantry tank with excellent protection but slow speed.",
             weakSpots: "Sides, rear. This tank can be difficult to turn so be mindful of RPM's and how far you turn",
             strengths: "The side of this tank is nearly ALL tracks. This tank can be angled very effectively as the hull is very difficult to hit if you always angle at 90 degrees. Excellent armor, good for infantry support",
@@ -1106,27 +1106,27 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 900,
-                turretHealth: 700,
-                engineHealth: 600,
-                trackHealth: 900,
-                apDamage: 800,
+                hullHealth: 1230,
+                turretHealth: 1080,
+                engineHealth: 580,
+                trackHealth: 960,
+                apDamage: 750,
                 explosionDamage: 100,
-                explosionRadius: 1000,
+                explosionRadius: 1200,
                 reloadSpeed: 8.0,
-                maxSpeed: 18,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -5.5,
+                maxSpeed: 20,
+                yawRate: 12.0,
+                pitchRate: 5.0,
+                pitchAngleMin: -6.0,
                 pitchAngleMax: 20.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 35,
-                maxShellsHE: 30,
+                gearSwitchTime: 1.0,
+                maxShellsAP: 30,
+                maxShellsHE: 45,
                 fuelCost: 600
             }
-        },
-        {
-            name: "Churchill Mk.VII",
+         },
+                                  {
+             name: "Churchill Mk.VII",
             type: "Heavy Tank",
             faction: "Great Britain",
             armor: "Front: 152mm, Sides: 95mm, Rear: 64mm",
@@ -1144,34 +1144,34 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 900,
-                turretHealth: 700,
-                engineHealth: 600,
-                trackHealth: 900,
+                hullHealth: 1240,
+                turretHealth: 1090,
+                engineHealth: 620,
+                trackHealth: 1030,
                 apDamage: 800,
                 explosionDamage: 100,
-                explosionRadius: 1000,
+                explosionRadius: 1200,
                 reloadSpeed: 8.0,
                 maxSpeed: 18,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -5.5,
+                yawRate: 10.0,
+                pitchRate: 5.0,
+                pitchAngleMin: -6.0,
                 pitchAngleMax: 20.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 35,
-                maxShellsHE: 30,
+                gearSwitchTime: 1.0,
+                maxShellsAP: 40,
+                maxShellsHE: 45,
                 fuelCost: 600
             }
-        },
-        {
-            name: "Sherman Firefly",
+         },
+                                  {
+             name: "Sherman Firefly",
             type: "Heavy Tank",
-            faction: "Great Britain",
-            armor: "Front: 63mm, Sides: 38mm, Rear: 38mm",
-            gun: "76.2mm QF 17-pounder",
-            penetration: "Front: 140mm, Sides: 175mm",
-            speed: "21 km/h",
-            crew: "3",
+             faction: "Great Britain",
+                         armor: "Front: 63mm, Sides: 38mm, Rear: 38mm",
+             gun: "76.2mm QF 17-pounder",
+             penetration: "Front: 140mm, Sides: 175mm",
+            speed: "22 km/h",
+             crew: "3",
             description: "Sherman variant with powerful 17-pounder gun for anti-tank warfare.",
             weakSpots: "Sides, rear. This heavy tank has no hull turret as well as maneuverability is very poor. This tank actually uses an old M4 sherman driving model and should strictly be used to fight enemy heavy armor. Think of this as a tank destroyer nearly exclusively",
             strengths: "This is the only heavy tank in the game that has a 6 second reload. It is by far the fastest reloading tank in the game. Excellent anti-tank capability, good mobility",
@@ -1182,248 +1182,248 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 900,
-                turretHealth: 700,
-                engineHealth: 600,
-                trackHealth: 900,
-                apDamage: 800,
+                hullHealth: 1200,
+                turretHealth: 1020,
+                engineHealth: 580,
+                trackHealth: 960,
+                apDamage: 850,
                 explosionDamage: 100,
-                explosionRadius: 1000,
+                explosionRadius: 1200,
                 reloadSpeed: 8.0,
-                maxSpeed: 21,
-                yawRate: 7.0,
-                pitchRate: 4.0,
-                pitchAngleMin: -7.1,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 35,
-                maxShellsHE: 30,
+                maxSpeed: 22,
+                yawRate: 10.0,
+                pitchRate: 6.0,
+                pitchAngleMin: -5.0,
+                pitchAngleMax: 20.0,
+                gearSwitchTime: 0.9,
+                maxShellsAP: 40,
+                maxShellsHE: 25,
                 fuelCost: 600
             }
-        }
+         }
     ]
 };
 
-// Penetration Data - Updated to match all tanks in Hell Let Loose
-const penetrationData = [
-    // Heavy Tanks
-    {
-        weapon: "88mm KwK 36 (Tiger I)",
-        tank: "Tiger I",
-        faction: "Germany",
-        type: "Heavy Tank",
-        range: "500m",
-        penetration: "165mm",
-        effectiveAgainst: "All tanks",
-        shotsToKill: "2 shots vs heavy, 1 shot vs below"
-    },
-    {
-        weapon: "75mm KwK 42 (Panther)",
-        tank: "Panther",
-        faction: "Germany",
-        type: "Heavy Tank",
-        range: "500m",
-        penetration: "149mm",
-        effectiveAgainst: "Heavy tank class and below",
-        shotsToKill: "2 shots vs heavy, 1 shot vs below"
-    },
-    {
-        weapon: "76mm M1A1 (Sherman 76 Jumbo)",
-        tank: "Sherman 76 Jumbo",
-        faction: "USA",
-        type: "Heavy Tank",
-        range: "500m",
-        penetration: "116mm",
-        effectiveAgainst: "Heavy tank class and below",
-        shotsToKill: "2 shots vs heavy, 1 shot vs below"
-    },
-    {
-        weapon: "75mm M3 (Sherman 75 Jumbo)",
-        tank: "Sherman 75 Jumbo",
-        faction: "USA",
-        type: "Heavy Tank",
-        range: "500m",
-        penetration: "76mm",
-        effectiveAgainst: "Medium tank class and below",
-        shotsToKill: "2 shots vs medium, 1 shot vs below"
-    },
-    {
-        weapon: "85mm D-5T (IS-1)",
-        tank: "IS-1",
-        faction: "Soviet Union",
-        type: "Heavy Tank",
-        range: "500m",
-        penetration: "102mm",
-        effectiveAgainst: "Heavy tank class and below",
-        shotsToKill: "2 shots vs heavy, 1 shot vs below"
-    },
-    {
-        weapon: "57mm QF 6-pounder (Churchill Mk III)",
-        tank: "Churchill Mk III",
-        faction: "Great Britain",
-        type: "Heavy Tank",
-        range: "500m",
-        penetration: "81mm",
-        effectiveAgainst: "Medium tank class and below",
-        shotsToKill: "1 shot vs medium and below"
-    },
-
-    // Medium Tanks
-    {
-        weapon: "76.2mm QF 17-pounder (Sherman Firefly)",
-        tank: "Sherman Firefly",
-        faction: "Great Britain",
-        type: "Medium Tank",
-        range: "500m",
-        penetration: "140mm",
-        effectiveAgainst: "Heavy tank class and below",
-        shotsToKill: "1 shot vs heavy and below"
-    },
-    {
-        weapon: "75mm KwK 40 (Panzer IV)",
-        tank: "Panzer IV",
-        faction: "Germany",
-        type: "Medium Tank",
-        range: "500m",
-        penetration: "98mm",
-        effectiveAgainst: "Medium tank class and below",
-        shotsToKill: "2 shots vs medium, 1 shot vs below"
-    },
-    {
-        weapon: "75mm M3 (M4 Sherman)",
-        tank: "M4 Sherman",
-        faction: "USA",
-        type: "Medium Tank",
-        range: "500m",
-        penetration: "76mm",
-        effectiveAgainst: "Medium tank class and below",
-        shotsToKill: "2 shots vs medium, 1 shot vs below"
-    },
-    {
-        weapon: "76.2mm F-34 (T-34)",
-        tank: "T-34",
-        faction: "Soviet Union",
-        type: "Medium Tank",
-        range: "500m",
-        penetration: "76mm",
-        effectiveAgainst: "Medium tank class and below",
-        shotsToKill: "2 shots vs medium, 1 shot vs below"
-    },
-    {
-        weapon: "75mm QF Mk V (Cromwell)",
-        tank: "Cromwell",
-        faction: "Great Britain",
-        type: "Medium Tank",
-        range: "500m",
-        penetration: "91mm",
-        effectiveAgainst: "Medium tank class and below",
-        shotsToKill: "2 shots vs medium, 1 shot vs below"
-    },
-    {
-        weapon: "57mm QF 6-pounder (Crusader Mk III)",
-        tank: "Crusader Mk III",
-        faction: "Great Britain",
-        type: "Medium Tank",
-        range: "500m",
-        penetration: "81mm",
-        effectiveAgainst: "Medium tank class and below",
-        shotsToKill: "2 shots vs medium, 1 shot vs below"
-    },
-
-    // Light Tanks
-    {
-        weapon: "37mm M6 (M5A1 Stuart)",
-        tank: "M5A1 Stuart",
-        faction: "USA",
-        type: "Light Tank",
-        range: "500m",
-        penetration: "61mm",
-        effectiveAgainst: "Light tank class and below",
-        shotsToKill: "2 shots vs light, 1 shot vs below"
-    },
-
-    // Recon Vehicles
-    {
-        weapon: "37mm M6 (Greyhound)",
-        tank: "Greyhound",
-        faction: "USA",
-        type: "Recon Vehicle",
-        range: "500m",
-        penetration: "61mm",
-        effectiveAgainst: "Recon vehicles only",
-        shotsToKill: "1 shot vs recon vehicles"
-    },
-    {
-        weapon: "50mm KwK 39 (Puma)",
-        tank: "Puma",
-        faction: "Germany",
-        type: "Recon Vehicle",
-        range: "500m",
-        penetration: "67mm",
-        effectiveAgainst: "Recon vehicles only",
-        shotsToKill: "1 shot vs recon vehicles"
-    },
-    {
+            // Penetration Data - Updated to match all tanks in Hell Let Loose
+            const penetrationData = [
+                // Heavy Tanks
+                {
+                    weapon: "88mm KwK 36 (Tiger I)",
+                    tank: "Tiger I",
+                    faction: "Germany",
+                    type: "Heavy Tank",
+                    range: "500m",
+                    penetration: "165mm",
+                    effectiveAgainst: "All tanks",
+                    shotsToKill: "2 shots vs heavy, 1 shot vs below"
+                },
+                {
+                    weapon: "75mm KwK 42 (Panther)",
+                    tank: "Panther",
+                    faction: "Germany",
+                    type: "Heavy Tank",
+                    range: "500m",
+                    penetration: "149mm",
+                    effectiveAgainst: "Heavy tank class and below",
+                    shotsToKill: "2 shots vs heavy, 1 shot vs below"
+                },
+                {
+                    weapon: "76mm M1A1 (Sherman 76 Jumbo)",
+                    tank: "Sherman 76 Jumbo",
+                    faction: "USA",
+                    type: "Heavy Tank",
+                    range: "500m",
+                    penetration: "116mm",
+                    effectiveAgainst: "Heavy tank class and below",
+                    shotsToKill: "2 shots vs heavy, 1 shot vs below"
+                },
+                {
+                    weapon: "75mm M3 (Sherman 75 Jumbo)",
+                    tank: "Sherman 75 Jumbo",
+                    faction: "USA",
+                    type: "Heavy Tank",
+                    range: "500m",
+                    penetration: "76mm",
+                    effectiveAgainst: "Medium tank class and below",
+                    shotsToKill: "2 shots vs medium, 1 shot vs below"
+                },
+                {
+                    weapon: "85mm D-5T (IS-1)",
+                    tank: "IS-1",
+                    faction: "Soviet Union",
+                    type: "Heavy Tank",
+                    range: "500m",
+                    penetration: "102mm",
+                    effectiveAgainst: "Heavy tank class and below",
+                    shotsToKill: "2 shots vs heavy, 1 shot vs below"
+                },
+                {
+                    weapon: "57mm QF 6-pounder (Churchill Mk III)",
+                    tank: "Churchill Mk III",
+                    faction: "Great Britain",
+                    type: "Heavy Tank",
+                    range: "500m",
+                    penetration: "81mm",
+                    effectiveAgainst: "Medium tank class and below",
+                    shotsToKill: "1 shot vs medium and below"
+                },
+                
+                // Medium Tanks
+                {
+                    weapon: "76.2mm QF 17-pounder (Sherman Firefly)",
+                    tank: "Sherman Firefly",
+                    faction: "Great Britain",
+                    type: "Medium Tank",
+                    range: "500m",
+                    penetration: "140mm",
+                    effectiveAgainst: "Heavy tank class and below",
+                    shotsToKill: "1 shot vs heavy and below"
+                },
+                {
+                    weapon: "75mm KwK 40 (Panzer IV)",
+                    tank: "Panzer IV",
+                    faction: "Germany",
+                    type: "Medium Tank",
+                    range: "500m",
+                    penetration: "98mm",
+                    effectiveAgainst: "Medium tank class and below",
+                    shotsToKill: "2 shots vs medium, 1 shot vs below"
+                },
+                {
+                    weapon: "75mm M3 (M4 Sherman)",
+                    tank: "M4 Sherman",
+                    faction: "USA",
+                    type: "Medium Tank",
+                    range: "500m",
+                    penetration: "76mm",
+                    effectiveAgainst: "Medium tank class and below",
+                    shotsToKill: "2 shots vs medium, 1 shot vs below"
+                },
+                {
+                    weapon: "76.2mm F-34 (T-34)",
+                    tank: "T-34",
+                    faction: "Soviet Union",
+                    type: "Medium Tank",
+                    range: "500m",
+                    penetration: "76mm",
+                    effectiveAgainst: "Medium tank class and below",
+                    shotsToKill: "2 shots vs medium, 1 shot vs below"
+                },
+                {
+                    weapon: "75mm QF Mk V (Cromwell)",
+                    tank: "Cromwell",
+                    faction: "Great Britain",
+                    type: "Medium Tank",
+                    range: "500m",
+                    penetration: "91mm",
+                    effectiveAgainst: "Medium tank class and below",
+                    shotsToKill: "2 shots vs medium, 1 shot vs below"
+                },
+                {
+                    weapon: "57mm QF 6-pounder (Crusader Mk III)",
+                    tank: "Crusader Mk III",
+                    faction: "Great Britain",
+                    type: "Medium Tank",
+                    range: "500m",
+                    penetration: "81mm",
+                    effectiveAgainst: "Medium tank class and below",
+                    shotsToKill: "2 shots vs medium, 1 shot vs below"
+                },
+                
+                // Light Tanks
+                {
+                    weapon: "37mm M6 (M5A1 Stuart)",
+                    tank: "M5A1 Stuart",
+                    faction: "USA",
+                    type: "Light Tank",
+                    range: "500m",
+                    penetration: "61mm",
+                    effectiveAgainst: "Light tank class and below",
+                    shotsToKill: "2 shots vs light, 1 shot vs below"
+                },
+                
+                // Recon Vehicles
+                {
+                    weapon: "37mm M6 (Greyhound)",
+                    tank: "Greyhound",
+                    faction: "USA",
+                    type: "Recon Vehicle",
+                    range: "500m",
+                    penetration: "61mm",
+                    effectiveAgainst: "Recon vehicles only",
+                    shotsToKill: "1 shot vs recon vehicles"
+                },
+                {
+                    weapon: "50mm KwK 39 (Puma)",
+                    tank: "Puma",
+                    faction: "Germany",
+                    type: "Recon Vehicle",
+                    range: "500m",
+                    penetration: "67mm",
+                    effectiveAgainst: "Recon vehicles only",
+                    shotsToKill: "1 shot vs recon vehicles"
+                },
+                {
         weapon: "20mm KwK 30 (Luchs)",
         tank: "Luchs",
-        faction: "Germany",
-        type: "Light Tank",
-        range: "500m",
-        penetration: "23mm",
-        effectiveAgainst: "Infantry, light vehicles",
-        shotsToKill: "1 shot vs infantry/vehicles"
-    },
-    {
-        weapon: "45mm 20-K (T-70)",
-        tank: "T-70",
-        faction: "Soviet Union",
-        type: "Light Tank",
-        range: "500m",
-        penetration: "51mm",
-        effectiveAgainst: "Light tanks and below",
-        shotsToKill: "1 shot vs light tanks and below"
-    },
-    {
-        weapon: "45mm 20-K (BA-10 Scout Car)",
-        tank: "BA-10 Scout Car",
-        faction: "Soviet Union",
-        type: "Recon Vehicle",
-        range: "500m",
-        penetration: "51mm",
-        effectiveAgainst: "Recon vehicles only",
-        shotsToKill: "1 shot vs recon vehicles"
-    },
-    {
-        weapon: "40mm QF 2-pounder (Daimler)",
-        tank: "Daimler",
-        faction: "Great Britain",
-        type: "Recon Vehicle",
-        range: "500m",
-        penetration: "57mm",
-        effectiveAgainst: "Recon vehicles only",
-        shotsToKill: "1 shot vs recon vehicles"
-    },
-    {
-        weapon: "37mm M6 (M3 Stuart 'Honey')",
-        tank: "M3 Stuart 'Honey'",
-        faction: "Great Britain",
-        type: "Light Tank",
-        range: "500m",
-        penetration: "61mm",
-        effectiveAgainst: "Light tanks and below",
-        shotsToKill: "1 shot vs light tanks and below"
-    },
-    {
-        weapon: "40mm QF 2-pounder (Tetrarch)",
-        tank: "Tetrarch",
-        faction: "Great Britain",
-        type: "Light Tank",
-        range: "500m",
-        penetration: "57mm",
-        effectiveAgainst: "Light tanks and below",
-        shotsToKill: "1 shot vs light tanks and below"
-    }
-];
+                    faction: "Germany",
+                    type: "Light Tank",
+                    range: "500m",
+                    penetration: "23mm",
+                    effectiveAgainst: "Infantry, light vehicles",
+                    shotsToKill: "1 shot vs infantry/vehicles"
+                },
+                {
+                    weapon: "45mm 20-K (T-70)",
+                    tank: "T-70",
+                    faction: "Soviet Union",
+                    type: "Light Tank",
+                    range: "500m",
+                    penetration: "51mm",
+                    effectiveAgainst: "Light tanks and below",
+                    shotsToKill: "1 shot vs light tanks and below"
+                },
+                {
+                    weapon: "45mm 20-K (BA-10 Scout Car)",
+                    tank: "BA-10 Scout Car",
+                    faction: "Soviet Union",
+                    type: "Recon Vehicle",
+                    range: "500m",
+                    penetration: "51mm",
+                    effectiveAgainst: "Recon vehicles only",
+                    shotsToKill: "1 shot vs recon vehicles"
+                },
+                {
+                    weapon: "40mm QF 2-pounder (Daimler)",
+                    tank: "Daimler",
+                    faction: "Great Britain",
+                    type: "Recon Vehicle",
+                    range: "500m",
+                    penetration: "57mm",
+                    effectiveAgainst: "Recon vehicles only",
+                    shotsToKill: "1 shot vs recon vehicles"
+                },
+                {
+                    weapon: "37mm M6 (M3 Stuart 'Honey')",
+                    tank: "M3 Stuart 'Honey'",
+                    faction: "Great Britain",
+                    type: "Light Tank",
+                    range: "500m",
+                    penetration: "61mm",
+                    effectiveAgainst: "Light tanks and below",
+                    shotsToKill: "1 shot vs light tanks and below"
+                },
+                {
+                    weapon: "40mm QF 2-pounder (Tetrarch)",
+                    tank: "Tetrarch",
+                    faction: "Great Britain",
+                    type: "Light Tank",
+                    range: "500m",
+                    penetration: "57mm",
+                    effectiveAgainst: "Light tanks and below",
+                    shotsToKill: "1 shot vs light tanks and below"
+                }
+            ];
 
 // DOM Elements
 const themeSelect = document.getElementById('themeSelect');
@@ -1459,7 +1459,7 @@ function setTheme(theme) {
     document.body.className = theme;
     currentTheme = theme;
     localStorage.setItem('theme', theme);
-
+    
     // Update theme dropdown selection
     if (themeSelect) {
         themeSelect.value = theme;
@@ -1489,23 +1489,23 @@ function showSection(sectionId, updateHash = true) {
 
     // Close all expanded tiles when navigating to a different section
     closeAllExpandedTiles();
-
+    
     // Hide all sections
     sections.forEach(section => {
         section.classList.remove('active');
     });
-
+    
     // Remove active class from all nav links
     navLinks.forEach(link => {
         link.classList.remove('active');
     });
-
+    
     // Show target section
     const targetSection = document.getElementById(sectionId);
     if (targetSection) {
         targetSection.classList.add('active');
     }
-
+    
     // Add active class to clicked nav link
     const activeLink = document.querySelector(`[href="#${sectionId}"]`);
     if (activeLink) {
@@ -1521,25 +1521,25 @@ function showSection(sectionId, updateHash = true) {
     if (sectionId === 'overview' && updateHash) {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
-
+    
     // Initialize practice tanks when identification section is shown
     if (sectionId === 'identification') {
         initializePracticeTanks();
         // Set initial home image based on current difficulty
         updateHomeImage(currentDifficulty);
     }
-
+    
     // Initialize armor sights when ranging section is shown
     if (sectionId === 'ranging') {
         initializeArmorSights();
     }
-
+    
     // Scroll to top of the page
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
-
+    
     if (sectionId === 'overview') {
     }
 }
@@ -1571,9 +1571,9 @@ function create360Viewer(tank) {
         .replace(/\s+/g, '-') // Replace spaces with hyphens
         .replace(/-+/g, '-') // Replace multiple hyphens with single
         .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
-
+    
     const images360 = tank.images360;
-
+    
     return `
         <div class="tank-360-viewer" data-tank-id="${tankId}">
             <div class="tank-360-container" 
@@ -1587,7 +1587,7 @@ function create360Viewer(tank) {
                  style="cursor: grab;">
                 <img src="${images360.prefix}1${images360.suffix}?v=${buildVersion}" 
                      alt="${tank.name} - 360° View" 
-                     class="tank-360-image"
+                     class="tank-360-image" 
                      loading="lazy" 
                      data-current-angle="45"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -1618,42 +1618,42 @@ function rotateTank(tankId, direction) {
     if (!viewer) {
         return;
     }
-
+    
     const image = viewer.querySelector('.tank-360-image');
     const angleIndicator = viewer.querySelector('.tank-360-angle');
-
+    
     if (!image || !angleIndicator) {
         return;
     }
-
+    
     // Get current angle from data attribute or default to 45
     let currentAngle = parseInt(image.getAttribute('data-current-angle')) || 45;
-
+    
     // Calculate new angle (8 images for 360 degrees, so 45 degrees per image)
     const angleStep = 45;
     currentAngle += direction * angleStep;
-
+    
     // Handle continuous rotation - normalize to 0-359 range
     while (currentAngle < 0) currentAngle += 360;
     while (currentAngle >= 360) currentAngle -= 360;
-
+    
     // Calculate image index (0-7) - handle wrap-around properly
     let imageIndex = Math.floor(currentAngle / 45);
     if (imageIndex >= 8) imageIndex = 0;
-
+    
     // Get tank data to construct image path
     const tankName = viewer.closest('.tank-card').querySelector('.tank-name').textContent;
-
+    
     // Find tank in database
     let tankData = null;
     Object.values(tankDatabase).forEach(factionTanks => {
         const found = factionTanks.find(tank => tank.name === tankName);
         if (found) tankData = found;
     });
-
+    
     if (tankData && tankData.images360) {
         const newImagePath = `${tankData.images360.prefix}${imageIndex}${tankData.images360.suffix}?v=${buildVersion}`;
-
+        
         // Add error handling for image loading
         const tempImage = new Image();
         tempImage.onload = function () {
@@ -1674,22 +1674,22 @@ function rotateTank(tankId, direction) {
 function rotateTankByAngle(tankId, targetAngle, showSnapping = true) {
     const viewer = document.querySelector(`.tank-360-viewer[data-tank-id="${tankId}"]`);
     if (!viewer) return;
-
+    
     const image = viewer.querySelector('.tank-360-image');
     const angleIndicator = viewer.querySelector('.tank-360-angle');
-
+    
     if (!image || !angleIndicator) return;
-
+    
     // Normalize target angle to handle continuous rotation beyond 360°
     let normalizedAngle = targetAngle;
     while (normalizedAngle < 0) normalizedAngle += 360;
     while (normalizedAngle >= 360) normalizedAngle -= 360;
-
+    
     // Snap to nearest valid angle (8 positions: 0°, 45°, 90°, 135°, 180°, 225°, 270°, 315°)
     const validAngles = [0, 45, 90, 135, 180, 225, 270, 315];
     let snappedAngle = validAngles[0];
     let minDifference = Math.abs(normalizedAngle - validAngles[0]);
-
+    
     for (let angle of validAngles) {
         const difference = Math.abs(normalizedAngle - angle);
         if (difference < minDifference) {
@@ -1697,24 +1697,24 @@ function rotateTankByAngle(tankId, targetAngle, showSnapping = true) {
             snappedAngle = angle;
         }
     }
-
+    
     // Calculate image index (0-7) - handle wrap-around properly
     let imageIndex = Math.floor(snappedAngle / 45);
     if (imageIndex >= 8) imageIndex = 0;
-
+    
     // Get tank data to construct image path
     const tankName = viewer.closest('.tank-card').querySelector('.tank-name').textContent;
-
+    
     // Find tank in database
     let tankData = null;
     Object.values(tankDatabase).forEach(factionTanks => {
         const found = factionTanks.find(tank => tank.name === tankName);
         if (found) tankData = found;
     });
-
+    
     if (tankData && tankData.images360) {
         const newImagePath = `${tankData.images360.prefix}${imageIndex}${tankData.images360.suffix}?v=${buildVersion}`;
-
+        
         // Add error handling for image loading
         const tempImage = new Image();
         tempImage.onload = function () {
@@ -1722,7 +1722,7 @@ function rotateTankByAngle(tankId, targetAngle, showSnapping = true) {
             image.src = newImagePath;
             image.setAttribute('data-current-angle', snappedAngle);
             angleIndicator.textContent = `${snappedAngle}°`;
-
+            
             // Only show snapping effect if requested (not during drag)
             if (showSnapping) {
                 const container = viewer.querySelector('.tank-360-container');
@@ -1753,14 +1753,14 @@ function startDrag(event, tankId) {
     isDragging = true;
     dragStartX = event.clientX;
     currentDragTankId = tankId;
-
+    
     // Get current angle
     const viewer = document.querySelector(`.tank-360-viewer[data-tank-id="${tankId}"]`);
     if (viewer) {
         const image = viewer.querySelector('.tank-360-image');
         dragStartAngle = parseInt(image.getAttribute('data-current-angle')) || 45;
     }
-
+    
     // Change cursor
     event.target.style.cursor = 'grabbing';
 }
@@ -1768,13 +1768,13 @@ function startDrag(event, tankId) {
 // Handle drag movement
 function drag(event, tankId) {
     if (!isDragging || currentDragTankId !== tankId) return;
-
+    
     event.preventDefault();
-
+    
     const deltaX = event.clientX - dragStartX;
     const sensitivity = 2; // Pixels per degree
     const deltaAngle = (deltaX / sensitivity);
-
+    
     const newAngle = dragStartAngle + deltaAngle;
     rotateTankByAngle(tankId, newAngle, false); // Don't show snapping during drag
 }
@@ -1782,15 +1782,15 @@ function drag(event, tankId) {
 // End drag operation
 function endDrag(event, tankId) {
     if (!isDragging || currentDragTankId !== tankId) return;
-
+    
     isDragging = false;
     currentDragTankId = null;
-
+    
     // Reset cursor
     if (event.target) {
         event.target.style.cursor = 'grab';
     }
-
+    
     // Show snapping effect when drag ends
     const viewer = document.querySelector(`.tank-360-viewer[data-tank-id="${tankId}"]`);
     if (viewer) {
@@ -1811,7 +1811,7 @@ function startTouchDrag(event, tankId) {
         isDragging = true;
         dragStartX = event.touches[0].clientX;
         currentDragTankId = tankId;
-
+        
         // Get current angle
         const viewer = document.querySelector(`.tank-360-viewer[data-tank-id="${tankId}"]`);
         if (viewer) {
@@ -1823,23 +1823,23 @@ function startTouchDrag(event, tankId) {
 
 function touchDrag(event, tankId) {
     if (!isDragging || currentDragTankId !== tankId || event.touches.length !== 1) return;
-
+    
     event.preventDefault();
-
+    
     const deltaX = event.touches[0].clientX - dragStartX;
     const sensitivity = 2; // Pixels per degree
     const deltaAngle = (deltaX / sensitivity);
-
+    
     const newAngle = dragStartAngle + deltaAngle;
     rotateTankByAngle(tankId, newAngle, false); // Don't show snapping during touch drag
 }
 
 function endTouchDrag(event, tankId) {
     if (!isDragging || currentDragTankId !== tankId) return;
-
+    
     isDragging = false;
     currentDragTankId = null;
-
+    
     // Show snapping effect when touch drag ends
     const viewer = document.querySelector(`.tank-360-viewer[data-tank-id="${tankId}"]`);
     if (viewer) {
@@ -1856,7 +1856,7 @@ function endTouchDrag(event, tankId) {
 function createTankCard(tank) {
     const has360View = tank.has360View || false;
     const viewerContent = has360View ? create360Viewer(tank) : `<i class="${tank.icon}"></i>`;
-
+    
     return `
         <div class="tank-card" data-tank-id="${tank.name.replace(/\s+/g, '-').toLowerCase()}">
             <div class="tank-image bg-${globalBackground}">
@@ -1915,15 +1915,15 @@ function createTankCard(tank) {
                                 <div class="stat-pair">
                                     <span class="stat-label">Hull Health:</span>
                                     <span class="stat-value">${tank.detailedStats ? tank.detailedStats.hullHealth : 'N/A'}</span>
-                                </div>
+                    </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Turret Health:</span>
                                     <span class="stat-value">${tank.detailedStats ? tank.detailedStats.turretHealth : 'N/A'}</span>
-                                </div>
+                    </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Engine Health:</span>
                                     <span class="stat-value">${tank.detailedStats ? tank.detailedStats.engineHealth : 'N/A'}</span>
-                                </div>
+                </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Track Health:</span>
                                     <span class="stat-value">${tank.detailedStats ? tank.detailedStats.trackHealth : 'N/A'}</span>
@@ -1974,11 +1974,11 @@ function createTankCard(tank) {
                                     <span class="stat-value">${tank.detailedStats ? tank.detailedStats.pitchAngleMin + '° to ' + tank.detailedStats.pitchAngleMax + '°' : 'N/A'}</span>
                                 </div>
                                 <div class="stat-pair">
-                                    <span class="stat-label">Explosion Damage:</span>
+                                    <span class="stat-label">Explosion Damage (when destroyed):</span>
                                     <span class="stat-value">${tank.detailedStats ? tank.detailedStats.explosionDamage : 'N/A'}</span>
                                 </div>
                                 <div class="stat-pair">
-                                    <span class="stat-label">Explosion Radius:</span>
+                                    <span class="stat-label">Explosion Radius (when destroyed):</span>
                                     <span class="stat-value">${tank.detailedStats ? tank.detailedStats.explosionRadius + 'cm' : 'N/A'}</span>
                                 </div>
                                 <div class="stat-pair">
@@ -2002,7 +2002,7 @@ function createTankCard(tank) {
 
 function displayTanks(faction = 'all', tankType = 'all') {
     let tanksToShow = [];
-
+    
     // Get tanks based on faction filter
     if (faction === 'all') {
         Object.values(tankDatabase).forEach(factionTanks => {
@@ -2011,7 +2011,7 @@ function displayTanks(faction = 'all', tankType = 'all') {
     } else {
         tanksToShow = tankDatabase[faction] || [];
     }
-
+    
     // Apply tank type filter
     if (tankType !== 'all') {
         // Map short filter names to full tank type names
@@ -2021,11 +2021,11 @@ function displayTanks(faction = 'all', tankType = 'all') {
             'light': 'Light Tank',
             'recon': 'Recon Vehicle'
         };
-
+        
         const fullTankType = tankTypeMap[tankType] || tankType;
         tanksToShow = tanksToShow.filter(tank => tank.type === fullTankType);
     }
-
+    
     // Sort tanks by type: Heavy -> Medium -> Light -> Recon
     const typeOrder = {
         'Heavy Tank': 0,
@@ -2033,13 +2033,13 @@ function displayTanks(faction = 'all', tankType = 'all') {
         'Light Tank': 2,
         'Recon Vehicle': 3
     };
-
+    
     tanksToShow.sort((a, b) => {
         return typeOrder[a.type] - typeOrder[b.type];
     });
-
+    
     tankGrid.innerHTML = tanksToShow.map(tank => createTankCard(tank)).join('');
-
+    
     // Add click event listeners to expand buttons
     const expandButtons = document.querySelectorAll('.tank-expand-btn');
     expandButtons.forEach(button => {
@@ -2074,11 +2074,11 @@ function expandTankCard(card) {
             }
         }
     });
-
+    
     // Toggle current card
     const isExpanding = !card.classList.contains('expanded');
     card.classList.toggle('expanded');
-
+    
     // Update button state
     const button = card.querySelector('.tank-expand-btn');
     if (button) {
@@ -2107,7 +2107,7 @@ function expandTankCard(card) {
             });
         }
     }
-
+    
     // Scroll to expanded card
     if (isExpanding) {
         card.scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -2264,7 +2264,7 @@ function getTurnTime(tank, gear, degrees) {
         '3rd': {180: 10, 360: 21},
         '4th': {180: 6, 360: 14}
     };
-
+    
     // Adjust based on tank type
     const multipliers = {
         'Light Tank': 0.8,
@@ -2272,11 +2272,11 @@ function getTurnTime(tank, gear, degrees) {
         'Heavy Tank': 1.3,
         'Recon Vehicle': 0.7
     };
-
+    
     const baseTime = baseTimes[gear][degrees];
     const multiplier = multipliers[tank.type] || 1.0;
     const adjustedTime = baseTime * multiplier;
-
+    
     return adjustedTime.toFixed(1) + 's';
 }
 
@@ -2330,14 +2330,14 @@ function getKillShots(tank, targetType, location) {
             'heavy': {'front': '2', 'side': '2', 'turret': '2', 'rear': '2', 'tracks': '6'}
         }
     };
-
+    
     // Default values if specific tank not found
     const defaultShots = {
         'light': {'front': '1', 'side': '1', 'turret': '1', 'rear': '1', 'tracks': '>1'},
         'medium': {'front': '2', 'side': '2', 'turret': '3*', 'rear': '2', 'tracks': '7'},
         'heavy': {'front': '2*', 'side': '2', 'turret': 'R', 'rear': '2', 'tracks': '8'}
     };
-
+    
     const tankShots = killShots[tank.name] || defaultShots;
     return tankShots[targetType]?.[location] || '2';
 }
@@ -2401,10 +2401,10 @@ factionBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         // Remove active class from all faction buttons
         factionBtns.forEach(b => b.classList.remove('active'));
-
+        
         // Add active class to clicked button
         btn.classList.add('active');
-
+        
         // Update current faction and display tanks
         currentFaction = btn.getAttribute('data-faction');
         displayTanks(currentFaction, currentTankType);
@@ -2416,14 +2416,14 @@ tankTypeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         // Remove active class from all tank type buttons
         tankTypeBtns.forEach(b => b.classList.remove('active'));
-
+        
         // Add active class to clicked button
         btn.classList.add('active');
-
+        
         // Update current tank type and display tanks
         currentTankType = btn.getAttribute('data-tank-type');
         displayTanks(currentFaction, currentTankType);
-
+        
         // Close dropdown after selection
         filterDropdown.classList.remove('show');
     });
@@ -2447,19 +2447,19 @@ function displayPenetrationChart() {
     const factionFilter = document.getElementById('factionFilter').value;
     const typeFilter = document.getElementById('typeFilter').value;
     const penetrationFilter = document.getElementById('penetrationFilter').value;
-
+    
     let filteredData = penetrationData;
-
+    
     // Apply faction filter
     if (factionFilter !== 'all') {
         filteredData = filteredData.filter(item => item.faction === factionFilter);
     }
-
+    
     // Apply type filter
     if (typeFilter !== 'all') {
         filteredData = filteredData.filter(item => item.type === typeFilter);
     }
-
+    
     // Apply penetration filter
     if (penetrationFilter !== 'all') {
         filteredData = filteredData.filter(item => {
@@ -2476,8 +2476,8 @@ function displayPenetrationChart() {
             }
         });
     }
-
-    penetrationTableBody.innerHTML = filteredData.map(weapon => `
+    
+                    penetrationTableBody.innerHTML = filteredData.map(weapon => `
                     <tr>
                         <td>${weapon.tank}</td>
                         <td>${weapon.weapon}</td>
@@ -2511,10 +2511,10 @@ let lastPracticeTank = null; // Track last used tank to prevent duplicates
 
 function initializePracticeTanks() {
     // Use all tanks from the database that have 360 view images
-
+    
     // Clear existing arrays
     practiceTanks = [];
-
+    
     Object.values(tankDatabase).forEach(factionTanks => {
         factionTanks.forEach(tank => {
             if (tank.has360View && tank.images360) {
@@ -2522,23 +2522,23 @@ function initializePracticeTanks() {
             }
         });
     });
-
+    
     // Group tanks by difficulty
     groupTanksByDifficulty();
-
+    
 }
 
 function groupTanksByDifficulty() {
     // Note: These groups are now primarily used for home image selection
     // Practice questions use different logic based on difficulty mode
-
+    
     // Easy: Mix of different tank types and factions
     difficultyTankGroups.easy = [...practiceTanks];
-
+    
     // Medium: Group similar tank types together
     difficultyTankGroups.medium = [];
     const tankTypes = ['Heavy Tank', 'Medium Tank', 'Light Tank', 'Recon Vehicle'];
-
+    
     tankTypes.forEach(type => {
         const typeTanks = practiceTanks.filter(tank => tank.type === type);
         if (typeTanks.length >= 2) {
@@ -2547,7 +2547,7 @@ function groupTanksByDifficulty() {
             difficultyTankGroups.medium.push(...selectedTanks);
         }
     });
-
+    
     // Hard: Include ALL tanks from all factions for maximum variety
     // Note: This group is now used for home image selection only
     // Practice questions for Hard mode use ALL tanks from practiceTanks
@@ -2556,20 +2556,20 @@ function groupTanksByDifficulty() {
 
 function setDifficulty(difficulty) {
     currentDifficulty = difficulty;
-
+    
     // Update active button
     document.querySelectorAll('.difficulty-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     document.querySelector(`[data-difficulty="${difficulty}"]`).classList.add('active');
-
+    
     // Reinitialize practice tanks with new difficulty
     initializePracticeTanks();
-
+    
     // Clear only the practice options, not the tank image
     const practiceOptions = document.getElementById('practiceOptions');
     if (practiceOptions) practiceOptions.innerHTML = '';
-
+    
     // Update home image based on difficulty (after clearing options)
     updateHomeImage(difficulty);
 }
@@ -2577,10 +2577,10 @@ function setDifficulty(difficulty) {
 function updateHomeImage(difficulty) {
     const practiceTankImage = document.getElementById('practiceTankImage');
     if (!practiceTankImage) return;
-
+    
     let selectedTank = null;
     let imageNumber = '2'; // Always use image 2 for home display
-
+    
     switch (difficulty) {
         case 'easy':
             // Find M5A1 Stuart tank specifically
@@ -2622,45 +2622,45 @@ function startNewPractice() {
         // Hard mode: Use ALL tanks from all factions/types, all image angles
         availableTanks = practiceTanks;
     }
-
+    
     if (availableTanks.length === 0) {
         initializePracticeTanks();
         return;
     }
-
+    
     // Select random tank, ensuring no duplicate from last practice
     let selectedTank;
     let attempts = 0;
     const maxAttempts = 50; // Prevent infinite loops
-
+    
     do {
         const randomIndex = Math.floor(Math.random() * availableTanks.length);
         selectedTank = availableTanks[randomIndex];
         attempts++;
-
+        
         // If we've tried too many times, just use the current selection
         if (attempts >= maxAttempts) {
             break;
         }
     } while (lastPracticeTank && selectedTank.name === lastPracticeTank.name);
-
+    
     currentPracticeTank = selectedTank;
     lastPracticeTank = selectedTank; // Update for next practice
-
+    
     // Create practice options based on difficulty
     const options = [currentPracticeTank.name];
     let otherTanks = availableTanks.filter(tank => tank.name !== currentPracticeTank.name);
-
+    
     // For hard mode, try to include tanks of the same type/faction for more challenge
     if (currentDifficulty === 'hard') {
-        const sameTypeTanks = availableTanks.filter(tank =>
+        const sameTypeTanks = availableTanks.filter(tank => 
             tank.type === currentPracticeTank.type && tank.name !== currentPracticeTank.name
         );
         if (sameTypeTanks.length > 0) {
             otherTanks = sameTypeTanks;
         }
     }
-
+    
     // Add wrong answers
     for (let i = 0; i < 3; i++) {
         if (otherTanks.length > 0) {
@@ -2670,7 +2670,7 @@ function startNewPractice() {
             }
         }
     }
-
+    
     // If we don't have enough options, add some from the general pool
     while (options.length < 4 && practiceTanks.length > options.length) {
         const randomTank = practiceTanks[Math.floor(Math.random() * practiceTanks.length)];
@@ -2678,10 +2678,10 @@ function startNewPractice() {
             options.push(randomTank.name);
         }
     }
-
+    
     // Shuffle options
     options.sort(() => Math.random() - 0.5);
-
+    
     // Choose image based on difficulty
     let imageNumber;
     if (currentDifficulty === 'easy' || currentDifficulty === 'medium') {
@@ -2692,10 +2692,10 @@ function startNewPractice() {
         const possibleAngles = ['1', '2', '3', '4', '5', '6', '7'];
         imageNumber = possibleAngles[Math.floor(Math.random() * possibleAngles.length)];
     }
-
+    
     // Store the current image angle for answer reveal
     currentImageAngle = imageNumber;
-
+    
     // Use selected image from the 360 viewer for practice identification
     const images360 = currentPracticeTank.images360;
     const imageHTML = `
@@ -2710,10 +2710,10 @@ function startNewPractice() {
             <span>Practice Image Not Available</span>
         </div>
     `;
-
+    
     practiceTankImage.innerHTML = imageHTML;
-
-    practiceOptions.innerHTML = options.map(option =>
+    
+    practiceOptions.innerHTML = options.map(option => 
         `<button class="practice-option" onclick="checkAnswer('${option.replace(/'/g, "\\'")}')">${option}</button>`
     ).join('');
 }
@@ -2739,41 +2739,41 @@ function getTankFolderName(tankName) {
         "M3 Stuart 'Honey'": 'm3-stuart-honey',
         'Tetrarch': 'tetrarch',
         'Cromwell': 'cromwell',
-        'Crusader Mk III': 'crusader-mk-iii',
-        'Sherman Firefly': 'sherman-firefly'
+                 'Crusader Mk III': 'crusader-mk-iii',
+         'Sherman Firefly': 'sherman-firefly'
     };
-
+    
     return folderMap[tankName] || tankName.toLowerCase().replace(/\s+/g, '-');
 }
 
 function checkAnswer(selectedAnswer) {
     const isCorrect = selectedAnswer === currentPracticeTank.name;
-
+    
     if (isCorrect) {
         correctAnswers++;
-
+        
         // Check for FIRST BLOOD achievement!
         if (correctAnswers === 1 && !hasTriggeredFirstBlood) {
             hasTriggeredFirstBlood = true;
             triggerFirstBloodCelebration();
         }
     }
-
-    const resultMessage = isCorrect ?
+    
+    const resultMessage = isCorrect ? 
         `<p style="color: var(--success); font-weight: bold;">Correct! That's a ${currentPracticeTank.name}.</p>` :
         `<p style="color: var(--error); font-weight: bold;">Incorrect. That's actually a ${currentPracticeTank.name}.</p>`;
-
+    
     // Show the original image (not silhouette) when revealing the answer
     // Use the same image angle that was used in the practice
     const originalImage = `${currentPracticeTank.images360.prefix}${currentImageAngle}${currentPracticeTank.images360.suffix}?v=${buildVersion}`;
-
+    
     practiceTankImage.innerHTML = `
         <img src="${originalImage}" 
              alt="${currentPracticeTank.name}" 
              loading="lazy"
              style="max-width: 100%; height: auto;">
     `;
-
+    
     practiceOptions.innerHTML = `
         <div style="grid-column: 1 / -1;">
             ${resultMessage}
@@ -2787,7 +2787,7 @@ function checkAnswer(selectedAnswer) {
 }
 
 function triggerFirstBloodCelebration() {
-
+    
     // Create the celebration overlay
     const celebration = document.createElement('div');
     celebration.id = 'first-blood-celebration';
@@ -2809,9 +2809,9 @@ function triggerFirstBloodCelebration() {
         <div class="tank-explosion"></div>
         <div class="matrix-rain"></div>
     `;
-
+    
     document.body.appendChild(celebration);
-
+    
     // Trigger all the crazy effects
     triggerScreenShake();
     createExplosionParticles();
@@ -2820,7 +2820,7 @@ function triggerFirstBloodCelebration() {
     createTankExplosion();
     createMatrixRain();
     playVictorySound();
-
+    
     // Remove everything after 5 seconds
     setTimeout(() => {
         if (document.getElementById('first-blood-celebration')) {
@@ -2864,7 +2864,7 @@ function createConfetti() {
     const confetti = document.querySelector('.confetti-container');
     const colors = ['#ff4444', '#44ff44', '#4444ff', '#ffff44', '#ff44ff', '#44ffff'];
     const shapes = ['🎯', '💥', '🔥', '⚡', '🏆', '🎖️'];
-
+    
     for (let i = 0; i < 100; i++) {
         const piece = document.createElement('div');
         piece.className = 'confetti-piece';
@@ -2900,7 +2900,7 @@ function createTankExplosion() {
 function createMatrixRain() {
     const matrix = document.querySelector('.matrix-rain');
     const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-
+    
     for (let i = 0; i < 20; i++) {
         const column = document.createElement('div');
         column.className = 'matrix-column';
@@ -2914,14 +2914,14 @@ function createMatrixRain() {
             animation: matrixFall 2s linear forwards;
             animation-delay: ${Math.random() * 1}s;
         `;
-
+        
         for (let j = 0; j < 10; j++) {
             const char = document.createElement('div');
             char.textContent = chars[Math.floor(Math.random() * chars.length)];
             char.style.animationDelay = `${j * 0.1}s`;
             column.appendChild(char);
         }
-
+        
         matrix.appendChild(column);
     }
 }
@@ -2949,20 +2949,20 @@ function initializeBackgroundSwitching() {
 
             const button = e.target.closest('.bg-btn');
             const backgroundType = button.dataset.background;
-
+            
             // Update global background state
             globalBackground = backgroundType;
-
+            
             // Update all tank images to use the new background
             const allTankImages = document.querySelectorAll('.tank-image');
 
             allTankImages.forEach(tankImage => {
                 // Remove all background classes
                 tankImage.classList.remove('bg-grass', 'bg-snow', 'bg-desert');
-
+                
                 // Add the selected background class
                 tankImage.classList.add(`bg-${backgroundType}`);
-
+                
                 // Update button states in this tank image
                 const allButtons = tankImage.querySelectorAll('.bg-btn');
                 allButtons.forEach(btn => {
@@ -2974,7 +2974,7 @@ function initializeBackgroundSwitching() {
             });
         }
     });
-
+    
 }
 
 // Hash Routing System
@@ -3105,10 +3105,10 @@ document.addEventListener('DOMContentLoaded', () => {
     displayTanks('all', 'all');
     initializePracticeTanks();
     // Don't start practice immediately - let user select difficulty first
-
+    
     // Initialize background switching functionality
     initializeBackgroundSwitching();
-
+    
     // Initialize comparison functionality
     initializeComparison();
 
@@ -3202,31 +3202,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function activateSecretTheme() {
     if (secretThemeActive) return;
-
+    
     // Add PornHub theme class to body
     document.body.classList.add('secret-theme');
     secretThemeActive = true;
-
+    
     // Show deactivation button
     const deactivateBtn = document.getElementById('secretDeactivate');
     if (deactivateBtn) {
         deactivateBtn.style.display = 'block';
     }
-
+    
     // Play a fun sound effect (optional)
     playSecretSound();
-
+    
     // Add some fun console messages
 
 }
 
 function deactivateSecretTheme() {
     if (!secretThemeActive) return;
-
+    
     // Remove PornHub theme class from body
     document.body.classList.remove('secret-theme');
     secretThemeActive = false;
-
+    
     // Hide deactivation button
     const deactivateBtn = document.getElementById('secretDeactivate');
     if (deactivateBtn) {
@@ -3250,11 +3250,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const artyDistance = document.getElementById('artyDistance');
     const artyFaction = document.getElementById('artyFaction');
     const artyResultsBody = document.getElementById('artyResultsBody');
-
+    
     if (artyCalculateBtn) {
         artyCalculateBtn.addEventListener('click', calculateArtillery);
     }
-
+    
     // Add Enter key functionality to the distance input
     if (artyDistance) {
         artyDistance.addEventListener('keydown', function (event) {
@@ -3264,7 +3264,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-
+    
     // Load saved results from localStorage
     loadArtilleryResults();
 });
@@ -3272,25 +3272,25 @@ document.addEventListener('DOMContentLoaded', function () {
 function calculateArtillery() {
     const distance = parseInt(document.getElementById('artyDistance').value);
     const faction = document.getElementById('artyFaction').value;
-
+    
     if (!distance || distance <= 0) {
         alert('Please enter a valid distance');
         return;
     }
-
+    
     try {
         // Calculate artillery result using the new calculation system
         const result = calculateArtilleryResult(distance, faction);
-
+        
         // Save the result
         saveArtilleryResult(distance, result, faction);
-
+        
         // Display the most recent calculation prominently
         displayRecentCalculation(result, distance, faction);
-
+        
         // Clear the input
         document.getElementById('artyDistance').value = '';
-
+        
         // Reload the results table
         loadArtilleryResults();
     } catch (error) {
@@ -3302,12 +3302,12 @@ function calculateArtilleryResult(distance, faction) {
     // Artillery calculation using faction-specific coefficients
     const xMin = 100;
     const xMax = 1600;
-
+    
     // Check distance bounds
     if (distance < xMin || distance > xMax) {
         throw new Error(`Enter a distance between ${xMin} and ${xMax} meters`);
     }
-
+    
     // Faction-specific calculation coefficients
     const options = {
         'soviet': {
@@ -3327,23 +3327,23 @@ function calculateArtilleryResult(distance, faction) {
             b: 1001.46547619048,
         }
     };
-
+    
     const factionOptions = options[faction];
     if (!factionOptions) {
         throw new Error('Invalid faction selected');
     }
-
+    
     // Calculate using the formula: result = m * distance + b
     const {m, b} = factionOptions;
     const result = Math.round(m * distance + b);
-
+    
     // Format the result for display with mills as the focal point
     return `${result} mills`;
 }
 
 function saveArtilleryResult(distance, result, faction) {
     let results = JSON.parse(localStorage.getItem('artilleryResults') || '[]');
-
+    
     const newResult = {
         id: Date.now(),
         distance: distance,
@@ -3351,24 +3351,24 @@ function saveArtilleryResult(distance, result, faction) {
         faction: faction,
         timestamp: new Date().toLocaleString()
     };
-
+    
     // Add new result at the beginning (newest first)
     results.unshift(newResult);
-
+    
     // Keep only the last 3 results
     if (results.length > 3) {
         results = results.slice(0, 3);
     }
-
+    
     localStorage.setItem('artilleryResults', JSON.stringify(results));
 }
 
 function loadArtilleryResults() {
     const artyResultsBody = document.getElementById('artyResultsBody');
     if (!artyResultsBody) return;
-
+    
     const results = JSON.parse(localStorage.getItem('artilleryResults') || '[]');
-
+    
     // Update the recent calculation display if there are results
     if (results.length > 0) {
         const mostRecent = results[0]; // First result is the most recent due to unshift()
@@ -3380,18 +3380,18 @@ function loadArtilleryResults() {
             recentCalculationDiv.innerHTML = '<p>No calculation performed yet</p>';
         }
     }
-
+    
     if (results.length === 0) {
         artyResultsBody.innerHTML = '<tr class="no-results"><td colspan="4">No calculations saved yet</td></tr>';
         return;
     }
-
+    
     let html = '';
     results.forEach(result => {
         // Extract the mills value from the result string for emphasis
         const millsMatch = result.result.match(/^(\d+)\s+mills/);
         const millsValue = millsMatch ? millsMatch[1] : '';
-
+        
         html += `
             <tr>
                 <td><strong style="color: var(--accent);">${millsValue} mills</strong></td>
@@ -3401,7 +3401,7 @@ function loadArtilleryResults() {
             </tr>
         `;
     });
-
+    
     artyResultsBody.innerHTML = html;
 }
 
@@ -3425,11 +3425,11 @@ function getFactionDisplayName(faction) {
 function displayRecentCalculation(result, distance, faction) {
     const recentCalculationDiv = document.getElementById('recentCalculation');
     if (!recentCalculationDiv) return;
-
+    
     // Extract the mills value from the result
     const millsMatch = result.match(/^(\d+)\s+mills/);
     const millsValue = millsMatch ? millsMatch[1] : '';
-
+    
     // Display the most recent calculation prominently
     recentCalculationDiv.innerHTML = `
         <div class="recent-result">
@@ -3443,30 +3443,30 @@ function displayRecentCalculation(result, distance, faction) {
 function initializeArmorSights() {
     const tankSelectionGrid = document.getElementById('tankSelectionGrid');
     if (!tankSelectionGrid) return;
-
+    
     // Populate tank selection grid
     populateTankSelectionGrid();
-
+    
     // Add faction filter event listeners
     const factionFilterBtns = document.querySelectorAll('.faction-filter-btn');
     factionFilterBtns.forEach(btn => {
         btn.addEventListener('click', function () {
             const faction = this.getAttribute('data-faction');
             filterTanksByFaction(faction);
-
+            
             // Update active state
             factionFilterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
         });
     });
-
+    
     // Add tank type filter event listeners
     const typeFilterBtns = document.querySelectorAll('.type-filter-btn');
     typeFilterBtns.forEach(btn => {
         btn.addEventListener('click', function () {
             const tankType = this.getAttribute('data-tank-type');
             filterTanksByType(tankType);
-
+            
             // Update active state
             typeFilterBtns.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
@@ -3480,31 +3480,31 @@ function populateTankSelectionGrid() {
 
         return;
     }
-
+    
     let html = '';
     let totalTanks = 0;
-
+    
     // Iterate through each faction in the tank database
     Object.values(tankDatabase).forEach(factionTanks => {
         factionTanks.forEach(tank => {
-
+            
             // Normalize faction name for filtering
             let normalizedFaction = tank.faction.toLowerCase();
             if (normalizedFaction === 'soviet union') normalizedFaction = 'soviet';
             if (normalizedFaction === 'great britain') normalizedFaction = 'british';
-
+            
             // Normalize tank type for filtering
             let normalizedType = tank.type.toLowerCase();
             if (normalizedType.includes('heavy')) normalizedType = 'heavy';
             else if (normalizedType.includes('medium')) normalizedType = 'medium';
             else if (normalizedType.includes('light')) normalizedType = 'light';
             else if (normalizedType.includes('recon')) normalizedType = 'recon';
-
+            
             // Get the tank's directory name for the image path
             const tankDirName = tank.images360.prefix.split('/').filter(part => part.length > 0).pop();
-
+            
             const imagePath = `images/360/${tankDirName}/2.webp?v=${buildVersion}`;
-
+            
             html += `
                 <div class="tank-option" data-tank="${tank.name}" data-faction="${normalizedFaction}" data-tank-type="${normalizedType}">
                     <img src="${imagePath}" alt="${tank.name}" loading="lazy">
@@ -3514,12 +3514,12 @@ function populateTankSelectionGrid() {
             totalTanks++;
         });
     });
-
+    
     tankSelectionGrid.innerHTML = html;
-
+    
     // Add click event listeners to tank options
     const tankOptions = document.querySelectorAll('.tank-option');
-
+    
     tankOptions.forEach(option => {
         option.addEventListener('click', function () {
             const tankName = this.getAttribute('data-tank');
@@ -3541,15 +3541,15 @@ function applyTankFilters() {
     const tankOptions = document.querySelectorAll('.tank-option');
     const activeFaction = document.querySelector('.faction-filter-btn.active').getAttribute('data-faction');
     const activeType = document.querySelector('.type-filter-btn.active').getAttribute('data-tank-type');
-
+    
     let visibleCount = 0;
     tankOptions.forEach(option => {
         const tankFaction = option.getAttribute('data-faction');
         const tankType = option.getAttribute('data-tank-type');
-
+        
         const factionMatch = activeFaction === 'all' || tankFaction === activeFaction;
         const typeMatch = activeType === 'all' || tankType === activeType;
-
+        
         if (factionMatch && typeMatch) {
             option.style.display = 'block';
             visibleCount++;
@@ -3557,31 +3557,31 @@ function applyTankFilters() {
             option.style.display = 'none';
         }
     });
-
+    
 }
 
 function openScopeView(tankName, updateHash = true) {
-
+    
     const scopeViewer = document.getElementById('scopeViewer');
     const selectedTankName = document.getElementById('selectedTankName');
     const scopeImage = document.getElementById('scopeImage');
     const overlayImage = document.querySelector('.scope-overlay-image');
     const scopeImageContainer = document.querySelector('.scope-image-container');
-
+    
     if (!scopeViewer || !selectedTankName || !scopeImage) {
 
         return;
     }
-
+    
     // Update tank name
     selectedTankName.textContent = tankName;
-
+    
     // Find the tank in the database to get its directory path and type
     let tankDirectory = '';
     let tankFound = false;
     let tankData = null;
     let tankType = '';
-
+    
     Object.values(tankDatabase).forEach(factionTanks => {
         factionTanks.forEach(tank => {
             if (tank.name === tankName) {
@@ -3594,35 +3594,35 @@ function openScopeView(tankName, updateHash = true) {
             }
         });
     });
-
+    
     if (!tankFound) {
 
     }
-
+    
     // Set white background for tanks that have scope images (like 8.png)
     const whiteBackground = document.getElementById('whiteBackground');
     if (whiteBackground && tankDirectory) {
         // Test if the tank has a scope image by checking if 8.png exists
         const scopeImagePath = `images/360/${tankDirectory}/8.png`;
         const testScopeImg = new Image();
-
+        
         testScopeImg.onload = function () {
             // Tank has a scope image, show white background
             whiteBackground.style.display = 'block';
         };
-
+        
         testScopeImg.onerror = function () {
             // Tank doesn't have a scope image, hide white background
             whiteBackground.style.display = 'none';
         };
-
+        
         // Start testing the scope image
         testScopeImg.src = scopeImagePath;
     } else if (whiteBackground) {
         // No tank directory found, hide white background
         whiteBackground.style.display = 'none';
     }
-
+    
     // Show/hide the ranging overlay based on tank type and specific tank
     if (overlayImage) {
         if (tankName === 'Puma') {
@@ -3664,11 +3664,11 @@ function openScopeView(tankName, updateHash = true) {
             overlayImage.style.display = 'none';
         }
     }
-
+    
     // Use 8.png from the tank's directory as the scope view image
     if (tankDirectory) {
         const imagePath = `images/360/${tankDirectory}/8.png`;
-
+        
         // Test if the image exists by creating a new Image object first
         const testImg = new Image();
         testImg.onload = function () {
@@ -3680,22 +3680,22 @@ function openScopeView(tankName, updateHash = true) {
             // Scope opens magnified by default
             scopeImageContainer.classList.add('magnified');
         };
-
+        
         testImg.onerror = function () {
 
             // Use a simple placeholder instead of non-existent folder
             scopeImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzMzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIHNjb3BlIGltYWdlIGF2YWlsYWJsZTwvdGV4dD48L3N2Zz4=';
             scopeImage.alt = `${tankName} Scope`;
         };
-
+        
         // Start loading the test image
         testImg.src = imagePath;
-
+        
         // Also set up the actual scope image error handling
         scopeImage.onerror = function () {
 
         };
-
+        
         scopeImage.onload = function () {
 
         };
@@ -3705,7 +3705,7 @@ function openScopeView(tankName, updateHash = true) {
         scopeImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzNzIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5vIHNjb3BlIGltYWdlIGF2YWlsYWJsZTwvdGV4dD48L3N2Zz4=';
         scopeImage.alt = `${tankName} Scope`;
     }
-
+    
     // Show scope viewer
     scopeViewer.classList.add('active');
 
@@ -3722,17 +3722,17 @@ function closeScopeView() {
     const scopeViewer = document.getElementById('scopeViewer');
     const overlayImage = document.querySelector('.scope-overlay-image');
     const scopeImageContainer = document.querySelector('.scope-image-container');
-
+    
     if (scopeViewer) {
         scopeViewer.classList.remove('active');
 
     }
-
+    
     // Reset overlay visibility when closing
     if (overlayImage) {
         overlayImage.style.display = 'none';
     }
-
+    
     // Reset background when closing
     const whiteBackground = document.getElementById('whiteBackground');
     if (whiteBackground) {
@@ -3757,19 +3757,19 @@ let startX, startY, translateX = 0, translateY = 0;
 
 function startPan(e) {
     if (!document.querySelector('.scope-image-container').classList.contains('magnified')) return;
-
+    
     isPanning = true;
     const scopeImageContainer = document.querySelector('.scope-image-container');
     const expandedTile = scopeImageContainer.closest('.ranging-tool.expanded');
-
+    
     if (!expandedTile) return;
-
+    
     const containerRect = scopeImageContainer.getBoundingClientRect();
     const tileRect = expandedTile.getBoundingClientRect();
-
+    
     startX = (e.clientX || e.touches[0].clientX) - containerRect.left - translateX;
     startY = (e.clientY || e.touches[0].clientY) - containerRect.top - translateY;
-
+    
     document.addEventListener('mousemove', pan);
     document.addEventListener('touchmove', pan);
     document.addEventListener('mouseup', stopPan);
@@ -3778,47 +3778,47 @@ function startPan(e) {
 
 function pan(e) {
     if (!isPanning) return;
-
+    
     e.preventDefault();
-
+    
     const scopeImageContainer = document.querySelector('.scope-image-container');
     const expandedTile = scopeImageContainer.closest('.ranging-tool.expanded');
-
+    
     if (!expandedTile) return;
-
+    
     const containerRect = scopeImageContainer.getBoundingClientRect();
     const tileRect = expandedTile.getBoundingClientRect();
     const currentX = (e.clientX || e.touches[0].clientX) - containerRect.left;
     const currentY = (e.clientY || e.touches[0].clientY) - containerRect.top;
-
+    
     // Add sensitivity factor to reduce panning speed
     const sensitivity = 0.3;
     translateX = (currentX - startX) * sensitivity;
     translateY = (currentY - startY) * sensitivity;
-
+    
     // Calculate boundaries to keep magnified image within the expanded tile
     // The image is scaled 3x, so we need to account for that in our boundaries
     const imageWidth = containerRect.width;
     const imageHeight = containerRect.height;
     const scaledWidth = imageWidth * 3;
     const scaledHeight = imageHeight * 3;
-
+    
     // Calculate boundaries relative to the expanded tile container
     // We need to ensure the magnified image stays within the tile's content area
     const tileContentArea = expandedTile.querySelector('.expanded-content-layout');
     if (!tileContentArea) return;
-
+    
     const contentRect = tileContentArea.getBoundingClientRect();
-
+    
     // Calculate how much the image can move while staying within the content area
     // The magnified image should not extend beyond the content area boundaries
     const maxTranslateX = Math.max(0, (scaledWidth - contentRect.width) / 2);
     const maxTranslateY = Math.max(0, (scaledHeight - contentRect.height) / 2);
-
+    
     // Apply boundaries to keep image within the content area
     translateX = Math.max(-maxTranslateX, Math.min(maxTranslateX, translateX));
     translateY = Math.max(-maxTranslateY, Math.min(maxTranslateY, translateY));
-
+    
     scopeImageContainer.style.transform = `scale(3) translate(${translateX}px, ${translateY}px)`;
 }
 
@@ -3850,16 +3850,16 @@ function expandTile(clickedTile, updateHash = true) {
 
     // Get all ranging tool tiles
     const allTiles = document.querySelectorAll('.ranging-tool');
-
+    
     // Expand the clicked tile
     clickedTile.classList.add('expanded');
-
+    
     // Show the close button for the expanded tile
     const closeBtn = clickedTile.querySelector('.expand-close-btn');
     if (closeBtn) {
         closeBtn.style.display = 'block';
     }
-
+    
     // Minimize all other tiles
     allTiles.forEach(tile => {
         if (tile !== clickedTile) {
@@ -3873,10 +3873,10 @@ function expandTile(clickedTile, updateHash = true) {
         addFullscreenCloseButton(clickedTile);
         disableNavigationInFullscreen();
     }
-
+    
     // Prevent body scrolling when tile is expanded
     document.body.style.overflow = 'hidden';
-
+    
     // Update URL hash based on which tile was expanded (only if updateHash is true)
     if (updateHash) {
         const tileTitle = clickedTile.querySelector('h3');
@@ -3897,24 +3897,24 @@ function expandTile(clickedTile, updateHash = true) {
 function closeExpandedTile(closeButton) {
     // Get the expanded tile
     const expandedTile = closeButton.closest('.ranging-tool');
-
+    
     // Remove expanded state
     expandedTile.classList.remove('expanded');
-
+    
     // Hide the close button
     closeButton.style.display = 'none';
-
+    
     // Get all ranging tool tiles
     const allTiles = document.querySelectorAll('.ranging-tool');
-
+    
     // Restore all tiles to normal state
     allTiles.forEach(tile => {
         tile.classList.remove('minimized');
     });
-
+    
     // Restore body scrolling
     document.body.style.overflow = '';
-
+    
     // Reset hash to just ranging section
     isUpdatingHash = true;
     window.location.hash = 'ranging';
@@ -4032,13 +4032,13 @@ function closeAllExpandedTiles() {
             closeBtn.style.display = 'none';
         }
     });
-
+    
     // Close minimized ranging tool tiles
     const minimizedRangingTiles = document.querySelectorAll('.ranging-tool.minimized');
     minimizedRangingTiles.forEach(tile => {
         tile.classList.remove('minimized');
     });
-
+    
     // Close expanded scope image
     const expandedScopeContainer = document.querySelector('.scope-image-container.expanded');
     if (expandedScopeContainer) {
@@ -4051,7 +4051,7 @@ function closeAllExpandedTiles() {
             expandText.textContent = 'Expand';
         }
     }
-
+    
     // Close magnified scope image
     const magnifiedScopeContainer = document.querySelector('.scope-image-container.magnified');
     if (magnifiedScopeContainer) {
@@ -4068,32 +4068,32 @@ function closeAllExpandedTiles() {
         magnifiedScopeContainer.removeEventListener('mousedown', startPan);
         magnifiedScopeContainer.removeEventListener('touchstart', startPan);
     }
-
+    
     // Reset panning variables
     isPanning = false;
     translateX = 0;
     translateY = 0;
-
+    
     // Restore body scrolling
     document.body.style.overflow = '';
 }
 
 // Back to Top functionality for expanded Armor Sights
 function scrollToTop() {
-
+    
     // When expanded, scroll the expanded tile content to top
     const expandedTile = document.querySelector('.ranging-tool.expanded');
     if (expandedTile) {
-
+        
         // Force scroll to top
         expandedTile.scrollTop = 0;
-
+        
         // Also try scrollTo method as backup
         expandedTile.scrollTo({
             top: 0,
             behavior: 'auto'
         });
-
+        
     } else {
 
         // Fallback to window scroll if not expanded

@@ -1121,6 +1121,7 @@ body.theme-japan .theme-toggle:hover {
     color: var(--accent);
 }
 
+
 /* Full-screen mode for artillery calculator and armor sights */
 .fullscreen-mode .header,
 .fullscreen-mode .nav,
@@ -7404,7 +7405,7 @@ body.secret-theme .secret-deactivate {
 .strategy-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 2rem;
     margin-top: 2rem;
 }
 
@@ -7418,6 +7419,7 @@ body.secret-theme .secret-deactivate {
     min-height: 200px;
     display: flex;
     flex-direction: column;
+    margin: 0;
 }
 
 /* All strategy cards now span full width in stacked layout */
@@ -7432,15 +7434,16 @@ body.secret-theme .secret-deactivate {
 .strategy-card h4 {
     color: var(--accent);
     margin-bottom: 1rem;
+    margin-top: 0;
     font-size: 1.3rem;
     font-weight: 600;
 }
 
 .strategy-card p {
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
     line-height: 1.5;
-    flex-grow: 1;
 }
 
 .strategy-card ul {

@@ -10,7 +10,7 @@
     --border-light: #e0e0e0;
     --shadow-light: rgba(0, 0, 0, 0.1);
 
-    /* Default Theme - Blue with Orange (Current) */
+    /* Default Theme - Keep original blue/orange as fallback */
     --bg-primary-default: #0a0e1a;
     --bg-secondary-default: #1a1f2e;
     --text-primary-default: #ffffff;
@@ -80,6 +80,97 @@
     --border-britain: #4F5B36;
     --shadow-britain: rgba(156, 139, 100, 0.1);
 
+    /* Holiday Themes */
+    /* Christmas Theme - Red and Green with Snow */
+    --bg-primary-christmas: #0d1a0d;
+    --bg-secondary-christmas: #1a2e1a;
+    --text-primary-christmas: #ffffff;
+    --text-secondary-christmas: #a5d4a5;
+    --accent-christmas: #ef4444;
+    --accent-secondary-christmas: #22c55e;
+    --border-christmas: #2d3d2d;
+    --shadow-christmas: rgba(34, 197, 94, 0.3);
+
+    /* Thanksgiving Theme - Fall Colors */
+    --bg-primary-thanksgiving: #3e2723;
+    --bg-secondary-thanksgiving: #5d4037;
+    --text-primary-thanksgiving: #ffffff;
+    --text-secondary-thanksgiving: #d7ccc8;
+    --accent-thanksgiving: #ff6f00;
+    --accent-secondary-thanksgiving: #ff8f00;
+    --border-thanksgiving: #6d4c41;
+    --shadow-thanksgiving: rgba(255, 111, 0, 0.2);
+
+    /* July 4th Theme - Red, White, Blue */
+    --bg-primary-july4: #0a0e27;
+    --bg-secondary-july4: #1a1f3e;
+    --text-primary-july4: #ffffff;
+    --text-secondary-july4: #b8c5d6;
+    --accent-july4: #ef4444;
+    --accent-secondary-july4: #3b82f6;
+    --border-july4: #2a3441;
+    --shadow-july4: rgba(59, 130, 246, 0.3);
+
+    /* Veterans Day Theme - Patriotic */
+    --bg-primary-veterans: #1a0f1a;
+    --bg-secondary-veterans: #2d1a2d;
+    --text-primary-veterans: #ffffff;
+    --text-secondary-veterans: #d4a5d4;
+    --accent-veterans: #ef4444;
+    --accent-secondary-veterans: #3b82f6;
+    --border-veterans: #3d253d;
+    --shadow-veterans: rgba(59, 130, 246, 0.3);
+
+    /* Easter Theme - Pastels (Mint, Sky Blue, Lime, Lavender, Pink) */
+    --bg-primary-easter: #f0fdfa; /* Very light mint */
+    --bg-secondary-easter: #e0f7f4; /* Light aqua */
+    --text-primary-easter: #1a4d3a; /* Dark mint green */
+    --text-secondary-easter: #2d6a4f; /* Medium mint */
+    --accent-easter: #7dd3fc; /* Sky blue/cyan */
+    --accent-secondary-easter: #a78bfa; /* Lavender/periwinkle */
+    --border-easter: #bae6fd; /* Light sky blue */
+    --shadow-easter: rgba(125, 211, 252, 0.3);
+
+    /* Halloween Theme - Orange and Black */
+    --bg-primary-halloween: #000000;
+    --bg-secondary-halloween: #1a1a1a;
+    --text-primary-halloween: #ffffff;
+    --text-secondary-halloween: #ff9800;
+    --accent-halloween: #ff9800;
+    --accent-secondary-halloween: #ff6600;
+    --border-halloween: #333333;
+    --shadow-halloween: rgba(255, 152, 0, 0.3);
+
+    /* New Year's Theme - Black and Gold */
+    --bg-primary-newyear: #000000;
+    --bg-secondary-newyear: #1a1a1a;
+    --text-primary-newyear: #ffffff;
+    --text-secondary-newyear: #ffd700;
+    --accent-newyear: #ffd700;
+    --accent-secondary-newyear: #ffed4e;
+    --border-newyear: #333333;
+    --shadow-newyear: rgba(255, 215, 0, 0.3);
+
+    /* Valentine's Day Theme - Pink and Red */
+    --bg-primary-valentines: #2d0f1a;
+    --bg-secondary-valentines: #3d1a2d;
+    --text-primary-valentines: #ffffff;
+    --text-secondary-valentines: #ffb3ba;
+    --accent-valentines: #ff69b4;
+    --accent-secondary-valentines: #ff1493;
+    --border-valentines: #4d253d;
+    --shadow-valentines: rgba(255, 105, 180, 0.3);
+
+    /* St. Patrick's Day Theme - Green */
+    --bg-primary-stpatricks: #0d1a0d;
+    --bg-secondary-stpatricks: #1a2e1a;
+    --text-primary-stpatricks: #ffffff;
+    --text-secondary-stpatricks: #90ee90;
+    --accent-stpatricks: #32cd32;
+    --accent-secondary-stpatricks: #00ff00;
+    --border-stpatricks: #2d3d2d;
+    --shadow-stpatricks: rgba(50, 205, 50, 0.3);
+
     /* Common Colors */
     --success: #4caf50;
     --warning: #ff9800;
@@ -101,7 +192,7 @@ body {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8.5"/><circle cx="10" cy="10" r="2.5"/></svg>') 10 10, auto;
 }
 
-/* Default Theme - Blue with Orange */
+/* Default Theme - Blue with Orange (Original) */
 body.theme-default {
     background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
@@ -126,6 +217,89 @@ body.theme-default::before {
     );
     pointer-events: none;
     z-index: -1;
+}
+
+/* Christmas Theme - Red and Green with Snow */
+body.theme-christmas {
+    background: radial-gradient(circle at 20% 80%, rgba(239, 68, 68, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(239, 68, 68, 0.15) 0%, transparent 70%),
+    radial-gradient(circle at 30% 70%, rgba(34, 197, 94, 0.15) 0%, transparent 70%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #1a2e1a 25%, #2d1a1a 50%, #1a2e1a 75%, var(--bg-primary) 100%);
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.theme-christmas::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(239, 68, 68, 0.08) 2px,
+            rgba(239, 68, 68, 0.08) 4px
+    ),
+    repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 2px,
+            rgba(34, 197, 94, 0.08) 2px,
+            rgba(34, 197, 94, 0.08) 4px
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Snow Animation for Christmas Theme */
+body.theme-christmas::after {
+    content: '';
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 40% 50%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 80% 90%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 90% 10%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+        radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 25% 35%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 35% 45%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 45% 55%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 55% 65%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 65% 75%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 75% 85%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 85% 95%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 95% 15%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px);
+    background-size: 200px 200px, 150px 150px, 180px 180px, 220px 220px, 160px 160px, 190px 190px, 210px 210px, 170px 170px, 200px 200px,
+                     100px 100px, 120px 120px, 110px 110px, 130px 130px, 105px 105px, 125px 125px, 115px 115px, 135px 135px, 140px 140px;
+    background-position: 0% 0%, 10% 10%, 20% 20%, 30% 30%, 40% 40%, 50% 50%, 60% 60%, 70% 70%, 80% 80%,
+                         5% 5%, 15% 15%, 25% 25%, 35% 35%, 45% 45%, 55% 55%, 65% 65%, 75% 75%, 85% 85%;
+    animation: snowFall 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        transform: translateY(100vh) translateX(30px);
+    }
 }
 
 /* US Airborne Theme - Green, Brown, and Yellow (101st Airborne) */
@@ -313,6 +487,821 @@ body.theme-britain::before {
             rgba(156, 139, 100, 0.03) 2px,
             rgba(156, 139, 100, 0.03) 4px
     );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Thanksgiving Theme - Fall Colors with Leaves */
+body.theme-thanksgiving {
+    background: radial-gradient(circle at 20% 80%, rgba(255, 111, 0, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 143, 0, 0.25) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #5d4037 50%, var(--bg-primary) 100%);
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.theme-thanksgiving::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 111, 0, 0.05) 2px,
+            rgba(255, 111, 0, 0.05) 4px
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Bouncing Leaves and Turkeys for Thanksgiving */
+body.theme-thanksgiving::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* July 4th Theme - Red, White, Blue with Fireworks */
+body.theme-july4 {
+    background: #000033; /* Dark navy blue */
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.theme-july4::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Fireworks Animation for July 4th - Canvas-based (will be handled by JavaScript) */
+body.theme-july4::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Veterans Day Theme - Patriotic with Flags */
+body.theme-veterans {
+    background: radial-gradient(circle at 20% 80%, rgba(239, 68, 68, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #2d1a2d 50%, var(--bg-primary) 100%);
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.theme-veterans::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(239, 68, 68, 0.05) 2px,
+            rgba(239, 68, 68, 0.05) 4px
+    ),
+    repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 2px,
+            rgba(59, 130, 246, 0.05) 2px,
+            rgba(59, 130, 246, 0.05) 4px
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Animated Flags for Veterans Day - Distributed across screen */
+body.theme-veterans::after {
+    content: '🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸 🇺🇸';
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    font-size: 40px;
+    animation: flagWave 20s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.7;
+    letter-spacing: 80px;
+    text-align: left;
+    line-height: 200px;
+}
+
+@keyframes flagWave {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        transform: translateY(100vh) translateX(30px);
+    }
+}
+
+/* Easter Theme - Pastels with Eggs/Bunnies */
+body.theme-easter {
+    background: 
+        /* Easter egg pattern - horizontal stripes */
+        repeating-linear-gradient(
+            0deg,
+            rgba(167, 139, 250, 0.15) 0px,
+            rgba(167, 139, 250, 0.15) 40px,
+            rgba(125, 211, 252, 0.15) 40px,
+            rgba(125, 211, 252, 0.15) 80px,
+            rgba(190, 242, 100, 0.15) 80px,
+            rgba(190, 242, 100, 0.15) 120px,
+            rgba(167, 139, 250, 0.15) 120px,
+            rgba(167, 139, 250, 0.15) 160px,
+            rgba(251, 191, 216, 0.15) 160px,
+            rgba(251, 191, 216, 0.15) 200px
+        ),
+        /* Easter egg pattern - vertical curves (egg shape) */
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(125, 211, 252, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 70% at 30% 30%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 70% at 70% 70%, rgba(190, 242, 100, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 60% at 20% 60%, rgba(251, 191, 216, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 60% at 80% 40%, rgba(125, 211, 252, 0.1) 0%, transparent 50%),
+        /* Base gradient */
+        linear-gradient(135deg, var(--bg-primary) 0%, #e0f7f4 50%, var(--bg-primary) 100%);
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.theme-easter::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Easter egg decorative dots pattern */
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(167, 139, 250, 0.2) 3px, transparent 3px),
+        radial-gradient(circle at 40% 20%, rgba(125, 211, 252, 0.2) 4px, transparent 4px),
+        radial-gradient(circle at 60% 35%, rgba(190, 242, 100, 0.2) 3px, transparent 3px),
+        radial-gradient(circle at 80% 25%, rgba(251, 191, 216, 0.2) 4px, transparent 4px),
+        radial-gradient(circle at 25% 60%, rgba(125, 211, 252, 0.2) 3px, transparent 3px),
+        radial-gradient(circle at 45% 70%, rgba(167, 139, 250, 0.2) 4px, transparent 4px),
+        radial-gradient(circle at 65% 65%, rgba(190, 242, 100, 0.2) 3px, transparent 3px),
+        radial-gradient(circle at 85% 55%, rgba(251, 191, 216, 0.2) 4px, transparent 4px),
+        radial-gradient(circle at 30% 80%, rgba(125, 211, 252, 0.2) 3px, transparent 3px),
+        radial-gradient(circle at 50% 85%, rgba(167, 139, 250, 0.2) 4px, transparent 4px),
+        radial-gradient(circle at 70% 80%, rgba(190, 242, 100, 0.2) 3px, transparent 3px),
+        radial-gradient(circle at 90% 75%, rgba(251, 191, 216, 0.2) 4px, transparent 4px);
+    background-size: 200px 200px, 180px 180px, 220px 220px, 190px 190px, 210px 210px, 200px 200px, 180px 180px, 220px 220px, 190px 190px, 210px 210px, 200px 200px, 180px 180px;
+    background-position: 0% 0%, 10% 10%, 20% 20%, 30% 30%, 40% 40%, 50% 50%, 60% 60%, 70% 70%, 80% 80%, 90% 90%, 100% 100%, 5% 5%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+/* Falling Eggs/Bunnies for Easter - Distributed across screen */
+body.theme-easter::after {
+    content: '🥚 🐰 🥚 🐰 🥚 🐰 🥚 🐰 🥚 🐰 🥚 🐰 🥚 🐰 🥚 🐰 🥚 🐰 🥚 🐰 🥚 🐰 🥚 🐰 🥚';
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    font-size: 30px;
+    animation: easterFall 16s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.85;
+    letter-spacing: 90px;
+    text-align: left;
+    line-height: 140px;
+}
+
+@keyframes easterFall {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    100% {
+        transform: translateY(100vh) translateX(50px);
+    }
+}
+
+/* Halloween Theme - Orange and Black with 8-bit Pumpkin */
+body.theme-halloween {
+    background: #000000;
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.theme-halloween::before {
+    content: '🎃';
+    position: fixed;
+    font-size: 120px;
+    animation: pumpkinFloat 25s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+body.theme-halloween::after {
+    content: '🦇';
+    position: fixed;
+    font-size: 100px;
+    animation: batFloat 28s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+@keyframes pumpkinFloat {
+    0% {
+        transform: translate(-100px, 20vh) rotate(0deg);
+    }
+    25% {
+        transform: translate(30vw, 10vh) rotate(90deg);
+    }
+    50% {
+        transform: translate(70vw, 50vh) rotate(180deg);
+    }
+    75% {
+        transform: translate(40vw, 80vh) rotate(270deg);
+    }
+    100% {
+        transform: translate(110vw, 30vh) rotate(360deg);
+    }
+}
+
+@keyframes batFloat {
+    0% {
+        transform: translate(110vw, 60vh) rotate(0deg);
+    }
+    20% {
+        transform: translate(70vw, 20vh) rotate(-45deg);
+    }
+    40% {
+        transform: translate(20vw, 70vh) rotate(45deg);
+    }
+    60% {
+        transform: translate(50vw, 40vh) rotate(-90deg);
+    }
+    80% {
+        transform: translate(90vw, 80vh) rotate(90deg);
+    }
+    100% {
+        transform: translate(-100px, 50vh) rotate(0deg);
+    }
+}
+
+/* Halloween Ghost Animation */
+#halloweenGhost {
+    animation: ghostFloat 32s ease-in-out infinite;
+}
+
+@keyframes ghostFloat {
+    0% {
+        transform: translate(-100px, 80vh) rotate(0deg);
+    }
+    15% {
+        transform: translate(20vw, 30vh) rotate(45deg);
+    }
+    35% {
+        transform: translate(80vw, 60vh) rotate(-45deg);
+    }
+    55% {
+        transform: translate(40vw, 10vh) rotate(90deg);
+    }
+    75% {
+        transform: translate(60vw, 90vh) rotate(-90deg);
+    }
+    100% {
+        transform: translate(110vw, 40vh) rotate(0deg);
+    }
+}
+
+/* New Year's Theme - Pure Black Background */
+body.theme-newyear {
+    background: #000000;
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.theme-newyear::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Firework Animation for New Year's - Canvas-based (will be handled by JavaScript) */
+body.theme-newyear::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Firework Animation for July 4th - Canvas-based (will be handled by JavaScript) */
+body.theme-july4::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Valentine's Day Theme - Pink and Red with Bouncing Hearts */
+body.theme-valentines {
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #2d0f1a 50%, var(--bg-primary) 100%);
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.theme-valentines::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Bouncing Hearts Animation */
+#valentineHearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.bouncing-heart {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.8;
+    animation: bounceHeart 15s ease-in-out infinite;
+}
+
+.bouncing-heart:nth-child(1) {
+    animation-duration: 12s;
+    animation-delay: 0s;
+    left: 10%;
+    top: 20%;
+}
+
+.bouncing-heart:nth-child(2) {
+    animation-duration: 18s;
+    animation-delay: 2s;
+    left: 30%;
+    top: 60%;
+}
+
+.bouncing-heart:nth-child(3) {
+    animation-duration: 14s;
+    animation-delay: 4s;
+    left: 60%;
+    top: 10%;
+}
+
+.bouncing-heart:nth-child(4) {
+    animation-duration: 16s;
+    animation-delay: 1s;
+    left: 80%;
+    top: 50%;
+}
+
+.bouncing-heart:nth-child(5) {
+    animation-duration: 20s;
+    animation-delay: 3s;
+    left: 20%;
+    top: 80%;
+}
+
+.bouncing-heart:nth-child(6) {
+    animation-duration: 13s;
+    animation-delay: 5s;
+    left: 70%;
+    top: 30%;
+}
+
+.bouncing-heart:nth-child(7) {
+    animation-duration: 17s;
+    animation-delay: 2.5s;
+    left: 50%;
+    top: 70%;
+}
+
+.bouncing-heart:nth-child(8) {
+    animation-duration: 15s;
+    animation-delay: 4.5s;
+    left: 90%;
+    top: 15%;
+}
+
+@keyframes bounceHeart {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(30vw, -20vh) rotate(90deg);
+    }
+    50% {
+        transform: translate(-20vw, 30vh) rotate(180deg);
+    }
+    75% {
+        transform: translate(25vw, 25vh) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+/* Bouncing Gold and Clovers Animation */
+#stpatricksElements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.bouncing-gold {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0.9;
+    animation: bounceGold 16s ease-in-out infinite;
+}
+
+.bouncing-clover {
+    position: absolute;
+    font-size: 45px;
+    opacity: 0.85;
+    animation: bounceClover 14s ease-in-out infinite;
+}
+
+.bouncing-gold:nth-child(1) {
+    animation-duration: 13s;
+    animation-delay: 0s;
+    left: 15%;
+    top: 25%;
+}
+
+.bouncing-clover:nth-child(2) {
+    animation-duration: 17s;
+    animation-delay: 1.5s;
+    left: 40%;
+    top: 55%;
+}
+
+.bouncing-gold:nth-child(3) {
+    animation-duration: 15s;
+    animation-delay: 3s;
+    left: 65%;
+    top: 15%;
+}
+
+.bouncing-clover:nth-child(4) {
+    animation-duration: 19s;
+    animation-delay: 2s;
+    left: 25%;
+    top: 75%;
+}
+
+.bouncing-gold:nth-child(5) {
+    animation-duration: 14s;
+    animation-delay: 4.5s;
+    left: 75%;
+    top: 45%;
+}
+
+.bouncing-clover:nth-child(6) {
+    animation-duration: 16s;
+    animation-delay: 1s;
+    left: 55%;
+    top: 65%;
+}
+
+.bouncing-gold:nth-child(7) {
+    animation-duration: 18s;
+    animation-delay: 3.5s;
+    left: 85%;
+    top: 30%;
+}
+
+.bouncing-clover:nth-child(8) {
+    animation-duration: 12s;
+    animation-delay: 5s;
+    left: 10%;
+    top: 50%;
+}
+
+@keyframes bounceGold {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(35vw, -25vh) rotate(90deg);
+    }
+    50% {
+        transform: translate(-25vw, 35vh) rotate(180deg);
+    }
+    75% {
+        transform: translate(30vw, 30vh) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes bounceClover {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(-30vw, 25vh) rotate(-90deg);
+    }
+    50% {
+        transform: translate(25vw, -30vh) rotate(-180deg);
+    }
+    75% {
+        transform: translate(-25vw, -25vh) rotate(-270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(-360deg);
+    }
+}
+
+/* Bouncing Leaves and Turkeys Animation */
+#thanksgivingElements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.bouncing-leaf {
+    position: absolute;
+    font-size: 35px;
+    opacity: 0.85;
+    animation: bounceLeaf 18s ease-in-out infinite;
+}
+
+.bouncing-turkey {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0.9;
+    animation: bounceTurkey 20s ease-in-out infinite;
+}
+
+.bouncing-leaf:nth-child(1) {
+    animation-duration: 14s;
+    animation-delay: 0s;
+    left: 5%;
+    top: 10%;
+}
+
+.bouncing-leaf:nth-child(2) {
+    animation-duration: 16s;
+    animation-delay: 1s;
+    left: 25%;
+    top: 30%;
+}
+
+.bouncing-turkey:nth-child(3) {
+    animation-duration: 22s;
+    animation-delay: 2s;
+    left: 45%;
+    top: 20%;
+}
+
+.bouncing-leaf:nth-child(4) {
+    animation-duration: 15s;
+    animation-delay: 3s;
+    left: 65%;
+    top: 50%;
+}
+
+.bouncing-leaf:nth-child(5) {
+    animation-duration: 17s;
+    animation-delay: 0.5s;
+    left: 15%;
+    top: 60%;
+}
+
+.bouncing-turkey:nth-child(6) {
+    animation-duration: 21s;
+    animation-delay: 4s;
+    left: 35%;
+    top: 70%;
+}
+
+.bouncing-leaf:nth-child(7) {
+    animation-duration: 13s;
+    animation-delay: 2.5s;
+    left: 75%;
+    top: 15%;
+}
+
+.bouncing-leaf:nth-child(8) {
+    animation-duration: 19s;
+    animation-delay: 1.5s;
+    left: 55%;
+    top: 40%;
+}
+
+.bouncing-turkey:nth-child(9) {
+    animation-duration: 23s;
+    animation-delay: 5s;
+    left: 85%;
+    top: 55%;
+}
+
+.bouncing-leaf:nth-child(10) {
+    animation-duration: 14s;
+    animation-delay: 4.5s;
+    left: 10%;
+    top: 80%;
+}
+
+.bouncing-leaf:nth-child(11) {
+    animation-duration: 16s;
+    animation-delay: 3.5s;
+    left: 50%;
+    top: 5%;
+}
+
+.bouncing-turkey:nth-child(12) {
+    animation-duration: 20s;
+    animation-delay: 6s;
+    left: 70%;
+    top: 75%;
+}
+
+.bouncing-leaf:nth-child(13) {
+    animation-duration: 18s;
+    animation-delay: 2s;
+    left: 30%;
+    top: 45%;
+}
+
+.bouncing-leaf:nth-child(14) {
+    animation-duration: 15s;
+    animation-delay: 5.5s;
+    left: 90%;
+    top: 35%;
+}
+
+.bouncing-turkey:nth-child(15) {
+    animation-duration: 24s;
+    animation-delay: 1s;
+    left: 20%;
+    top: 25%;
+}
+
+.bouncing-leaf:nth-child(16) {
+    animation-duration: 17s;
+    animation-delay: 4s;
+    left: 60%;
+    top: 65%;
+}
+
+.bouncing-leaf:nth-child(17) {
+    animation-duration: 13s;
+    animation-delay: 6.5s;
+    left: 40%;
+    top: 85%;
+}
+
+.bouncing-turkey:nth-child(18) {
+    animation-duration: 19s;
+    animation-delay: 3s;
+    left: 80%;
+    top: 45%;
+}
+
+@keyframes bounceLeaf {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(40vw, -30vh) rotate(90deg);
+    }
+    50% {
+        transform: translate(-30vw, 40vh) rotate(180deg);
+    }
+    75% {
+        transform: translate(35vw, 35vh) rotate(270deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes bounceTurkey {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    20% {
+        transform: translate(-35vw, 30vh) rotate(-45deg);
+    }
+    40% {
+        transform: translate(30vw, -35vh) rotate(-90deg);
+    }
+    60% {
+        transform: translate(-25vw, -30vh) rotate(-135deg);
+    }
+    80% {
+        transform: translate(35vw, 30vh) rotate(-180deg);
+    }
+    100% {
+        transform: translate(0, 0) rotate(-360deg);
+    }
+}
+
+/* St. Patrick's Day Theme - Green with Shamrocks */
+body.theme-stpatricks {
+    background: radial-gradient(circle at 20% 80%, rgba(50, 205, 50, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 255, 0, 0.25) 0%, transparent 50%),
+    linear-gradient(135deg, var(--bg-primary) 0%, #1a2e1a 50%, var(--bg-primary) 100%);
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.theme-stpatricks::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(50, 205, 50, 0.05) 2px,
+            rgba(50, 205, 50, 0.05) 4px
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Bouncing Gold and Clovers for St. Patrick's Day */
+body.theme-stpatricks::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: -1;
 }
@@ -526,6 +1515,139 @@ body.theme-britain {
     --accent-secondary: var(--accent-secondary-britain);
     --border: var(--border-britain);
     --shadow: var(--shadow-britain);
+}
+
+body.theme-spring {
+    --bg-primary: var(--bg-primary-spring);
+    --bg-secondary: var(--bg-secondary-spring);
+    --text-primary: var(--text-primary-spring);
+    --text-secondary: var(--text-secondary-spring);
+    --accent: var(--accent-spring);
+    --accent-secondary: var(--accent-secondary-spring);
+    --border: var(--border-spring);
+    --shadow: var(--shadow-spring);
+}
+
+body.theme-summer {
+    --bg-primary: var(--bg-primary-summer);
+    --bg-secondary: var(--bg-secondary-summer);
+    --text-primary: var(--text-primary-summer);
+    --text-secondary: var(--text-secondary-summer);
+    --accent: var(--accent-summer);
+    --accent-secondary: var(--accent-secondary-summer);
+    --border: var(--border-summer);
+    --shadow: var(--shadow-summer);
+}
+
+body.theme-fall {
+    --bg-primary: var(--bg-primary-fall);
+    --bg-secondary: var(--bg-secondary-fall);
+    --text-primary: var(--text-primary-fall);
+    --text-secondary: var(--text-secondary-fall);
+    --accent: var(--accent-fall);
+    --accent-secondary: var(--accent-secondary-fall);
+    --border: var(--border-fall);
+    --shadow: var(--shadow-fall);
+}
+
+/* Holiday Theme Variable Mappings */
+body.theme-christmas {
+    --bg-primary: var(--bg-primary-christmas);
+    --bg-secondary: var(--bg-secondary-christmas);
+    --text-primary: var(--text-primary-christmas);
+    --text-secondary: var(--text-secondary-christmas);
+    --accent: var(--accent-christmas);
+    --accent-secondary: var(--accent-secondary-christmas);
+    --border: var(--border-christmas);
+    --shadow: var(--shadow-christmas);
+}
+
+body.theme-thanksgiving {
+    --bg-primary: var(--bg-primary-thanksgiving);
+    --bg-secondary: var(--bg-secondary-thanksgiving);
+    --text-primary: var(--text-primary-thanksgiving);
+    --text-secondary: var(--text-secondary-thanksgiving);
+    --accent: var(--accent-thanksgiving);
+    --accent-secondary: var(--accent-secondary-thanksgiving);
+    --border: var(--border-thanksgiving);
+    --shadow: var(--shadow-thanksgiving);
+}
+
+body.theme-july4 {
+    --bg-primary: var(--bg-primary-july4);
+    --bg-secondary: var(--bg-secondary-july4);
+    --text-primary: var(--text-primary-july4);
+    --text-secondary: var(--text-secondary-july4);
+    --accent: var(--accent-july4);
+    --accent-secondary: var(--accent-secondary-july4);
+    --border: var(--border-july4);
+    --shadow: var(--shadow-july4);
+}
+
+body.theme-veterans {
+    --bg-primary: var(--bg-primary-veterans);
+    --bg-secondary: var(--bg-secondary-veterans);
+    --text-primary: var(--text-primary-veterans);
+    --text-secondary: var(--text-secondary-veterans);
+    --accent: var(--accent-veterans);
+    --accent-secondary: var(--accent-secondary-veterans);
+    --border: var(--border-veterans);
+    --shadow: var(--shadow-veterans);
+}
+
+body.theme-easter {
+    --bg-primary: var(--bg-primary-easter);
+    --bg-secondary: var(--bg-secondary-easter);
+    --text-primary: var(--text-primary-easter);
+    --text-secondary: var(--text-secondary-easter);
+    --accent: var(--accent-easter);
+    --accent-secondary: var(--accent-secondary-easter);
+    --border: var(--border-easter);
+    --shadow: var(--shadow-easter);
+}
+
+body.theme-halloween {
+    --bg-primary: var(--bg-primary-halloween);
+    --bg-secondary: var(--bg-secondary-halloween);
+    --text-primary: var(--text-primary-halloween);
+    --text-secondary: var(--text-secondary-halloween);
+    --accent: var(--accent-halloween);
+    --accent-secondary: var(--accent-secondary-halloween);
+    --border: var(--border-halloween);
+    --shadow: var(--shadow-halloween);
+}
+
+body.theme-newyear {
+    --bg-primary: var(--bg-primary-newyear);
+    --bg-secondary: var(--bg-secondary-newyear);
+    --text-primary: var(--text-primary-newyear);
+    --text-secondary: var(--text-secondary-newyear);
+    --accent: var(--accent-newyear);
+    --accent-secondary: var(--accent-secondary-newyear);
+    --border: var(--border-newyear);
+    --shadow: var(--shadow-newyear);
+}
+
+body.theme-valentines {
+    --bg-primary: var(--bg-primary-valentines);
+    --bg-secondary: var(--bg-secondary-valentines);
+    --text-primary: var(--text-primary-valentines);
+    --text-secondary: var(--text-secondary-valentines);
+    --accent: var(--accent-valentines);
+    --accent-secondary: var(--accent-secondary-valentines);
+    --border: var(--border-valentines);
+    --shadow: var(--shadow-valentines);
+}
+
+body.theme-stpatricks {
+    --bg-primary: var(--bg-primary-stpatricks);
+    --bg-secondary: var(--bg-secondary-stpatricks);
+    --text-primary: var(--text-primary-stpatricks);
+    --text-secondary: var(--text-secondary-stpatricks);
+    --accent: var(--accent-stpatricks);
+    --accent-secondary: var(--accent-secondary-stpatricks);
+    --border: var(--border-stpatricks);
+    --shadow: var(--shadow-stpatricks);
 }
 
 /* Ensure text legibility in Red Devils theme */

@@ -48,10 +48,58 @@
     <!-- End Cloudflare Web Analytics -->
 </head>
 <body class="dark-mode">
+    <!-- Canvas for New Year's Fireworks -->
+    <canvas id="fireworksCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; display: none;"></canvas>
+    <!-- Halloween Ghost -->
+    <div id="halloweenGhost" style="position: fixed; font-size: 100px; pointer-events: none; z-index: -1; display: none; opacity: 0.7;">👻</div>
+    <!-- Valentine's Day Hearts -->
+    <div id="valentineHearts" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; display: none;">
+        <span class="bouncing-heart">💖</span>
+        <span class="bouncing-heart">💕</span>
+        <span class="bouncing-heart">💗</span>
+        <span class="bouncing-heart">❤️</span>
+        <span class="bouncing-heart">💖</span>
+        <span class="bouncing-heart">💕</span>
+        <span class="bouncing-heart">💗</span>
+        <span class="bouncing-heart">❤️</span>
+    </div>
+    <!-- St. Patrick's Day Gold and Clovers -->
+    <div id="stpatricksElements" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; display: none;">
+        <span class="bouncing-gold">🪙</span>
+        <span class="bouncing-clover">☘️</span>
+        <span class="bouncing-gold">🪙</span>
+        <span class="bouncing-clover">☘️</span>
+        <span class="bouncing-gold">🪙</span>
+        <span class="bouncing-clover">☘️</span>
+        <span class="bouncing-gold">🪙</span>
+        <span class="bouncing-clover">☘️</span>
+    </div>
+    <!-- Thanksgiving Leaves and Turkeys -->
+    <div id="thanksgivingElements" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; display: none;">
+        <span class="bouncing-leaf">🍂</span>
+        <span class="bouncing-leaf">🍁</span>
+        <span class="bouncing-turkey">🦃</span>
+        <span class="bouncing-leaf">🍂</span>
+        <span class="bouncing-leaf">🍁</span>
+        <span class="bouncing-turkey">🦃</span>
+        <span class="bouncing-leaf">🍂</span>
+        <span class="bouncing-leaf">🍁</span>
+        <span class="bouncing-turkey">🦃</span>
+        <span class="bouncing-leaf">🍂</span>
+        <span class="bouncing-leaf">🍁</span>
+        <span class="bouncing-turkey">🦃</span>
+        <span class="bouncing-leaf">🍂</span>
+        <span class="bouncing-leaf">🍁</span>
+        <span class="bouncing-turkey">🦃</span>
+        <span class="bouncing-leaf">🍂</span>
+        <span class="bouncing-leaf">🍁</span>
+        <span class="bouncing-turkey">🦃</span>
+    </div>
     <div class="container">
         <!-- Header -->
         <header class="header">
             <div class="header-content">
+                
                 <!-- Game Version Dropdown -->
                 <div class="game-version-dropdown">
                     <button class="game-version-toggle" id="gameVersionToggle">
@@ -84,7 +132,7 @@
                 <div class="header-controls">
                 <div class="theme-selector">
                     <select id="themeSelect" class="theme-dropdown">
-                        <option value="theme-default">☀️ Default</option>
+                        <option value="theme-default">Default</option>
                         <option value="theme-soviet">🔨 Motherland</option>
                         <option value="theme-german">⚡ Blitzkrieg</option>
                         <option value="theme-marines">🪂 Airborne</option>
@@ -117,61 +165,61 @@
                     <h2>Armor Overview</h2>
                     <p>Master the art of tank warfare in Hell Let Loose</p>
                 </div>
-                                 <div class="overview-grid">
-                     <div class="overview-card featured-card" onclick="showSection('tanks')">
+                <div class="overview-grid">
+                    <div class="overview-card featured-card" onclick="showSection('tanks')">
                          <div class="card-background-image"></div>
                          <i></i>
-                         <h3>Tanks</h3>
-                         <p>Complete database of all tanks with detailed stats, armor values, and combat analysis.</p>
-                     </div>
+                        <h3>Tanks</h3>
+                        <p>Complete database of all tanks with detailed stats, armor values, and combat analysis.</p>
+                    </div>
                      <div class="overview-card tactics-card" onclick="showSection('tactics')">
                          <div class="card-background-image"></div>
                          <i class="fas fa-graduation-cap"></i>
                          <h3>Getting Started</h3>
                          <p>Essential fundamentals and beginner-friendly tips for new tank crews.</p>
                      </div>
-                     <div class="overview-card identification-card" onclick="showSection('identification')">
-                         <div class="card-background-image"></div>
-                         <i class="fas fa-crosshairs"></i>
-                         <h3>Identification</h3>
-                         <p>Learn to identify enemy tanks at a glance and understand their capabilities.</p>
-                     </div>
-                     <div class="overview-card ranging-card" onclick="showSection('ranging')">
-                         <div class="card-background-image"></div>
-                         <i class="fas fa-bullseye"></i>
-                         <h3>Ranging</h3>
-                         <p>Perfect your ranging skills to hit targets at any distance.</p>
-                     </div>
+                    <div class="overview-card identification-card" onclick="showSection('identification')">
+                        <div class="card-background-image"></div>
+                        <i class="fas fa-crosshairs"></i>
+                        <h3>Identification</h3>
+                        <p>Learn to identify enemy tanks at a glance and understand their capabilities.</p>
+                    </div>
+                    <div class="overview-card ranging-card" onclick="showSection('ranging')">
+                        <div class="card-background-image"></div>
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Ranging</h3>
+                        <p>Perfect your ranging skills to hit targets at any distance.</p>
+                    </div>
                 <div class="overview-card community-card" onclick="showSection('community')">
-                    <div class="card-background-image"></div>
+                        <div class="card-background-image"></div>
                     <i class="fas fa-users"></i>
                     <h3>Community</h3>
                     <p>Connect with other tank crews, share strategies, and join the community.</p>
+                    </div>
                 </div>
-                 </div>
                 
-                <!-- Featured Video: U18 Armor Changes -->
+                <!-- Featured Video: U19 Intro to SPA's -->
                 <div class="featured-video-section">
                     <div class="featured-video-header">
                         <div class="featured-badge">
                             <i class="fas fa-star"></i>
                             <span>FEATURED</span>
                         </div>
-                        <h3><i class="fas fa-cog"></i> Update 18 Armor Changes</h3>
-                        <p>Essential viewing: Learn about the latest armor mechanics and changes in Update 18</p>
+                        <h3><i class="fas fa-cog"></i> Update 19 Intro to SPA's</h3>
+                        <p>Learn about all the changes to Arty and SPA's</p>
                     </div>
                     <div class="featured-video-container">
                         <div class="video-wrapper">
                             <iframe 
-                                src="https://www.youtube.com/embed/Nj_uGtKt0g8"
-                                title="Update 18 Armor Changes - Hell Let Loose"
+                                src="https://www.youtube.com/embed/QmjtShptubM"
+                                title="Update 19 Intro to SPA's - Hell Let Loose"
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                             </iframe>
                         </div>
                         <div class="featured-video-footer">
-                            <a href="https://youtu.be/Nj_uGtKt0g8" target="_blank"
+                            <a href="https://youtu.be/QmjtShptubM?si=LWTRsk38dxS9K-nG" target="_blank"
                                class="featured-video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
@@ -184,20 +232,20 @@
                     <div class="video-grid">
                         <div class="video-card">
                             <div class="video-header">
-                            <h3><i class="fas fa-crosshairs"></i> Gunner POV</h3>
-                            <p>Learn from Fresh!</p>
+                            <h3><i class="fas fa-crosshairs"></i> First Round on Smolensk!</h3>
+                            <p>See the brand new U19 map</p>
                             </div>
                             <div class="video-wrapper">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/5-aNBReclIA?start=2516"
-                                    title="Tank Gunner POV - Hell Let Loose"
+                                    src="https://www.youtube.com/embed/v97y8Y2xOU4"
+                                    title="First Round on Smolensk! - Hell Let Loose"
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen>
                                 </iframe>
                             </div>
                         <div class="video-footer">
-                            <a href="https://www.youtube.com/watch?v=5-aNBReclIA&t=2516s" target="_blank"
+                            <a href="https://youtu.be/v97y8Y2xOU4?si=g8aC48kndEr28L0k" target="_blank"
                                class="video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
@@ -206,20 +254,20 @@
                         
                         <div class="video-card">
                             <div class="video-header">
-                            <h3><i class="fas fa-eye"></i> Spotter POV</h3>
-                            <p>Master the art of spotting and coordination from Raz</p>
-                            </div>
+                            <h3><i class="fas fa-eye"></i> Crazy Tanking</h3>
+                            <p>Teamwork makes the dreamwork in tanking</p>
+                    </div>
                             <div class="video-wrapper">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/6kJuoydeDVc?start=424"
-                                    title="Tank Spotter POV - Hell Let Loose"
+                                    src="https://www.youtube.com/embed/odVspH7Czbw"
+                                    title="Crazy Tanking - Hell Let Loose"
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen>
                                 </iframe>
-                            </div>
+                </div>
                         <div class="video-footer">
-                            <a href="https://www.youtube.com/watch?v=6kJuoydeDVc&t=424s" target="_blank"
+                            <a href="https://www.youtube.com/watch?v=odVspH7Czbw" target="_blank"
                                class="video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
@@ -232,12 +280,12 @@
 
             <!-- Tanks Section -->
             <section id="tanks" class="section">
-            <div class="section-header">
-                <h2>Tank Database</h2>
-                <p>Complete guide to all tanks in Hell Let Loose</p>
+                <div class="section-header">
+                    <h2>Tank Database</h2>
+                    <p>Complete guide to all tanks in Hell Let Loose</p>
                 <p class="update-info">Data as of Update 18</p>
                 <p class="update-info" style="font-size: 0.85rem; opacity: 0.7; font-style: italic; margin-top: 0.5rem;">As of U18, recon vehicles have not received any adjustments</p>
-            </div>
+                </div>
                 
                 <!-- Faction Filter with Compact Type Filter -->
                 <div class="faction-filter">
@@ -272,6 +320,7 @@
                                 <button class="filter-option" data-tank-type="medium">Medium Tank</button>
                                 <button class="filter-option" data-tank-type="light">Light Tank</button>
                                 <button class="filter-option" data-tank-type="recon">Recon Vehicle</button>
+                                <button class="filter-option" data-tank-type="spa">SPA</button>
                             </div>
                         </div>
                     </div>
@@ -318,13 +367,13 @@
                     </div>
                     <div class="comparison-stats" id="comparisonStats">
                         <!-- Comparison stats will be populated here -->
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Tank Grid -->
-            <div class="tank-grid" id="tankGrid">
-                <!-- Tanks will be populated by JavaScript -->
+                <!-- Tank Grid -->
+                <div class="tank-grid" id="tankGrid">
+                    <!-- Tanks will be populated by JavaScript -->
                 </div>
             </section>
 
@@ -344,7 +393,7 @@
                                     <label for="artyDistance">Distance (meters):</label>
                                 <input type="number" id="artyDistance" min="100" max="1600" step="50"
                                        placeholder="Enter distance (100-1600m)">
-                                </div>
+                            </div>
                                 <div class="input-group">
                                     <label for="artyFaction">Faction:</label>
                                     <select id="artyFaction">
@@ -352,14 +401,68 @@
                                         <option value="german">Germany</option>
                                         <option value="soviet">Soviet Union</option>
                                         <option value="british">Great Britain</option>
-                                    </select>
-                                </div>
+                                </select>
+                            </div>
                                 <button class="calculate-btn" id="artyCalculateBtn">Calculate</button>
                                 
                                 <!-- Most Recent Calculation Display -->
                                 <div class="recent-calculation" id="recentCalculation">
                                     <p>No calculation performed yet</p>
+                        </div>
+                        
+                                <!-- Results Table -->
+                                <div class="arty-results">
+                                    <h4>Saved Results</h4>
+                                    <table class="arty-table">
+                                                        <thead>
+                            <tr>
+                                                <th>Result</th>
+                                                <th>Distance</th>
+                                <th>Faction</th>
+                                                <th>Action</th>
+                            </tr>
+                        </thead>
+                                        <tbody id="artyResultsBody">
+                                            <tr class="no-results">
+                                                <td colspan="4">No calculations saved yet</td>
+                                            </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    </div>
+                        
+                        <!-- Tile 2: SPA Calculator -->
+                        <div class="ranging-tool" onclick="expandTile(this)">
+                            <h3>SPA Calculator</h3>
+                            <div class="calculator">
+                                <div class="input-group">
+                                    <label for="spaDistance">Distance (meters):</label>
+                                    <input type="number" id="spaDistance" min="200" max="600" step="50"
+                                           placeholder="Enter distance (200-600m)">
                                 </div>
+                                <div class="input-group">
+                                    <label for="spaType">SPA Type:</label>
+                                    <select id="spaType">
+                                        <option value="usa">USA / Germany / Soviet</option>
+                                        <option value="churchill">British Churchill</option>
+                                        <option value="bishop">British Bishop</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="spaTerrainAdjustment">Terrain/Pitch Adjustment (mills):</label>
+                                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                        <button type="button" id="spaAdjustmentToggle" style="padding: 0.5rem 1rem; background: rgba(255, 152, 0, 0.2); border: 1px solid var(--accent); color: var(--accent); border-radius: 4px; cursor: pointer; font-weight: 600; min-width: 50px;">+</button>
+                                        <input type="number" id="spaTerrainAdjustment" step="1" placeholder="0" style="flex: 1;">
+                                </div>
+                                    <small style="display: block; margin-top: 0.25rem; opacity: 0.7; font-size: 0.85rem;">Adjust for terrain angle and tank pitch</small>
+                            </div>
+                                <button class="calculate-btn" id="spaCalculateBtn">Calculate</button>
+                                
+                                <!-- Most Recent Calculation Display -->
+                                <div class="recent-calculation" id="recentSpaCalculation">
+                                    <p>No calculation performed yet</p>
+                        </div>
                                 
                                 <!-- Results Table -->
                                 <div class="arty-results">
@@ -369,27 +472,16 @@
                                             <tr>
                                                 <th>Result</th>
                                                 <th>Distance</th>
-                                                <th>Faction</th>
+                                                <th>SPA Type</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="artyResultsBody">
+                                        <tbody id="spaResultsBody">
                                             <tr class="no-results">
                                                 <td colspan="4">No calculations saved yet</td>
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tile 2: SPA Calculator (WIP) -->
-                        <div class="ranging-tool">
-                            <h3>SPA Calculator <span class="wip-badge">WIP</span></h3>
-                            <div class="calculator">
-                                <div class="wip-message">
-                                    <p>Self-Propelled Artillery calculator coming soon!</p>
-                                    <p>This tool will help calculate artillery trajectories and firing solutions.</p>
                                 </div>
                             </div>
                         </div>
@@ -421,6 +513,7 @@
                                             <button class="type-filter-btn" data-tank-type="medium">Medium</button>
                                             <button class="type-filter-btn" data-tank-type="light">Light</button>
                                             <button class="type-filter-btn" data-tank-type="recon">Recon</button>
+                                            <button class="type-filter-btn" data-tank-type="spa">SPA</button>
                                         </div>
                                         
                                         <div class="tank-selection-grid" id="tankSelectionGrid">
@@ -435,7 +528,7 @@
                                                 <li>Click on the scope image to add ranging markers</li>
                                                 <li>Markers appear every 100m for distance estimation</li>
                                                 <li>Use this to practice ranging in-game</li>
-                                            </ul>
+                            </ul>
                                         </div>
                                     </div>
                                     
@@ -452,26 +545,26 @@
                     <h2>Tank Identification Guide</h2>
                     <p>Learn to identify tanks quickly and accurately</p>
                 </div>
-                                <div class="identification-content">
+                <div class="identification-content">
                     <div class="identification-practice">
                         <h3>Practice Identification</h3>
                         
                         <!-- Identification Tips Section -->
                         <div class="identification-tips-section">
                             <h4>Identification Tips</h4>
-                            <ul>
-                                <li>Look at the silhouette and overall shape</li>
-                                <li>Check the turret design and gun barrel</li>
-                                <li>Observe the suspension and track system</li>
-                                <li>Note the engine deck and exhaust</li>
-                                <li>Pay attention to the commander's cupola</li>
+                        <ul>
+                            <li>Look at the silhouette and overall shape</li>
+                            <li>Check the turret design and gun barrel</li>
+                            <li>Observe the suspension and track system</li>
+                            <li>Note the engine deck and exhaust</li>
+                            <li>Pay attention to the commander's cupola</li>
                                 <li>Count the road wheels and their spacing</li>
                                 <li>Identify the main gun caliber and length</li>
                                 <li>Look for distinctive markings or camouflage</li>
                                 <li>Check the presence of side skirts or armor</li>
                                 <li>Note the overall size and proportions</li>
-                            </ul>
-                        </div>
+                        </ul>
+                    </div>
                         
                         <!-- Game Area Container -->
                         <div class="game-area-container">
@@ -499,15 +592,15 @@
                                 </div>
                             </div>
                             
-                            <div class="practice-area">
-                                <div class="practice-tank" id="practiceTank">
+                        <div class="practice-area">
+                            <div class="practice-tank" id="practiceTank">
                                     <div id="practiceTankImage">
                                         <img src="" alt="Tank to identify">
                                     </div>
-                                    <div class="practice-options" id="practiceOptions">
-                                        <!-- Will be populated by JavaScript -->
-                                    </div>
+                                <div class="practice-options" id="practiceOptions">
+                                    <!-- Will be populated by JavaScript -->
                                 </div>
+                            </div>
                             <button class="calculate-btn start-practice-btn" onclick="startNewPractice()">Start
                                 Practice
                             </button>
@@ -565,8 +658,8 @@
                 <div class="tactics-content">
                     <div class="tactics-strategies">
                         <h3>Essential Fundamentals</h3>
-                                                 <div class="strategy-grid">
-                             <div class="strategy-card">
+                        <div class="strategy-grid">
+                            <div class="strategy-card">
                                  <h4>Tanker Roles</h4>
                                  <p>Understanding the roles and who does what</p>
                                  <div class="role-info">
@@ -587,15 +680,12 @@
                                     <img src="images/HLL_Icons/Roles/icn_tankCrew.png" alt="Tank Crewman Icon"
                                          class="role-icon" loading="lazy">
                                          <div class="role-details">
-                                        <strong>Tank Crewman</strong> - The tank crewman are simply the "other two"
-                                        squad mates in a tanker squad. These crewman can also play any role in the tank
-                                        however it is recommended that they play as driver or gunner. This said, there
-                                        is no true method these are simply recommendations. You should play whatever
-                                        role you and your tank mates decide as teamwork and comfortability is the
-                                        ultimate deciding factors. This role comes with two sub classes. The starting
-                                        unit comes with no repair torch, and the second one (once you earn level three)
-                                        gets the repair torch. In ever single scenario you should always equip the
-                                        repair torch class.
+                                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                            <strong>Tank Crewman</strong>
+                                            <span style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1)); border: 1px solid var(--accent); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">New in U19</span>
+                                        </div>
+                                        <span>The tank crewman are simply the "other two" squad mates in a tanker squad. These crewman can also play any role in the tank however it is recommended that they play as driver or gunner. This said, there is no true method these are simply recommendations. You should play whatever role you and your tank mates decide as teamwork and comfortability is the ultimate deciding factors. This role comes with two sub classes. The starting unit comes with no repair torch, and the second one (once you earn level three) gets the repair torch. In ever single scenario you should always equip the repair torch class.</span>
+                                        <p style="margin-top: 0.75rem; padding: 0.75rem; background: rgba(255, 152, 0, 0.1); border-left: 3px solid var(--accent); border-radius: 4px;"><strong>Update 19:</strong> Crewmen have now gained a supply crate that they can drop for the mechanic to build.</p>
                                          </div>
                                      </div>
                                      <div class="role-item" style="margin-top: 1.5rem; position: relative;">
@@ -607,6 +697,33 @@
                                             <span style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1)); border: 1px solid var(--accent); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">New in U18</span>
                                         </div>
                                         <span>The Tank Technician is a new role that allows the tanker subclass to now build support assets for armor. The Technician (unlocked at level 7 crewman) can now build four barricades (25 supplies each), one repair station (50 supplies each), and one tank ammo depot (50 supplies each). These can utilize existing supplies across the battlefield to support your armor units.</span>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div class="strategy-card">
+                                 <h4>Artillery Roles <span style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1)); border: 1px solid var(--accent); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 0.5rem;">New in U19</span></h4>
+                                 <p>Understanding the new artillery unit roles and their responsibilities</p>
+                                 <div class="role-info">
+                                     <div class="role-item">
+                                    <img src="images/HLL_Icons/Roles/Artillery Observer.png"
+                                         alt="Artillery Observer Icon" class="role-icon" loading="lazy">
+                                         <div class="role-details">
+                                        <strong>Artillery Observer</strong> - Acts as the squad leader for artillery units. This role serves as the communication link between command chat and the artillery team. While able to operate within an SPA, the Observer is most effective when positioned on the front lines, providing target information, directing fire, and marking enemy positions with a flare gun for the team to engage.
+                                         </div>
+                                     </div>
+                                     <div class="role-item">
+                                    <img src="images/HLL_Icons/Roles/Artillery Engineer.png"
+                                         alt="Artillery Engineer Icon" class="role-icon" loading="lazy">
+                                         <div class="role-details">
+                                        <strong>Artillery Engineer</strong> - The sole unit member equipped with a blowtorch, responsible for maintaining the health of both SPA vehicles and static artillery guns. The Artillery Engineer also carries a wrench, similar to the standard engineer class, enabling construction of various defensive structures and placement of mines to protect the SPA or static artillery positions. Works in coordination with Artillery Support to operate, aim, and fire artillery weapons.
+                                         </div>
+                                     </div>
+                                     <div class="role-item">
+                                    <img src="images/HLL_Icons/Roles/Artillery Support.png"
+                                         alt="Artillery Support Icon" class="role-icon" loading="lazy">
+                                         <div class="role-details">
+                                        <strong>Artillery Support</strong> - Carries a supply box, similar to the standard support class. Critical for constructing static artillery guns at match start and rebuilding them if destroyed. The Artillery Support collaborates closely with the Artillery Engineer to build defensive structures. Works together with the Artillery Engineer to operate, aim, and fire artillery weapons.
                                          </div>
                                      </div>
                                  </div>
@@ -663,6 +780,17 @@
                             <p>Understanding the different tank classifications and their roles on the battlefield.</p>
                             <div class="tank-types-components">
                                 <div class="tank-type-component">
+                                    <img src="images/HLL_Icons/Vehicles/SPA.png"
+                                         alt="SPA Icon" class="tank-type-icon" loading="lazy">
+                                    <div class="tank-type-content">
+                                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                            <h5 class="tank-type-title" style="margin: 0;">SPA (Self Propelled Artillery)</h5>
+                                            <span style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1)); border: 1px solid var(--accent); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">New in U19</span>
+                                        </div>
+                                        <p class="tank-type-description">The SPA or Self propelled artillery units have been newly introduced to Hell Let Loose. These are designed to be used as "bunker busters" and can be shot at ranges up to 600 meters. The rounds will arc similar to artillery in mid air and will land on target. You can <a href="#ranging" onclick="showSection('ranging')" style="color: var(--accent); text-decoration: underline;">click here</a> to help you range.</p>
+                                    </div>
+                                </div>
+                                <div class="tank-type-component">
                                     <img src="images/HLL_Icons/Vehicles/icn_tank_heavy.png"
                                          alt="Heavy Tank Icon" class="tank-type-icon" loading="lazy">
                                     <div class="tank-type-content">
@@ -706,7 +834,7 @@
                             </div>
                         </div>
                         <div class="strategy-card" style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.08), rgba(255, 152, 0, 0.03)); border: 1px solid rgba(255, 152, 0, 0.2);">
-                            <h4><i class="fas fa-crosshairs"></i> Infantry Weapon Damage (vs Tanks) - Update 18 Changes</h4>
+                            <h4><i class="fas fa-crosshairs"></i> Infantry Weapon Damage (vs Tanks) - Update 19 Changes</h4>
                             <p>Know your enemy's firepower to assess threats and prioritize targets:</p>
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">
                                 <div style="padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 152, 0, 0.15);">
@@ -714,7 +842,7 @@
                                         <i class="fas fa-rocket" style="color: var(--accent); font-size: 1.2rem;"></i>
                                         <strong style="color: var(--accent);">Rocket Launchers</strong>
                                     </div>
-                                    <p style="margin: 0 0 0.75rem 0; color: var(--text-secondary); font-size: 0.95rem;">Approx. <strong style="color: #fff;">300 damage</strong> per hit</p>
+                                    <p style="margin: 0 0 0.75rem 0; color: var(--text-secondary); font-size: 0.95rem;">Approx. <strong style="color: #fff;">330 damage</strong> per hit</p>
                                     <div style="background: rgba(220, 53, 69, 0.15); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #dc3545; margin-bottom: 0.75rem;">
                                         <p style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #ff6b6b;">High Threat - Shots to Kill:</p>
                                         <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; font-size: 0.85rem; line-height: 1.6;">
@@ -723,7 +851,7 @@
                                             <li><strong>2 shots</strong> to kill Light tanks</li>
                                         </ul>
                                     </div>
-                                    <p style="margin: 0; font-size: 0.85rem; opacity: 0.9; line-height: 1.5;"><strong>Note:</strong> PIAT/Panzerschreck can pen any side of medium tanks or below, whereas Bazookas can only pen back of mediums and below. Think "medium" rounds for PIAT/Panzerschreck and "light" rounds for Bazookas.</p>
+                                    <p style="margin: 0; font-size: 0.85rem; opacity: 0.9; line-height: 1.5;"><strong>Note:</strong> New in U19- All launchers now do the same damage and can pen the front of all mediums. The bazooka has been brought in line with other launchers.</p>
                                 </div>
                                 <div style="padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 152, 0, 0.15);">
                                     <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
@@ -741,6 +869,21 @@
                                         </ul>
                                          </div>
                                      </div>
+                                <div style="padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 152, 0, 0.15);">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                                        <i class="fas fa-bomb" style="color: var(--accent); font-size: 1.2rem;"></i>
+                                        <strong style="color: var(--accent);">Anti-Tank Mines</strong>
+                                    </div>
+                                    <p style="margin: 0 0 0.75rem 0; color: var(--text-secondary); font-size: 0.95rem;">Approx. <strong style="color: #fff;">600 damage</strong> per hit</p>
+                                    <div style="background: rgba(220, 53, 69, 0.15); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #dc3545;">
+                                        <p style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #ff6b6b;">Extreme Threat - Shots to Kill:</p>
+                                        <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; font-size: 0.85rem; line-height: 1.6;">
+                                            <li><strong>2 shots</strong> to kill Heavy tanks</li>
+                                            <li><strong>2 shots</strong> to kill Medium tanks</li>
+                                            <li><strong>1 shot</strong> to kill Light tanks</li>
+                                        </ul>
+                                    </div>
+                                </div>
                                  </div>
                              </div>
                              <div class="strategy-card">
@@ -753,9 +896,9 @@
                                 </li>
                                      <li>Keep hull behind cover and only expose turret if possible</li>
                                      <li>Use reverse to quickly escape if you get shot first</li>
-                                 </ul>
-                             </div>
-                             <div class="strategy-card">
+                                </ul>
+                            </div>
+                            <div class="strategy-card">
                                  <h4>Survivability & Positioning</h4>
                                  <p>Never stay out in the open, always have an escape route.</p>
                                  <ul>
@@ -770,8 +913,8 @@
                                 <li>You have a big gun, use it for range. You cannot turn around fast enough in a fight,
                                     but you can the further away you are
                                 </li>
-                                 </ul>
-                             </div>
+                                </ul>
+                            </div>
                             <div class="strategy-card">
                                 <h4>Communication & Coordination</h4>
                                 <p>Master crew communication and team coordination for maximum combat effectiveness.</p>
@@ -1092,6 +1235,11 @@
                              </div>
                          </div>
                     </div>
+                    
+                    <!-- Credits Section -->
+                    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2); text-align: center;">
+                        <p style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.6); margin: 0;">Data contributions by <span style="color: rgba(255, 255, 255, 0.85); font-weight: 500;">Yuh</span> and <a href="https://www.youtube.com/@wixstreams" target="_blank" style="color: rgba(255, 152, 0, 0.9); text-decoration: none; font-weight: 500;">Wix</a></p>
+                    </div>
 
                 </div>
             </section>
@@ -1189,5 +1337,6 @@
 </div>
 
 <script src="script.js?v={{ site.time | date_to_xmlschema }}" defer></script>
+<script src="fireworks.js" defer></script>
 </body>
 </html>

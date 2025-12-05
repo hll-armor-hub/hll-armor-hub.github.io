@@ -548,6 +548,44 @@ const tankDatabase = {
                 maxShellsHE: null,
                 fuelCost: null
             }
+        },
+        {
+            name: "Sherman M4A3 105",
+            type: "SPA (Self Propelled Artillery)",
+            faction: "USA",
+            armor: "TBD",
+            gun: "105mm M4",
+            penetration: "TBD",
+            speed: "TBD",
+            crew: "3",
+            description: "Self-propelled artillery variant of the M4 Sherman.",
+            weakSpots: "TBD",
+            strengths: "TBD",
+            icon: "fas fa-tank",
+            has360View: true,
+            images360: {
+                prefix: "images/360/Sherman SPA/",
+                suffix: ".webp"
+            },
+            detailedStats: {
+                hullHealth: null,
+                turretHealth: null,
+                engineHealth: null,
+                trackHealth: null,
+                apDamage: null,
+                explosionDamage: null,
+                explosionRadius: null,
+                reloadSpeed: null,
+                maxSpeed: null,
+                yawRate: null,
+                pitchRate: null,
+                pitchAngleMin: null,
+                pitchAngleMax: null,
+                gearSwitchTime: null,
+                maxShellsAP: null,
+                maxShellsHE: null,
+                fuelCost: null
+            }
         }
     ],
     germany: [
@@ -740,6 +778,82 @@ const tankDatabase = {
                 maxShellsHE: null,
                 fuelCost: null
             }
+        },
+        {
+            name: "Sturmpanzer IV Brummbar",
+            type: "SPA (Self Propelled Artillery)",
+            faction: "Germany",
+            armor: "TBD",
+            gun: "150mm StuH 43",
+            penetration: "TBD",
+            speed: "TBD",
+            crew: "3",
+            description: "Self-propelled artillery based on the Panzer IV chassis.",
+            weakSpots: "TBD",
+            strengths: "TBD",
+            icon: "fas fa-tank",
+            has360View: true,
+            images360: {
+                prefix: "images/360/Bummbar SPA/",
+                suffix: ".webp"
+            },
+            detailedStats: {
+                hullHealth: null,
+                turretHealth: null,
+                engineHealth: null,
+                trackHealth: null,
+                apDamage: null,
+                explosionDamage: null,
+                explosionRadius: null,
+                reloadSpeed: null,
+                maxSpeed: null,
+                yawRate: null,
+                pitchRate: null,
+                pitchAngleMin: null,
+                pitchAngleMax: null,
+                gearSwitchTime: null,
+                maxShellsAP: null,
+                maxShellsHE: null,
+                fuelCost: null
+            }
+        },
+        {
+            name: "Panzer III Ausf.N",
+            type: "SPA (Self Propelled Artillery)",
+            faction: "Germany",
+            armor: "TBD",
+            gun: "75mm KwK 37 L/24",
+            penetration: "TBD",
+            speed: "TBD",
+            crew: "3",
+            description: "Self-propelled artillery variant of the Panzer III.",
+            weakSpots: "TBD",
+            strengths: "TBD",
+            icon: "fas fa-tank",
+            has360View: true,
+            images360: {
+                prefix: "images/360/Panzer III SPA/",
+                suffix: ".webp"
+            },
+            detailedStats: {
+                hullHealth: null,
+                turretHealth: null,
+                engineHealth: null,
+                trackHealth: null,
+                apDamage: null,
+                explosionDamage: null,
+                explosionRadius: null,
+                reloadSpeed: null,
+                maxSpeed: null,
+                yawRate: null,
+                pitchRate: null,
+                pitchAngleMin: null,
+                pitchAngleMax: null,
+                gearSwitchTime: null,
+                maxShellsAP: null,
+                maxShellsHE: null,
+                fuelCost: null
+            }
         }
     ],
     soviet: [
@@ -873,6 +987,44 @@ const tankDatabase = {
             has360View: true,
             images360: {
                 prefix: "images/360/ba-10-scout-car/",
+                suffix: ".webp"
+            },
+            detailedStats: {
+                hullHealth: null,
+                turretHealth: null,
+                engineHealth: null,
+                trackHealth: null,
+                apDamage: null,
+                explosionDamage: null,
+                explosionRadius: null,
+                reloadSpeed: null,
+                maxSpeed: null,
+                yawRate: null,
+                pitchRate: null,
+                pitchAngleMin: null,
+                pitchAngleMax: null,
+                gearSwitchTime: null,
+                maxShellsAP: null,
+                maxShellsHE: null,
+                fuelCost: null
+            }
+        },
+        {
+            name: "KV-2",
+            type: "SPA (Self Propelled Artillery)",
+            faction: "Soviet Union",
+            armor: "TBD",
+            gun: "152mm M-10T",
+            penetration: "TBD",
+            speed: "TBD",
+            crew: "3",
+            description: "Heavy self-propelled artillery with massive 152mm howitzer.",
+            weakSpots: "TBD",
+            strengths: "TBD",
+            icon: "fas fa-tank",
+            has360View: true,
+            images360: {
+                prefix: "images/360/KV-2 SPA/",
                 suffix: ".webp"
             },
             detailedStats: {
@@ -1200,6 +1352,82 @@ const tankDatabase = {
                 maxShellsHE: 25,
                 fuelCost: 600
             }
+         },
+         {
+             name: "Churchill Mk III A.V.R.E.",
+             type: "SPA (Self Propelled Artillery)",
+             faction: "Great Britain",
+             armor: "TBD",
+             gun: "290mm Petard",
+             penetration: "TBD",
+             speed: "TBD",
+             crew: "3",
+             description: "Armoured Vehicle Royal Engineers variant of the Churchill tank.",
+             weakSpots: "TBD",
+             strengths: "TBD",
+             icon: "fas fa-tank",
+             has360View: true,
+             images360: {
+                 prefix: "images/360/Churchill SPA/",
+                 suffix: ".webp"
+             },
+             detailedStats: {
+                 hullHealth: null,
+                 turretHealth: null,
+                 engineHealth: null,
+                 trackHealth: null,
+                 apDamage: null,
+                 explosionDamage: null,
+                 explosionRadius: null,
+                 reloadSpeed: null,
+                 maxSpeed: null,
+                 yawRate: null,
+                 pitchRate: null,
+                 pitchAngleMin: null,
+                 pitchAngleMax: null,
+                 gearSwitchTime: null,
+                 maxShellsAP: null,
+                 maxShellsHE: null,
+                 fuelCost: null
+             }
+         },
+         {
+             name: "Bishop SP 25pdr",
+             type: "SPA (Self Propelled Artillery)",
+             faction: "Great Britain",
+             armor: "TBD",
+             gun: "25-pounder (87.6mm)",
+             penetration: "TBD",
+             speed: "TBD",
+             crew: "3",
+             description: "Self-propelled artillery mounting a 25-pounder field gun.",
+             weakSpots: "TBD",
+             strengths: "TBD",
+             icon: "fas fa-tank",
+             has360View: true,
+             images360: {
+                 prefix: "images/360/Bishop SPA/",
+                 suffix: ".webp"
+             },
+             detailedStats: {
+                 hullHealth: null,
+                 turretHealth: null,
+                 engineHealth: null,
+                 trackHealth: null,
+                 apDamage: null,
+                 explosionDamage: null,
+                 explosionRadius: null,
+                 reloadSpeed: null,
+                 maxSpeed: null,
+                 yawRate: null,
+                 pitchRate: null,
+                 pitchAngleMin: null,
+                 pitchAngleMax: null,
+                 gearSwitchTime: null,
+                 maxShellsAP: null,
+                 maxShellsHE: null,
+                 fuelCost: null
+            }
          }
     ]
 };
@@ -1455,24 +1683,245 @@ let currentTankType = 'all';
 // Theme Management
 let currentTheme = localStorage.getItem('theme') || 'theme-default';
 
+// Calculate Easter Sunday for a given year (using the computus algorithm)
+function calculateEaster(year) {
+    const a = year % 19;
+    const b = Math.floor(year / 100);
+    const c = year % 100;
+    const d = Math.floor(b / 4);
+    const e = b % 4;
+    const f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3);
+    const h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4);
+    const k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31);
+    const day = ((h + l - 7 * m + 114) % 31) + 1;
+    return new Date(year, month - 1, day);
+}
+
+// Get the appropriate holiday theme based on current date
+function getHolidayTheme() {
+    const now = new Date();
+    const month = now.getMonth() + 1; // 1-12
+    const day = now.getDate();
+    const year = now.getFullYear();
+    
+    // New Year's (December 31 and January 1)
+    if ((month === 12 && day === 31) || (month === 1 && day === 1)) {
+        return 'theme-newyear';
+    }
+    
+    // Valentine's Day (February 14)
+    if (month === 2 && day === 14) {
+        return 'theme-valentines';
+    }
+    
+    // St. Patrick's Day (March 17)
+    if (month === 3 && day === 17) {
+        return 'theme-stpatricks';
+    }
+    
+    // Easter (calculated dynamically)
+    const easter = calculateEaster(year);
+    const easterMonth = easter.getMonth() + 1;
+    const easterDay = easter.getDate();
+    // Check if within 7 days of Easter (Easter week)
+    const daysDiff = Math.abs((now - easter) / (1000 * 60 * 60 * 24));
+    if (month === easterMonth && daysDiff <= 7) {
+        return 'theme-easter';
+    }
+    
+    // July 4th
+    if (month === 7 && day === 4) {
+        return 'theme-july4';
+    }
+    
+    // Halloween (October 31)
+    if (month === 10 && day === 31) {
+        return 'theme-halloween';
+    }
+    
+    // Thanksgiving (Entire month of November, ending the day after Thanksgiving)
+    if (month === 11) {
+        const firstOfMonth = new Date(year, 10, 1);
+        const dayOfWeek = firstOfMonth.getDay();
+        // Calculate first Thursday: if Nov 1 is Thu (4), it's day 1; if Fri (5), day 7; if Sat (6), day 6; if Sun (0), day 5; if Mon (1), day 4; if Tue (2), day 3; if Wed (3), day 2
+        let firstThursday;
+        if (dayOfWeek === 0) { // Sunday
+            firstThursday = 5;
+        } else if (dayOfWeek <= 4) { // Monday-Thursday
+            firstThursday = 5 - dayOfWeek;
+        } else { // Friday-Saturday
+            firstThursday = 12 - dayOfWeek;
+        }
+        const thanksgivingDate = firstThursday + 21; // 4th Thursday
+        const dayAfterThanksgiving = thanksgivingDate + 1;
+        
+        // If it's November and before or on the day after Thanksgiving, show Thanksgiving theme
+        if (day <= dayAfterThanksgiving) {
+            return 'theme-thanksgiving';
+        }
+    }
+    
+    // Veterans Day (November 11)
+    if (month === 11 && day === 11) {
+        return 'theme-veterans';
+    }
+    
+    // Christmas (December 1-31)
+    if (month === 12) {
+        return 'theme-christmas';
+    }
+    
+    // Default theme if no holiday matches
+    return 'theme-default';
+}
+
 function setTheme(theme) {
     document.body.className = theme;
     currentTheme = theme;
     localStorage.setItem('theme', theme);
     
-    // Update theme dropdown selection
+    // Update dropdown: show actual theme for manual selections, but "Default" for auto-holiday themes
     if (themeSelect) {
-        themeSelect.value = theme;
+        // Check if this is a holiday theme
+        const holidayThemes = ['theme-christmas', 'theme-newyear', 'theme-valentines', 'theme-stpatricks', 
+                              'theme-easter', 'theme-july4', 'theme-halloween', 'theme-thanksgiving', 'theme-veterans'];
+        
+        if (holidayThemes.includes(theme)) {
+            // Holiday theme active - show "Default" in dropdown
+            themeSelect.value = 'theme-default';
+        } else {
+            // Regular theme - show the actual theme name
+            themeSelect.value = theme;
+        }
+    }
+    
+    // Show/hide Halloween ghost
+    const ghost = document.getElementById('halloweenGhost');
+    if (ghost) {
+        if (theme === 'theme-halloween') {
+            ghost.style.display = 'block';
+        } else {
+            ghost.style.display = 'none';
+        }
+    }
+    
+    // Show/hide Valentine's Day hearts
+    const hearts = document.getElementById('valentineHearts');
+    if (hearts) {
+        if (theme === 'theme-valentines') {
+            hearts.style.display = 'block';
+        } else {
+            hearts.style.display = 'none';
+        }
+    }
+    
+    // Show/hide St. Patrick's Day gold and clovers
+    const stpatricks = document.getElementById('stpatricksElements');
+    if (stpatricks) {
+        if (theme === 'theme-stpatricks') {
+            stpatricks.style.display = 'block';
+        } else {
+            stpatricks.style.display = 'none';
+        }
+    }
+    
+    // Show/hide Thanksgiving leaves and turkeys
+    const thanksgiving = document.getElementById('thanksgivingElements');
+    if (thanksgiving) {
+        if (theme === 'theme-thanksgiving') {
+            thanksgiving.style.display = 'block';
+        } else {
+            thanksgiving.style.display = 'none';
+        }
     }
 }
 
-// Initialize theme
-setTheme(currentTheme);
+// Initialize theme - always check for automatic holiday theme
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme');
+    const manualOverride = localStorage.getItem('manualThemeOverride') === 'true';
+    
+    // Check for holiday theme
+    const holidayTheme = getHolidayTheme();
+    
+    // If user manually selected "Default", don't auto-apply holidays
+    if (manualOverride && savedTheme === 'theme-default') {
+        setTheme('theme-default');
+    } else if (holidayTheme !== 'theme-default') {
+        // Holiday is active, always apply it (replaces any saved theme)
+        setTheme(holidayTheme);
+    } else if (savedTheme && savedTheme !== 'theme-default') {
+        // No holiday active, use saved theme (if it's not default)
+        setTheme(savedTheme);
+    } else {
+        // No holiday active, use default theme
+        setTheme('theme-default');
+    }
+    
+});
 
 // Theme dropdown event - direct theme selection
 themeSelect.addEventListener('change', (e) => {
-    setTheme(e.target.value);
+    const selectedTheme = e.target.value;
+    
+    // If user selects "Default", mark as manual override to prevent auto-holiday
+    if (selectedTheme === 'theme-default') {
+        localStorage.setItem('manualThemeOverride', 'true');
+        setTheme('theme-default');
+    } else {
+        // For other themes, clear the manual override flag so holidays can still activate
+        localStorage.setItem('manualThemeOverride', 'false');
+        setTheme(selectedTheme);
+    }
+    // The setTheme function will update the dropdown appropriately
 });
+
+// Periodically check for holiday themes (in case date changes while page is open)
+setInterval(function() {
+    const manualOverride = localStorage.getItem('manualThemeOverride') === 'true';
+    const savedTheme = localStorage.getItem('theme');
+    
+    // Only auto-apply holidays if user hasn't manually selected "Default"
+    if (!(manualOverride && savedTheme === 'theme-default')) {
+        const holidayTheme = getHolidayTheme();
+        const currentTheme = document.body.className;
+        
+        // If a holiday is active and it's not currently applied, apply it
+        if (holidayTheme !== 'theme-default' && currentTheme !== holidayTheme) {
+            setTheme(holidayTheme);
+        }
+        // If no holiday is active and we're on a holiday theme, go back to saved/default
+        else if (holidayTheme === 'theme-default' && 
+                 ['theme-christmas', 'theme-newyear', 'theme-valentines', 'theme-stpatricks', 
+                  'theme-easter', 'theme-july4', 'theme-halloween', 'theme-thanksgiving', 'theme-veterans'].includes(currentTheme)) {
+            // Holiday period ended, restore saved theme or default
+            if (savedTheme && savedTheme !== 'theme-default') {
+                setTheme(savedTheme);
+            } else {
+                setTheme('theme-default');
+            }
+        }
+    }
+}, 60000); // Check every minute
+
+// Force apply holiday theme (for testing/debugging)
+// This will override any manual selection and apply the current holiday
+function forceApplyHolidayTheme() {
+    const holidayTheme = getHolidayTheme();
+    if (holidayTheme !== 'theme-default') {
+        localStorage.setItem('manualThemeOverride', 'false');
+        setTheme(holidayTheme);
+        console.log('Forced holiday theme applied:', holidayTheme);
+    } else {
+        console.log('No holiday theme active');
+    }
+}
+
 
 // Navigation Management
 function showSection(sectionId, updateHash = true) {
@@ -1626,20 +2075,31 @@ function rotateTank(tankId, direction) {
         return;
     }
     
-    // Get current angle from data attribute or default to 45
-    let currentAngle = parseInt(image.getAttribute('data-current-angle')) || 45;
+    // Get current image number from the image src or data attribute
+    // Extract current image number from src attribute
+    let currentImageNumber = 1; // Default to image 1 (45°)
+    const currentSrc = image.src;
+    const match = currentSrc.match(/(\d+)(\.webp|\.png)/);
+    if (match) {
+        currentImageNumber = parseInt(match[1]);
+    } else {
+        // Fallback: get from angle
+        const currentAngle = parseInt(image.getAttribute('data-current-angle')) || 45;
+        currentImageNumber = Math.floor(currentAngle / 45);
+    }
     
-    // Calculate new angle (8 images for 360 degrees, so 45 degrees per image)
-    const angleStep = 45;
-    currentAngle += direction * angleStep;
+    // Calculate new image number
+    let imageNumber = currentImageNumber + direction;
     
-    // Handle continuous rotation - normalize to 0-359 range
-    while (currentAngle < 0) currentAngle += 360;
-    while (currentAngle >= 360) currentAngle -= 360;
+    // Handle wrap-around
+    if (imageNumber < 0) {
+        imageNumber = 7; // Wrap to last image (315°)
+    } else if (imageNumber > 7) {
+        imageNumber = 0; // Wrap to first image (0°)
+    }
     
-    // Calculate image index (0-7) - handle wrap-around properly
-    let imageIndex = Math.floor(currentAngle / 45);
-    if (imageIndex >= 8) imageIndex = 0;
+    // Calculate angle from image number
+    const angle = imageNumber * 45;
     
     // Get tank data to construct image path
     const tankName = viewer.closest('.tank-card').querySelector('.tank-name').textContent;
@@ -1652,21 +2112,14 @@ function rotateTank(tankId, direction) {
     });
     
     if (tankData && tankData.images360) {
-        const newImagePath = `${tankData.images360.prefix}${imageIndex}${tankData.images360.suffix}?v=${buildVersion}`;
+        const newImagePath = `${tankData.images360.prefix}${imageNumber}${tankData.images360.suffix}?v=${buildVersion}`;
         
-        // Add error handling for image loading
-        const tempImage = new Image();
-        tempImage.onload = function () {
-            // Image loaded successfully, update the display
+        // Update angle indicator and data attribute
+        image.setAttribute('data-current-angle', angle);
+        angleIndicator.textContent = `${angle}°`;
+        
+        // Load new image
             image.src = newImagePath;
-            image.setAttribute('data-current-angle', currentAngle);
-            angleIndicator.textContent = `${currentAngle}°`;
-        };
-        tempImage.onerror = function () {
-            // Don't update the image if it fails to load
-            // Keep the current angle and indicator as they were
-        };
-        tempImage.src = newImagePath;
     }
 }
 
@@ -1698,9 +2151,24 @@ function rotateTankByAngle(tankId, targetAngle, showSnapping = true) {
         }
     }
     
-    // Calculate image index (0-7) - handle wrap-around properly
-    let imageIndex = Math.floor(snappedAngle / 45);
-    if (imageIndex >= 8) imageIndex = 0;
+    // Calculate image number (0-7) directly from angle - images are 0-indexed
+    // Mapping: 0°=0, 45°=1, 90°=2, 135°=3, 180°=4, 225°=5, 270°=6, 315°=7
+    // Since we have 8 images at 45° intervals, image number = angle / 45
+    let imageNumber = Math.floor(snappedAngle / 45);
+    
+    // Ensure image number is in valid range (0-7) with proper wrap-around
+    if (imageNumber < 0) {
+        imageNumber = 7;
+        snappedAngle = 315; // Set angle to match image 7
+    }
+    if (imageNumber >= 8) {
+        imageNumber = 0;
+        snappedAngle = 0; // Set angle to match image 0
+    }
+    
+    // Ensure angle is exactly correct for the image number (fix any rounding issues)
+    // This ensures image 0 = 0°, image 1 = 45°, etc.
+    snappedAngle = imageNumber * 45;
     
     // Get tank data to construct image path
     const tankName = viewer.closest('.tank-card').querySelector('.tank-name').textContent;
@@ -1713,15 +2181,17 @@ function rotateTankByAngle(tankId, targetAngle, showSnapping = true) {
     });
     
     if (tankData && tankData.images360) {
-        const newImagePath = `${tankData.images360.prefix}${imageIndex}${tankData.images360.suffix}?v=${buildVersion}`;
+        const newImagePath = `${tankData.images360.prefix}${imageNumber}${tankData.images360.suffix}?v=${buildVersion}`;
+        
+        // Always update the angle indicator and data attribute first
+        image.setAttribute('data-current-angle', snappedAngle);
+        angleIndicator.textContent = `${snappedAngle}°`;
         
         // Add error handling for image loading
         const tempImage = new Image();
         tempImage.onload = function () {
             // Image loaded successfully, update the display
             image.src = newImagePath;
-            image.setAttribute('data-current-angle', snappedAngle);
-            angleIndicator.textContent = `${snappedAngle}°`;
             
             // Only show snapping effect if requested (not during drag)
             if (showSnapping) {
@@ -1735,7 +2205,8 @@ function rotateTankByAngle(tankId, targetAngle, showSnapping = true) {
             }
         };
         tempImage.onerror = function () {
-            // Don't update the image if it fails to load
+            // Image failed to load - log for debugging but don't revert angle
+            console.warn(`Failed to load 360 image: ${newImagePath}`);
         };
         tempImage.src = newImagePath;
     }
@@ -2019,19 +2490,21 @@ function displayTanks(faction = 'all', tankType = 'all') {
             'heavy': 'Heavy Tank',
             'medium': 'Medium Tank',
             'light': 'Light Tank',
-            'recon': 'Recon Vehicle'
+            'recon': 'Recon Vehicle',
+            'spa': 'SPA (Self Propelled Artillery)'
         };
         
         const fullTankType = tankTypeMap[tankType] || tankType;
         tanksToShow = tanksToShow.filter(tank => tank.type === fullTankType);
     }
     
-    // Sort tanks by type: Heavy -> Medium -> Light -> Recon
+    // Sort tanks by type: Heavy -> Medium -> Light -> Recon -> SPA
     const typeOrder = {
         'Heavy Tank': 0,
         'Medium Tank': 1,
         'Light Tank': 2,
-        'Recon Vehicle': 3
+        'Recon Vehicle': 3,
+        'SPA (Self Propelled Artillery)': 4
     };
     
     tanksToShow.sort((a, b) => {
@@ -2532,15 +3005,18 @@ function groupTanksByDifficulty() {
     // Note: These groups are now primarily used for home image selection
     // Practice questions use different logic based on difficulty mode
     
-    // Easy: Mix of different tank types and factions
-    difficultyTankGroups.easy = [...practiceTanks];
+    // Filter out SPAs for easy and medium modes
+    const nonSPATanks = practiceTanks.filter(tank => tank.type !== 'SPA (Self Propelled Artillery)');
     
-    // Medium: Group similar tank types together
+    // Easy: Mix of different tank types and factions (no SPAs)
+    difficultyTankGroups.easy = [...nonSPATanks];
+    
+    // Medium: Group similar tank types together (no SPAs)
     difficultyTankGroups.medium = [];
     const tankTypes = ['Heavy Tank', 'Medium Tank', 'Light Tank', 'Recon Vehicle'];
     
     tankTypes.forEach(type => {
-        const typeTanks = practiceTanks.filter(tank => tank.type === type);
+        const typeTanks = nonSPATanks.filter(tank => tank.type === type);
         if (typeTanks.length >= 2) {
             // Add 2-3 tanks of the same type for medium difficulty
             const selectedTanks = typeTanks.slice(0, Math.min(3, typeTanks.length));
@@ -2548,7 +3024,7 @@ function groupTanksByDifficulty() {
         }
     });
     
-    // Hard: Include ALL tanks from all factions for maximum variety
+    // Hard: Include ALL tanks from all factions including SPAs for maximum variety
     // Note: This group is now used for home image selection only
     // Practice questions for Hard mode use ALL tanks from practiceTanks
     difficultyTankGroups.hard = [...practiceTanks];
@@ -2613,13 +3089,14 @@ function startNewPractice() {
     // Get tanks for current difficulty based on mode requirements
     let availableTanks;
     if (currentDifficulty === 'easy') {
-        // Easy mode: Use half of all tanks, only image 2
-        availableTanks = practiceTanks.slice(0, Math.ceil(practiceTanks.length / 2));
+        // Easy mode: Use half of all tanks (excluding SPAs), only image 2
+        const nonSPATanks = practiceTanks.filter(tank => tank.type !== 'SPA (Self Propelled Artillery)');
+        availableTanks = nonSPATanks.slice(0, Math.ceil(nonSPATanks.length / 2));
     } else if (currentDifficulty === 'medium') {
-        // Medium mode: Use all tanks, only image 2
-        availableTanks = practiceTanks;
+        // Medium mode: Use all tanks (excluding SPAs), only image 2
+        availableTanks = practiceTanks.filter(tank => tank.type !== 'SPA (Self Propelled Artillery)');
     } else if (currentDifficulty === 'hard') {
-        // Hard mode: Use ALL tanks from all factions/types, all image angles
+        // Hard mode: Use ALL tanks from all factions/types including SPAs, all image angles
         availableTanks = practiceTanks;
     }
     
@@ -2664,7 +3141,7 @@ function startNewPractice() {
     // Add wrong answers
     for (let i = 0; i < 3; i++) {
         if (otherTanks.length > 0) {
-            const randomTank = otherTanks[Math.floor(Math.random() * otherTanks.length)];
+        const randomTank = otherTanks[Math.floor(Math.random() * otherTanks.length)];
             if (!options.includes(randomTank.name)) {
                 options.push(randomTank.name);
             }
@@ -2763,7 +3240,7 @@ function checkAnswer(selectedAnswer) {
         `<p style="color: var(--success); font-weight: bold;">Correct! That's a ${currentPracticeTank.name}.</p>` :
         `<p style="color: var(--error); font-weight: bold;">Incorrect. That's actually a ${currentPracticeTank.name}.</p>`;
     
-    // Show the original image (not silhouette) when revealing the answer
+              // Show the original image (not silhouette) when revealing the answer
     // Use the same image angle that was used in the practice
     const originalImage = `${currentPracticeTank.images360.prefix}${currentImageAngle}${currentPracticeTank.images360.suffix}?v=${buildVersion}`;
     
@@ -3167,6 +3644,18 @@ document.addEventListener('keydown', (e) => {
         // Reset to overview section
         showSection('overview');
     }
+    
+    // Handle arrow keys for 360 viewer rotation
+    // Check if any 360 viewer is currently visible
+    const activeViewer = document.querySelector('.tank-360-viewer');
+    if (activeViewer && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) {
+        e.preventDefault(); // Prevent default scrolling
+        const tankId = activeViewer.getAttribute('data-tank-id');
+        if (tankId) {
+            const direction = e.key === 'ArrowLeft' ? -1 : 1;
+            rotateTank(tankId, direction);
+        }
+    }
 });
 
 // Add loading animation
@@ -3439,6 +3928,210 @@ function displayRecentCalculation(result, distance, faction) {
     `;
 }
 
+// SPA Calculator Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const spaCalculateBtn = document.getElementById('spaCalculateBtn');
+    const spaDistance = document.getElementById('spaDistance');
+    const spaType = document.getElementById('spaType');
+    const spaResultsBody = document.getElementById('spaResultsBody');
+    const spaAdjustmentToggle = document.getElementById('spaAdjustmentToggle');
+    
+    if (spaCalculateBtn) {
+        spaCalculateBtn.addEventListener('click', calculateSPA);
+    }
+    
+    // Toggle plus/minus for terrain adjustment
+    if (spaAdjustmentToggle) {
+        spaAdjustmentToggle.addEventListener('click', function() {
+            this.textContent = this.textContent === '+' ? '-' : '+';
+        });
+    }
+    
+    // Add Enter key functionality to the distance input
+    if (spaDistance) {
+        spaDistance.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent form submission
+                calculateSPA();
+            }
+        });
+    }
+    
+    // Load saved results from localStorage
+    loadSPAResults();
+});
+
+function calculateSPA() {
+    const distance = parseInt(document.getElementById('spaDistance').value);
+    const spaType = document.getElementById('spaType').value;
+    const terrainAdjustment = parseFloat(document.getElementById('spaTerrainAdjustment').value) || 0;
+    // When "+" is selected, subtract mills (round goes further). When "-" is selected, add mills (round goes shorter).
+    const adjustmentSign = document.getElementById('spaAdjustmentToggle').textContent === '+' ? -1 : 1;
+    const finalAdjustment = terrainAdjustment * adjustmentSign;
+    
+    if (!distance || distance <= 0) {
+        alert('Please enter a valid distance');
+        return;
+    }
+    
+    try {
+        // Calculate SPA result using the new calculation system
+        const result = calculateSPAResult(distance, spaType, finalAdjustment);
+        
+        // Save the result
+        saveSPAResult(distance, result, spaType);
+        
+        // Display the most recent calculation prominently
+        displayRecentSPACalculation(result, distance, spaType);
+        
+        // Clear the input
+        document.getElementById('spaDistance').value = '';
+        
+        // Reload the results table
+        loadSPAResults();
+        
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+function calculateSPAResult(distance, spaType, terrainAdjustment = 0) {
+    // SPA calculation using type-specific formulas
+    const xMin = 200;
+    const xMax = 600;
+    
+    // Check distance bounds
+    if (distance < xMin || distance > xMax) {
+        throw new Error(`Enter a distance between ${xMin} and ${xMax} meters`);
+    }
+    
+    let result;
+    
+    // Calculate based on SPA type
+    switch (spaType) {
+        case 'usa':
+            // US/GER/SOV: -0.665113 * (distance - 1001.2)
+            result = -0.665113 * (distance - 1001.2);
+            break;
+        case 'churchill':
+            // Brit Churchill: -0.445529 * (distance - 998.869)
+            result = -0.445529 * (distance - 998.869);
+            break;
+        case 'bishop':
+            // Brit Bishop: -0.334887 * (distance - 997.62)
+            result = -0.334887 * (distance - 997.62);
+            break;
+        default:
+            throw new Error('Invalid SPA type selected');
+    }
+    
+    // Apply terrain/pitch adjustment
+    result = result + terrainAdjustment;
+    
+    // Round the result
+    result = Math.round(result);
+    
+    // Format the result for display with mills as the focal point
+    return `${result} mills`;
+}
+
+function saveSPAResult(distance, result, spaType) {
+    let results = JSON.parse(localStorage.getItem('spaResults') || '[]');
+    
+    const newResult = {
+        id: Date.now(),
+        distance: distance,
+        result: result,
+        spaType: spaType,
+        timestamp: new Date().toLocaleString()
+    };
+    
+    // Add new result at the beginning (newest first)
+    results.unshift(newResult);
+    
+    // Keep only the last 3 results
+    if (results.length > 3) {
+        results = results.slice(0, 3);
+    }
+    
+    localStorage.setItem('spaResults', JSON.stringify(results));
+}
+
+function loadSPAResults() {
+    const spaResultsBody = document.getElementById('spaResultsBody');
+    if (!spaResultsBody) return;
+    
+    const results = JSON.parse(localStorage.getItem('spaResults') || '[]');
+    
+    // Update the recent calculation display if there are results
+    if (results.length > 0) {
+        const mostRecent = results[0]; // First result is the most recent due to unshift()
+        displayRecentSPACalculation(mostRecent.result, mostRecent.distance, mostRecent.spaType);
+    } else {
+        // Reset the recent calculation display
+        const recentCalculationDiv = document.getElementById('recentSpaCalculation');
+        if (recentCalculationDiv) {
+            recentCalculationDiv.innerHTML = '<p>No calculation performed yet</p>';
+        }
+    }
+    
+    if (results.length === 0) {
+        spaResultsBody.innerHTML = '<tr class="no-results"><td colspan="4">No calculations saved yet</td></tr>';
+        return;
+    }
+    
+    let html = '';
+    results.forEach(result => {
+        // Extract the mills value from the result string for emphasis
+        const millsMatch = result.result.match(/^(\d+)\s+mills/);
+        const millsValue = millsMatch ? millsMatch[1] : '';
+        
+        html += `
+            <tr>
+                <td><strong style="color: var(--accent);">${millsValue} mills</strong></td>
+                <td>${result.distance}m</td>
+                <td>${getSPATypeDisplayName(result.spaType)}</td>
+                <td><button class="delete-btn" onclick="deleteSPAResult(${result.id})">Delete</button></td>
+            </tr>
+        `;
+    });
+    
+    spaResultsBody.innerHTML = html;
+}
+
+function deleteSPAResult(id) {
+    let results = JSON.parse(localStorage.getItem('spaResults') || '[]');
+    results = results.filter(result => result.id !== id);
+    localStorage.setItem('spaResults', JSON.stringify(results));
+    loadSPAResults(); // This will also update the recent calculation display
+}
+
+function getSPATypeDisplayName(spaType) {
+    const spaTypeNames = {
+        'usa': 'USA / Germany / Soviet',
+        'churchill': 'British Churchill',
+        'bishop': 'British Bishop'
+    };
+    return spaTypeNames[spaType] || spaType;
+}
+
+function displayRecentSPACalculation(result, distance, spaType) {
+    const recentCalculationDiv = document.getElementById('recentSpaCalculation');
+    if (!recentCalculationDiv) return;
+    
+    // Extract the mills value from the result
+    const millsMatch = result.match(/^(\d+)\s+mills/);
+    const millsValue = millsMatch ? millsMatch[1] : '';
+    
+    // Display the most recent calculation prominently
+    recentCalculationDiv.innerHTML = `
+        <div class="recent-result">
+            <span class="mills-value">${millsValue} mills</span>
+            <span class="calculation-details">${getSPATypeDisplayName(spaType)} SPA at ${distance}m</span>
+        </div>
+    `;
+}
+
 // Armor Sights System
 function initializeArmorSights() {
     const tankSelectionGrid = document.getElementById('tankSelectionGrid');
@@ -3499,6 +4192,7 @@ function populateTankSelectionGrid() {
             else if (normalizedType.includes('medium')) normalizedType = 'medium';
             else if (normalizedType.includes('light')) normalizedType = 'light';
             else if (normalizedType.includes('recon')) normalizedType = 'recon';
+            else if (normalizedType.includes('spa') || normalizedType.includes('self propelled')) normalizedType = 'spa';
             
             // Get the tank's directory name for the image path
             const tankDirName = tank.images360.prefix.split('/').filter(part => part.length > 0).pop();
@@ -3599,11 +4293,17 @@ function openScopeView(tankName, updateHash = true) {
 
     }
     
-    // Set white background for tanks that have scope images (like 8.png)
+    // Set white background for tanks that have scope images (like 8.png or arty_us.png for SPAs)
     const whiteBackground = document.getElementById('whiteBackground');
     if (whiteBackground && tankDirectory) {
-        // Test if the tank has a scope image by checking if 8.png exists
-        const scopeImagePath = `images/360/${tankDirectory}/8.png`;
+        // Check if this is an SPA - all SPAs use arty_us.png
+        let scopeImagePath;
+        if (tankType === 'SPA (Self Propelled Artillery)') {
+            scopeImagePath = 'images/HLL_Icons/Unsorted/Sights_Scopes/arty_us.png';
+        } else {
+            scopeImagePath = `images/360/${tankDirectory}/8.png`;
+        }
+        
         const testScopeImg = new Image();
         
         testScopeImg.onload = function () {
@@ -3665,9 +4365,15 @@ function openScopeView(tankName, updateHash = true) {
         }
     }
     
-    // Use 8.png from the tank's directory as the scope view image
+    // Use 8.png from the tank's directory as the scope view image, or arty_us.png for SPAs
     if (tankDirectory) {
-        const imagePath = `images/360/${tankDirectory}/8.png`;
+        // Check if this is an SPA - all SPAs use arty_us.png
+        let imagePath;
+        if (tankType === 'SPA (Self Propelled Artillery)') {
+            imagePath = 'images/HLL_Icons/Unsorted/Sights_Scopes/arty_us.png';
+        } else {
+            imagePath = `images/360/${tankDirectory}/8.png`;
+        }
         
         // Test if the image exists by creating a new Image object first
         const testImg = new Image();

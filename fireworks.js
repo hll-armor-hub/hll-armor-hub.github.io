@@ -6,9 +6,16 @@ class Fireworks {
         this.fireworks = [];
         this.particles = [];
         this.animationId = null;
+        this.resizeTimeout = null;
         
         this.resize();
-        window.addEventListener('resize', () => this.resize());
+        // Debounce resize events for better performance
+        window.addEventListener('resize', () => {
+            if (this.resizeTimeout) {
+                clearTimeout(this.resizeTimeout);
+            }
+            this.resizeTimeout = setTimeout(() => this.resize(), 150);
+        });
     }
     
     resize() {
@@ -255,33 +262,30 @@ function initFireworks() {
     }
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
-    initFireworks();
-    
-    // Watch for theme changes
-    const observer = new MutationObserver(() => {
-        initFireworks();
-    });
-    
-    observer.observe(document.body, {
-        attributes: true,
-        attributeFilter: ['class']
-    });
-});
+// Initialize fireworks and set up theme observer (only once)
+let themeObserver = null;
 
-// Also initialize if DOM is already loaded
-if (document.readyState !== 'loading') {
+function initializeFireworksSystem() {
+    // Only initialize once
+    if (themeObserver) return;
+    
     initFireworks();
     
-    // Watch for theme changes
-    const observer = new MutationObserver(() => {
+    // Watch for theme changes with a single observer
+    themeObserver = new MutationObserver(() => {
         initFireworks();
     });
     
-    observer.observe(document.body, {
+    themeObserver.observe(document.body, {
         attributes: true,
         attributeFilter: ['class']
     });
+}
+
+// Initialize when DOM is ready (handles both cases)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeFireworksSystem);
+} else {
+    initializeFireworksSystem();
 }
 

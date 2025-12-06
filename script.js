@@ -1916,9 +1916,6 @@ function forceApplyHolidayTheme() {
     if (holidayTheme !== 'theme-default') {
         localStorage.setItem('manualThemeOverride', 'false');
         setTheme(holidayTheme);
-        console.log('Forced holiday theme applied:', holidayTheme);
-    } else {
-        console.log('No holiday theme active');
     }
 }
 
@@ -4477,9 +4474,11 @@ function startPan(e) {
     startY = (e.clientY || e.touches[0].clientY) - containerRect.top - translateY;
     
     document.addEventListener('mousemove', pan);
-    document.addEventListener('touchmove', pan);
+    // touchmove cannot be passive because we need preventDefault for panning
+    document.addEventListener('touchmove', pan, { passive: false });
     document.addEventListener('mouseup', stopPan);
-    document.addEventListener('touchend', stopPan);
+    // touchend cannot be passive because we need to clean up panning state
+    document.addEventListener('touchend', stopPan, { passive: false });
 }
 
 function pan(e) {

@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Hell Let Loose Armor Hub</title>
     <meta property="build.version" content="{{ site.time | date_to_xmlschema }}">
 
@@ -29,16 +29,26 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/HLL_Icons/Map Markers/icn_tank_marker.png">
 
+    <!-- Resource Hints for External Resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="dns-prefetch" href="https://static.cloudflareinsights.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
     <!-- Preload critical resources -->
     <link rel="preload" href="styles.css?v={{ site.time | date_to_xmlschema }}" as="style">
     <link rel="preload" href="script.js?v={{ site.time | date_to_xmlschema }}" as="script">
     <link rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap&font-display=swap"
           as="style">
 
     <!-- Critical CSS -->
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap&font-display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -122,9 +132,9 @@
                     <div class="logo-container" onclick="showSection('overview')">
                         <div class="logo-left">
                         <img src="images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-White.png"
-                             alt="Hell Let Loose" class="hll-logo hll-logo-white">
+                             alt="Hell Let Loose" class="hll-logo hll-logo-white" loading="lazy">
                         <img src="images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-Black.png"
-                             alt="Hell Let Loose" class="hll-logo hll-logo-black">
+                             alt="Hell Let Loose" class="hll-logo hll-logo-black" loading="lazy">
                         </div>
                         <div class="armor-hub-text">ARMOR HUB</div>
                     </div>
@@ -211,7 +221,7 @@
                     <div class="featured-video-container">
                         <div class="video-wrapper">
                             <iframe 
-                                src="https://www.youtube.com/embed/QmjtShptubM"
+                                src="https://www.youtube.com/embed/QmjtShptubM?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
                                 title="Update 19 Intro to SPA's - Hell Let Loose"
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -237,7 +247,7 @@
                             </div>
                             <div class="video-wrapper">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/v97y8Y2xOU4"
+                                    src="https://www.youtube.com/embed/v97y8Y2xOU4?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
                                     title="First Round on Smolensk! - Hell Let Loose"
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -259,7 +269,7 @@
                     </div>
                             <div class="video-wrapper">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/odVspH7Czbw"
+                                    src="https://www.youtube.com/embed/odVspH7Czbw?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
                                     title="Crazy Tanking - Hell Let Loose"
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -628,7 +638,7 @@
                         </div>
                         <div class="tutorial-video-wrapper">
                             <iframe
-                                    src="https://www.youtube.com/embed/PBzYfTpN7Hs"
+                                    src="https://www.youtube.com/embed/PBzYfTpN7Hs?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
                                     title="Hell Let Loose Tank Tactics"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -644,7 +654,7 @@
                         </div>
                         <div class="tutorial-video-wrapper">
                             <iframe
-                                    src="https://www.youtube.com/embed/G5vl86AZ1TU"
+                                    src="https://www.youtube.com/embed/G5vl86AZ1TU?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
                                     title="Hell Let Loose Combat Guide"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -1249,9 +1259,9 @@
                 <div class="vietnam-hero">
                     <div class="vietnam-logo">
                     <img src="images/Hell Let loose Logos/Logo HLLV - Horizontal Logo Lockup - White (1).png"
-                         alt="Hell Let Loose Vietnam" class="hllv-logo hllv-logo-white">
+                         alt="Hell Let Loose Vietnam" class="hllv-logo hllv-logo-white" loading="lazy">
                     <img src="images/Hell Let loose Logos/Logo HLLV - Horizontal Logo Lockup - Black (1).png"
-                         alt="Hell Let Loose Vietnam" class="hllv-logo hllv-logo-black">
+                         alt="Hell Let Loose Vietnam" class="hllv-logo hllv-logo-black" loading="lazy">
                     </div>
                     <div class="vietnam-content">
                         <h1 class="vietnam-title">ARMOR HUB</h1>
@@ -1278,7 +1288,7 @@
                                 <h3>Vietnam Armor Preview</h3>
                                 <div class="vietnam-video-wrapper">
                                     <iframe 
-                                        src="https://www.youtube.com/embed/3gepqNoAbBY" 
+                                        src="https://www.youtube.com/embed/3gepqNoAbBY?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1" 
                                         title="Hell Let Loose Vietnam Armor Preview"
                                         frameborder="0" 
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -1327,11 +1337,11 @@
 
         <!-- Scope Image -->
         <div class="scope-image-container">
-            <img id="scopeImage" src="" alt="Tank Scope" class="scope-image">
+            <img id="scopeImage" src="" alt="Tank Scope" class="scope-image" loading="lazy">
             <img id="whiteBackground" src="images/360/backgrounds/White.png" alt="White Background"
-                 class="scope-background-image">
+                 class="scope-background-image" loading="lazy">
             <img src="images/HLL_Icons/Heavytankranging.png" alt="Heavy Tank Ranging Overlay"
-                 class="scope-overlay-image">
+                 class="scope-overlay-image" loading="lazy">
         </div>
     </div>
 </div>

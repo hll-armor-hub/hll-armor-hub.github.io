@@ -2,6 +2,217 @@
 
 // Game Version Management
 let currentGameVersion = 'wwii';
+/** @type {'armor' | 'infantry'} */
+let currentHub = 'armor';
+
+function formatAppHash(hub, game, section, subRoute) {
+    let h = `${hub}/${game}/${section}`;
+    if (subRoute) {
+        h += `/${subRoute}`;
+    }
+    return h;
+}
+
+/**
+ * Parse location hash into hub / game / section / subRoute.
+ * Legacy hashes (#tanks, #ranging/spa) resolve as armor/wwii/...
+ */
+function parseAppHash(hash) {
+    if (!hash) {
+        return { hub: 'armor', game: 'wwii', section: 'overview', subRoute: null };
+    }
+    const parts = hash.split('/').filter(Boolean);
+    if (parts[0] === 'armor' || parts[0] === 'infantry') {
+        const hub = parts[0];
+        const g = parts[1];
+        if (g !== 'wwii' && g !== 'vietnam') {
+            return null;
+        }
+        const game = g;
+        const section = parts[2] || 'overview';
+        const subRoute = parts[3] || null;
+        return { hub, game, section, subRoute };
+    }
+    const legacySections = ['overview', 'tanks', 'tactics', 'identification', 'ranging', 'community'];
+    const sec = parts[0] || 'overview';
+    if (!legacySections.includes(sec)) {
+        return null;
+    }
+    return { hub: 'armor', game: 'wwii', section: sec, subRoute: parts[1] || null };
+}
+
+function resolveSectionDomId(route) {
+    if (route.hub === 'infantry') {
+        const map = {
+            overview: 'infantry-overview',
+            classes: 'infantry-classes',
+            weapons: 'infantry-weapons'
+        };
+        return map[route.section] || 'infantry-overview';
+    }
+    if (route.hub === 'armor' && route.game === 'vietnam') {
+        return 'vietnam';
+    }
+    const armorWwii = ['overview', 'tanks', 'tactics', 'identification', 'ranging', 'community'];
+    if (armorWwii.includes(route.section)) {
+        return route.section;
+    }
+    return 'overview';
+}
+
+function unmountScopeViewerVisualOnly() {
+    const scopeViewer = document.getElementById('scopeViewer');
+    if (!scopeViewer || !scopeViewer.classList.contains('active')) {
+        return;
+    }
+    scopeViewer.classList.remove('active');
+    const overlayImage = document.querySelector('.scope-overlay-image');
+    if (overlayImage) {
+        overlayImage.style.display = 'none';
+    }
+    const whiteBackground = document.getElementById('whiteBackground');
+    if (whiteBackground) {
+        whiteBackground.style.display = 'none';
+    }
+}
+
+/**
+ * Apply hub, game, section visibility and chrome. Optionally write canonical hash.
+ */
+function syncViewToRoute(route, { updateHash = false } = {}) {
+    currentHub = route.hub;
+    currentGameVersion = route.game;
+
+    const navArmor = document.querySelector('.nav-armor-wwii');
+    const navArmorVietnam = document.querySelector('.nav-armor-vietnam');
+    const navInfantry = document.querySelector('.nav-infantry-wwii');
+    if (navArmor) {
+        navArmor.style.display = route.hub === 'armor' && route.game === 'wwii' ? '' : 'none';
+    }
+    if (navArmorVietnam) {
+        navArmorVietnam.style.display =
+            route.hub === 'armor' && route.game === 'vietnam' ? 'flex' : 'none';
+    }
+    if (navInfantry) {
+        navInfantry.style.display = route.hub === 'infantry' ? 'flex' : 'none';
+        if (route.hub === 'infantry') {
+            navInfantry.querySelectorAll('.nav-link').forEach(link => {
+                const href = link.getAttribute('href');
+                if (!href || !href.startsWith('#infantry/')) {
+                    return;
+                }
+                const parts = href.slice(1).split('/');
+                if (parts.length >= 3 && parts[0] === 'infantry') {
+                    parts[1] = route.game;
+                    link.setAttribute('href', `#${parts.join('/')}`);
+                }
+            });
+        }
+    }
+
+    const hubArmorBtn = document.querySelector('.hub-switch-btn[data-hub="armor"]');
+    const hubInfantryBtn = document.querySelector('.hub-switch-btn[data-hub="infantry"]');
+    if (hubArmorBtn && hubInfantryBtn) {
+        hubArmorBtn.classList.toggle('active', route.hub === 'armor');
+        hubInfantryBtn.classList.toggle('active', route.hub === 'infantry');
+        hubArmorBtn.setAttribute('aria-selected', route.hub === 'armor' ? 'true' : 'false');
+        hubInfantryBtn.setAttribute('aria-selected', route.hub === 'infantry' ? 'true' : 'false');
+    }
+
+    const hubHeaderTitle = document.querySelector('.armor-hub-text');
+    if (hubHeaderTitle) {
+        hubHeaderTitle.textContent = route.hub === 'infantry' ? 'INFANTRY HUB' : 'ARMOR HUB';
+    }
+
+    const eraWwiiBtn = document.querySelector('.game-era-btn[data-version="wwii"]');
+    const eraVietnamBtn = document.querySelector('.game-era-btn[data-version="vietnam"]');
+    if (eraWwiiBtn && eraVietnamBtn) {
+        eraWwiiBtn.classList.toggle('active', route.game === 'wwii');
+        eraVietnamBtn.classList.toggle('active', route.game === 'vietnam');
+        eraWwiiBtn.setAttribute('aria-selected', route.game === 'wwii' ? 'true' : 'false');
+        eraVietnamBtn.setAttribute('aria-selected', route.game === 'vietnam' ? 'true' : 'false');
+    }
+
+    const navigation = document.querySelector('.nav');
+    const logoContainer = document.querySelector('.logo-container');
+    const footer = document.querySelector('.footer');
+    const themeSelector = document.querySelector('.theme-selector');
+    const allSections = document.querySelectorAll('.section');
+
+    if (route.hub === 'armor' && route.game === 'vietnam') {
+        document.body.classList.add('vietnam-jungle-theme');
+        if (themeSelector) {
+            themeSelector.style.display = 'none';
+        }
+        if (navigation) {
+            navigation.style.display = 'flex';
+        }
+        if (logoContainer) {
+            logoContainer.style.pointerEvents = 'auto';
+            logoContainer.style.opacity = '1';
+        }
+        if (footer) {
+            footer.style.display = 'block';
+        }
+    } else {
+        document.body.classList.remove('vietnam-jungle-theme');
+        if (themeSelector) {
+            themeSelector.style.display = '';
+        }
+        if (navigation) {
+            navigation.style.display = 'flex';
+        }
+        if (logoContainer) {
+            logoContainer.style.pointerEvents = 'auto';
+            logoContainer.style.opacity = '1';
+        }
+        if (footer) {
+            footer.style.display = 'block';
+        }
+    }
+
+    unmountScopeViewerVisualOnly();
+    closeAllExpandedTiles();
+
+    allSections.forEach(section => {
+        section.classList.remove('active');
+    });
+
+    const domId = resolveSectionDomId(route);
+    const targetSection = document.getElementById(domId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    const canonical = `#${formatAppHash(route.hub, route.game, route.section)}`;
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === canonical) {
+            link.classList.add('active');
+        }
+    });
+
+    if (updateHash) {
+        isUpdatingHash = true;
+        window.location.hash = formatAppHash(route.hub, route.game, route.section, route.subRoute);
+    }
+
+    if (domId === 'identification' && route.hub === 'armor' && route.game === 'wwii') {
+        initializePracticeTanks();
+        updateHomeImage(currentDifficulty);
+    }
+    if (domId === 'ranging' && route.hub === 'armor' && route.game === 'wwii') {
+        initializeArmorSights();
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goArmorWwiiOverview() {
+    window.location.hash = formatAppHash('armor', 'wwii', 'overview');
+}
 
 // Simple Comparison Functions
 let selectedTank1 = null;
@@ -151,8 +362,7 @@ function generateComparisonStats() {
         {label: 'Yaw Rate', key: 'yawRate', unit: '°/s'},
         {label: 'Pitch Rate', key: 'pitchRate', unit: '°/s'},
         {label: 'Max AP Shells', key: 'maxShellsAP', unit: ''},
-        {label: 'Max HE Shells', key: 'maxShellsHE', unit: ''},
-        {label: 'Fuel Cost', key: 'fuelCost', unit: ''}
+        {label: 'Max HE Shells', key: 'maxShellsHE', unit: ''}
     ];
 
     let statsHTML = `
@@ -161,15 +371,17 @@ function generateComparisonStats() {
     `;
 
     stats.forEach(stat => {
-        const value1 = selectedTank1.detailedStats ? selectedTank1.detailedStats[stat.key] : 'N/A';
-        const value2 = selectedTank2.detailedStats ? selectedTank2.detailedStats[stat.key] : 'N/A';
+        const raw1 = selectedTank1.detailedStats ? selectedTank1.detailedStats[stat.key] : null;
+        const raw2 = selectedTank2.detailedStats ? selectedTank2.detailedStats[stat.key] : null;
+        const value1 = raw1 !== null && raw1 !== undefined ? raw1 : 'N/A';
+        const value2 = raw2 !== null && raw2 !== undefined ? raw2 : 'N/A';
 
         let difference = '';
         let differenceClass = 'neutral';
         let winner = '';
 
         if (value1 !== 'N/A' && value2 !== 'N/A') {
-            const diff = value1 - value2;
+            const diff = Number(value1) - Number(value2);
             if (diff > 0) {
                 difference = `+${diff}`;
                 differenceClass = 'positive';
@@ -202,6 +414,47 @@ function generateComparisonStats() {
         `;
     });
 
+    const resLabel = comparisonResourceLabel(selectedTank1, selectedTank2);
+    const resDisp1 = getCommanderResourceDisplay(selectedTank1);
+    const resDisp2 = getCommanderResourceDisplay(selectedTank2);
+    const resNum1 = getCommanderResourceNumeric(selectedTank1);
+    const resNum2 = getCommanderResourceNumeric(selectedTank2);
+    let resDiff = '';
+    let resDiffClass = 'neutral';
+    let resWinner = '';
+    if (resNum1 !== null && resNum2 !== null && !Number.isNaN(resNum1) && !Number.isNaN(resNum2)) {
+        const d = resNum1 - resNum2;
+        if (d > 0) {
+            resDiff = `+${d}`;
+            resDiffClass = 'positive';
+            resWinner = 'tank1';
+        } else if (d < 0) {
+            resDiff = `${d}`;
+            resDiffClass = 'negative';
+            resWinner = 'tank2';
+        } else {
+            resDiff = '0';
+            resDiffClass = 'neutral';
+        }
+    }
+
+    statsHTML += `
+            <div class="comparison-stat">
+                <div class="comparison-stat-label">${resLabel}</div>
+                <div class="comparison-stat-values">
+                    <div class="comparison-stat-value ${resWinner === 'tank1' ? 'winner' : ''}">
+                        ${resDisp1}
+                    </div>
+                    <div class="comparison-stat-difference ${resDiffClass}">
+                        ${resDiff}
+                    </div>
+                    <div class="comparison-stat-value ${resWinner === 'tank2' ? 'winner' : ''}">
+                        ${resDisp2}
+                    </div>
+                </div>
+            </div>
+        `;
+
     statsHTML += '</div>';
     comparisonStats.innerHTML = statsHTML;
 }
@@ -216,144 +469,75 @@ function resetComparison() {
     document.getElementById('comparisonStats').innerHTML = '';
 }
 
-// Initialize game version dropdown
-document.addEventListener('DOMContentLoaded', function () {
-    const gameVersionToggle = document.getElementById('gameVersionToggle');
-    const gameVersionMenu = document.getElementById('gameVersionMenu');
-    const versionOptions = document.querySelectorAll('.version-option');
-    
-    if (gameVersionToggle && gameVersionMenu) {
-        // Toggle dropdown
-        gameVersionToggle.addEventListener('click', function (e) {
-            e.stopPropagation();
-            gameVersionMenu.classList.toggle('active');
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function () {
-            gameVersionMenu.classList.remove('active');
-        });
-        
-        // Handle version selection
-        versionOptions.forEach(option => {
-            option.addEventListener('click', function (e) {
-                e.stopPropagation();
-                const version = this.getAttribute('data-version');
-                switchGameVersion(version);
-                gameVersionMenu.classList.remove('active');
-            });
-        });
+const SPA_TANK_TYPE = 'SPA (Self Propelled Artillery)';
+
+const SPA_STRENGTHS =
+    'Great vehicle for long-range artillery strikes as well as direct breakthrough assaults.';
+
+const SPA_WEAK_SPOTS =
+    'Sides have medium armor and the rear has light armor. This vehicle can only fire its main cannon when stopped or in first gear.';
+
+function isSPATank(tank) {
+    return tank && tank.type === SPA_TANK_TYPE;
+}
+
+function getCommanderResourceNumeric(tank) {
+    if (!tank || !tank.detailedStats) return null;
+    const ds = tank.detailedStats;
+    if (isSPATank(tank)) {
+        const v = ds.munitionsCost;
+        return v !== null && v !== undefined ? Number(v) : null;
     }
+    const v = ds.fuelCost;
+    return v !== null && v !== undefined ? Number(v) : null;
+}
+
+function getCommanderResourceDisplay(tank) {
+    if (!tank || !tank.detailedStats) return 'N/A';
+    const ds = tank.detailedStats;
+    if (isSPATank(tank)) {
+        const v = ds.munitionsCost;
+        return v !== null && v !== undefined ? String(v) : 'N/A';
+    }
+    const v = ds.fuelCost;
+    return v !== null && v !== undefined ? String(v) : 'N/A';
+}
+
+function comparisonResourceLabel(t1, t2) {
+    const s1 = isSPATank(t1);
+    const s2 = isSPATank(t2);
+    if (s1 && s2) return 'Munitions Cost';
+    if (!s1 && !s2) return 'Fuel Cost';
+    return 'Fuel / Munitions cost';
+}
+
+// Game era segmented control (WWII | Vietnam)
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.game-era-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const version = btn.getAttribute('data-version');
+            if (version) {
+                switchGameVersion(version);
+            }
+        });
+    });
 });
 
 function switchGameVersion(version) {
-    if (version === currentGameVersion) return;
-    
-    currentGameVersion = version;
-    
-    // Update dropdown display
-    const currentVersionSpan = document.querySelector('.current-version');
-    const versionOptions = document.querySelectorAll('.version-option');
-    
-    if (currentVersionSpan) {
-        currentVersionSpan.textContent = version === 'wwii' ? 'HLL: WWII' : 'HLL: V';
+    const raw = window.location.hash.substring(1);
+    const parsed = parseAppHash(raw);
+    const route = parsed || { hub: 'armor', game: 'wwii', section: 'overview', subRoute: null };
+    if (version === route.game) {
+        return;
     }
-    
-    // Update active states
-    versionOptions.forEach(option => {
-        option.classList.remove('active');
-        if (option.getAttribute('data-version') === version) {
-            option.classList.add('active');
-        }
-    });
-    
-    // Switch sections
-    const allSections = document.querySelectorAll('.section');
-    const vietnamSection = document.getElementById('vietnam');
-    const navigation = document.querySelector('.nav');
-    const logoContainer = document.querySelector('.logo-container');
-    const footer = document.querySelector('.footer');
-    
-    if (version === 'vietnam') {
-        // Hide all WWII sections
-        allSections.forEach(section => {
-            if (section.id !== 'vietnam') {
-                section.classList.remove('active');
-            }
-        });
-        
-        // Show Vietnam section
-        if (vietnamSection) {
-            vietnamSection.classList.add('active');
-        }
-        
-                        // Hide navigation, logo click functionality, and footer
-                if (navigation) {
-                    navigation.style.display = 'none';
-                }
-                if (logoContainer) {
-                    logoContainer.style.pointerEvents = 'none';
-                    logoContainer.style.opacity = '0.5';
-                }
-                if (footer) {
-                    footer.style.display = 'none';
-                }
-
-        // Hide theme selector when in Vietnam mode
-        const themeSelector = document.querySelector('.theme-selector');
-        if (themeSelector) {
-            themeSelector.style.display = 'none';
-                }
-
-                // Apply jungle theme to the body
-                document.body.classList.add('vietnam-jungle-theme');
-        
-        // Update navigation
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => link.classList.remove('active'));
-        
-    } else {
-        // Hide Vietnam section
-        if (vietnamSection) {
-            vietnamSection.classList.remove('active');
-        }
-        
-        // Show overview section (default WWII)
-        const overviewSection = document.getElementById('overview');
-        if (overviewSection) {
-            overviewSection.classList.add('active');
-        }
-        
-                        // Show navigation, restore logo click functionality, and show footer
-                if (navigation) {
-                    navigation.style.display = 'flex';
-                }
-                if (logoContainer) {
-                    logoContainer.style.pointerEvents = 'auto';
-                    logoContainer.style.opacity = '1';
-                }
-                if (footer) {
-                    footer.style.display = 'block';
-                }
-
-        // Show theme selector when back to WWII mode
-        const themeSelector = document.querySelector('.theme-selector');
-        if (themeSelector) {
-            themeSelector.style.display = 'block';
-                }
-
-                // Remove jungle theme from the body
-                document.body.classList.remove('vietnam-jungle-theme');
-        
-        // Update navigation
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            if (link.getAttribute('href') === '#overview') {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
+    if (route.hub === 'armor') {
+        window.location.hash = formatAppHash('armor', version, 'overview');
+        return;
+    }
+    if (route.hub === 'infantry') {
+        const validSections = ['overview', 'classes', 'weapons'];
+        const section = validSections.includes(route.section) ? route.section : 'overview';
+        window.location.hash = formatAppHash('infantry', version, section);
     }
 }
 
@@ -369,7 +553,7 @@ const tankDatabase = {
             speed: "29 km/h",
             crew: "3",
             description: "The workhorse of the US Army. Balanced armor and firepower with good mobility.",
-            weakSpots: "Turret ring, sides, rear",
+            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
             strengths: "Reliable, good mobility, decent armor",
             icon: "fas fa-tank",
             has360View: true,
@@ -378,7 +562,7 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: 890,
+                hullHealth: 900,
                 turretHealth: 790,
                 engineHealth: 420,
                 trackHealth: 710,
@@ -518,7 +702,7 @@ const tankDatabase = {
             armor: "Front: 25mm, Sides: 13mm, Rear: 13mm",
             gun: "37mm M6",
             penetration: "Front: 61mm, Sides: 76mm",
-            speed: "TBD",
+            speed: "37 km/h",
             crew: "3",
             description: "Fast armored car with excellent mobility for reconnaissance and harassment.",
             weakSpots: "All sides vulnerable",
@@ -530,23 +714,24 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: null,
-                turretHealth: null,
-                engineHealth: null,
-                trackHealth: null,
-                apDamage: null,
-                explosionDamage: null,
-                explosionRadius: null,
-                reloadSpeed: null,
-                maxSpeed: null,
-                yawRate: null,
-                pitchRate: null,
-                pitchAngleMin: null,
-                pitchAngleMax: null,
+                hullHealth: 440,
+                turretHealth: 380,
+                engineHealth: 200,
+                trackHealth: 240,
+                apDamage: 220,
+                explosionDamage: 90,
+                explosionRadius: 800,
+                reloadSpeed: 4,
+                maxSpeed: 37,
+                yawRate: 16,
+                pitchRate: 8,
+                pitchAngleMin: -5.5,
+                pitchAngleMax: 20,
                 gearSwitchTime: null,
-                maxShellsAP: null,
-                maxShellsHE: null,
-                fuelCost: null
+                gearSwitchDisplay: "Automatic",
+                maxShellsAP: 26,
+                maxShellsHE: 26,
+                fuelCost: 100
             }
         },
         {
@@ -556,11 +741,11 @@ const tankDatabase = {
             armor: "TBD",
             gun: "105mm M4",
             penetration: "TBD",
-            speed: "TBD",
+            speed: "24 km/h",
             crew: "3",
             description: "Self-propelled artillery variant of the M4 Sherman.",
-            weakSpots: "TBD",
-            strengths: "TBD",
+            weakSpots: SPA_WEAK_SPOTS,
+            strengths: SPA_STRENGTHS,
             icon: "fas fa-tank",
             has360View: true,
             images360: {
@@ -577,15 +762,17 @@ const tankDatabase = {
                 explosionRadius: null,
                 reloadSpeed: 10,
                 maxSpeed: 24,
-                yawRate: 4,
+                yawRate: 7,
                 pitchRate: 1,
                 pitchAngleMin: -5,
                 pitchAngleMax: 30,
                 gearSwitchTime: 0.8,
                 maxShellsAP: 20,
                 maxShellsHE: 50,
+                fuelCost: null,
                 munitionsCost: 280,
-                fuelCost: null
+                maxShellsSmoke: 45,
+                weaponRange: "600m"
             }
         }
     ],
@@ -600,7 +787,7 @@ const tankDatabase = {
             speed: "27 km/h",
             crew: "3",
             description: "Versatile medium tank with good balance of armor, firepower, and mobility.",
-            weakSpots: "Sides, rear",
+            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
             strengths: "Good firepower, decent armor",
             icon: "fas fa-tank",
             has360View: true,
@@ -737,7 +924,7 @@ const tankDatabase = {
                 pitchAngleMin: -9.0,
                 pitchAngleMax: 18.0,
                 gearSwitchTime: 0.6,
-                maxShellsAP: 0,
+                maxShellsAP: null,
                 maxShellsHE: 20,
                 fuelCost: 150
             }
@@ -749,7 +936,7 @@ const tankDatabase = {
             armor: "Front: 30mm, Sides: 15mm, Rear: 15mm",
             gun: "50mm KwK 39",
             penetration: "Front: 67mm, Sides: 84mm",
-            speed: "TBD",
+            speed: "40 km/h",
             crew: "3",
             description: "Fast armored car with good anti-tank capability and excellent mobility.",
             weakSpots: "All sides vulnerable",
@@ -761,23 +948,24 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: null,
-                turretHealth: null,
-                engineHealth: null,
-                trackHealth: null,
-                apDamage: null,
-                explosionDamage: null,
-                explosionRadius: null,
-                reloadSpeed: null,
-                maxSpeed: null,
-                yawRate: null,
-                pitchRate: null,
-                pitchAngleMin: null,
-                pitchAngleMax: null,
+                hullHealth: 450,
+                turretHealth: 390,
+                engineHealth: 210,
+                trackHealth: 250,
+                apDamage: 260,
+                explosionDamage: 90,
+                explosionRadius: 800,
+                reloadSpeed: 4,
+                maxSpeed: 40,
+                yawRate: 12,
+                pitchRate: 8,
+                pitchAngleMin: -5.5,
+                pitchAngleMax: 20,
                 gearSwitchTime: null,
-                maxShellsAP: null,
-                maxShellsHE: null,
-                fuelCost: null
+                gearSwitchDisplay: "Automatic",
+                maxShellsAP: 26,
+                maxShellsHE: 26,
+                fuelCost: 100
             }
         },
         {
@@ -787,11 +975,11 @@ const tankDatabase = {
             armor: "TBD",
             gun: "150mm StuH 43",
             penetration: "TBD",
-            speed: "TBD",
+            speed: "24 km/h",
             crew: "3",
             description: "Self-propelled artillery based on the Panzer IV chassis.",
-            weakSpots: "TBD",
-            strengths: "TBD",
+            weakSpots: SPA_WEAK_SPOTS,
+            strengths: SPA_STRENGTHS,
             icon: "fas fa-tank",
             has360View: true,
             images360: {
@@ -806,17 +994,19 @@ const tankDatabase = {
                 apDamage: 950,
                 explosionDamage: null,
                 explosionRadius: null,
-                reloadSpeed: 10,
+                reloadSpeed: 11,
                 maxSpeed: 24,
-                yawRate: 4,
+                yawRate: 8,
                 pitchRate: 1,
                 pitchAngleMin: -5,
                 pitchAngleMax: 30,
                 gearSwitchTime: 0.8,
                 maxShellsAP: 20,
                 maxShellsHE: 50,
+                fuelCost: null,
                 munitionsCost: 280,
-                fuelCost: null
+                maxShellsSmoke: 45,
+                weaponRange: "500m"
             }
         },
         {
@@ -826,11 +1016,11 @@ const tankDatabase = {
             armor: "TBD",
             gun: "75mm KwK 37 L/24",
             penetration: "TBD",
-            speed: "TBD",
+            speed: "24 km/h",
             crew: "3",
             description: "Self-propelled artillery variant of the Panzer III.",
-            weakSpots: "TBD",
-            strengths: "TBD",
+            weakSpots: SPA_WEAK_SPOTS,
+            strengths: SPA_STRENGTHS,
             icon: "fas fa-tank",
             has360View: true,
             images360: {
@@ -842,20 +1032,22 @@ const tankDatabase = {
                 turretHealth: 830,
                 engineHealth: 430,
                 trackHealth: 710,
-                apDamage: 950,
+                apDamage: 610,
                 explosionDamage: null,
                 explosionRadius: null,
-                reloadSpeed: 10,
+                reloadSpeed: 7,
                 maxSpeed: 24,
-                yawRate: 4,
+                yawRate: 9,
                 pitchRate: 1,
                 pitchAngleMin: -5,
                 pitchAngleMax: 30,
                 gearSwitchTime: 0.8,
                 maxShellsAP: 20,
                 maxShellsHE: 50,
+                fuelCost: null,
                 munitionsCost: 280,
-                fuelCost: null
+                maxShellsSmoke: 45,
+                weaponRange: "500m"
             }
         }
     ],
@@ -870,7 +1062,7 @@ const tankDatabase = {
             speed: "31 km/h",
             crew: "3",
             description: "Revolutionary tank with sloped armor and good mobility.",
-            weakSpots: "Sides, rear",
+            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
             strengths: "Good mobility, sloped armor",
             icon: "fas fa-tank",
             has360View: true,
@@ -981,7 +1173,7 @@ const tankDatabase = {
             armor: "Front: 10mm, Sides: 10mm, Rear: 10mm",
             gun: "45mm 20-K",
             penetration: "Front: 51mm, Sides: 61mm",
-            speed: "TBD",
+            speed: "35 km/h",
             crew: "3",
             description: "Light armored car with good mobility for reconnaissance missions.",
             weakSpots: "All sides vulnerable",
@@ -993,23 +1185,24 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: null,
-                turretHealth: null,
-                engineHealth: null,
-                trackHealth: null,
-                apDamage: null,
-                explosionDamage: null,
-                explosionRadius: null,
-                reloadSpeed: null,
-                maxSpeed: null,
-                yawRate: null,
-                pitchRate: null,
-                pitchAngleMin: null,
-                pitchAngleMax: null,
+                hullHealth: 460,
+                turretHealth: 400,
+                engineHealth: 210,
+                trackHealth: 260,
+                apDamage: 240,
+                explosionDamage: 90,
+                explosionRadius: 800,
+                reloadSpeed: 4,
+                maxSpeed: 35,
+                yawRate: 14,
+                pitchRate: 8,
+                pitchAngleMin: -5.5,
+                pitchAngleMax: 20,
                 gearSwitchTime: null,
-                maxShellsAP: null,
-                maxShellsHE: null,
-                fuelCost: null
+                gearSwitchDisplay: "Automatic",
+                maxShellsAP: 26,
+                maxShellsHE: 26,
+                fuelCost: 100
             }
         },
         {
@@ -1019,11 +1212,11 @@ const tankDatabase = {
             armor: "TBD",
             gun: "152mm M-10T",
             penetration: "TBD",
-            speed: "TBD",
+            speed: "23 km/h",
             crew: "3",
             description: "Heavy self-propelled artillery with massive 152mm howitzer.",
-            weakSpots: "TBD",
-            strengths: "TBD",
+            weakSpots: SPA_WEAK_SPOTS,
+            strengths: SPA_STRENGTHS,
             icon: "fas fa-tank",
             has360View: true,
             images360: {
@@ -1038,17 +1231,19 @@ const tankDatabase = {
                 apDamage: 950,
                 explosionDamage: null,
                 explosionRadius: null,
-                reloadSpeed: 10,
+                reloadSpeed: 12,
                 maxSpeed: 23,
-                yawRate: 4,
+                yawRate: 6,
                 pitchRate: 1,
                 pitchAngleMin: -5,
                 pitchAngleMax: 30,
                 gearSwitchTime: 0.8,
                 maxShellsAP: 20,
                 maxShellsHE: 50,
+                fuelCost: null,
                 munitionsCost: 280,
-                fuelCost: null
+                maxShellsSmoke: 45,
+                weaponRange: "600m"
             }
         }
     ],
@@ -1060,7 +1255,7 @@ const tankDatabase = {
             armor: "Front: 16mm, Sides: 16mm, Rear: 16mm",
             gun: "40mm QF 2-pounder",
             penetration: "Front: 57mm, Sides: 71mm",
-            speed: "TBD",
+            speed: "37 km/h",
             crew: "3",
             description: "Fast armored car with good mobility for reconnaissance and harassment.",
             weakSpots: "All sides vulnerable",
@@ -1072,23 +1267,24 @@ const tankDatabase = {
                 suffix: ".webp"
             },
             detailedStats: {
-                hullHealth: null,
-                turretHealth: null,
-                engineHealth: null,
-                trackHealth: null,
-                apDamage: null,
-                explosionDamage: null,
-                explosionRadius: null,
-                reloadSpeed: null,
-                maxSpeed: null,
-                yawRate: null,
-                pitchRate: null,
-                pitchAngleMin: null,
-                pitchAngleMax: null,
+                hullHealth: 430,
+                turretHealth: 370,
+                engineHealth: 200,
+                trackHealth: 230,
+                apDamage: 220,
+                explosionDamage: 90,
+                explosionRadius: 800,
+                reloadSpeed: 4,
+                maxSpeed: 37,
+                yawRate: 17,
+                pitchRate: 8,
+                pitchAngleMin: -5.5,
+                pitchAngleMax: 20,
                 gearSwitchTime: null,
-                maxShellsAP: null,
-                maxShellsHE: null,
-                fuelCost: null
+                gearSwitchDisplay: "Automatic",
+                maxShellsAP: 20,
+                maxShellsHE: 40,
+                fuelCost: 100
             }
          },
                                             {
@@ -1177,7 +1373,7 @@ const tankDatabase = {
             speed: "30 km/h",
              crew: "3",
             description: "Fast medium tank with good mobility and balanced firepower.",
-            weakSpots: "Sides, rear",
+            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
             strengths: "Excellent speed, good firepower",
             icon: "fas fa-tank",
             has360View: true,
@@ -1215,7 +1411,7 @@ const tankDatabase = {
             speed: "27 km/h",
             crew: "3",
             description: "Medium tank with good anti-tank capability and decent mobility.",
-            weakSpots: "Sides, rear",
+            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
             strengths: "Good anti-tank gun, decent speed",
             icon: "fas fa-tank",
             has360View: true,
@@ -1364,11 +1560,11 @@ const tankDatabase = {
              armor: "TBD",
              gun: "290mm Petard",
              penetration: "TBD",
-             speed: "TBD",
+             speed: "20 km/h",
              crew: "3",
              description: "Armoured Vehicle Royal Engineers variant of the Churchill tank.",
-             weakSpots: "TBD",
-             strengths: "TBD",
+             weakSpots: SPA_WEAK_SPOTS,
+             strengths: SPA_STRENGTHS,
              icon: "fas fa-tank",
              has360View: true,
              images360: {
@@ -1380,20 +1576,22 @@ const tankDatabase = {
                  turretHealth: 1080,
                  engineHealth: 580,
                  trackHealth: 960,
-                 apDamage: 950,
+                 apDamage: 1300,
                  explosionDamage: null,
                  explosionRadius: null,
-                 reloadSpeed: 10,
+                 reloadSpeed: 16,
                  maxSpeed: 20,
-                 yawRate: 4,
+                 yawRate: 7,
                  pitchRate: 1,
                  pitchAngleMin: -5,
                  pitchAngleMax: 20,
                  gearSwitchTime: 1.1,
                  maxShellsAP: 20,
                  maxShellsHE: 50,
-                 munitionsCost: 280,
-                 fuelCost: null
+                 fuelCost: null,
+                 munitionsCost: 360,
+                 maxShellsSmoke: 45,
+                 weaponRange: "250m"
              }
          },
          {
@@ -1403,11 +1601,11 @@ const tankDatabase = {
              armor: "TBD",
              gun: "25-pounder (87.6mm)",
              penetration: "TBD",
-             speed: "TBD",
+             speed: "21 km/h",
              crew: "3",
              description: "Self-propelled artillery mounting a 25-pounder field gun.",
-             weakSpots: "TBD",
-             strengths: "TBD",
+             weakSpots: SPA_WEAK_SPOTS,
+             strengths: SPA_STRENGTHS,
              icon: "fas fa-tank",
              has360View: true,
              images360: {
@@ -1431,9 +1629,11 @@ const tankDatabase = {
                  gearSwitchTime: 0.8,
                  maxShellsAP: 20,
                  maxShellsHE: 50,
+                 fuelCost: null,
                  munitionsCost: 280,
-                 fuelCost: null
-             }
+                 maxShellsSmoke: 45,
+                 weaponRange: "800m"
+            }
          }
     ]
 };
@@ -1928,80 +2128,21 @@ function forceApplyHolidayTheme() {
 
 // Navigation Management
 function showSection(sectionId, updateHash = true) {
-    // Prevent navigation when in fullscreen mode (except when exiting fullscreen)
     if (document.body.classList.contains('fullscreen-mode') && sectionId !== 'ranging') {
-        return; // Block navigation to other sections when in fullscreen
+        return;
     }
-
-    // Close scope viewer if it's open
-    const scopeViewer = document.getElementById('scopeViewer');
-    if (scopeViewer && scopeViewer.classList.contains('active')) {
-        closeScopeView();
-    }
-
-    // Close all expanded tiles when navigating to a different section
-    closeAllExpandedTiles();
-    
-    // Hide all sections
-    sections.forEach(section => {
-        section.classList.remove('active');
-    });
-    
-    // Remove active class from all nav links
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-    });
-    
-    // Show target section
-    const targetSection = document.getElementById(sectionId);
-    if (targetSection) {
-        targetSection.classList.add('active');
-    }
-    
-    // Add active class to clicked nav link
-    const activeLink = document.querySelector(`[href="#${sectionId}"]`);
-    if (activeLink) {
-        activeLink.classList.add('active');
-    }
-
-    // Update URL hash if requested
-    if (updateHash) {
-        window.location.hash = sectionId;
-    }
-
-    // Scroll to top when showing overview section (unless it's a hash route)
-    if (sectionId === 'overview' && updateHash) {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
-    
-    // Initialize practice tanks when identification section is shown
-    if (sectionId === 'identification') {
-        initializePracticeTanks();
-        // Set initial home image based on current difficulty
-        updateHomeImage(currentDifficulty);
-    }
-    
-    // Initialize armor sights when ranging section is shown
-    if (sectionId === 'ranging') {
-        initializeArmorSights();
-    }
-    
-    // Scroll to top of the page
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-    
-    if (sectionId === 'overview') {
-    }
+    const route = { hub: 'armor', game: 'wwii', section: sectionId, subRoute: null };
+    syncViewToRoute(route, { updateHash });
 }
 
-// Navigation event listeners
+// Navigation event listeners (canonical hashes: #armor/wwii/tanks, #infantry/wwii/overview, …)
 navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+    link.addEventListener('click', e => {
         e.preventDefault();
-        const sectionId = link.getAttribute('href').substring(1);
-        showSection(sectionId);
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            window.location.hash = href.slice(1);
+        }
     });
 });
 
@@ -2327,8 +2468,237 @@ function endTouchDrag(event, tankId) {
     }
 }
 
+/** Real-world designation and service notes (merged with optional tank.vehicleHistory). */
+const TANK_VEHICLE_HISTORY = {
+    'M4 Sherman': {
+        designation: 'Medium Tank M4 Sherman',
+        service:
+            'Standard U.S. medium tank of World War II, standardized in 1942. Roughly 49,000 M4-series vehicles were built in all marks and factories. Widely used by U.S. and Allied armored forces in Europe, the Mediterranean, and the Pacific through 1945.'
+    },
+    'Sherman 75 Jumbo': {
+        designation: 'Assault tank M4A3E2 Sherman (“Jumbo”)',
+        service:
+            'Heavily armored assault variant of the Sherman with a 75 mm gun; only about 254 were built. Entered combat in mid-1944 (notably Normandy) for infantry support and assaulting fortified positions.'
+    },
+    'Sherman 76 Jumbo': {
+        designation: 'M4A3E2 assault tank (76 mm in Hell Let Loose)',
+        service:
+            'Historically, M4A3E2 “Jumbo” assault tanks were armed with the 75 mm gun. Hell Let Loose uses a 76 mm configuration for gameplay; the real vehicle’s thick frontal armor and assault role are otherwise characteristic of the E2 hull.'
+    },
+    'M5A1 Stuart': {
+        designation: 'Light Tank M5A1 Stuart',
+        service:
+            'U.S. light tank derived from the M3 Stuart family, in service from 1942. Used for reconnaissance, screening, and escort across North Africa, Italy, northwest Europe, and the Pacific; largely outclassed in tank combat by 1944 but remained in support roles.'
+    },
+    Greyhound: {
+        designation: 'M8 armored car',
+        service:
+            'U.S. 6×6 wheeled reconnaissance vehicle with a 37 mm gun, standardized as the M8 in 1943. Widely used by U.S. and Allied forces for scouting and security in the Mediterranean and European theaters.'
+    },
+    'Sherman M4A3 105': {
+        designation: 'M4 Sherman (105 mm howitzer)',
+        service:
+            'Close-support Sherman variant armed with the 105 mm M4 howitzer for high-explosive and smoke missions. Fielded alongside 75 mm and 76 mm gun tanks in U.S. armored units in the European and Pacific theaters.'
+    },
+    'Panzer IV': {
+        designation: 'Panzerkampfwagen IV (Pz.Kpfw. IV)',
+        service:
+            'Germany’s principal medium tank for most of World War II, continuously up-armored and up-gunned from 1939 through 1945. Most-produced German tank of the war; saw service on every major front.'
+    },
+    Panther: {
+        designation: 'Panzerkampfwagen V Panther (Sd.Kfz. 171)',
+        service:
+            'German medium tank entering service in 1943, combining sloped armor with a long high-velocity 75 mm gun. Intended as a counter to the T-34; used heavily on the Eastern and Western Fronts until the end of the war.'
+    },
+    'Tiger I': {
+        designation: 'Panzerkampfwagen VI Tiger Ausf. E (Sd.Kfz. 181)',
+        service:
+            'German heavy tank armed with the 88 mm KwK 36; about 1,350 built from late 1942. Organized in independent heavy tank companies and battalions, it saw extensive use in North Africa, Italy, the Eastern Front, and northwest Europe.'
+    },
+    Luchs: {
+        designation: 'Panzerkampfwagen II Ausf. L “Luchs”',
+        service:
+            'Late-war German reconnaissance tank on an enlarged Panzer II chassis with a 20 mm autocannon. Only 100 were produced (1943–1944); employed for scouting on the Eastern and Western Fronts.'
+    },
+    Puma: {
+        designation: 'Schwerer Panzerspähwagen Sd.Kfz. 234/2 “Puma”',
+        service:
+            '8×8 German heavy armored car with a 50 mm gun. Introduced in 1944; issued to reconnaissance units of Panzer divisions, mainly on the Western Front.'
+    },
+    'Sturmpanzer IV Brummbar': {
+        designation: 'Sturmpanzer IV (Sd.Kfz. 166) “Brummbär”',
+        service:
+            'Assault howitzer on a Panzer IV chassis mounting the 150 mm StuH 43. Built from 1943 for infantry support against fortifications and built-up areas; used on the Eastern Front, Italy, and in the West.'
+    },
+    'Panzer III Ausf.N': {
+        designation: 'Panzerkampfwagen III Ausf. N (and related variants)',
+        service:
+            'The Panzer III was Germany’s main medium tank in the early war; the Ausf. N typically carried a short 75 mm gun for infantry support. Many chassis were later converted to StuG III assault guns. Hell Let Loose represents this entry as self-propelled artillery.'
+    },
+    'T-34': {
+        designation: 'T-34 medium tank',
+        service:
+            'Soviet medium tank family (76.2 mm then 85 mm guns) produced in very large numbers from 1940 onward. Noted for sloped armor, reliability, and ease of manufacture; backbone of Red Army armored forces for the entire war.'
+    },
+    'IS-1': {
+        designation: 'IS-1 heavy tank (Iosif Stalin)',
+        service:
+            'First production model of the IS heavy tank series, armed with an 85 mm gun. Entered service in 1943 as a successor to the KV line; saw combat through the defeat of Germany.'
+    },
+    'T-70': {
+        designation: 'T-70 light tank',
+        service:
+            'Soviet light tank produced from late 1942, replacing the T-60. Built in large numbers for reconnaissance and infantry support; gradually phased out of first-line tank units as T-34 production dominated.'
+    },
+    'BA-10 Scout Car': {
+        designation: 'BA-10 armored car',
+        service:
+            'Soviet medium armored car (6×4) with a turret-mounted 45 mm gun, developed in the late 1930s. Saw heavy use in the Winter War and early Barbarossa; largely obsolete by mid-war but still encountered in secondary roles.'
+    },
+    'KV-2': {
+        designation: 'KV-2 heavy assault tank',
+        service:
+            'KV chassis carrying a massive turret with the 152 mm M-10T howitzer for reducing fortifications. Only a few hundred were built; famous for firepower and silhouette, less for mobility and reliability.'
+    },
+    Daimler: {
+        designation: 'Daimler armoured car (Mk I / Mk II)',
+        service:
+            'British scout car with a turret-mounted 2-pounder (40 mm) gun. Widely used from North Africa through northwest Europe for reconnaissance and liaison from 1941 onward.'
+    },
+    "M3 Stuart 'Honey'": {
+        designation: 'Light Tank M3 / M3A1 Stuart',
+        service:
+            'American-built light tank supplied to Britain and the Commonwealth under Lend-Lease. British crews nicknamed early examples “Honey.” Extensively used in the Western Desert and Mediterranean before relegation to training and secondary theaters.'
+    },
+    Tetrarch: {
+        designation: 'Light Tank Mk VII (A17) Tetrarch',
+        service:
+            'British light tank with a 2-pounder gun, designed before the war. Small numbers fought in North Africa; a handful were trialed for airborne use. Production was limited and the type was soon superseded.'
+    },
+    Cromwell: {
+        designation: 'Cruiser Tank Mk VIII, Cromwell (A27M)',
+        service:
+            'British fast cruiser tank powered by the Rolls-Royce Meteor engine; entered combat in 1944 in northwest Europe. Formed the core of many British armored reconnaissance regiments and armoured divisions in the late war.'
+    },
+    'Crusader Mk III': {
+        designation: 'Cruiser Tank Mk VI Crusader Mk III (A15)',
+        service:
+            'North African cruiser tank upgunned to the 6-pounder. One of the main British cruisers of the desert war from 1942 until replaced by later designs in Europe.'
+    },
+    'Churchill Mk III': {
+        designation: 'Infantry Tank Mk IV Churchill III (A22)',
+        service:
+            'Churchill variant with a welded turret and 6-pounder gun. Heavily armoured but slow “infantry tank” used from Tunisia through northwest Europe for assault and close support.'
+    },
+    'Churchill Mk.VII': {
+        designation: 'Infantry Tank Mk IV Churchill VII (A22F) “heavy Churchill”',
+        service:
+            'Late-war Churchill with thicker armour and a new hull shape; one of the most heavily protected Allied infantry tanks of 1944–1945 in northwest Europe.'
+    },
+    'Sherman Firefly': {
+        designation: 'Sherman IC / VC Firefly (17-pounder)',
+        service:
+            'British-Commonwealth conversion mounting the QF 17-pounder anti-tank gun in a modified M4 Sherman turret. Introduced in 1944; gave Allied units a tank able to engage German heavy armour at longer ranges.'
+    },
+    'Churchill Mk III A.V.R.E.': {
+        designation: 'Churchill AVRE (Armoured Vehicle Royal Engineers)',
+        service:
+            'Churchill engineer vehicle armed with the Petard spigot mortar for demolitions and obstacle reduction. Used from Normandy onward for assaulting fortifications and beach defenses.'
+    },
+    'Bishop SP 25pdr': {
+        designation: 'Ordnance QF 25-pounder on Valentine chassis (“Bishop”)',
+        service:
+            'British interim self-propelled 25-pounder on a Valentine tank hull, fielded from 1942. Saw service in North Africa and Italy; limited elevation and cramped layout led to replacement by better SP designs.'
+    }
+};
+
+function escapeHtml(text) {
+    if (text == null || text === '') return '';
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
 function createTankCard(tank) {
     const has360View = tank.has360View || false;
+    const ds = tank.detailedStats;
+    const commanderLabel = isSPATank(tank) ? 'Munitions Cost:' : 'Fuel Cost:';
+    let commanderValue = 'N/A';
+    if (ds) {
+        if (isSPATank(tank)) {
+            commanderValue =
+                ds.munitionsCost !== null && ds.munitionsCost !== undefined
+                    ? String(ds.munitionsCost)
+                    : 'N/A';
+        } else {
+            commanderValue =
+                ds.fuelCost !== null && ds.fuelCost !== undefined ? String(ds.fuelCost) : 'N/A';
+        }
+    }
+    const smokeRow =
+        ds && ds.maxShellsSmoke !== null && ds.maxShellsSmoke !== undefined
+            ? `
+                                <div class="stat-pair">
+                                    <span class="stat-label">Max Smoke Shells:</span>
+                                    <span class="stat-value">${ds.maxShellsSmoke}</span>
+                                </div>`
+            : '';
+    const weaponRangeRow =
+        ds && ds.weaponRange
+            ? `
+                                <div class="stat-pair">
+                                    <span class="stat-label">Maximum weapon range:</span>
+                                    <span class="stat-value">${ds.weaponRange}</span>
+                                </div>`
+            : '';
+    const gearSwitchValue =
+        ds && ds.gearSwitchDisplay
+            ? ds.gearSwitchDisplay
+            : ds && ds.gearSwitchTime !== null && ds.gearSwitchTime !== undefined
+              ? `${ds.gearSwitchTime}s`
+              : 'N/A';
+    const vh = tank.vehicleHistory || TANK_VEHICLE_HISTORY[tank.name];
+    const vhDes = vh && vh.designation ? escapeHtml(vh.designation) : '';
+    const vhSvc = vh && vh.service ? escapeHtml(vh.service) : '';
+    const analysisFooter = `
+                            <div class="analysis-panel-footer">
+                                <div class="analysis-footer-label">Quick reference (game)</div>
+                                <ul class="analysis-footer-facts">
+                                    <li><span>Class</span><span>${escapeHtml(tank.type)}</span></li>
+                                    <li><span>Crew</span><span>${escapeHtml(tank.crew)}</span></li>
+                                    <li><span>Armament</span><span>${escapeHtml(tank.gun)}</span></li>
+                                </ul>
+                            </div>`;
+    const historyFooter = `
+                            <div class="analysis-panel-footer">
+                                <div class="analysis-footer-label">In Hell Let Loose</div>
+                                <ul class="analysis-footer-facts">
+                                    <li><span>Faction</span><span>${escapeHtml(tank.faction)}</span></li>
+                                    <li><span>Role</span><span>${escapeHtml(tank.type)}</span></li>
+                                    <li><span>Listed speed</span><span>${escapeHtml(tank.speed)}</span></li>
+                                </ul>
+                            </div>`;
+    const vehicleHistoryBlock =
+        vhDes || vhSvc
+            ? `
+                        <div class="tank-vehicle-history-section">
+                            <h3><i class="fas fa-landmark"></i> Vehicle history</h3>
+                            <div class="analysis-panel-main">
+                            ${vhDes ? `<p class="history-designation"><span class="history-label">Official designation</span> ${vhDes}</p>` : ''}
+                            ${vhSvc ? `<p class="history-service">${vhSvc}</p>` : ''}
+                            </div>
+                            ${historyFooter}
+                        </div>`
+            : `
+                        <div class="tank-vehicle-history-section">
+                            <h3><i class="fas fa-landmark"></i> Vehicle history</h3>
+                            <div class="analysis-panel-main">
+                            <p class="history-placeholder">Historical summary for this vehicle is not yet available.</p>
+                            </div>
+                            ${historyFooter}
+                        </div>`;
     const viewerContent = has360View ? create360Viewer(tank) : `<i class="${tank.icon}"></i>`;
     
     return `
@@ -2382,7 +2752,7 @@ function createTankCard(tank) {
                 <div class="tank-details-content">
                     <div class="tank-stats-section">
                         <h3>Combat Statistics</h3>
-                        <p>Comprehensive stats from the latest game data:</p>
+                        <p>Comprehensive stats from game data (U19.1):</p>
                         <div class="stats-grid-compact">
                             <div class="stat-group">
                                 <h4><i class="fas fa-shield-alt"></i> Health & Armor</h4>
@@ -2415,12 +2785,14 @@ function createTankCard(tank) {
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Max AP Shells:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.maxShellsAP : 'N/A'}</span>
+                                    <span class="stat-value">${tank.detailedStats && tank.detailedStats.maxShellsAP !== null && tank.detailedStats.maxShellsAP !== undefined ? tank.detailedStats.maxShellsAP : 'N/A'}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Max HE Shells:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.maxShellsHE : 'N/A'}</span>
+                                    <span class="stat-value">${tank.detailedStats && tank.detailedStats.maxShellsHE !== null && tank.detailedStats.maxShellsHE !== undefined ? tank.detailedStats.maxShellsHE : 'N/A'}</span>
                                 </div>
+                                ${smokeRow}
+                                ${weaponRangeRow}
                             </div>
                             <div class="stat-group">
                                 <h4><i class="fas fa-tachometer-alt"></i> Mobility</h4>
@@ -2438,7 +2810,7 @@ function createTankCard(tank) {
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Gear Switch:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.gearSwitchTime + 's' : 'N/A'}</span>
+                                    <span class="stat-value">${gearSwitchValue}</span>
                                 </div>
                             </div>
                             <div class="stat-group">
@@ -2449,24 +2821,30 @@ function createTankCard(tank) {
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Explosion Damage (when destroyed):</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.explosionDamage : 'N/A'}</span>
+                                    <span class="stat-value">${tank.detailedStats && tank.detailedStats.explosionDamage !== null && tank.detailedStats.explosionDamage !== undefined ? tank.detailedStats.explosionDamage : 'N/A'}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Explosion Radius (when destroyed):</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.explosionRadius + 'cm' : 'N/A'}</span>
+                                    <span class="stat-value">${tank.detailedStats && tank.detailedStats.explosionRadius !== null && tank.detailedStats.explosionRadius !== undefined ? tank.detailedStats.explosionRadius + 'cm' : 'N/A'}</span>
                                 </div>
                                 <div class="stat-pair">
-                                    <span class="stat-label">Fuel Cost:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.fuelCost : 'N/A'}</span>
+                                    <span class="stat-label">${commanderLabel}</span>
+                                    <span class="stat-value">${commanderValue}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="tank-performance-section">
-                        <h3>Combat Analysis</h3>
-                        <p><strong>Strengths:</strong> ${tank.strengths}</p>
-                        <p><strong>Weak Spots:</strong> ${tank.weakSpots}</p>
-                        <p><strong>Description:</strong> ${tank.description}</p>
+                    <div class="tank-analysis-split">
+                        <div class="tank-combat-analysis-section">
+                            <h3><i class="fas fa-crosshairs"></i> Combat analysis</h3>
+                            <div class="analysis-panel-main">
+                            <p><strong>Strengths:</strong> ${tank.strengths}</p>
+                            <p><strong>Weak spots:</strong> ${tank.weakSpots}</p>
+                            <p><strong>In-game description:</strong> ${tank.description}</p>
+                            </div>
+                            ${analysisFooter}
+                        </div>
+                        ${vehicleHistoryBlock}
                     </div>
                 </div>
             </div>
@@ -2568,14 +2946,14 @@ function expandTankCard(card) {
             if (tankName) {
                 const tankNameSlug = tankName.textContent.toLowerCase().replace(/\s+/g, '-');
                 isUpdatingHash = true;
-                window.location.hash = `tanks/${tankNameSlug}`;
+                window.location.hash = formatAppHash('armor', 'wwii', 'tanks', tankNameSlug);
             }
         } else {
             button.innerHTML = '<i class="fas fa-plus"></i>';
             button.title = 'Expand Details';
             // Reset hash to just tanks section
             isUpdatingHash = true;
-            window.location.hash = 'tanks';
+            window.location.hash = formatAppHash('armor', 'wwii', 'tanks');
             // Scroll back to top when collapsing
             window.scrollTo({
                 top: 0,
@@ -3469,47 +3847,27 @@ function initializeHashRouting() {
 }
 
 function handleHashChange() {
-    // Ignore hash changes that we triggered ourselves
     if (isUpdatingHash) {
         isUpdatingHash = false;
         return;
     }
 
-    // Get the hash without the # symbol
-    let hash = window.location.hash.substring(1);
+    const hash = window.location.hash.substring(1);
+    const route = parseAppHash(hash);
 
-    // List of valid section IDs
-    const validSections = ['overview', 'tanks', 'tactics', 'identification', 'ranging', 'community'];
-
-    // Parse hash for deep routing (e.g., tanks/sherman-76-jumbo or ranging/panther)
-    const hashParts = hash.split('/');
-    const section = hashParts[0];
-    const subRoute = hashParts[1];
-
-    // If no hash or invalid hash, default to overview
-    if (!hash || !validSections.includes(section)) {
-        showSection('overview', false);
-        // Scroll to top on initial load when no hash routing
-        if (!hash) {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        }
+    if (!route) {
+        syncViewToRoute(
+            { hub: 'armor', game: 'wwii', section: 'overview', subRoute: null },
+            { updateHash: true }
+        );
         return;
     }
 
-    // Check if we're already on this section
-    const currentSection = document.querySelector('.section.active');
-    const isAlreadyOnSection = currentSection && currentSection.id === section;
+    syncViewToRoute(route, { updateHash: false });
 
-    // Only show section if we're not already on it (to avoid closing expanded tiles)
-    if (!isAlreadyOnSection) {
-        showSection(section, false);
-    }
-
-    // Handle sub-routes after section is shown
-    if (subRoute) {
-        // Wait for section to be shown, then handle sub-route
+    if (route.hub === 'armor' && route.game === 'wwii' && route.subRoute) {
         setTimeout(() => {
-            handleSubRoute(section, subRoute);
+            handleSubRoute(route.section, route.subRoute);
         }, 300);
     }
 }
@@ -3522,6 +3880,8 @@ function handleSubRoute(section, subRoute) {
         // Check if it's a special ranging tool or a tank scope
         if (subRoute === 'artillery') {
             expandArtilleryCalculator();
+        } else if (subRoute === 'spa') {
+            expandSPACalculator();
         } else if (subRoute === 'armor-sights') {
             expandArmorSights();
         } else {
@@ -3536,6 +3896,16 @@ function expandArtilleryCalculator() {
     rangingTools.forEach(tool => {
         const title = tool.querySelector('h3');
         if (title && title.textContent.includes('Artillery Calculator')) {
+            expandTile(tool, false);
+        }
+    });
+}
+
+function expandSPACalculator() {
+    const rangingTools = document.querySelectorAll('.ranging-tool');
+    rangingTools.forEach(tool => {
+        const title = tool.querySelector('h3');
+        if (title && title.textContent.includes('SPA Calculator')) {
             expandTile(tool, false);
         }
     });
@@ -3594,6 +3964,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize hash routing
     initializeHashRouting();
+
+    document.querySelectorAll('.hub-switch-btn[data-hub]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const hub = btn.getAttribute('data-hub');
+            const raw = window.location.hash.substring(1);
+            const parsed = parseAppHash(raw);
+            const game =
+                parsed && (parsed.game === 'wwii' || parsed.game === 'vietnam')
+                    ? parsed.game
+                    : 'wwii';
+            if (hub === 'armor') {
+                window.location.hash = formatAppHash('armor', game, 'overview');
+            } else if (hub === 'infantry') {
+                window.location.hash = formatAppHash('infantry', game, 'overview');
+            }
+        });
+    });
 });
 
 // Debug function to check comparison elements
@@ -3736,6 +4123,22 @@ function playSecretSound() {
     }
 }
 
+function scheduleWhenIdle(callback, timeout = 2000) {
+    if (typeof requestIdleCallback === 'function') {
+        requestIdleCallback(() => {
+            callback();
+        }, { timeout });
+    } else {
+        setTimeout(callback, 1);
+    }
+}
+
+function runAfterNextPaint(task) {
+    requestAnimationFrame(() => {
+        requestAnimationFrame(task);
+    });
+}
+
 // Artillery Calculator Functionality
 document.addEventListener('DOMContentLoaded', function () {
     const artyCalculateBtn = document.getElementById('artyCalculateBtn');
@@ -3757,8 +4160,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
     
-    // Load saved results from localStorage
-    loadArtilleryResults();
+    // Load saved results from localStorage (defer to idle time — improves INP / main-thread work)
+    scheduleWhenIdle(() => loadArtilleryResults());
 });
 
 function calculateArtillery() {
@@ -3777,14 +4180,11 @@ function calculateArtillery() {
         // Save the result
         saveArtilleryResult(distance, result, faction);
         
-        // Display the most recent calculation prominently
-        displayRecentCalculation(result, distance, faction);
-        
-        // Clear the input
-        document.getElementById('artyDistance').value = '';
-        
-        // Reload the results table
-        loadArtilleryResults();
+        runAfterNextPaint(() => {
+            displayRecentCalculation(result, distance, faction);
+            document.getElementById('artyDistance').value = '';
+            loadArtilleryResults();
+        });
     } catch (error) {
         alert(error.message);
     }
@@ -3935,41 +4335,71 @@ function displayRecentCalculation(result, distance, faction) {
 document.addEventListener('DOMContentLoaded', function () {
     const spaCalculateBtn = document.getElementById('spaCalculateBtn');
     const spaDistance = document.getElementById('spaDistance');
+    const spaTerrainAdjustment = document.getElementById('spaTerrainAdjustment');
     const spaType = document.getElementById('spaType');
     const spaResultsBody = document.getElementById('spaResultsBody');
     const spaAdjustmentToggle = document.getElementById('spaAdjustmentToggle');
     
     if (spaCalculateBtn) {
-        spaCalculateBtn.addEventListener('click', calculateSPA);
+        spaCalculateBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            calculateSPA();
+        });
     }
     
     // Toggle plus/minus for terrain adjustment
     if (spaAdjustmentToggle) {
-        spaAdjustmentToggle.addEventListener('click', function() {
+        spaAdjustmentToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
             this.textContent = this.textContent === '+' ? '-' : '+';
         });
     }
     
-    // Add Enter key functionality to the distance input
+    if (spaType) {
+        spaType.addEventListener('click', e => e.stopPropagation());
+        spaType.addEventListener('change', e => e.stopPropagation());
+    }
+    
+    // Enter on distance → validate, then focus terrain (fast in-game flow)
     if (spaDistance) {
+        spaDistance.addEventListener('click', e => e.stopPropagation());
         spaDistance.addEventListener('keydown', function (event) {
+            if (event.key !== 'Enter') {
+                return;
+            }
+            event.preventDefault();
+            const d = parseInt(this.value, 10);
+            if (!this.value.trim() || !d || d <= 0) {
+                alert('Please enter a valid distance');
+                return;
+            }
+            if (spaTerrainAdjustment) {
+                spaTerrainAdjustment.focus();
+                spaTerrainAdjustment.select();
+            }
+        });
+    }
+    
+    // Enter on terrain → calculate, then focus distance for the next target
+    if (spaTerrainAdjustment) {
+        spaTerrainAdjustment.addEventListener('click', e => e.stopPropagation());
+        spaTerrainAdjustment.addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
-                event.preventDefault(); // Prevent form submission
+                event.preventDefault();
                 calculateSPA();
             }
         });
     }
     
-    // Load saved results from localStorage
-    loadSPAResults();
+    scheduleWhenIdle(() => loadSPAResults());
 });
 
 function calculateSPA() {
     const distance = parseInt(document.getElementById('spaDistance').value);
     const spaType = document.getElementById('spaType').value;
     const terrainAdjustment = parseFloat(document.getElementById('spaTerrainAdjustment').value) || 0;
-    // When "+" is selected, subtract mills (round goes further). When "-" is selected, add mills (round goes shorter).
-    const adjustmentSign = document.getElementById('spaAdjustmentToggle').textContent === '+' ? -1 : 1;
+    // "+" adds the entered mills to the rounded solution; "−" subtracts them.
+    const adjustmentSign = document.getElementById('spaAdjustmentToggle').textContent === '+' ? 1 : -1;
     const finalAdjustment = terrainAdjustment * adjustmentSign;
     
     if (!distance || distance <= 0) {
@@ -3984,57 +4414,63 @@ function calculateSPA() {
         // Save the result
         saveSPAResult(distance, result, spaType);
         
-        // Display the most recent calculation prominently
-        displayRecentSPACalculation(result, distance, spaType);
-        
-        // Clear the input
-        document.getElementById('spaDistance').value = '';
-        
-        // Reload the results table
-        loadSPAResults();
-        
+        runAfterNextPaint(() => {
+            displayRecentSPACalculation(result, distance, spaType);
+            const distInput = document.getElementById('spaDistance');
+            if (distInput) {
+                distInput.value = '';
+                distInput.focus();
+                distInput.select();
+            }
+            loadSPAResults();
+        });
     } catch (error) {
         alert(error.message);
     }
 }
 
 function calculateSPAResult(distance, spaType, terrainAdjustment = 0) {
-    // SPA calculation using type-specific formulas
-    const xMin = 200;
-    const xMax = 600;
-    
-    // Check distance bounds
-    if (distance < xMin || distance > xMax) {
-        throw new Error(`Enter a distance between ${xMin} and ${xMax} meters`);
-    }
-    
-    let result;
-    
-    // Calculate based on SPA type
-    switch (spaType) {
-        case 'usa':
-            // US/GER/SOV: -0.665113 * (distance - 1001.2)
-            result = -0.665113 * (distance - 1001.2);
+    const normalizedType =
+        spaType === 'usa'
+            ? 'us_sov'
+            : spaType === 'churchill'
+              ? 'churchill_avre'
+              : spaType;
+
+    let xMin;
+    let xMax;
+    let base;
+
+    switch (normalizedType) {
+        case 'us_sov':
+            xMin = 200;
+            xMax = 600;
+            base = 0.665429 * (distance - 49.6779);
             break;
-        case 'churchill':
-            // Brit Churchill: -0.445529 * (distance - 998.869)
-            result = -0.445529 * (distance - 998.869);
+        case 'ger':
+            xMin = 200;
+            xMax = 500;
+            base = 0.887 * (distance - 87.5986);
+            break;
+        case 'churchill_avre':
+            xMin = 100;
+            xMax = 250;
+            base = 1.04 * (distance - 3.84615);
             break;
         case 'bishop':
-            // Brit Bishop: -0.334887 * (distance - 997.62)
-            result = -0.334887 * (distance - 997.62);
+            xMin = 200;
+            xMax = 800;
+            base = 0.19504 * (56.8058 + distance);
             break;
         default:
             throw new Error('Invalid SPA type selected');
     }
-    
-    // Apply terrain/pitch adjustment
-    result = result + terrainAdjustment;
-    
-    // Round the result
-    result = Math.round(result);
-    
-    // Format the result for display with mills as the focal point
+
+    if (distance < xMin || distance > xMax) {
+        throw new Error(`For this SPA type, enter a distance between ${xMin}m and ${xMax}m`);
+    }
+
+    let result = Math.round(base + terrainAdjustment);
     return `${result} mills`;
 }
 
@@ -4086,7 +4522,7 @@ function loadSPAResults() {
     let html = '';
     results.forEach(result => {
         // Extract the mills value from the result string for emphasis
-        const millsMatch = result.result.match(/^(\d+)\s+mills/);
+        const millsMatch = result.result.match(/^(-?\d+)\s+mills/);
         const millsValue = millsMatch ? millsMatch[1] : '';
         
         html += `
@@ -4111,9 +4547,12 @@ function deleteSPAResult(id) {
 
 function getSPATypeDisplayName(spaType) {
     const spaTypeNames = {
-        'usa': 'USA / Germany / Soviet',
-        'churchill': 'British Churchill',
-        'bishop': 'British Bishop'
+        us_sov: 'USA / Soviet Union',
+        ger: 'Germany',
+        churchill_avre: 'British Churchill AVRE',
+        bishop: 'British Bishop',
+        usa: 'USA / Soviet Union',
+        churchill: 'British Churchill AVRE'
     };
     return spaTypeNames[spaType] || spaType;
 }
@@ -4123,7 +4562,7 @@ function displayRecentSPACalculation(result, distance, spaType) {
     if (!recentCalculationDiv) return;
     
     // Extract the mills value from the result
-    const millsMatch = result.match(/^(\d+)\s+mills/);
+    const millsMatch = result.match(/^(-?\d+)\s+mills/);
     const millsValue = millsMatch ? millsMatch[1] : '';
     
     // Display the most recent calculation prominently
@@ -4146,7 +4585,8 @@ function initializeArmorSights() {
     // Add faction filter event listeners
     const factionFilterBtns = document.querySelectorAll('.faction-filter-btn');
     factionFilterBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
             const faction = this.getAttribute('data-faction');
             filterTanksByFaction(faction);
             
@@ -4159,7 +4599,8 @@ function initializeArmorSights() {
     // Add tank type filter event listeners
     const typeFilterBtns = document.querySelectorAll('.type-filter-btn');
     typeFilterBtns.forEach(btn => {
-        btn.addEventListener('click', function () {
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
             const tankType = this.getAttribute('data-tank-type');
             filterTanksByType(tankType);
             
@@ -4218,9 +4659,9 @@ function populateTankSelectionGrid() {
     const tankOptions = document.querySelectorAll('.tank-option');
     
     tankOptions.forEach(option => {
-        option.addEventListener('click', function () {
+        option.addEventListener('click', function (e) {
+            e.stopPropagation();
             const tankName = this.getAttribute('data-tank');
-
             openScopeView(tankName);
         });
     });
@@ -4422,7 +4863,7 @@ function openScopeView(tankName, updateHash = true) {
     if (updateHash) {
         const tankNameSlug = tankName.toLowerCase().replace(/\s+/g, '-');
         isUpdatingHash = true;
-        window.location.hash = `ranging/${tankNameSlug}`;
+        window.location.hash = formatAppHash('armor', 'wwii', 'ranging', tankNameSlug);
     }
 
 }
@@ -4451,7 +4892,7 @@ function closeScopeView() {
 
     // Reset hash to just ranging section
     isUpdatingHash = true;
-    window.location.hash = 'ranging';
+    window.location.hash = formatAppHash('armor', 'wwii', 'ranging');
 }
 
 // Simple magnify function - just toggle the magnified class
@@ -4550,6 +4991,7 @@ function expandTile(clickedTile, updateHash = true) {
     const tileTitle = clickedTile.querySelector('h3');
     const isFullscreenTool = tileTitle && (
         tileTitle.textContent.includes('Artillery Calculator') ||
+        tileTitle.textContent.includes('SPA Calculator') ||
         tileTitle.textContent.includes('Armor Sights')
     );
 
@@ -4595,10 +5037,13 @@ function expandTile(clickedTile, updateHash = true) {
             const titleText = tileTitle.textContent.trim();
             if (titleText.includes('Artillery Calculator')) {
                 isUpdatingHash = true;
-                window.location.hash = 'ranging/artillery';
+                window.location.hash = formatAppHash('armor', 'wwii', 'ranging', 'artillery');
+            } else if (titleText.includes('SPA Calculator')) {
+                isUpdatingHash = true;
+                window.location.hash = formatAppHash('armor', 'wwii', 'ranging', 'spa');
             } else if (titleText.includes('Armor Sights')) {
                 isUpdatingHash = true;
-                window.location.hash = 'ranging/armor-sights';
+                window.location.hash = formatAppHash('armor', 'wwii', 'ranging', 'armor-sights');
             }
         }
     }
@@ -4628,7 +5073,7 @@ function closeExpandedTile(closeButton) {
     
     // Reset hash to just ranging section
     isUpdatingHash = true;
-    window.location.hash = 'ranging';
+    window.location.hash = formatAppHash('armor', 'wwii', 'ranging');
 
 }
 
@@ -4644,7 +5089,7 @@ function addFullscreenCloseButton(tile) {
     const closeBtn = document.createElement('button');
     closeBtn.className = 'fullscreen-close-btn';
     closeBtn.innerHTML = '<i class="fas fa-times"></i>';
-    closeBtn.title = 'Return to Ranging';
+    closeBtn.title = 'Return to Calculators & sights';
     closeBtn.onclick = () => exitFullscreenMode();
 
     document.body.appendChild(closeBtn);

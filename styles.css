@@ -185,6 +185,11 @@
     box-sizing: border-box;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 body {
     font-family: 'Exo 2', sans-serif;
     line-height: 1.6;
@@ -1720,6 +1725,7 @@ body.light-mode::before {
 
 .container {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
 }
@@ -1740,7 +1746,6 @@ body.light-mode::before {
     position: sticky;
     top: 0;
     z-index: 999999999;
-    position: relative;
     overflow: visible;
 }
 
@@ -1785,71 +1790,101 @@ body.light-mode::before {
     gap: 2rem;
 }
 
-/* Game Version Dropdown */
-.game-version-dropdown {
+/* Stacked toggles: era (WWII | Vietnam) above hub (Armor | Infantry) */
+.header-hub-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.header-hub-stack .hub-switch {
+    justify-content: flex-start;
+}
+
+/* Game era (WWII | Vietnam): uses .hub-switch + .hub-switch-btn; extra wrapper for stacking */
+.game-era-switch {
     position: relative;
     z-index: 100;
 }
 
-.game-version-toggle {
+.hub-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.hub-switch-btn {
     background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: var(--text-primary);
-    padding: 0.75rem 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem 0.9rem;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    backdrop-filter: blur(10px);
-    min-width: 120px;
-    justify-content: space-between;
-}
-
-.game-version-toggle:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-1px);
-}
-
-/* REMOVED: This rule was conflicting with the z-index fix below */
-
-.game-version-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.version-option {
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--text-primary);
-    font-size: 0.9rem;
-}
-
-.version-option:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.version-option.active {
-    background: rgba(255, 68, 68, 0.2);
-    color: #ff4444;
-}
-
-.version-option i {
     font-size: 0.8rem;
-    opacity: 0.7;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.version-option.active i {
-    opacity: 1;
+.hub-switch-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.hub-switch-btn.active {
+    color: #1a0f00;
+    background: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.3), 0 0 0 2px rgba(0, 0, 0, 0.12);
+}
+
+.light-mode .hub-switch-btn {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.2);
+    color: var(--text-secondary);
+}
+
+.light-mode .hub-switch-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.35);
+}
+
+.light-mode .hub-switch-btn.active {
+    color: #1a1a1a;
+    background: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+.nav-armor-vietnam,
+.nav-infantry-wwii {
+    display: none;
+}
+
+.infantry-wip-banner {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.infantry-wip-banner p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.infantry-wip-banner i {
+    margin-right: 0.5rem;
+    color: var(--accent);
 }
 
 .logo {
@@ -2276,7 +2311,7 @@ body.theme-japan .theme-toggle:hover {
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10000;
+    z-index: 1000000000;
     background: var(--accent);
     color: white;
     border: none;
@@ -2337,13 +2372,13 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
-}
     transition: all 0.3s ease;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="%23FF9800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="11.5"/><circle cx="14" cy="14" r="3.5"/></svg>') 14 14, pointer;
     backdrop-filter: blur(10px);
     position: relative;
     z-index: -999999 !important;
     overflow: hidden;
+    min-height: 12rem;
 }
 
 .light-mode .overview-card {
@@ -4047,6 +4082,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
+    align-items: stretch;
 }
 
 /* Compact Stats Grid */
@@ -4210,13 +4246,183 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     color: var(--text-secondary);
 }
 
+.tank-analysis-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    align-items: stretch;
+    align-self: stretch;
+    min-width: 0;
+    min-height: 100%;
+}
+
+.tank-combat-analysis-section,
+.tank-vehicle-history-section {
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.analysis-panel-main {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.analysis-panel-main p:last-child {
+    margin-bottom: 0;
+}
+
+.analysis-panel-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.analysis-footer-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.analysis-footer-facts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.analysis-footer-facts li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.35;
+    color: var(--text-secondary);
+}
+
+.analysis-footer-facts li span:first-child {
+    flex-shrink: 0;
+    opacity: 0.8;
+    font-weight: 500;
+}
+
+.analysis-footer-facts li span:last-child {
+    text-align: right;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.light-mode .tank-combat-analysis-section,
+.light-mode .tank-vehicle-history-section {
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border);
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+.tank-combat-analysis-section h3,
+.tank-vehicle-history-section h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.light-mode .tank-combat-analysis-section h3,
+.light-mode .tank-vehicle-history-section h3 {
+    color: var(--accent);
+}
+
+.tank-combat-analysis-section h3 i,
+.tank-vehicle-history-section h3 i {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.tank-combat-analysis-section p,
+.tank-vehicle-history-section p {
+    margin-bottom: 1rem;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.light-mode .tank-combat-analysis-section p,
+.light-mode .tank-vehicle-history-section p {
+    color: var(--text-secondary);
+}
+
+.tank-vehicle-history-section .history-label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    opacity: 0.85;
+    margin-bottom: 0.35rem;
+    font-weight: 600;
+}
+
+.tank-vehicle-history-section .history-designation {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.tank-vehicle-history-section .history-service {
+    margin-top: 0.25rem;
+}
+
+.tank-vehicle-history-section .history-placeholder {
+    font-style: italic;
+    opacity: 0.85;
+}
+
 @media (max-width: 768px) {
     .tank-details-content {
         grid-template-columns: 1fr;
     }
 
+    .tank-analysis-split {
+        grid-template-columns: 1fr;
+    }
+
     .tank-card.expanded {
         margin: 1rem 0;
+    }
+
+    .tank-card.expanded .tank-image {
+        height: auto !important;
+        max-height: min(72vh, 520px) !important;
+        min-height: 200px !important;
+    }
+
+    .tank-card.expanded .tank-360-viewer {
+        height: auto !important;
+        max-height: min(72vh, 520px) !important;
+        min-height: 220px !important;
+    }
+
+    .tank-card.expanded .tank-360-container {
+        height: auto !important;
+        max-height: min(72vh, 520px) !important;
+        min-height: 220px !important;
     }
 }
 
@@ -4234,9 +4440,13 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     z-index: 1;
 }
 
-/* Dynamic height when tank card is expanded */
-.tank-card.expanded .tank-image {
-    height: 800px;
+/* Expanded hero / 360 area: tight on desktop & tablet landscape; mobile uses rules in @media (max-width: 768px) below */
+@media (min-width: 769px) {
+    .tank-card.expanded .tank-image,
+    .tank-card.expanded .tank-360-viewer,
+    .tank-card.expanded .tank-360-container {
+        height: clamp(260px, 38vh, 420px);
+    }
 }
 
 .light-mode .tank-image {
@@ -4635,7 +4845,6 @@ body.theme-unhinged .expand-close-btn:hover {
     border-radius: 5px;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-}
     font-family: 'Exo 2', sans-serif;
     transition: all 0.3s ease;
 }
@@ -4892,7 +5101,7 @@ body.theme-unhinged .expand-close-btn:hover {
     line-height: 1.2;
 }
 
-/* Scope Viewer */
+/* Scope Viewer — must stack above expanded ranging tiles (.ranging-tool.expanded uses z-index up to 999999) */
 .scope-viewer {
     position: fixed;
     top: 0;
@@ -4900,7 +5109,7 @@ body.theme-unhinged .expand-close-btn:hover {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.9);
-    z-index: 1000;
+    z-index: 5000000;
     display: none;
     align-items: center;
     justify-content: center;
@@ -5619,6 +5828,11 @@ body.theme-unhinged .expand-close-btn:hover {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     max-width: 1200px;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.5rem;
 }
 
 .light-mode .identification-practice {
@@ -5630,7 +5844,9 @@ body.theme-unhinged .expand-close-btn:hover {
 .identification-practice h3 {
     font-family: 'Orbitron', monospace;
     font-size: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    flex: 1 0 100%;
+    width: 100%;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
@@ -5644,15 +5860,16 @@ body.theme-unhinged .expand-close-btn:hover {
     border-radius: 8px;
     padding: 1.5rem;
     margin-bottom: 0;
-    width: 35%;
-    float: left;
+    flex: 1 1 280px;
+    max-width: 100%;
+    min-width: 0;
 }
 
 /* Game Area Container */
 .game-area-container {
-    width: 60%;
-    float: right;
-    margin-left: 5%;
+    flex: 1 1 320px;
+    min-width: 0;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -5691,6 +5908,12 @@ body.theme-unhinged .expand-close-btn:hover {
     color: var(--accent);
     font-weight: bold;
     font-size: 0.8rem;
+}
+
+@media (max-width: 960px) {
+    .identification-tips-section ul {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Difficulty Selector Styles */
@@ -6633,6 +6856,72 @@ body.theme-unhinged .expand-close-btn:hover {
     text-align: center;
 }
 
+.footer-whats-new {
+    max-width: 46rem;
+    margin: 0 auto 2rem;
+    padding: 1.35rem 1.5rem 1.45rem;
+    text-align: left;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px var(--shadow), 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.light-mode .footer-whats-new {
+    background: var(--bg-primary);
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px var(--shadow);
+}
+
+.footer-whats-new-heading,
+.footer-whats-new h4.footer-whats-new-heading {
+    font-family: 'Orbitron', monospace;
+    color: var(--accent);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    padding-bottom: 0.55rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border-bottom: 1px solid var(--border);
+}
+
+.footer-whats-new-lead {
+    text-align: center;
+    margin: 0 0 1rem;
+    padding: 0 0.25rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.footer-whats-new-lead a {
+    font-weight: 700;
+}
+
+.footer-whats-new ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+    font-size: 0.93rem;
+    line-height: 1.6;
+}
+
+.footer-whats-new li {
+    margin-bottom: 0.45rem;
+}
+
+.footer-whats-new li:last-child {
+    margin-bottom: 0;
+}
+
+.footer-whats-new strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
 .footer-content p {
     color: var(--text-secondary);
     margin-bottom: 0.5rem;
@@ -6789,11 +7078,6 @@ body.theme-unhinged .expand-close-btn:hover {
     transition: all 0.3s ease;
 }
 
-/* Dynamic height when tank card is expanded */
-.tank-card.expanded .tank-360-viewer {
-    height: 800px;
-}
-
 .light-mode .tank-360-viewer {
     background: transparent !important;
     border: 2px solid var(--border);
@@ -6833,11 +7117,6 @@ body.theme-unhinged .expand-close-btn:hover {
     max-height: 95%;
     object-fit: contain;
     transition: all 0.3s ease;
-}
-
-/* Dynamic height when tank card is expanded */
-.tank-card.expanded .tank-360-container {
-    height: 800px;
 }
 
 /* Larger image when tank card is expanded */
@@ -7672,33 +7951,43 @@ body.vietnam-jungle-theme .header {
     padding: 0.5rem 0 !important;
 }
 
-body.vietnam-jungle-theme .game-version-toggle {
+body.vietnam-jungle-theme .game-era-switch .hub-switch-btn {
     background: rgba(34, 139, 34, 0.2) !important;
     border: 2px solid rgba(34, 139, 34, 0.5) !important;
     color: #e8f5e8 !important;
 }
 
-body.vietnam-jungle-theme .game-version-toggle:hover {
+body.vietnam-jungle-theme .game-era-switch .hub-switch-btn:hover {
     background: rgba(34, 139, 34, 0.3) !important;
     border-color: rgba(50, 205, 50, 0.7) !important;
+    color: #ffffff !important;
 }
 
-body.vietnam-jungle-theme .game-version-menu {
-    background: rgba(15, 31, 15, 0.95) !important;
+body.vietnam-jungle-theme .game-era-switch .hub-switch-btn.active {
+    background: #f4fff4 !important;
+    border-color: #c8f5c8 !important;
+    color: #0d220d !important;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(50, 205, 50, 0.45) !important;
+}
+
+/* Armor / Infantry row on jungle header (no .game-era-switch wrapper) */
+body.vietnam-jungle-theme .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn {
+    background: rgba(34, 139, 34, 0.2) !important;
     border: 2px solid rgba(34, 139, 34, 0.5) !important;
-}
-
-body.vietnam-jungle-theme .version-option {
     color: #e8f5e8 !important;
 }
 
-body.vietnam-jungle-theme .version-option:hover {
-    background: rgba(34, 139, 34, 0.2) !important;
+body.vietnam-jungle-theme .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn:hover {
+    background: rgba(34, 139, 34, 0.35) !important;
+    border-color: rgba(50, 205, 50, 0.75) !important;
+    color: #ffffff !important;
 }
 
-body.vietnam-jungle-theme .version-option.active {
-    background: rgba(50, 205, 50, 0.3) !important;
-    color: #32cd32 !important;
+body.vietnam-jungle-theme .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn.active {
+    background: #f4fff4 !important;
+    border-color: #c8f5c8 !important;
+    color: #0d220d !important;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(50, 205, 50, 0.45) !important;
 }
 
 /* Logo styling for jungle theme */
@@ -7715,64 +8004,22 @@ body.vietnam-jungle-theme .logo-left .hll-logo {
     display: none !important;
 }
 
+/* Match .hll-logo header footprint (120px tall), not the full-page vietnam hero asset */
 body.vietnam-jungle-theme .logo-left::before {
     content: '';
     display: block;
-    width: 300px;
-    height: 300px;
+    flex-shrink: 0;
+    height: 120px;
+    width: min(380px, 52vw);
     background-image: url('images/Hell Let loose Logos/Logo HLLV - Horizontal Logo Lockup - White (1).png');
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
-    filter: drop-shadow(0 8px 16px rgba(15, 31, 15, 0.6)) !important;
+    background-position: left center;
+    filter: drop-shadow(0 4px 8px rgba(15, 31, 15, 0.45)) !important;
 }
 
-/* CRITICAL: Ensure game version dropdown is always on top of everything */
-/* This prevents the dropdown from being hidden behind the overview banner or any other elements */
-.game-version-dropdown {
-    position: relative;
-    z-index: 999999999 !important;
-    /* Force stacking context */
-    transform: translateZ(0);
-    will-change: z-index;
-    /* Ensure this creates a new stacking context */
-    isolation: isolate;
-    /* Ensure dropdown can extend beyond container */
-    overflow: visible;
-}
-
-.game-version-toggle {
-    position: relative;
-    z-index: 999999999 !important;
-    /* Force stacking context */
-    transform: translateZ(0);
-    will-change: z-index;
-}
-
-.game-version-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    padding: 0.5rem 0;
-    min-width: 140px;
-    backdrop-filter: blur(15px);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 100000000 !important;
-    /* Force the menu to be above everything */
-    pointer-events: auto;
-    /* Additional properties to ensure visibility */
-    will-change: z-index;
-    /* Force above all other elements */
-    isolation: isolate;
-    /* Ensure menu can extend beyond parent boundaries */
-    overflow: visible;
-    clip: auto;
+body.vietnam-jungle-theme .logo-container:hover .logo-left::before {
+    filter: drop-shadow(0 6px 12px rgba(15, 31, 15, 0.55)) !important;
 }
 
 .vietnam-section.active {
@@ -8764,7 +9011,8 @@ body.secret-theme .secret-deactivate {
    ======================================== */
 @media (max-width: 768px) {
     /* Touch-friendly button sizes (minimum 44x44px for Apple, 48x48px for Android) */
-    button,
+    /* Exclude header era/hub pills — they get dedicated sizing below */
+    button:not(.hub-switch-btn),
     .btn,
     .nav-link,
     .faction-btn,
@@ -8818,6 +9066,11 @@ body.secret-theme .secret-deactivate {
         width: auto !important;
     }
 
+    body.vietnam-jungle-theme .logo-left::before {
+        height: 60px !important;
+        width: min(280px, 88vw) !important;
+    }
+
     /* Position Armor Hub text below logo */
     .armor-hub-text {
         position: static !important;
@@ -8841,33 +9094,153 @@ body.secret-theme .secret-deactivate {
         margin: 4px 0 !important;
     }
 
+    /* Header: safe area (notch devices), compact padding, full-width controls */
+    .header {
+        padding-top: max(0.65rem, env(safe-area-inset-top)) !important;
+        padding-bottom: 0.65rem !important;
+        padding-left: max(1rem, env(safe-area-inset-left)) !important;
+        padding-right: max(1rem, env(safe-area-inset-right)) !important;
+    }
+
+    .header-hub-stack {
+        width: 100%;
+        max-width: 100%;
+        align-items: stretch;
+        gap: 0.45rem;
+    }
+
+    .header .hub-switch {
+        width: 100%;
+        justify-content: center;
+        gap: 0.4rem;
+    }
+
+    .header .hub-switch-btn {
+        flex: 1 1 0;
+        min-width: 0 !important;
+        min-height: 44px;
+        padding: 0.5rem 0.35rem !important;
+        font-size: 0.7rem !important;
+        letter-spacing: 0.03em;
+        line-height: 1.2;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    .header-controls {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-controls .theme-selector {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .header-controls .theme-dropdown {
+        width: 100%;
+        min-height: 48px;
+        font-size: 16px !important;
+    }
+
+    /* Vietnam theme header padding is more specific elsewhere — keep notch insets on phones */
+    body.vietnam-jungle-theme .header {
+        padding-top: max(0.5rem, env(safe-area-inset-top)) !important;
+        padding-bottom: 0.5rem !important;
+        padding-left: max(0.75rem, env(safe-area-inset-left)) !important;
+        padding-right: max(0.75rem, env(safe-area-inset-right)) !important;
+    }
+
+    /* Section nav: single horizontal row, swipe to scroll (avoids tall stacked menu) */
+    .nav .nav-list {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        gap: 0.35rem !important;
+        padding: 0.5rem 0.75rem !important;
+        scroll-snap-type: x proximity;
+        scrollbar-width: thin;
+    }
+
+    .nav .nav-list .nav-link {
+        flex: 0 0 auto !important;
+        white-space: nowrap !important;
+        margin: 0 !important;
+        scroll-snap-align: start;
+        min-width: unset !important;
+        min-height: 44px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 10px 14px !important;
+    }
+
     /* ========================================
        IDENTIFICATION TAB MOBILE FIXES
        ======================================== */
-    /* Make practice area taller and prevent stacking */
+    .identification-practice {
+        padding: 1.25rem !important;
+        gap: 1.25rem !important;
+    }
+
+    .identification-tips-section,
+    .game-area-container {
+        flex: 1 1 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        float: none !important;
+        margin-left: 0 !important;
+    }
+
     .practice-area {
-        min-height: 800px !important;
+        min-height: unset !important;
         height: auto !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: flex-start !important;
-        gap: 2rem !important;
-        padding: 2rem 1rem !important;
+        gap: 1.25rem !important;
+        padding: 1.25rem 0.75rem !important;
     }
 
-    /* Give tank image more space */
     .practice-tank {
-        min-height: 300px !important;
+        min-height: unset !important;
         max-height: none !important;
-        margin-bottom: 2rem !important;
+        margin-bottom: 1rem !important;
         flex-shrink: 0 !important;
+        width: 100%;
+    }
+
+    #practiceTankImage {
+        max-width: 100% !important;
+        width: 100% !important;
+        min-height: 140px !important;
+        max-height: min(48vh, 300px) !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #practiceTankImage img {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: unset !important;
+        max-height: min(46vh, 280px) !important;
+        object-fit: contain !important;
     }
 
     .practice-tank img {
         max-width: 100% !important;
         width: 100% !important;
         height: auto !important;
-        min-height: 250px !important;
+        min-height: unset !important;
+        max-height: min(46vh, 280px) !important;
         object-fit: contain !important;
     }
 
@@ -8909,18 +9282,18 @@ body.secret-theme .secret-deactivate {
 
     /* Identification tips mobile */
     .identification-tips-section {
-        margin-top: 2rem !important;
-        padding: 1.5rem !important;
+        margin-top: 0 !important;
+        padding: 1.25rem !important;
     }
 
     .identification-tips-section ul {
         grid-template-columns: 1fr !important;
-        gap: 1rem !important;
+        gap: 0.75rem !important;
     }
 
     .identification-tips-section li {
-        padding: 0.75rem 0 !important;
-        padding-left: 2rem !important;
+        padding: 0.5rem 0 !important;
+        padding-left: 1.75rem !important;
         font-size: 15px !important;
         line-height: 1.5 !important;
     }
@@ -8930,14 +9303,20 @@ body.secret-theme .secret-deactivate {
         width: 100% !important;
         min-height: 60px !important;
         font-size: 18px !important;
-        margin-top: 2rem !important;
-        margin-bottom: 1rem !important;
+        margin-top: 1rem !important;
+        margin-bottom: 0.5rem !important;
     }
 
-    /* Game area container */
     .game-area-container {
-        padding: 1.5rem !important;
-        min-height: 900px !important;
+        padding: 0 !important;
+        min-height: unset !important;
+    }
+
+    .difficulty-selector h4 {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        margin-bottom: 0.75rem !important;
     }
 
     /* Achievement section spacing */
@@ -9487,6 +9866,89 @@ body.secret-theme .secret-deactivate {
         min-height: 60px !important;
         padding: 0.5rem !important;
         touch-action: manipulation !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile polish: home indicator, comparison layout, scrollable modals
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .main-content {
+        padding-bottom: max(2rem, calc(1rem + env(safe-area-inset-bottom, 0px)));
+    }
+
+    .footer {
+        padding-bottom: max(2rem, env(safe-area-inset-bottom, 0px));
+        padding-left: max(0px, env(safe-area-inset-left, 0px));
+        padding-right: max(0px, env(safe-area-inset-right, 0px));
+    }
+
+    .footer-content {
+        padding-left: max(1rem, env(safe-area-inset-left, 0px));
+        padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    }
+
+    .footer-whats-new {
+        padding: 1.1rem 1rem 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-whats-new-heading,
+    .footer-whats-new h4.footer-whats-new-heading {
+        font-size: 0.95rem;
+    }
+
+    .footer-whats-new-lead {
+        font-size: 0.88rem;
+    }
+
+    .footer-whats-new ul {
+        font-size: 0.86rem;
+    }
+
+    .comparison-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .comparison-controls {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .comparison-content {
+        max-height: 80vh !important;
+        max-height: min(75dvh, 85vh) !important;
+        padding: 1.25rem !important;
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px)) !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .comparison-tanks {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+
+    .comparison-vs {
+        height: auto;
+        padding: 0.25rem 0;
+    }
+
+    .scope-viewer.active {
+        padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px)) !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vs-circle,
+    .comparison-panel {
+        animation: none !important;
+    }
+
+    .section {
+        animation: none !important;
     }
 }
 

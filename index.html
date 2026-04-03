@@ -5,13 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#0a0e1a">
     <title>Hell Let Loose Armor Hub</title>
     <meta property="build.version" content="{{ site.time | date_to_xmlschema }}">
 
     <!-- Open Graph Meta Tags for Social Media Sharing -->
     <meta property="og:title" content="Hell Let Loose Armor Hub">
     <meta property="og:description"
-          content="Master tank warfare in Hell Let Loose with comprehensive guides, ranging tools, and tactical knowledge.">
+          content="Master tank warfare in Hell Let Loose with comprehensive guides, artillery &amp; SPA calculators, tank sights, and tactical knowledge.">
     <meta property="og:image" content="./images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-White.png">
     <meta property="og:image:alt" content="Hell Let Loose Armor Hub - Tank Warfare Guide">
     <meta property="og:url" content="https://hll-armor-hub.com/">
@@ -22,7 +23,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Hell Let Loose Armor Hub">
     <meta name="twitter:description"
-          content="Master tank warfare in Hell Let Loose with comprehensive guides, ranging tools, and tactical knowledge.">
+          content="Master tank warfare in Hell Let Loose with comprehensive guides, artillery &amp; SPA calculators, tank sights, and tactical knowledge.">
     <meta name="twitter:image" content="./images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-White.png">
     <meta name="twitter:image:alt" content="Hell Let Loose Armor Hub - Tank Warfare Guide">
 
@@ -42,11 +43,13 @@
     <!-- Preload critical resources -->
     <link rel="preload" href="styles.css?v={{ site.time | date_to_xmlschema }}" as="style">
     <link rel="preload" href="script.js?v={{ site.time | date_to_xmlschema }}" as="script">
+    <link rel="preload" as="image" href="images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-White.png">
+    <link rel="preload" as="image" href="images/360/backgrounds/tanks.webp">
     <link rel="preload"
           href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap&font-display=swap"
           as="style">
 
-    <!-- Critical CSS -->
+    <!-- Critical CSS (must match preload query string or browsers cache stale CSS) -->
     <link rel="stylesheet" href="styles.css?v={{ site.time | date_to_xmlschema }}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap&font-display=swap"
           rel="stylesheet">
@@ -110,29 +113,23 @@
         <header class="header">
             <div class="header-content">
                 
-                <!-- Game Version Dropdown -->
-                <div class="game-version-dropdown">
-                    <button class="game-version-toggle" id="gameVersionToggle">
-                        <span class="current-version">HLL: WWII</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="game-version-menu" id="gameVersionMenu">
-                        <div class="version-option active" data-version="wwii">
-                            <span>HLL: WWII</span>
-                            <i class="fas fa-check"></i>
-                        </div>
-                        <div class="version-option" data-version="vietnam">
-                            <span>HLL: V</span>
-                            <i class="fas fa-clock"></i>
-                        </div>
+                <div class="header-hub-stack">
+                    <!-- Game era: WWII | Vietnam (segmented). Revert: see REVERT-GAME-ERA-DROPDOWN.patch.txt -->
+                    <div class="hub-switch game-era-switch" role="tablist" aria-label="Game era">
+                        <button type="button" class="hub-switch-btn game-era-btn active" data-version="wwii" aria-selected="true">WWII</button>
+                        <button type="button" class="hub-switch-btn game-era-btn" data-version="vietnam" aria-selected="false">Vietnam</button>
+                    </div>
+                    <div class="hub-switch" role="tablist" aria-label="Choose hub">
+                        <button type="button" class="hub-switch-btn active" data-hub="armor" aria-selected="true">Armor</button>
+                        <button type="button" class="hub-switch-btn" data-hub="infantry" aria-selected="false">Infantry</button>
                     </div>
                 </div>
                 
                 <div class="logo">
-                    <div class="logo-container" onclick="showSection('overview')">
+                    <div class="logo-container" onclick="goArmorWwiiOverview()">
                         <div class="logo-left">
                         <img src="images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-White.png"
-                             alt="Hell Let Loose" class="hll-logo hll-logo-white" loading="lazy">
+                             alt="Hell Let Loose" class="hll-logo hll-logo-white" fetchpriority="high" decoding="async">
                         <img src="images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-Black.png"
                              alt="Hell Let Loose" class="hll-logo hll-logo-black" loading="lazy">
                         </div>
@@ -142,7 +139,7 @@
                 <div class="header-controls">
                 <div class="theme-selector">
                     <select id="themeSelect" class="theme-dropdown">
-                        <option value="theme-default">Default</option>
+                        <option value="theme-default">🛡️ Default</option>
                         <option value="theme-soviet">🔨 Motherland</option>
                         <option value="theme-german">⚡ Blitzkrieg</option>
                         <option value="theme-marines">🪂 Airborne</option>
@@ -157,13 +154,21 @@
 
         <!-- Navigation -->
         <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="#overview" class="nav-link active">Overview</a></li>
-                <li><a href="#tactics" class="nav-link">Getting Started</a></li>
-                <li><a href="#tanks" class="nav-link">Tanks</a></li>
-                <li><a href="#ranging" class="nav-link">Ranging</a></li>
-                <li><a href="#identification" class="nav-link">Identification</a></li>
-                <li><a href="#community" class="nav-link">Community</a></li>
+            <ul class="nav-list nav-armor-wwii">
+                <li><a href="#armor/wwii/overview" class="nav-link active">Overview</a></li>
+                <li><a href="#armor/wwii/tactics" class="nav-link">Getting Started</a></li>
+                <li><a href="#armor/wwii/tanks" class="nav-link">Tanks</a></li>
+                <li><a href="#armor/wwii/ranging" class="nav-link" title="Calculators &amp; Sights — artillery, SPA, tank scopes">Calcs &amp; Sights</a></li>
+                <li><a href="#armor/wwii/identification" class="nav-link">Identification</a></li>
+                <li><a href="#armor/wwii/community" class="nav-link">Community</a></li>
+            </ul>
+            <ul class="nav-list nav-armor-vietnam">
+                <li><a href="#armor/vietnam/overview" class="nav-link active">Overview</a></li>
+            </ul>
+            <ul class="nav-list nav-infantry-wwii">
+                <li><a href="#infantry/wwii/overview" class="nav-link">Overview</a></li>
+                <li><a href="#infantry/wwii/classes" class="nav-link">Classes</a></li>
+                <li><a href="#infantry/wwii/weapons" class="nav-link">Weapons</a></li>
             </ul>
         </nav>
 
@@ -180,7 +185,7 @@
                          <div class="card-background-image"></div>
                          <i></i>
                         <h3>Tanks</h3>
-                        <p>Complete database of all tanks with detailed stats, armor values, and combat analysis.</p>
+                        <p>Complete database of all tanks with detailed stats, armor values, and combat analysis (U19.1).</p>
                     </div>
                      <div class="overview-card tactics-card" onclick="showSection('tactics')">
                          <div class="card-background-image"></div>
@@ -197,8 +202,8 @@
                     <div class="overview-card ranging-card" onclick="showSection('ranging')">
                         <div class="card-background-image"></div>
                         <i class="fas fa-bullseye"></i>
-                        <h3>Ranging</h3>
-                        <p>Perfect your ranging skills to hit targets at any distance.</p>
+                        <h3>Calculators &amp; sights</h3>
+                        <p>Artillery and SPA mill calculators, plus armor sight practice for distance reads.</p>
                     </div>
                 <div class="overview-card community-card" onclick="showSection('community')">
                         <div class="card-background-image"></div>
@@ -208,28 +213,28 @@
                     </div>
                 </div>
                 
-                <!-- Featured Video: U19 Intro to SPA's -->
+                <!-- Featured Video: Update 19.1 Arty and SPA -->
                 <div class="featured-video-section">
                     <div class="featured-video-header">
                         <div class="featured-badge">
                             <i class="fas fa-star"></i>
                             <span>FEATURED</span>
                         </div>
-                        <h3><i class="fas fa-cog"></i> Update 19 Intro to SPA's</h3>
-                        <p>Learn about all the changes to Arty and SPA's</p>
+                        <h3><i class="fas fa-cog"></i> Update 19.1 Arty and SPA changes</h3>
+                        <p>Latest changes to artillery and self-propelled artillery in Hell Let Loose</p>
                     </div>
                     <div class="featured-video-container">
                         <div class="video-wrapper">
                             <iframe 
-                                src="https://www.youtube.com/embed/QmjtShptubM?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
-                                title="Update 19 Intro to SPA's - Hell Let Loose"
+                                src="https://www.youtube.com/embed/oQSCjqd7xNU?start=124&enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
+                                title="Update 19.1 Arty and SPA changes - Hell Let Loose"
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                             </iframe>
                         </div>
                         <div class="featured-video-footer">
-                            <a href="https://youtu.be/QmjtShptubM?si=LWTRsk38dxS9K-nG" target="_blank"
+                            <a href="https://www.youtube.com/watch?v=oQSCjqd7xNU&t=124s" target="_blank"
                                class="featured-video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
@@ -242,20 +247,20 @@
                     <div class="video-grid">
                         <div class="video-card">
                             <div class="video-header">
-                            <h3><i class="fas fa-crosshairs"></i> First Round on Smolensk!</h3>
-                            <p>See the brand new U19 map</p>
+                            <h3><i class="fas fa-crosshairs"></i> New tanker tries our tactics</h3>
+                            <p>Putting Armor Hub fundamentals into practice in a real match</p>
                             </div>
                             <div class="video-wrapper">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/v97y8Y2xOU4?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
-                                    title="First Round on Smolensk! - Hell Let Loose"
+                                    src="https://www.youtube.com/embed/n-6WFHqrDdA?start=31&enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
+                                    title="New tanker tries our tactics - Hell Let Loose"
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen>
                                 </iframe>
                             </div>
                         <div class="video-footer">
-                            <a href="https://youtu.be/v97y8Y2xOU4?si=g8aC48kndEr28L0k" target="_blank"
+                            <a href="https://www.youtube.com/watch?v=n-6WFHqrDdA&t=31s" target="_blank"
                                class="video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
@@ -264,20 +269,20 @@
                         
                         <div class="video-card">
                             <div class="video-header">
-                            <h3><i class="fas fa-eye"></i> Crazy Tanking</h3>
-                            <p>Teamwork makes the dreamwork in tanking</p>
+                            <h3><i class="fas fa-shield-alt"></i> World War 2 armor in real life</h3>
+                            <p>Historical armored vehicles and how they compare to the game</p>
                     </div>
                             <div class="video-wrapper">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/odVspH7Czbw?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
-                                    title="Crazy Tanking - Hell Let Loose"
+                                    src="https://www.youtube.com/embed/K_KEHNqqwAg?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
+                                    title="World War 2 armor in real life"
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen>
                                 </iframe>
                 </div>
                         <div class="video-footer">
-                            <a href="https://www.youtube.com/watch?v=odVspH7Czbw" target="_blank"
+                            <a href="https://www.youtube.com/watch?v=K_KEHNqqwAg" target="_blank"
                                class="video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
@@ -293,8 +298,7 @@
                 <div class="section-header">
                     <h2>Tank Database</h2>
                     <p>Complete guide to all tanks in Hell Let Loose</p>
-                <p class="update-info">Data as of Update 18</p>
-                <p class="update-info" style="font-size: 0.85rem; opacity: 0.7; font-style: italic; margin-top: 0.5rem;">As of U18, recon vehicles have not received any adjustments</p>
+                <p class="update-info">Data as of U19.1</p>
                 </div>
                 
                 <!-- Faction Filter with Compact Type Filter -->
@@ -387,11 +391,11 @@
                 </div>
             </section>
 
-            <!-- Ranging Section -->
+            <!-- Section id=ranging: calculators & sights (URL unchanged for bookmarks) -->
             <section id="ranging" class="section">
                 <div class="section-header">
-                    <h2>Ranging Guide</h2>
-                    <p>Master the art of accurate tank gunnery</p>
+                    <h2>Calculators &amp; sights</h2>
+                    <p>Artillery, SPA, and tank optics — mills, tools, and sight practice</p>
                 </div>
                 <div class="ranging-content">
                     <div class="ranging-tools">
@@ -448,15 +452,16 @@
                             <div class="calculator">
                                 <div class="input-group">
                                     <label for="spaDistance">Distance (meters):</label>
-                                    <input type="number" id="spaDistance" min="200" max="600" step="50"
-                                           placeholder="Enter distance (200-600m)">
+                                    <input type="number" id="spaDistance" min="100" max="800" step="50"
+                                           placeholder="Range depends on SPA type (see dropdown)">
                                 </div>
                                 <div class="input-group">
                                     <label for="spaType">SPA Type:</label>
                                     <select id="spaType">
-                                        <option value="usa">USA / Germany / Soviet</option>
-                                        <option value="churchill">British Churchill</option>
-                                        <option value="bishop">British Bishop</option>
+                                        <option value="us_sov">USA / Soviet (200–600m)</option>
+                                        <option value="ger">Germany (200–500m)</option>
+                                        <option value="churchill_avre">British Churchill AVRE (100–250m)</option>
+                                        <option value="bishop">British Bishop (200–800m)</option>
                                     </select>
                                 </div>
                                 <div class="input-group">
@@ -465,9 +470,9 @@
                                         <button type="button" id="spaAdjustmentToggle" style="padding: 0.5rem 1rem; background: rgba(255, 152, 0, 0.2); border: 1px solid var(--accent); color: var(--accent); border-radius: 4px; cursor: pointer; font-weight: 600; min-width: 50px;">+</button>
                                         <input type="number" id="spaTerrainAdjustment" step="1" placeholder="0" style="flex: 1;">
                                 </div>
-                                    <small style="display: block; margin-top: 0.25rem; opacity: 0.7; font-size: 0.85rem;">Adjust for terrain angle and tank pitch</small>
+                                    <small style="display: block; margin-top: 0.25rem; opacity: 0.7; font-size: 0.85rem;">+ adds this many mills to the solution; − subtracts them (terrain angle and tank pitch). Keyboard: Enter in distance jumps here; Enter here calculates and returns to distance.</small>
                             </div>
-                                <button class="calculate-btn" id="spaCalculateBtn">Calculate</button>
+                                <button type="button" class="calculate-btn" id="spaCalculateBtn">Calculate</button>
                                 
                                 <!-- Most Recent Calculation Display -->
                                 <div class="recent-calculation" id="recentSpaCalculation">
@@ -507,7 +512,7 @@
                                         its scope image with ranging markers. This tool helps you practice estimating
                                         distances using tank sights.</p>
                                     <p class="sights-note"><strong>Note:</strong> These sights are based on AP rounds
-                                        only</p>
+                                        only. These were tested in 1440p and 115 FOV.</p>
                                         
                                         <div class="tank-faction-filter">
                                             <button class="faction-filter-btn active" data-faction="all">All</button>
@@ -797,7 +802,7 @@
                                             <h5 class="tank-type-title" style="margin: 0;">SPA (Self Propelled Artillery)</h5>
                                             <span style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1)); border: 1px solid var(--accent); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">New in U19</span>
                                         </div>
-                                        <p class="tank-type-description">The SPA or Self propelled artillery units have been newly introduced to Hell Let Loose. These are designed to be used as "bunker busters" and can be shot at ranges up to 600 meters. The rounds will arc similar to artillery in mid air and will land on target. You can <a href="#ranging" onclick="showSection('ranging')" style="color: var(--accent); text-decoration: underline;">click here</a> to help you range.</p>
+                                        <p class="tank-type-description">The SPA or Self propelled artillery units have been newly introduced to Hell Let Loose. These are designed to be used as "bunker busters" and can be shot at ranges up to 600 meters. The rounds will arc similar to artillery in mid air and will land on target. You can <a href="#armor/wwii/ranging" onclick="showSection('ranging')" style="color: var(--accent); text-decoration: underline;">click here</a> to help you range.</p>
                                     </div>
                                 </div>
                                 <div class="tank-type-component">
@@ -1254,6 +1259,35 @@
                 </div>
             </section>
 
+            <!-- Infantry Hub (WIP) -->
+            <section id="infantry-overview" class="section">
+                <div class="section-header">
+                    <h2>Infantry Overview</h2>
+                    <p>Infantry Hub is under construction — loadouts, roles, and field craft coming later.</p>
+                </div>
+                <div class="infantry-wip-banner">
+                    <p><i class="fas fa-hard-hat"></i> Work in progress. Switch back to <strong>Armor</strong> for the full guide set.</p>
+                </div>
+            </section>
+            <section id="infantry-classes" class="section">
+                <div class="section-header">
+                    <h2>Classes</h2>
+                    <p>Class guides and squad roles will live here.</p>
+                </div>
+                <div class="infantry-wip-banner">
+                    <p><i class="fas fa-users"></i> Placeholder section — content TBD.</p>
+                </div>
+            </section>
+            <section id="infantry-weapons" class="section">
+                <div class="section-header">
+                    <h2>Weapons</h2>
+                    <p>Weapon stats, handling, and recommendations will be added here.</p>
+                </div>
+                <div class="infantry-wip-banner">
+                    <p><i class="fas fa-crosshairs"></i> Placeholder section — content TBD.</p>
+                </div>
+            </section>
+
             <!-- Vietnam Section -->
             <section id="vietnam" class="section vietnam-section">
                 <div class="vietnam-hero">
@@ -1318,7 +1352,17 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
-                <p>&copy; 2025 Hell Let Loose Armor Hub. All rights reserved.</p>
+                <div class="footer-whats-new" role="region" aria-labelledby="footer-whats-new-heading">
+                    <h4 id="footer-whats-new-heading" class="footer-whats-new-heading">What&rsquo;s new</h4>
+                    <p class="footer-whats-new-lead">Recent passes on SPA &amp; artillery numbers, the <a href="#armor/wwii/ranging">Calcs &amp; Sights</a> tools, and tank-card data.</p>
+                    <ul>
+                        <li><strong>SPA numbers:</strong> Database stats (munitions, shells, etc.) cross-checked and corrected where needed—see <a href="#armor/wwii/tanks">Tanks</a> and the <a href="#armor/wwii/ranging/spa">SPA calculator</a> (Enter: distance &rarr; terrain &rarr; calculate).</li>
+                        <li><strong>Artillery:</strong> Mill solutions and tables in the <a href="#armor/wwii/ranging/artillery">artillery calculator</a> refreshed against current reference data.</li>
+                        <li><strong>Calculators:</strong> <a href="#armor/wwii/ranging">Calcs &amp; Sights</a> bundles arty, SPA, and <a href="#armor/wwii/ranging/armor-sights">Armor Sights</a> practice in one tab—clearer labels and smoother fullscreen / mobile use.</li>
+                        <li><strong>Tank cards:</strong> Recon &amp; SPA write-ups, combat analysis + vehicle history split, tighter expanded layouts, and quicker asset updates after deploys.</li>
+                    </ul>
+                </div>
+                <p>&copy; 2026 Hell Let Loose Armor Hub. All rights reserved.</p>
                 <p>This is a fan-made resource for Hell Let Loose players.</p>
             <p>Created by <a href="https://www.youtube.com/@Raz_Bora" target="_blank">RazBora</a> & <a
                     href="https://www.youtube.com/@TheFreshBakedGoods" target="_blank">TheFreshBakedGoods</a></p>

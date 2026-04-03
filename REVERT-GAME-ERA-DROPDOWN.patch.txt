@@ -1,0 +1,11 @@
+Revert helper: restore the HLL WWII / HLL:V dropdown if the segmented toggle is not wanted.
+
+1. index.html — replace the `<div class="hub-switch game-era-switch" ...>` block with the previous
+   `game-version-dropdown` markup (toggle + menu + `.version-option` rows). Search git history
+   for `game-version-dropdown` or `gameVersionToggle`.
+
+2. script.js — restore `syncViewToRoute` references to `.game-version-dropdown`, `.current-version`,
+   `.version-option`, and the `DOMContentLoaded` block that wires `gameVersionToggle` / `gameVersionMenu`.
+
+3. styles.css — restore rules for `.game-version-dropdown`, `.game-version-toggle`, `.game-version-menu`,
+   `.version-option`, and Vietnam-theme overrides that targeted those classes.

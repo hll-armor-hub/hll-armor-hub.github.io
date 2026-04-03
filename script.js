@@ -4062,6 +4062,25 @@ function runAfterNextPaint(task) {
     });
 }
 
+/** Mobile fullscreen: show live mills above inputs; scroll result into view before refocus so the keyboard doesn’t hide it. */
+function focusCalcDistanceWithResultVisible(liveResultEl, distInput) {
+    const run = () => {
+        if (!distInput) {
+            return;
+        }
+        distInput.value = '';
+        distInput.focus();
+        distInput.select();
+    };
+    const narrow = typeof window !== 'undefined' && window.innerWidth <= 768;
+    if (narrow && liveResultEl && document.body.classList.contains('fullscreen-mode')) {
+        liveResultEl.scrollIntoView({ block: 'start', behavior: 'instant' });
+        runAfterNextPaint(run);
+        return;
+    }
+    run();
+}
+
 // Artillery Calculator Functionality
 document.addEventListener('DOMContentLoaded', function () {
     const artyCalculateBtn = document.getElementById('artyCalculateBtn');
@@ -4105,7 +4124,9 @@ function calculateArtillery() {
         
         runAfterNextPaint(() => {
             displayRecentCalculation(result, distance, faction);
-            document.getElementById('artyDistance').value = '';
+            const distInput = document.getElementById('artyDistance');
+            const liveEl = document.getElementById('recentCalculation');
+            focusCalcDistanceWithResultVisible(liveEl, distInput);
             loadArtilleryResults();
         });
     } catch (error) {
@@ -4340,11 +4361,8 @@ function calculateSPA() {
         runAfterNextPaint(() => {
             displayRecentSPACalculation(result, distance, spaType);
             const distInput = document.getElementById('spaDistance');
-            if (distInput) {
-                distInput.value = '';
-                distInput.focus();
-                distInput.select();
-            }
+            const liveEl = document.getElementById('recentSpaCalculation');
+            focusCalcDistanceWithResultVisible(liveEl, distInput);
             loadSPAResults();
         });
     } catch (error) {

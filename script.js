@@ -1889,25 +1889,6 @@ let currentTankType = 'all';
 // Theme Management
 let currentTheme = localStorage.getItem('theme') || 'theme-default';
 
-// Calculate Easter Sunday for a given year (using the computus algorithm)
-function calculateEaster(year) {
-    const a = year % 19;
-    const b = Math.floor(year / 100);
-    const c = year % 100;
-    const d = Math.floor(b / 4);
-    const e = b % 4;
-    const f = Math.floor((b + 8) / 25);
-    const g = Math.floor((b - f + 1) / 3);
-    const h = (19 * a + b - d - g + 15) % 30;
-    const i = Math.floor(c / 4);
-    const k = c % 4;
-    const l = (32 + 2 * e + 2 * i - h - k) % 7;
-    const m = Math.floor((a + 11 * h + 22 * l) / 451);
-    const month = Math.floor((h + l - 7 * m + 114) / 31);
-    const day = ((h + l - 7 * m + 114) % 31) + 1;
-    return new Date(year, month - 1, day);
-}
-
 // Get the appropriate holiday theme based on current date
 function getHolidayTheme() {
     const now = new Date();
@@ -1928,16 +1909,6 @@ function getHolidayTheme() {
     // St. Patrick's Day (March 17)
     if (month === 3 && day === 17) {
         return 'theme-stpatricks';
-    }
-    
-    // Easter (calculated dynamically)
-    const easter = calculateEaster(year);
-    const easterMonth = easter.getMonth() + 1;
-    const easterDay = easter.getDate();
-    // Check if within 7 days of Easter (Easter week)
-    const daysDiff = Math.abs((now - easter) / (1000 * 60 * 60 * 24));
-    if (month === easterMonth && daysDiff <= 7) {
-        return 'theme-easter';
     }
     
     // July 4th
@@ -1987,6 +1958,9 @@ function getHolidayTheme() {
 }
 
 function setTheme(theme) {
+    if (theme === 'theme-easter') {
+        theme = 'theme-default';
+    }
     document.body.className = theme;
     currentTheme = theme;
     localStorage.setItem('theme', theme);
@@ -1995,7 +1969,7 @@ function setTheme(theme) {
     if (themeSelect) {
         // Check if this is a holiday theme
         const holidayThemes = ['theme-christmas', 'theme-newyear', 'theme-valentines', 'theme-stpatricks', 
-                              'theme-easter', 'theme-july4', 'theme-halloween', 'theme-thanksgiving', 'theme-veterans'];
+                              'theme-july4', 'theme-halloween', 'theme-thanksgiving', 'theme-veterans'];
         
         if (holidayThemes.includes(theme)) {
             // Holiday theme active - show "Default" in dropdown
@@ -2049,7 +2023,11 @@ function setTheme(theme) {
 
 // Initialize theme - always check for automatic holiday theme
 document.addEventListener('DOMContentLoaded', function() {
-    const savedTheme = localStorage.getItem('theme');
+    let savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'theme-easter') {
+        savedTheme = 'theme-default';
+        localStorage.setItem('theme', 'theme-default');
+    }
     const manualOverride = localStorage.getItem('manualThemeOverride') === 'true';
     
     // Check for holiday theme
@@ -2104,7 +2082,7 @@ setInterval(function() {
         // If no holiday is active and we're on a holiday theme, go back to saved/default
         else if (holidayTheme === 'theme-default' && 
                  ['theme-christmas', 'theme-newyear', 'theme-valentines', 'theme-stpatricks', 
-                  'theme-easter', 'theme-july4', 'theme-halloween', 'theme-thanksgiving', 'theme-veterans'].includes(currentTheme)) {
+                  'theme-july4', 'theme-halloween', 'theme-thanksgiving', 'theme-veterans'].includes(currentTheme)) {
             // Holiday period ended, restore saved theme or default
             if (savedTheme && savedTheme !== 'theme-default') {
                 setTheme(savedTheme);
@@ -4068,61 +4046,6 @@ function handleMobileNavigation() {
 window.addEventListener('resize', handleMobileNavigation);
 handleMobileNavigation(); // Initial call
 
-// PornHub Easter Egg Functionality
-let secretThemeActive = false;
-
-// Initialize easter egg trigger
-document.addEventListener('DOMContentLoaded', function () {
-    const easterEggTrigger = document.getElementById('easterEggTrigger');
-    if (easterEggTrigger) {
-        easterEggTrigger.addEventListener('click', activateSecretTheme);
-    }
-});
-
-function activateSecretTheme() {
-    if (secretThemeActive) return;
-    
-    // Add PornHub theme class to body
-    document.body.classList.add('secret-theme');
-    secretThemeActive = true;
-    
-    // Show deactivation button
-    const deactivateBtn = document.getElementById('secretDeactivate');
-    if (deactivateBtn) {
-        deactivateBtn.style.display = 'block';
-    }
-    
-    // Play a fun sound effect (optional)
-    playSecretSound();
-    
-    // Add some fun console messages
-
-}
-
-function deactivateSecretTheme() {
-    if (!secretThemeActive) return;
-    
-    // Remove PornHub theme class from body
-    document.body.classList.remove('secret-theme');
-    secretThemeActive = false;
-    
-    // Hide deactivation button
-    const deactivateBtn = document.getElementById('secretDeactivate');
-    if (deactivateBtn) {
-        deactivateBtn.style.display = 'none';
-    }
-}
-
-function playSecretSound() {
-    // Play the wow.mp3 sound for the ARMOR HUB activation
-    try {
-        const wowSound = new Audio('./wow.mp3');
-        wowSound.volume = 0.7; // Set volume to 70%
-        wowSound.play().catch(error => {});
-    } catch (error) {
-    }
-}
-
 function scheduleWhenIdle(callback, timeout = 2000) {
     if (typeof requestIdleCallback === 'function') {
         requestIdleCallback(() => {
@@ -4983,6 +4906,18 @@ function stopPan() {
 }
 
 // Ranging Tool Tile Expansion System
+function lockBodyScrollForFullscreen() {
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.height = '100%';
+}
+
+function unlockBodyScrollForFullscreen() {
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.height = '';
+}
+
 function expandTile(clickedTile, updateHash = true) {
     // Check if we're on mobile (screen width <= 768px)
     const isMobile = window.innerWidth <= 768;
@@ -5027,8 +4962,8 @@ function expandTile(clickedTile, updateHash = true) {
         disableNavigationInFullscreen();
     }
     
-    // Prevent body scrolling when tile is expanded
-    document.body.style.overflow = 'hidden';
+    // Lock page scroll so touch scrolling stays inside the expanded tile (mobile)
+    lockBodyScrollForFullscreen();
     
     // Update URL hash based on which tile was expanded (only if updateHash is true)
     if (updateHash) {
@@ -5068,8 +5003,15 @@ function closeExpandedTile(closeButton) {
         tile.classList.remove('minimized');
     });
     
-    // Restore body scrolling
-    document.body.style.overflow = '';
+    if (document.body.classList.contains('fullscreen-mode')) {
+        document.body.classList.remove('fullscreen-mode');
+        const fullscreenCloseBtn = document.querySelector('.fullscreen-close-btn');
+        if (fullscreenCloseBtn) {
+            fullscreenCloseBtn.remove();
+        }
+        enableNavigationAfterFullscreen();
+    }
+    unlockBodyScrollForFullscreen();
     
     // Reset hash to just ranging section
     isUpdatingHash = true;
@@ -5111,8 +5053,7 @@ function exitFullscreenMode() {
     // Close all expanded tiles and return to ranging
     closeAllExpandedTiles();
 
-    // Restore body scrolling
-    document.body.style.overflow = '';
+    unlockBodyScrollForFullscreen();
 
     // Navigate back to ranging section
     showSection('ranging');
@@ -5230,8 +5171,7 @@ function closeAllExpandedTiles() {
     translateX = 0;
     translateY = 0;
     
-    // Restore body scrolling
-    document.body.style.overflow = '';
+    unlockBodyScrollForFullscreen();
 }
 
 // Back to Top functionality for expanded Armor Sights

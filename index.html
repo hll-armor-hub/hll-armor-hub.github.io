@@ -130,7 +130,7 @@
                 </div>
                 
                 <div class="logo">
-                    <div class="logo-container" onclick="goArmorWwiiOverview()">
+                    <div class="logo-container" onclick="goHubHome()">
                         <div class="logo-left">
                         <img src="images/Hell Let loose Logos/Hell Let Loose-Lockup-Primary-White.png"
                              alt="Hell Let Loose" class="hll-logo hll-logo-white" fetchpriority="high" decoding="async">
@@ -143,13 +143,15 @@
                 <div class="header-controls">
                 <div class="theme-selector">
                     <select id="themeSelect" class="theme-dropdown">
-                        <option value="theme-default">🛡️ Default</option>
-                        <option value="theme-soviet">🔨 Motherland</option>
-                        <option value="theme-german">⚡ Blitzkrieg</option>
-                        <option value="theme-marines">🪂 Airborne</option>
-                        <option value="theme-britain">🔥 Red Devils</option>
-                        <option value="theme-japan">🌅 Rising Sun</option>
-                        <option value="theme-unhinged">💥 Raz Mode</option>
+                        <option value="theme-default" data-theme-era="any">🛡️ Default</option>
+                        <option value="theme-soviet" data-theme-era="wwii">🔨 Motherland</option>
+                        <option value="theme-german" data-theme-era="wwii">⚡ Blitzkrieg</option>
+                        <option value="theme-marines" data-theme-era="wwii">🪂 Airborne</option>
+                        <option value="theme-britain" data-theme-era="wwii">🔥 Red Devils</option>
+                        <option value="theme-japan" data-theme-era="wwii">🌅 Rising Sun</option>
+                        <option value="theme-unhinged" data-theme-era="any">💥 Raz Mode</option>
+                        <option value="theme-vietnam-usa" data-theme-era="vietnam">🪖 G.I.</option>
+                        <option value="theme-vietnam-pavn" data-theme-era="vietnam">🎋 Tunnel Runner</option>
                     </select>
                 </div>
                 </div>
@@ -171,8 +173,13 @@
             </ul>
             <ul class="nav-list nav-infantry-wwii">
                 <li><a href="#infantry/wwii/overview" class="nav-link">Overview</a></li>
+                <li><a href="#infantry/wwii/getting-started" class="nav-link">Getting started</a></li>
                 <li><a href="#infantry/wwii/classes" class="nav-link">Classes</a></li>
-                <li><a href="#infantry/wwii/weapons" class="nav-link">Weapons</a></li>
+                <li><a href="#infantry/wwii/maps" class="nav-link">Maps</a></li>
+                <li><a href="#infantry/wwii/tips" class="nav-link">Tips</a></li>
+            </ul>
+            <ul class="nav-list nav-infantry-vietnam">
+                <li><a href="#infantry/vietnam/overview" class="nav-link active">Overview</a></li>
             </ul>
         </nav>
 
@@ -721,28 +728,28 @@
                                  </div>
                              </div>
                              <div class="strategy-card">
-                                 <h4>Artillery Roles <span style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1)); border: 1px solid var(--accent); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 0.5rem;">New in U19</span></h4>
-                                 <p>Understanding the new artillery unit roles and their responsibilities</p>
+                                 <h4>Artillery Roles <span style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.2), rgba(255, 152, 0, 0.1)); border: 1px solid var(--accent); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 0.5rem;">U19.1</span></h4>
+                                 <p>The artillery squad uses three in-game roles aligned with <strong>Update 19.1</strong> (Artillery Observer, Operator, Gunner). Per-role equipment, subclasses, and full ability notes will be expanded in a later pass.</p>
                                  <div class="role-info">
                                      <div class="role-item">
                                     <img src="images/HLL_Icons/Roles/Artillery Observer.png"
                                          alt="Artillery Observer Icon" class="role-icon" loading="lazy">
                                          <div class="role-details">
-                                        <strong>Artillery Observer</strong> - Acts as the squad leader for artillery units. This role serves as the communication link between command chat and the artillery team. While able to operate within an SPA, the Observer is most effective when positioned on the front lines, providing target information, directing fire, and marking enemy positions with a flare gun for the team to engage.
+                                        <strong>Artillery Observer</strong> — Squad leader for the artillery unit. Acts as the link between command chat and the gun line. While able to work from an SPA, the Observer is often strongest on the front line calling targets, directing fire, and marking with the flare gun.
                                          </div>
                                      </div>
                                      <div class="role-item">
-                                    <img src="images/HLL_Icons/Roles/Artillery Engineer.png"
-                                         alt="Artillery Engineer Icon" class="role-icon" loading="lazy">
+                                    <img src="images/HLL_Icons/Roles/Artillery Operator.png"
+                                         alt="Artillery Operator Icon" class="role-icon" loading="lazy">
                                          <div class="role-details">
-                                        <strong>Artillery Engineer</strong> - The sole unit member equipped with a blowtorch, responsible for maintaining the health of both SPA vehicles and static artillery guns. The Artillery Engineer also carries a wrench, similar to the standard engineer class, enabling construction of various defensive structures and placement of mines to protect the SPA or static artillery positions. Works in coordination with Artillery Support to operate, aim, and fire artillery weapons.
+                                        <strong>Operator</strong> — Artillery squad crew role (replaces the former Artillery Engineer naming in-game as of U19.1). Works with the Observer and Gunner to run static pieces and SPA. Detailed loadout and subclass breakdown TBD.
                                          </div>
                                      </div>
                                      <div class="role-item">
-                                    <img src="images/HLL_Icons/Roles/Artillery Support.png"
-                                         alt="Artillery Support Icon" class="role-icon" loading="lazy">
+                                    <img src="images/HLL_Icons/Roles/Artillery Gunner.png"
+                                         alt="Artillery Gunner Icon" class="role-icon" loading="lazy">
                                          <div class="role-details">
-                                        <strong>Artillery Support</strong> - Carries a supply box, similar to the standard support class. Critical for constructing static artillery guns at match start and rebuilding them if destroyed. The Artillery Support collaborates closely with the Artillery Engineer to build defensive structures. Works together with the Artillery Engineer to operate, aim, and fire artillery weapons.
+                                        <strong>Gunner</strong> — Artillery squad crew role (replaces the former Artillery Support naming in-game as of U19.1). Works with the Observer and Operator on fire missions and crew-served weapons. Detailed loadout and subclass breakdown TBD.
                                          </div>
                                      </div>
                                  </div>
@@ -1266,32 +1273,515 @@
             <!-- Infantry Hub (WIP) -->
             <section id="infantry-overview" class="section">
                 <div class="section-header">
-                    <h2>Infantry Overview</h2>
-                    <p>Infantry Hub is under construction — loadouts, roles, and field craft coming later.</p>
+                    <h2>Infantry overview</h2>
+                    <p>Getting started? Try one of these</p>
                 </div>
-                <div class="infantry-wip-banner">
-                    <p><i class="fas fa-hard-hat"></i> Work in progress. Switch back to <strong>Armor</strong> for the full guide set.</p>
+                <div class="overview-grid infantry-overview-grid">
+                    <a href="#infantry/wwii/getting-started" class="overview-card infantry-overview-card infantry-card-getting-started">
+                        <div class="card-background-image" aria-hidden="true"></div>
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                        <h3>Getting started</h3>
+                        <p>First steps in Hell Let Loose: servers, modes, comms, spawns, and reading the fight.</p>
+                    </a>
+                    <a href="#infantry/wwii/classes" class="overview-card infantry-overview-card infantry-card-classes">
+                        <div class="card-background-image" aria-hidden="true"></div>
+                        <i class="fas fa-user-tag" aria-hidden="true"></i>
+                        <h3>Classes &amp; loadouts</h3>
+                        <p>Browse kits by faction and class; filter the list by role or anything in the loadout.</p>
+                    </a>
+                    <a href="#infantry/wwii/maps" class="overview-card infantry-overview-card infantry-card-maps">
+                        <div class="card-background-image" aria-hidden="true"></div>
+                        <i class="fas fa-map" aria-hidden="true"></i>
+                        <h3>Maps</h3>
+                        <p>All <strong>19</strong> WWII maps in Field Manual order, with history blurbs and tactical maps you can open full-screen.</p>
+                    </a>
+                    <a href="#armor/wwii/ranging/artillery" class="overview-card infantry-overview-card infantry-card-artillery">
+                        <div class="card-background-image" aria-hidden="true"></div>
+                        <i class="fas fa-bullseye" aria-hidden="true"></i>
+                        <h3>Artillery calculator</h3>
+                        <p>Mill solutions and tables for team artillery — same tool as <strong>Armor Hub → Calcs &amp; Sights</strong>.</p>
+                    </a>
                 </div>
+                <div class="infantry-getting-started">
+                    <!-- Video policy: do not embed Warfrags FPS (site owner). -->
+                    <div class="featured-video-section infantry-featured-video">
+                        <div class="featured-video-header">
+                            <div class="featured-badge">
+                                <i class="fas fa-star"></i>
+                                <span>START HERE</span>
+                            </div>
+                            <h3><i class="fas fa-video"></i> 5 tips to get started in Hell Let Loose</h3>
+                        </div>
+                        <div class="featured-video-container">
+                            <div class="video-wrapper">
+                                <iframe
+                                    src="https://www.youtube.com/embed/XWA3ma0OfTM?start=64&amp;enablejsapi=1&amp;origin=https://www.youtube.com&amp;rel=0&amp;modestbranding=1"
+                                    title="5 tips to get started in Hell Let Loose"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe>
+                            </div>
+                            <div class="featured-video-footer">
+                                <a href="https://www.youtube.com/watch?v=XWA3ma0OfTM&amp;t=64s" target="_blank" rel="noopener noreferrer" class="featured-video-link">
+                                    <i class="fab fa-youtube"></i> Watch on YouTube
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video-section infantry-more-videos">
+                        <h4 class="infantry-more-videos-heading"><i class="fas fa-layer-group" aria-hidden="true"></i> Role guides</h4>
+                        <div class="video-grid infantry-role-guides-grid">
+                            <div class="video-card">
+                                <div class="video-header">
+                                    <h3><i class="fas fa-crosshairs" aria-hidden="true"></i> Rifleman guide</h3>
+                                    <p>learn to play the rifleman role</p>
+                                </div>
+                                <div class="video-wrapper">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/videoseries?list=PLTdvrJCygw_4e4G6-Ho5ZiHIVsliYJvfs&amp;enablejsapi=1&amp;rel=0&amp;modestbranding=1"
+                                        title="Hell Let Loose rifleman guide playlist"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                                <div class="video-footer">
+                                    <a href="https://www.youtube.com/watch?v=9ENLfg-xOrU&amp;list=PLTdvrJCygw_4e4G6-Ho5ZiHIVsliYJvfs" target="_blank" rel="noopener noreferrer" class="video-link">
+                                        <i class="fab fa-youtube"></i> Open playlist on YouTube
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="video-card">
+                                <div class="video-header">
+                                    <h3><i class="fas fa-rocket" aria-hidden="true"></i> Anti-tank guide</h3>
+                                    <p>be the bane of armor</p>
+                                </div>
+                                <div class="video-wrapper">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/M0wTm1nFTm8?list=PLTdvrJCygw_4e4G6-Ho5ZiHIVsliYJvfs&amp;index=3&amp;enablejsapi=1&amp;rel=0&amp;modestbranding=1"
+                                        title="Hell Let Loose anti-tank guide"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                                <div class="video-footer">
+                                    <a href="https://www.youtube.com/watch?v=M0wTm1nFTm8&amp;list=PLTdvrJCygw_4e4G6-Ho5ZiHIVsliYJvfs&amp;index=3" target="_blank" rel="noopener noreferrer" class="video-link">
+                                        <i class="fab fa-youtube"></i> Watch on YouTube
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="video-card">
+                                <div class="video-header">
+                                    <h3><i class="fas fa-star" aria-hidden="true"></i> Commander guide</h3>
+                                    <p>learn to control the battlefield</p>
+                                </div>
+                                <div class="video-wrapper">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/1MYgMt3fWXw?list=PLkj8z9lzQ-I-ERQEANMqff7ba2fKQB44z&amp;enablejsapi=1&amp;rel=0&amp;modestbranding=1"
+                                        title="Hell Let Loose commander guide"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                                <div class="video-footer">
+                                    <a href="https://www.youtube.com/watch?v=1MYgMt3fWXw&amp;list=PLkj8z9lzQ-I-ERQEANMqff7ba2fKQB44z" target="_blank" rel="noopener noreferrer" class="video-link">
+                                        <i class="fab fa-youtube"></i> Watch on YouTube
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="infantry-getting-started" class="section">
+                <div class="section-header">
+                    <h2>Getting started</h2>
+                    <p>If you're just getting into Hell Let Loose, start here.</p>
+                </div>
+                <article class="infantry-guide">
+                    <div class="infantry-guide-strategies">
+                        <div class="infantry-guide-grid">
+                    <section class="infantry-guide-block" id="infantry-guide-servers">
+                        <h3><i class="fas fa-server" aria-hidden="true"></i> Finding a server</h3>
+                        <p>To find a server, use the <strong>Enlist</strong> button on the Hell Let Loose main menu. That opens the server browser, where you can browse listings and filter by region, player count, map, and more. The most important thing for maximizing your experience, though, is playing on <strong>community servers</strong>.</p>
+                        <p><strong>Community servers</strong> are run by groups who care about their regulars. They almost always have a team of admins (often tied to a Discord), clear rules, seeding expectations, and someone you can ping when something breaks or a player is out of line. That makes them a strong choice when you want a stable place to learn and squad up - and it keeps your experience as consistent as possible.</p>
+                        <p><strong>Avoid official servers.</strong> Although the name sounds official and these are from Team 17 themselves, they do not have active admins. That allows for rampant team killing, throwing, hacking, and similar behavior with no reliable way to counter it in the moment.</p>
+                        <p>On <strong>PC</strong>, if you want a home server with active staff and a tactical crowd, try <strong>Draft Haus</strong> (search the browser for Draft Haus). It’s the official server of Armor Hub and the first home of Armor Only Events. Draft Haus regularly seeds and hosts events - so if you’d like to be featured in videos, hang out with cool people, or just say hello, stop by. You can <a href="https://discord.com/invite/drafthaus" target="_blank" rel="noopener noreferrer">join the Discord here</a>, and read more in <a href="#armor/wwii/community">Armor Hub’s Draft Haus section</a>.</p>
+                    </section>
+                    <section class="infantry-guide-block" id="infantry-guide-modes">
+                        <h3><i class="fas fa-flag-checkered" aria-hidden="true"></i> Game modes</h3>
+                        <p>Knowing the mode tells you <em>where</em> the fight will move next - which is half of “where are the enemies?” Below: how each mode is won and how capturing actually scores.</p>
+                        <ul class="infantry-guide-mode-list">
+                            <li>
+                                <p><strong>Warfare</strong> - Both teams fight over the <strong>center objective</strong> at the start; it begins <strong>neutral</strong>. After the first cap, <strong>two objectives are always active</strong> at once. Your job is to <strong>attack the enemy’s objective</strong> or <strong>defend yours</strong> as the line moves.</p>
+                                <p><strong>Win condition:</strong> <strong>Hold the center objective</strong> before time runs out, <strong>or</strong> capture <strong>all five</strong> objectives and <strong>push the enemy team off the map</strong>.</p>
+                                <p><strong>Capturing:</strong> A point takes <strong>two minutes</strong> to flip at minimum - it <strong>cannot</strong> be captured faster than that; defenders can only <strong>slow or stall</strong> progress, not speed the attacker’s tick. The <strong>capture zone</strong> is the <strong>four squares</strong> around an objective: <strong>one player = one capture weight</strong> in that ring. Inside the <strong>strongpoint</strong> (the <strong>black circle</strong>), each player counts as <strong>three</strong> capture weight.</p>
+                            </li>
+                            <li>
+                                <p><strong>Offensive</strong> - One <strong>attacking</strong> team and one <strong>defending</strong> team. Only <strong>one objective is active</strong> at a time, and the sector can flip in <strong>30 seconds</strong> (unlike Warfare’s longer tick).</p>
+                                <p><strong>Win condition:</strong> <strong>Attackers</strong> must capture <strong>all five</strong> objectives before their <strong>timer</strong> runs out. If the timer hits zero, the match <strong>doesn’t end on the spot</strong> - it continues until the attackers’ <strong>manpower</strong> is fully <strong>exhausted</strong>; if manpower is still left, the game can enter <strong>overtime</strong>. <strong>Defenders</strong> win by <strong>holding any objective</strong> until the <strong>timer is exhausted</strong>.</p>
+                                <p><strong>Capturing:</strong> Progress counts <strong>only inside the strongpoint</strong> - <strong>no capture weight</strong> is added from the ground outside the circle, so commit to the <strong>strongpoint</strong> itself in this mode.</p>
+                            </li>
+                            <li>
+                                <p><strong>Skirmish</strong> - A smaller, faster format with fewer caps and tighter fights on a reduced slice of the map.</p>
+                                <p><strong>Win condition:</strong> still driven by <strong>manpower</strong> and holding objectives, but on a quicker timeline - check the server’s mode card for player counts and rules.</p>
+                                <p><strong>Spawns:</strong> <strong>Frontline garrisons</strong> are part of this mode’s toolbox (see spawns below), unlike the standard large-scale Warfare/Offensive flow.</p>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="infantry-guide-block" id="infantry-guide-comms">
+                        <h3><i class="fas fa-microphone" aria-hidden="true"></i> Comms - mic and why it matters</h3>
+                        <p>Hell Let Loose is built around <strong>squads</strong> and <strong>command</strong> channels. Text chat is available on PC, but not on console.</p>
+                        <ul>
+                            <li><strong>Use a microphone when you can</strong>, but avoid overloading squad voice chat with constant chatter.</li>
+                            <li><strong>Be mindful of voice volume:</strong> this setting increases mic gain and can cause severe peaking, making you harder to understand in-game.</li>
+                            <li><strong>Default PC voice keys:</strong> <strong>V</strong> = proximity chat, <strong>C</strong> = squad chat, <strong>X</strong> = command chat.</li>
+                            <li><strong>If you are an Officer</strong>, use command comms to coordinate with other squad leaders and mark enemy spawn points or vehicles.</li>
+                        </ul>
+                    </section>
+                    <section class="infantry-guide-block" id="infantry-guide-spawns">
+                        <h3><i class="fas fa-map-pin" aria-hidden="true"></i> Spawns - garrisons, OPs, and frontline garrisons</h3>
+                        <p><strong>Garrisons</strong> and <strong>Outposts (OPs)</strong> are how your team keeps people in the fight. Officers and Commanders place them with support from teammates and <strong>supplies</strong>.</p>
+                        <ul>
+                            <li><strong>Garrisons</strong> - This is your bread and butter, the main team spawn point. They must be placed in valid territory: either the <strong>blue zone</strong> or the first two red sectors closest to the blue zone. These require 50 supplies in blue territory or 100 supplies in red territory to build, and can be built by a Commander, Officer, Artillery Observer, or Spotter. If an enemy is within 100m of a red-zone garrison, it cannot be spawned on; in blue zones this is reduced to about 15m. Garrisons can be destroyed by large explosions or by enemy combatants holding the action button on them. Note: a <strong>long burn</strong> (a manual garrison takedown that takes a long time) usually means the garrison is deep behind enemy lines, farther back than the first two red sectors. Best practice is the <strong>pyramid method</strong>: build three garrisons around an objective in a triangle so your team has backups if territory is lost, and alternate spawn options if a bombing run hits center objective.</li>
+                            <li><strong>Outposts (OPs)</strong> - Squad-level spawns, faster to put down and easier to hide, but easier to destroy. Same broad idea: valid ground, not too close to enemies, and placed so your squad can <strong>re-engage quickly</strong> without feeding a spawn camp.</li>
+                            <li><strong>Frontline garrisons</strong> - These show up in <strong>Skirmish only</strong>. They are not tethered by the 100m or 200m threshold regular garrisons are held to. Instead, they can be placed fairly close together and functionally sit almost in the middle ground between outposts and garrisons.</li>
+                        </ul>
+                    </section>
+                        </div>
+                    </div>
+                </article>
             </section>
             <section id="infantry-classes" class="section">
                 <div class="section-header">
-                    <h2>Classes</h2>
-                    <p>Class guides and squad roles will live here.</p>
+                    <h2>Classes &amp; loadouts</h2>
+                    <p>Browse kits by class and faction. Use the filter to narrow the list by role name or anything in the loadout (satchel, STG, smoke, supplies, and more). More factions added as data is verified.</p>
                 </div>
-                <div class="infantry-wip-banner">
-                    <p><i class="fas fa-users"></i> Placeholder section — content TBD.</p>
-                </div>
+                <div id="infantry-classes-hub" class="infantry-classes-hub" data-ready="0"></div>
             </section>
-            <section id="infantry-weapons" class="section">
+            <section id="infantry-maps" class="section">
                 <div class="section-header">
-                    <h2>Weapons</h2>
-                    <p>Weapon stats, handling, and recommendations will be added here.</p>
+                    <h2>Maps</h2>
                 </div>
-                <div class="infantry-wip-banner">
-                    <p><i class="fas fa-crosshairs"></i> Placeholder section — content TBD.</p>
+                <div class="infantry-maps-hub">
+                    <div class="infantry-maps-tool-callout" role="note">
+                        <p><a href="https://mattw.io/maps-let-loose/" class="infantry-maps-tool-link" target="_blank" rel="noopener noreferrer"><strong>Maps Let Loose</strong></a> (Made by <a href="https://mattw.io/" class="infantry-maps-tool-link" target="_blank">Winston</a>) — Interactive tac-map tool for Hell Let Loose: explore default spawns, sectors, strongpoints, and overlays; draw and annotate on tactical maps for planning and callouts.</p>
+                    </div>
+                    <div class="infantry-map-grid" role="list">
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-hurtgen-forest">
+                            <div class="infantry-map-card-head">
+                                <h3>Hürtgen Forest</h3>
+                            </div>
+                            <p class="infantry-map-history">The <strong>Battle of the Hürtgen Forest</strong> (1944–45) saw the U.S. First Army fight through dense woods and fortifications on the German–Belgian border—one of the longest and costliest American campaigns in Northwest Europe.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/hurtgen-forest/hurtgenforest-day.webp" alt="Hürtgen Forest key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/hurtgen-forest/hurtgenforest.webp" alt="Hürtgen Forest tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-sainte-marie-du-mont">
+                            <div class="infantry-map-card-head">
+                                <h3>Sainte-Marie-du-Mont</h3>
+                            </div>
+                            <p class="infantry-map-history">Behind <strong>Utah Beach</strong>, <strong>Sainte-Marie-du-Mont</strong> was part of the <strong>Normandy</strong> fighting in <strong>June 1944</strong> as U.S. airborne and seaborne troops cleared the <strong>Cotentin</strong> and linked up inland.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/sainte-marie-du-mont/stmariedumont-day.webp" alt="Sainte-Marie-du-Mont key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/sainte-marie-du-mont/stmariedumont.webp" alt="Sainte-Marie-du-Mont tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-foy">
+                            <div class="infantry-map-card-head">
+                                <h3>Foy</h3>
+                            </div>
+                            <p class="infantry-map-history"><strong>Foy</strong> sits near <strong>Bastogne</strong>, central to the <strong>Battle of the Bulge</strong> (December 1944–January 1945) when surrounded U.S. forces held the Ardennes before the counterattack east.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/foy/foy-day.webp" alt="Foy key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/foy/foy.webp" alt="Foy tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-carentan">
+                            <div class="infantry-map-card-head">
+                                <h3>Carentan</h3>
+                            </div>
+                            <p class="infantry-map-history"><strong>Carentan</strong> was fought over in <strong>June 1944</strong> as U.S. forces pushed inland to join the <strong>Omaha</strong> and <strong>Utah</strong> beachheads—a key crossroads in the <strong>Normandy</strong> bocage.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/carentan/carentan-day.webp" alt="Carentan key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/carentan/carentan.webp" alt="Carentan tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-sainte-mere-eglise">
+                            <div class="infantry-map-card-head">
+                                <h3>Sainte-Mère-Église</h3>
+                            </div>
+                            <p class="infantry-map-history"><strong>Sainte-Mère-Église</strong> was among the first towns liberated on <strong>D-Day</strong>; American paratroopers seized vital roads behind <strong>Utah Beach</strong> during <strong>Operation Neptune</strong>.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/sainte-mere-eglise/stmereeglise-day.webp" alt="Sainte-Mère-Église key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/sainte-mere-eglise/stmereeglise.webp" alt="Sainte-Mère-Église tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-purple-heart-lane">
+                            <div class="infantry-map-card-head">
+                                <h3>Purple Heart Lane</h3>
+                            </div>
+                            <p class="infantry-map-history">The name evokes the grinding <strong>Normandy</strong> advance toward <strong>Saint-Lô</strong> in the <strong>summer of 1944</strong>, where hedgerows and German defenses made every lane costly for Allied infantry.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/purple-heart-lane/purpleheartlane-rain.webp" alt="Purple Heart Lane key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/purple-heart-lane/purpleheartlane.webp" alt="Purple Heart Lane tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-omaha-beach">
+                            <div class="infantry-map-card-head">
+                                <h3>Omaha Beach</h3>
+                            </div>
+                            <p class="infantry-map-history">On <strong>6 June 1944</strong>, <strong>Omaha Beach</strong> was the hardest of the Allied landings—U.S. troops stormed bluffs and bunkers against a heavily prepared German defense.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/omaha-beach/omahabeach-day.webp" alt="Omaha Beach key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/omaha-beach/omahabeach.webp" alt="Omaha Beach tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-utah-beach">
+                            <div class="infantry-map-card-head">
+                                <h3>Utah Beach</h3>
+                            </div>
+                            <p class="infantry-map-history">The westernmost U.S. <strong>D-Day</strong> beach, <strong>Utah</strong> saw the <strong>4th Infantry Division</strong> land on <strong>6 June 1944</strong>, then drive inland to join American paratroopers holding the <strong>Cotentin</strong>.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/utah-beach/utahbeach-day.webp" alt="Utah Beach key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/utah-beach/utahbeach.webp" alt="Utah Beach tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-hill-400">
+                            <div class="infantry-map-card-head">
+                                <h3>Hill 400</h3>
+                            </div>
+                            <p class="infantry-map-history"><strong>Hill 400</strong> (Bergstein) was contested in the <strong>Hürtgen Forest</strong> fighting of <strong>late 1944</strong>—an exposed height both sides attacked and counterattacked for control of the Roer river line.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/hill-400/hill400-day.webp" alt="Hill 400 key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/hill-400/hill400.webp" alt="Hill 400 tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-kursk">
+                            <div class="infantry-map-card-head">
+                                <h3>Kursk</h3>
+                            </div>
+                            <p class="infantry-map-history"><strong>Operation Citadel</strong> (July–August <strong>1943</strong>) produced the <strong>Battle of Kursk</strong>—the largest tank engagement of the war—as Germany tried to pinch off a Soviet salient on the Eastern Front.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/kursk/kursk-day.webp" alt="Kursk key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/kursk/kursk.webp" alt="Kursk tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-stalingrad">
+                            <div class="infantry-map-card-head">
+                                <h3>Stalingrad</h3>
+                            </div>
+                            <p class="infantry-map-history">The <strong>Battle of Stalingrad</strong> (<strong>1942–43</strong>) was a turning point on the Eastern Front: months of urban and riverside combat ended in encirclement and surrender of the German Sixth Army.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/stalingrad/stalingrad-day.webp" alt="Stalingrad key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/stalingrad/stalingrad.webp" alt="Stalingrad tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-remagen">
+                            <div class="infantry-map-card-head">
+                                <h3>Remagen</h3>
+                            </div>
+                            <p class="infantry-map-history">In <strong>March 1945</strong>, U.S. forces captured the <strong>Ludendorff Bridge</strong> at <strong>Remagen</strong>, gaining an unexpected <strong>Rhine</strong> crossing that accelerated the Allied drive into Germany.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/remagen/remagen-day.webp" alt="Remagen key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/remagen/T_Map_Remagen_copy.jpg" alt="Remagen tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-driel">
+                            <div class="infantry-map-card-head">
+                                <h3>Driel</h3>
+                            </div>
+                            <p class="infantry-map-history">Polish paratroopers dropped at <strong>Driel</strong> during <strong>Operation Market Garden</strong> (<strong>September 1944</strong>), trying to reinforce the British bridgehead at <strong>Arnhem</strong> on the <strong>Lower Rhine</strong>.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/driel/driel-day.webp" alt="Driel key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/driel/driel.webp" alt="Driel tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-el-alamein">
+                            <div class="infantry-map-card-head">
+                                <h3>El Alamein</h3>
+                            </div>
+                            <p class="infantry-map-history">The <strong>Second Battle of El Alamein</strong> (<strong>October–November 1942</strong>) broke Axis momentum in North Africa; Montgomery’s Eighth Army pushed <strong>Rommel</strong> back from Egypt toward Tunisia.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/el-alamein/elalamein-day.webp" alt="El Alamein key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/el-alamein/elalamein.webp" alt="El Alamein tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-kharkov">
+                            <div class="infantry-map-card-head">
+                                <h3>Kharkov</h3>
+                            </div>
+                            <p class="infantry-map-history"><strong>Kharkov</strong> changed hands several times; the <strong>Third Battle of Kharkov</strong> (<strong>February–March 1943</strong>) was a major German counteroffensive after <strong>Stalingrad</strong> that briefly retook the city.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/kharkov/kharkov-day.webp" alt="Kharkov key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/kharkov/kharkov.webp" alt="Kharkov tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-mortain">
+                            <div class="infantry-map-card-head">
+                                <h3>Mortain</h3>
+                            </div>
+                            <p class="infantry-map-history">The German <strong>Operation Lüttich</strong> (<strong>August 1944</strong>) aimed at <strong>Mortain</strong> tried to cut off Patton’s breakout; it failed and helped set up the <strong>Falaise Pocket</strong> encirclement.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/mortain/mortain-day.webp" alt="Mortain key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/mortain/mortain.webp" alt="Mortain tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-elsenborn-ridge">
+                            <div class="infantry-map-card-head">
+                                <h3>Elsenborn Ridge</h3>
+                            </div>
+                            <p class="infantry-map-history">On the <strong>northern shoulder of the Bulge</strong>, U.S. units held <strong>Elsenborn Ridge</strong> against <strong>6th Panzer Army</strong> attacks in the <strong>Ardennes</strong>, blunting the German winter offensive.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/elsenborn-ridge/elsenbornridge-day.webp" alt="Elsenborn Ridge key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/elsenborn-ridge/elsenbornridge.webp" alt="Elsenborn Ridge tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-tobruk">
+                            <div class="infantry-map-card-head">
+                                <h3>Tobruk</h3>
+                            </div>
+                            <p class="infantry-map-history">The <strong>siege of Tobruk</strong> (<strong>1941</strong>) saw Commonwealth forces defend the Libyan port for months against <strong>Rommel’s</strong> <strong>Afrika Korps</strong>, a famous episode of the North African campaign.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/tobruk/tobruk-day.webp" alt="Tobruk key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/tobruk/tobruk.webp" alt="Tobruk tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                        <article class="infantry-map-card" role="listitem" id="infantry-map-smolensk">
+                            <div class="infantry-map-card-head">
+                                <h3>Smolensk</h3>
+                            </div>
+                            <p class="infantry-map-history">The <strong>Smolensk</strong> region saw major fighting in <strong>1941</strong> and <strong>1943</strong> on the road to Moscow—large-scale Soviet–German battles for a key rail and road hub on the Eastern Front.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/smolensk/smolensk-day.webp" alt="Smolensk key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <img src="images/infantry/maps/smolensk/Smolensk.png" alt="Smolensk tactical map" class="infantry-map-img infantry-map-img--tac" loading="lazy" decoding="async">
+                                    <figcaption>Tactical map</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+
+                    </div>
                 </div>
             </section>
-
+            <section id="infantry-tips" class="section">
+                <div class="section-header">
+                    <h2>Tips</h2>
+                    <p>From the Draft Haus community — tactics and perspective from regulars on Armor Hub’s home server.</p>
+                </div>
+                <div id="infantry-tips-root" class="infantry-tips-hub" data-ready="0"></div>
+            </section>
             <!-- Vietnam Section -->
             <section id="vietnam" class="section vietnam-section">
                 <div class="vietnam-hero">
@@ -1305,7 +1795,41 @@
                         <h1 class="vietnam-title">ARMOR HUB</h1>
                         <div class="coming-soon-banner">
                             <h2>COMING IN 2026</h2>
-                            <p>Experience the next chapter of Hell Let Loose with Vietnam-era armored warfare</p>
+                            <p class="vietnam-tagline">Experience the next chapter of Hell Let Loose with Vietnam-era armored warfare</p>
+
+                            <!-- Launch: leave data-launch-target empty for CLASSIFIED; set to ISO date (e.g. 2026-11-15T17:00:00Z) for countdown -->
+                            <div id="vietnamLaunchWidget" class="vietnam-launch-widget" data-launch-target="">
+                                <div class="vietnam-launch-widget__top">
+                                    <span class="vietnam-launch-widget__eyebrow">FIELD BRIEF // LAUNCH WINDOW</span>
+                                    <span class="vietnam-launch-widget__doc-no">HLL-VN-2026-███</span>
+                                </div>
+                                <div id="vietnamLaunchClassified" class="vietnam-launch-widget__classified">
+                                    <span class="vietnam-launch-widget__stamp" aria-hidden="true">CLASSIFIED</span>
+                                    <div class="vietnam-launch-widget__redacted" aria-hidden="true">
+                                        <span></span><span></span><span></span><span></span><span></span>
+                                    </div>
+                                    <p class="vietnam-launch-widget__classified-hint">Check back SOON</p>
+                                </div>
+                                <div id="vietnamLaunchCountdown" class="vietnam-launch-widget__countdown" hidden>
+                                    <div class="vietnam-launch-widget__unit">
+                                        <span id="vietnamLaunchDays" class="vietnam-launch-widget__value">00</span>
+                                        <span class="vietnam-launch-widget__label">DAYS</span>
+                                    </div>
+                                    <div class="vietnam-launch-widget__unit">
+                                        <span id="vietnamLaunchHours" class="vietnam-launch-widget__value">00</span>
+                                        <span class="vietnam-launch-widget__label">HRS</span>
+                                    </div>
+                                    <div class="vietnam-launch-widget__unit">
+                                        <span id="vietnamLaunchMins" class="vietnam-launch-widget__value">00</span>
+                                        <span class="vietnam-launch-widget__label">MIN</span>
+                                    </div>
+                                    <div class="vietnam-launch-widget__unit">
+                                        <span id="vietnamLaunchSecs" class="vietnam-launch-widget__value">00</span>
+                                        <span class="vietnam-launch-widget__label">SEC</span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="vietnam-features">
                                 <div class="feature">
                                     <i class="fas fa-shield-alt"></i>
@@ -1320,14 +1844,34 @@
                                     <span>New Combat Mechanics</span>
                                 </div>
                             </div>
+
+                            <div class="spread-democracy-row">
+                                <button type="button" id="spreadDemocracyBtn" class="spread-democracy-btn"
+                                        aria-pressed="false"
+                                        aria-label="Play or stop Spread Democracy music and effects">
+                                    <span class="spread-democracy-flag-wrap" aria-hidden="true">
+                                        <svg class="spread-democracy-flag" viewBox="0 0 19 10" focusable="false">
+                                            <rect fill="#B22234" width="19" height="10" rx="0.4"/>
+                                            <path fill="#fff" d="M0 1.54h19v1.05H0zm0 2.1h19v1.05H0zm0 2.1h19v1.05H0z"/>
+                                            <rect fill="#3C3B6E" width="7.6" height="5.45"/>
+                                        </svg>
+                                    </span>
+                                    <span class="spread-democracy-btn-text">Spread Democracy</span>
+                                </button>
+                                <div class="spread-democracy-vol-wrap">
+                                    <label class="spread-democracy-sr-only" for="spreadDemocracyVol">Music volume</label>
+                                    <input type="range" id="spreadDemocracyVol" class="spread-democracy-vol"
+                                           min="0" max="1" step="0.05" value="0.28" title="Music volume"/>
+                                </div>
+                            </div>
                             
                             <!-- Vietnam Video Section -->
                             <div class="vietnam-video-section">
-                                <h3>Vietnam Armor Preview</h3>
+                                <h3>Newest details on Vietnam</h3>
                                 <div class="vietnam-video-wrapper">
                                     <iframe 
-                                        src="https://www.youtube.com/embed/3gepqNoAbBY?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1" 
-                                        title="Hell Let Loose Vietnam Armor Preview"
+                                        src="https://www.youtube.com/embed/yxEbE8fTJ80?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1" 
+                                        title="Newest details on Vietnam"
                                         frameborder="0" 
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                         allowfullscreen>
@@ -1340,6 +1884,9 @@
             </section>
         </main>
 
+        <audio id="spreadDemocracyAudio" preload="metadata" playsinline
+               data-src="./audio/Tunnel Fire.mp3"></audio>
+
         <!-- Audio for victory sound -->
         <audio id="victorySound" preload="auto">
         <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT"
@@ -1351,12 +1898,12 @@
             <div class="footer-content">
                 <div class="footer-whats-new" role="region" aria-labelledby="footer-whats-new-heading">
                     <h4 id="footer-whats-new-heading" class="footer-whats-new-heading">What&rsquo;s new</h4>
-                    <p class="footer-whats-new-lead">Recent passes on SPA &amp; artillery numbers, the <a href="#armor/wwii/ranging">Calcs &amp; Sights</a> tools, and tank-card data.</p>
+                    <p class="footer-whats-new-lead">Latest updates include SPA calculator improvements, enhanced tank comparison outcomes, and major infantry hub additions.</p>
                     <ul>
-                        <li><strong>SPA numbers:</strong> Database stats (munitions, shells, etc.) cross-checked and corrected where needed—see <a href="#armor/wwii/tanks">Tanks</a> and the <a href="#armor/wwii/ranging/spa">SPA calculator</a> (Enter: distance &rarr; terrain &rarr; calculate).</li>
-                        <li><strong>Artillery:</strong> Mill solutions and tables in the <a href="#armor/wwii/ranging/artillery">artillery calculator</a> refreshed against current reference data.</li>
-                        <li><strong>Calculators:</strong> <a href="#armor/wwii/ranging">Calcs &amp; Sights</a> bundles arty, SPA, and <a href="#armor/wwii/ranging/armor-sights">Armor Sights</a> practice in one tab—clearer labels and smoother fullscreen / mobile use.</li>
-                        <li><strong>Tank cards:</strong> Recon &amp; SPA write-ups, combat analysis + vehicle history split, tighter expanded layouts, and quicker asset updates after deploys.</li>
+                        <li><strong><a href="#armor/wwii/ranging/spa">SPA Calculator update</a>:</strong> Refined calculator behavior and data flow for quicker, clearer results.</li>
+                        <li><strong><a href="#armor/wwii/tanks">Tank Compare function enhanced</a>:</strong> Added a top Quick Outcome summary with two-way Shots to Kill, faster tank (max speed), and faster reload callouts.</li>
+                        <li><strong><a href="#infantry/wwii/overview">Infantry hub created</a>:</strong> New dedicated infantry hub section for infantry-focused content and tools.</li>
+                        <li><strong><a href="#infantry/wwii/maps">Added "Maps" section</a>:</strong> Added a maps area in Infantry for easier map browsing and quick reference.</li>
                     </ul>
                 </div>
                 <p>&copy; 2026 Hell Let Loose Armor Hub. All rights reserved.</p>
@@ -1387,6 +1934,17 @@
     </div>
 </div>
 
+<!-- Infantry Maps — tactical map lightbox (tap / click thumbnail to enlarge) -->
+<div id="infantryTacLightbox" class="infantry-tac-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Enlarged map image">
+    <button type="button" class="infantry-tac-lightbox__backdrop" aria-label="Close enlarged map"></button>
+    <div class="infantry-tac-lightbox__inner">
+        <button type="button" class="infantry-tac-lightbox__close" aria-label="Close">&times;</button>
+        <img id="infantryTacLightboxImg" class="infantry-tac-lightbox__img" src="" alt="" draggable="false">
+    </div>
+</div>
+
+<script src="infantry-classes-ui.js?v={{ site.time | date_to_xmlschema }}" defer></script>
+<script src="infantry-tips-ui.js?v={{ site.time | date_to_xmlschema }}" defer></script>
 <script src="script.js?v={{ site.time | date_to_xmlschema }}" defer></script>
 <script src="fireworks.js?v={{ site.time | date_to_xmlschema }}" defer></script>
 </body>

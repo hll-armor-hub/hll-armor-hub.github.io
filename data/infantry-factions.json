@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "description": "Playable army factions for Infantry Hub loadout mapping (in-game names).",
+  "factions": [
+    { "id": "germany", "label": "Germany" },
+    { "id": "soviet_union", "label": "Soviet Union" },
+    { "id": "allies_british_polish", "label": "Allies (British/Polish)" },
+    { "id": "german_africa_corps", "label": "German Africa Corps" },
+    { "id": "british_eighth_army", "label": "British Eighth Army" },
+    { "id": "united_states", "label": "United States" }
+  ]
+}

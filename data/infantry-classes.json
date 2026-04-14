@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "description": "Hell Let Loose role roster. Same classes for every faction; weapons and equipment vary by faction (see future loadout data). Artillery squad role titles: Artillery Observer, Operator, Gunner (Update 19.1).",
+  "categories": [
+    {
+      "id": "command",
+      "label": "Command",
+      "classes": [
+        { "id": "commander", "label": "Commander", "order": 1 }
+      ]
+    },
+    {
+      "id": "infantry",
+      "label": "Infantry",
+      "classes": [
+        { "id": "officer", "label": "Officer", "order": 1 },
+        { "id": "rifleman", "label": "Rifleman", "order": 2 },
+        { "id": "assault", "label": "Assault", "order": 3 },
+        { "id": "automatic_rifleman", "label": "Automatic Rifleman", "order": 4 },
+        { "id": "medic", "label": "Medic", "order": 5 },
+        { "id": "support", "label": "Support", "order": 6 },
+        { "id": "machine_gunner", "label": "Machine Gunner", "order": 7 },
+        { "id": "anti_tank", "label": "Anti-Tank", "order": 8 },
+        { "id": "engineer", "label": "Engineer", "order": 9 }
+      ]
+    },
+    {
+      "id": "armor",
+      "label": "Armor",
+      "classes": [
+        { "id": "tank_commander", "label": "Tank Commander", "order": 1 },
+        { "id": "crewman", "label": "Crewman", "order": 2 }
+      ]
+    },
+    {
+      "id": "artillery",
+      "label": "Artillery",
+      "classes": [
+        { "id": "artillery_observer", "label": "Artillery Observer", "order": 1 },
+        { "id": "artillery_operator", "label": "Operator", "order": 2 },
+        { "id": "artillery_gunner", "label": "Gunner", "order": 3 }
+      ]
+    },
+    {
+      "id": "recon",
+      "label": "Recon",
+      "classes": [
+        { "id": "spotter", "label": "Spotter", "order": 1 },
+        { "id": "sniper", "label": "Sniper", "order": 2 }
+      ]
+    }
+  ]
+}

@@ -29,8 +29,11 @@ function parseAppHash(hash) {
             return null;
         }
         const game = g;
-        const section = parts[2] || 'overview';
+        let section = parts[2] || 'overview';
         const subRoute = parts[3] || null;
+        if (hub === 'infantry' && game === 'wwii' && (section === 'weapons' || section === 'modes')) {
+            section = 'getting-started';
+        }
         return { hub, game, section, subRoute };
     }
     const legacySections = ['overview', 'tanks', 'tactics', 'identification', 'ranging', 'community'];
@@ -41,12 +44,241 @@ function parseAppHash(hash) {
     return { hub: 'armor', game: 'wwii', section: sec, subRoute: parts[1] || null };
 }
 
+const VIETNAM_HERO_ARMOR = {
+    title: 'ARMOR HUB',
+    tagline: 'Experience the next chapter of Hell Let Loose with Vietnam-era armored warfare',
+    videoHeading: 'Newest details on Vietnam',
+    iframeTitle: 'Newest details on Vietnam',
+    features: [
+        { icon: 'fas fa-shield-alt', text: 'Vietnam-Era Tanks' },
+        { icon: 'fas fa-map', text: 'Jungle Warfare' },
+        { icon: 'fas fa-crosshairs', text: 'New Combat Mechanics' }
+    ]
+};
+
+const VIETNAM_HERO_INFANTRY = {
+    title: 'INFANTRY HUB',
+    tagline: 'Experience the next chapter of Hell Let Loose with Vietnam-era infantry combat',
+    videoHeading: 'Newest details on Vietnam',
+    iframeTitle: 'Newest details on Vietnam',
+    features: [
+        { icon: 'fas fa-user-friends', text: 'Vietnam-Era Loadouts' },
+        { icon: 'fas fa-map', text: 'Jungle Operations' },
+        { icon: 'fas fa-users', text: 'Squad Tactics' }
+    ]
+};
+
+function updateVietnamHeroForHub(hub) {
+    const spec = hub === 'infantry' ? VIETNAM_HERO_INFANTRY : VIETNAM_HERO_ARMOR;
+    const titleEl = document.querySelector('.vietnam-title');
+    const taglineEl = document.querySelector('.vietnam-tagline');
+    const videoH = document.querySelector('.vietnam-video-section h3');
+    const iframe = document.querySelector('.vietnam-video-wrapper iframe');
+    const featureRows = document.querySelectorAll('.vietnam-features .feature');
+    if (titleEl) {
+        titleEl.textContent = spec.title;
+    }
+    if (taglineEl) {
+        taglineEl.textContent = spec.tagline;
+    }
+    if (videoH) {
+        videoH.textContent = spec.videoHeading;
+    }
+    if (iframe) {
+        iframe.setAttribute('title', spec.iframeTitle);
+    }
+    featureRows.forEach((row, i) => {
+        const f = spec.features[i];
+        if (!f) {
+            return;
+        }
+        const icon = row.querySelector('i');
+        const span = row.querySelector('span');
+        if (icon) {
+            icon.className = f.icon;
+        }
+        if (span) {
+            span.textContent = f.text;
+        }
+    });
+}
+
+const VIETNAM_SELECTABLE_THEMES = new Set([
+    'theme-default',
+    'theme-unhinged',
+    'theme-vietnam-usa',
+    'theme-vietnam-pavn'
+]);
+
+function isVietnamEraActive() {
+    return currentGameVersion === 'vietnam' && (currentHub === 'armor' || currentHub === 'infantry');
+}
+
+function normalizeStoredVietnamTheme(value) {
+    if (value && VIETNAM_SELECTABLE_THEMES.has(value)) {
+        return value;
+    }
+    return 'theme-default';
+}
+
+function updateThemeSelectEraVisibility(isVietnam) {
+    if (!themeSelect) {
+        return;
+    }
+    themeSelect.querySelectorAll('option[data-theme-era]').forEach(opt => {
+        const era = opt.getAttribute('data-theme-era');
+        let show = true;
+        if (isVietnam) {
+            show = era === 'vietnam' || era === 'any';
+        } else {
+            show = era === 'wwii' || era === 'any';
+        }
+        opt.hidden = !show;
+        opt.disabled = !show;
+    });
+}
+
+const SPREAD_DEMOCRACY_VOL_KEY = 'spreadDemocracyVol';
+
+function tearDownSpreadDemocracy() {
+    const audio = document.getElementById('spreadDemocracyAudio');
+    if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+    }
+    const btn = document.getElementById('spreadDemocracyBtn');
+    if (btn) {
+        btn.setAttribute('aria-pressed', 'false');
+        btn.classList.remove('is-playing');
+    }
+}
+
+function initSpreadDemocracy() {
+    const audio = document.getElementById('spreadDemocracyAudio');
+    const btn = document.getElementById('spreadDemocracyBtn');
+    const vol = document.getElementById('spreadDemocracyVol');
+    if (!audio || !btn) {
+        return;
+    }
+    const rawPath = (audio.dataset.src || './audio/Tunnel Fire.mp3').trim();
+    let trackUrl;
+    try {
+        trackUrl = new URL(rawPath, window.location.href).href;
+    } catch {
+        trackUrl = rawPath;
+    }
+    audio.src = trackUrl;
+    audio.load();
+
+    const saved = localStorage.getItem(SPREAD_DEMOCRACY_VOL_KEY);
+    let v = saved !== null ? parseFloat(saved, 10) : 0.28;
+    if (Number.isNaN(v) || v < 0 || v > 1) {
+        v = 0.28;
+    }
+    audio.volume = v;
+    if (vol) {
+        vol.value = String(v);
+    }
+
+    btn.addEventListener('click', () => {
+        if (audio.paused) {
+            const fromSlider = vol ? parseFloat(vol.value, 10) : 0.28;
+            audio.volume = Number.isNaN(fromSlider) ? 0.28 : fromSlider;
+            audio.load();
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise
+                    .then(() => {
+                        btn.setAttribute('aria-pressed', 'true');
+                        btn.classList.add('is-playing');
+                    })
+                    .catch(() => {});
+            }
+        } else {
+            tearDownSpreadDemocracy();
+        }
+    });
+
+    if (vol) {
+        vol.addEventListener('input', () => {
+            const n = parseFloat(vol.value, 10);
+            if (!Number.isNaN(n)) {
+                audio.volume = n;
+                localStorage.setItem(SPREAD_DEMOCRACY_VOL_KEY, String(n));
+            }
+        });
+    }
+
+    audio.addEventListener('ended', () => {
+        tearDownSpreadDemocracy();
+    });
+}
+
+function initVietnamLaunchWidget() {
+    const root = document.getElementById('vietnamLaunchWidget');
+    if (!root) {
+        return;
+    }
+    const iso = (root.getAttribute('data-launch-target') || '').trim();
+    const classifiedEl = document.getElementById('vietnamLaunchClassified');
+    const countdownEl = document.getElementById('vietnamLaunchCountdown');
+    const elD = document.getElementById('vietnamLaunchDays');
+    const elH = document.getElementById('vietnamLaunchHours');
+    const elM = document.getElementById('vietnamLaunchMins');
+    const elS = document.getElementById('vietnamLaunchSecs');
+    if (!classifiedEl || !countdownEl || !elD || !elH || !elM || !elS) {
+        return;
+    }
+    if (!iso) {
+        return;
+    }
+    const targetMs = Date.parse(iso);
+    if (Number.isNaN(targetMs)) {
+        return;
+    }
+
+    classifiedEl.hidden = true;
+    countdownEl.hidden = false;
+
+    function pad2(n) {
+        return String(Math.max(0, n)).padStart(2, '0');
+    }
+
+    function tick() {
+        const ms = targetMs - Date.now();
+        if (ms <= 0) {
+            elD.textContent = '00';
+            elH.textContent = '00';
+            elM.textContent = '00';
+            elS.textContent = '00';
+            return;
+        }
+        const s = Math.floor(ms / 1000);
+        const days = Math.floor(s / 86400);
+        const hours = Math.floor((s % 86400) / 3600);
+        const mins = Math.floor((s % 3600) / 60);
+        const secs = s % 60;
+        elD.textContent = days >= 100 ? String(days) : pad2(days);
+        elH.textContent = pad2(hours);
+        elM.textContent = pad2(mins);
+        elS.textContent = pad2(secs);
+    }
+
+    tick();
+    setInterval(tick, 1000);
+}
+
 function resolveSectionDomId(route) {
+    if (route.hub === 'infantry' && route.game === 'vietnam') {
+        return 'vietnam';
+    }
     if (route.hub === 'infantry') {
         const map = {
             overview: 'infantry-overview',
             classes: 'infantry-classes',
-            weapons: 'infantry-weapons'
+            'getting-started': 'infantry-getting-started',
+            maps: 'infantry-maps',
+            tips: 'infantry-tips'
         };
         return map[route.section] || 'infantry-overview';
     }
@@ -58,6 +290,26 @@ function resolveSectionDomId(route) {
         return route.section;
     }
     return 'overview';
+}
+
+// Infantry Classes rollout toggle:
+// Set to true when Classes tab/content is ready to ship.
+const INFANTRY_CLASSES_ENABLED = false;
+
+function applyInfantryClassesVisibility() {
+    const classesNavLinks = document.querySelectorAll('a.nav-link[href^="#infantry/"][href$="/classes"]');
+    classesNavLinks.forEach(link => {
+        const item = link.closest('li');
+        const target = item || link;
+        target.style.display = INFANTRY_CLASSES_ENABLED ? '' : 'none';
+    });
+
+    const classesOverviewCards = document.querySelectorAll(
+        'a.infantry-card-classes, a.overview-card[href^="#infantry/"][href$="/classes"]'
+    );
+    classesOverviewCards.forEach(card => {
+        card.style.display = INFANTRY_CLASSES_ENABLED ? '' : 'none';
+    });
 }
 
 function unmountScopeViewerVisualOnly() {
@@ -86,6 +338,7 @@ function syncViewToRoute(route, { updateHash = false } = {}) {
     const navArmor = document.querySelector('.nav-armor-wwii');
     const navArmorVietnam = document.querySelector('.nav-armor-vietnam');
     const navInfantry = document.querySelector('.nav-infantry-wwii');
+    const navInfantryVietnam = document.querySelector('.nav-infantry-vietnam');
     if (navArmor) {
         navArmor.style.display = route.hub === 'armor' && route.game === 'wwii' ? '' : 'none';
     }
@@ -94,8 +347,9 @@ function syncViewToRoute(route, { updateHash = false } = {}) {
             route.hub === 'armor' && route.game === 'vietnam' ? 'flex' : 'none';
     }
     if (navInfantry) {
-        navInfantry.style.display = route.hub === 'infantry' ? 'flex' : 'none';
-        if (route.hub === 'infantry') {
+        navInfantry.style.display =
+            route.hub === 'infantry' && route.game === 'wwii' ? 'flex' : 'none';
+        if (route.hub === 'infantry' && route.game === 'wwii') {
             navInfantry.querySelectorAll('.nav-link').forEach(link => {
                 const href = link.getAttribute('href');
                 if (!href || !href.startsWith('#infantry/')) {
@@ -108,6 +362,11 @@ function syncViewToRoute(route, { updateHash = false } = {}) {
                 }
             });
         }
+    }
+    applyInfantryClassesVisibility();
+    if (navInfantryVietnam) {
+        navInfantryVietnam.style.display =
+            route.hub === 'infantry' && route.game === 'vietnam' ? 'flex' : 'none';
     }
 
     const hubArmorBtn = document.querySelector('.hub-switch-btn[data-hub="armor"]');
@@ -139,11 +398,17 @@ function syncViewToRoute(route, { updateHash = false } = {}) {
     const themeSelector = document.querySelector('.theme-selector');
     const allSections = document.querySelectorAll('.section');
 
-    if (route.hub === 'armor' && route.game === 'vietnam') {
+    const vietnamEra =
+        route.game === 'vietnam' &&
+        (route.hub === 'armor' || route.hub === 'infantry');
+    if (vietnamEra) {
         document.body.classList.add('vietnam-jungle-theme');
         if (themeSelector) {
-            themeSelector.style.display = 'none';
+            themeSelector.style.display = '';
         }
+        const vnTheme = normalizeStoredVietnamTheme(localStorage.getItem('themeVietnam'));
+        setTheme(vnTheme, { skipPersist: true });
+        updateThemeSelectEraVisibility(true);
         if (navigation) {
             navigation.style.display = 'flex';
         }
@@ -154,11 +419,20 @@ function syncViewToRoute(route, { updateHash = false } = {}) {
         if (footer) {
             footer.style.display = 'block';
         }
+        updateVietnamHeroForHub(route.hub);
     } else {
+        tearDownSpreadDemocracy();
         document.body.classList.remove('vietnam-jungle-theme');
         if (themeSelector) {
             themeSelector.style.display = '';
         }
+        const storedWwiiTheme = localStorage.getItem('theme');
+        const wwiiTheme = normalizeStoredWwiiTheme(storedWwiiTheme);
+        if (storedWwiiTheme !== wwiiTheme) {
+            localStorage.setItem('theme', wwiiTheme);
+        }
+        setTheme(wwiiTheme, { skipPersist: true });
+        updateThemeSelectEraVisibility(false);
         if (navigation) {
             navigation.style.display = 'flex';
         }
@@ -206,12 +480,26 @@ function syncViewToRoute(route, { updateHash = false } = {}) {
     if (domId === 'ranging' && route.hub === 'armor' && route.game === 'wwii') {
         initializeArmorSights();
     }
+    if (domId === 'infantry-classes' && route.hub === 'infantry' && route.game === 'wwii') {
+        if (typeof window.initInfantryClassesHub === 'function') {
+            window.initInfantryClassesHub();
+        }
+    }
+    if (domId === 'infantry-tips' && route.hub === 'infantry' && route.game === 'wwii') {
+        if (typeof window.initInfantryTipsHub === 'function') {
+            window.initInfantryTipsHub();
+        }
+    }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function goArmorWwiiOverview() {
-    window.location.hash = formatAppHash('armor', 'wwii', 'overview');
+/** Logo / title click: overview for whichever hub + era is currently active */
+function goHubHome() {
+    const hub = typeof currentHub !== 'undefined' && currentHub ? currentHub : 'armor';
+    const game =
+        typeof currentGameVersion !== 'undefined' && currentGameVersion ? currentGameVersion : 'wwii';
+    window.location.hash = formatAppHash(hub, game, 'overview');
 }
 
 // Simple Comparison Functions
@@ -351,6 +639,37 @@ function generateComparisonStats() {
 
     if (!selectedTank1 || !selectedTank2) return;
 
+    const tank1Stats = selectedTank1.detailedStats || {};
+    const tank2Stats = selectedTank2.detailedStats || {};
+    const shotLine1 = formatShotsToKillLine(
+        selectedTank1.name,
+        selectedTank2.name,
+        tank1Stats.apDamage,
+        tank1Stats.maxShellsAP,
+        tank2Stats.hullHealth
+    );
+    const shotLine2 = formatShotsToKillLine(
+        selectedTank2.name,
+        selectedTank1.name,
+        tank2Stats.apDamage,
+        tank2Stats.maxShellsAP,
+        tank1Stats.hullHealth
+    );
+    const speedOutcome = getHigherIsBetterOutcome(
+        selectedTank1.name,
+        selectedTank2.name,
+        tank1Stats.maxSpeed,
+        tank2Stats.maxSpeed,
+        'km/h'
+    );
+    const reloadOutcome = getLowerIsBetterOutcome(
+        selectedTank1.name,
+        selectedTank2.name,
+        tank1Stats.reloadSpeed,
+        tank2Stats.reloadSpeed,
+        's'
+    );
+
     const stats = [
         {label: 'Hull Health', key: 'hullHealth', unit: ''},
         {label: 'Turret Health', key: 'turretHealth', unit: ''},
@@ -366,6 +685,28 @@ function generateComparisonStats() {
     ];
 
     let statsHTML = `
+        <div class="comparison-quick-outcome">
+            <h4>Quick Outcome</h4>
+            <div class="comparison-quick-outcome-list">
+                <div class="comparison-quick-outcome-item">
+                    <span class="comparison-quick-outcome-label">Shots to kill</span>
+                    <span class="comparison-quick-outcome-value">${shotLine1}</span>
+                </div>
+                <div class="comparison-quick-outcome-item">
+                    <span class="comparison-quick-outcome-label">Shots to kill</span>
+                    <span class="comparison-quick-outcome-value">${shotLine2}</span>
+                </div>
+                <div class="comparison-quick-outcome-item">
+                    <span class="comparison-quick-outcome-label">Faster tank (Max Speed)</span>
+                    <span class="comparison-quick-outcome-value">${speedOutcome}</span>
+                </div>
+                <div class="comparison-quick-outcome-item">
+                    <span class="comparison-quick-outcome-label">Faster reload</span>
+                    <span class="comparison-quick-outcome-value">${reloadOutcome}</span>
+                </div>
+            </div>
+            <p class="comparison-quick-outcome-note">Based on AP damage against penetrable hull armor.</p>
+        </div>
         <h4>Detailed Comparison</h4>
         <div class="comparison-stats-grid">
     `;
@@ -459,6 +800,62 @@ function generateComparisonStats() {
     comparisonStats.innerHTML = statsHTML;
 }
 
+function formatShotsToKillLine(attackerName, defenderName, attackerDamage, attackerMaxShellsAP, defenderHullHealth) {
+    const damage = Number(attackerDamage);
+    const maxShellsAP = Number(attackerMaxShellsAP);
+    const hullHealth = Number(defenderHullHealth);
+    if (
+        !Number.isFinite(maxShellsAP) ||
+        maxShellsAP <= 0 ||
+        !Number.isFinite(damage) ||
+        damage <= 0 ||
+        !Number.isFinite(hullHealth) ||
+        hullHealth <= 0
+    ) {
+        return `${attackerName} -> ${defenderName}: N/A`;
+    }
+
+    const shotsToKill = Math.ceil(hullHealth / damage);
+    const shotText = `${shotsToKill} shot${shotsToKill === 1 ? '' : 's'}`;
+    return `${attackerName} -> ${defenderName}: <span class="comparison-quick-highlight">${shotText}</span>`;
+}
+
+function getHigherIsBetterOutcome(tank1Name, tank2Name, tank1Value, tank2Value, unit) {
+    const value1 = Number(tank1Value);
+    const value2 = Number(tank2Value);
+    if (!Number.isFinite(value1) || !Number.isFinite(value2)) {
+        return 'N/A';
+    }
+
+    if (value1 === value2) {
+        return `Both tanks are the same at <span class="comparison-quick-highlight">${value1}${unit}</span>`;
+    }
+
+    if (value1 > value2) {
+        return `${tank1Name} (<span class="comparison-quick-highlight">${value1}${unit}</span>)`;
+    }
+
+    return `${tank2Name} (<span class="comparison-quick-highlight">${value2}${unit}</span>)`;
+}
+
+function getLowerIsBetterOutcome(tank1Name, tank2Name, tank1Value, tank2Value, unit) {
+    const value1 = Number(tank1Value);
+    const value2 = Number(tank2Value);
+    if (!Number.isFinite(value1) || !Number.isFinite(value2)) {
+        return 'N/A';
+    }
+
+    if (value1 === value2) {
+        return `Both tanks reload in <span class="comparison-quick-highlight">${value1}${unit}</span>`;
+    }
+
+    if (value1 < value2) {
+        return `${tank1Name} (<span class="comparison-quick-highlight">${value1}${unit}</span>)`;
+    }
+
+    return `${tank2Name} (<span class="comparison-quick-highlight">${value2}${unit}</span>)`;
+}
+
 function resetComparison() {
     selectedTank1 = null;
     selectedTank2 = null;
@@ -535,7 +932,13 @@ function switchGameVersion(version) {
         return;
     }
     if (route.hub === 'infantry') {
-        const validSections = ['overview', 'classes', 'weapons'];
+        if (version === 'vietnam') {
+            window.location.hash = formatAppHash('infantry', 'vietnam', 'overview');
+            return;
+        }
+        const validSections = INFANTRY_CLASSES_ENABLED
+            ? ['overview', 'getting-started', 'classes', 'maps', 'tips']
+            : ['overview', 'getting-started', 'maps', 'tips'];
         const section = validSections.includes(route.section) ? route.section : 'overview';
         window.location.hash = formatAppHash('infantry', version, section);
     }
@@ -914,7 +1317,7 @@ const tankDatabase = {
                 turretHealth: 520,
                 engineHealth: 280,
                 trackHealth: 470,
-                apDamage: 180,
+                apDamage: null,
                 explosionDamage: 90,
                 explosionRadius: 800,
                 reloadSpeed: 8.0,
@@ -1888,6 +2291,31 @@ let currentTankType = 'all';
 
 // Theme Management
 let currentTheme = localStorage.getItem('theme') || 'theme-default';
+const HOLIDAY_THEMES = [
+    'theme-christmas',
+    'theme-newyear',
+    'theme-valentines',
+    'theme-stpatricks',
+    'theme-july4',
+    'theme-halloween',
+    'theme-thanksgiving',
+    'theme-veterans'
+];
+
+function normalizeStoredWwiiTheme(theme) {
+    if (!theme || theme === 'theme-easter' || HOLIDAY_THEMES.includes(theme)) {
+        return 'theme-default';
+    }
+    if (theme === 'theme-vietnam-usa' || theme === 'theme-vietnam-pavn') {
+        return 'theme-default';
+    }
+    return theme;
+}
+
+function getActiveThemeClass() {
+    const active = Array.from(document.body.classList).find(cls => cls.startsWith('theme-'));
+    return active || 'theme-default';
+}
 
 // Get the appropriate holiday theme based on current date
 function getHolidayTheme() {
@@ -1957,21 +2385,33 @@ function getHolidayTheme() {
     return 'theme-default';
 }
 
-function setTheme(theme) {
+/**
+ * Apply a theme-* class while preserving non-theme body classes (vietnam-jungle-theme, fullscreen-mode, dark-mode, etc.).
+ * @param {string} theme
+ * @param {{ skipPersist?: boolean, forceStorageKey?: 'theme' | 'themeVietnam' }} [opts]
+ */
+function setTheme(theme, opts = {}) {
     if (theme === 'theme-easter') {
         theme = 'theme-default';
     }
-    document.body.className = theme;
+    const preserved = Array.from(document.body.classList).filter(c => !c.startsWith('theme-'));
+    preserved.push(theme);
+    document.body.className = preserved.join(' ').replace(/\s+/g, ' ').trim();
     currentTheme = theme;
-    localStorage.setItem('theme', theme);
+    if (!opts.skipPersist) {
+        const key =
+            opts.forceStorageKey ||
+            (isVietnamEraActive() ? 'themeVietnam' : 'theme');
+        if (key === 'themeVietnam') {
+            localStorage.setItem('themeVietnam', theme);
+        } else {
+            localStorage.setItem('theme', theme);
+        }
+    }
     
     // Update dropdown: show actual theme for manual selections, but "Default" for auto-holiday themes
     if (themeSelect) {
-        // Check if this is a holiday theme
-        const holidayThemes = ['theme-christmas', 'theme-newyear', 'theme-valentines', 'theme-stpatricks', 
-                              'theme-july4', 'theme-halloween', 'theme-thanksgiving', 'theme-veterans'];
-        
-        if (holidayThemes.includes(theme)) {
+        if (HOLIDAY_THEMES.includes(theme)) {
             // Holiday theme active - show "Default" in dropdown
             themeSelect.value = 'theme-default';
         } else {
@@ -2021,85 +2461,111 @@ function setTheme(theme) {
     }
 }
 
-// Initialize theme - always check for automatic holiday theme
+// Initialize theme - always check for automatic holiday theme (Vietnam era skips holidays)
 document.addEventListener('DOMContentLoaded', function() {
-    let savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'theme-easter') {
-        savedTheme = 'theme-default';
-        localStorage.setItem('theme', 'theme-default');
+    const storedTheme = localStorage.getItem('theme');
+    const savedTheme = normalizeStoredWwiiTheme(storedTheme);
+    if (storedTheme !== savedTheme) {
+        localStorage.setItem('theme', savedTheme);
     }
+    if (localStorage.getItem('themeUserChosen') === null) {
+        const inferredChoice =
+            localStorage.getItem('manualThemeOverride') === 'true' ||
+            (savedTheme && savedTheme !== 'theme-default');
+        localStorage.setItem('themeUserChosen', inferredChoice ? 'true' : 'false');
+    }
+    const themeUserChosen = localStorage.getItem('themeUserChosen') === 'true';
     const manualOverride = localStorage.getItem('manualThemeOverride') === 'true';
-    
-    // Check for holiday theme
     const holidayTheme = getHolidayTheme();
-    
-    // If user manually selected "Default", don't auto-apply holidays
-    if (manualOverride && savedTheme === 'theme-default') {
-        setTheme('theme-default');
+
+    const parsed = parseAppHash(window.location.hash.substring(1));
+    const initialVietnam =
+        parsed &&
+        parsed.game === 'vietnam' &&
+        (parsed.hub === 'armor' || parsed.hub === 'infantry');
+
+    if (initialVietnam) {
+        const vn = normalizeStoredVietnamTheme(localStorage.getItem('themeVietnam'));
+        setTheme(vn, { skipPersist: true });
+        updateThemeSelectEraVisibility(true);
+    } else if (themeUserChosen || (manualOverride && savedTheme === 'theme-default')) {
+        setTheme(savedTheme || 'theme-default', { skipPersist: true });
+        updateThemeSelectEraVisibility(false);
     } else if (holidayTheme !== 'theme-default') {
-        // Holiday is active, always apply it (replaces any saved theme)
-        setTheme(holidayTheme);
-    } else if (savedTheme && savedTheme !== 'theme-default') {
-        // No holiday active, use saved theme (if it's not default)
-        setTheme(savedTheme);
+        setTheme(holidayTheme, { skipPersist: true });
+        updateThemeSelectEraVisibility(false);
     } else {
-        // No holiday active, use default theme
-        setTheme('theme-default');
+        setTheme(savedTheme || 'theme-default', { skipPersist: true });
+        updateThemeSelectEraVisibility(false);
     }
-    
 });
 
 // Theme dropdown event - direct theme selection
-themeSelect.addEventListener('change', (e) => {
-    const selectedTheme = e.target.value;
-    
-    // If user selects "Default", mark as manual override to prevent auto-holiday
-    if (selectedTheme === 'theme-default') {
-        localStorage.setItem('manualThemeOverride', 'true');
-        setTheme('theme-default');
-    } else {
-        // For other themes, clear the manual override flag so holidays can still activate
-        localStorage.setItem('manualThemeOverride', 'false');
-        setTheme(selectedTheme);
-    }
-    // The setTheme function will update the dropdown appropriately
-});
+if (themeSelect) {
+    themeSelect.addEventListener('change', (e) => {
+        const selectedTheme = e.target.value;
+        if (isVietnamEraActive()) {
+            if (!VIETNAM_SELECTABLE_THEMES.has(selectedTheme)) {
+                themeSelect.value = normalizeStoredVietnamTheme(localStorage.getItem('themeVietnam'));
+                return;
+            }
+        } else if (
+            selectedTheme === 'theme-vietnam-usa' ||
+            selectedTheme === 'theme-vietnam-pavn'
+        ) {
+            themeSelect.value = localStorage.getItem('theme') || 'theme-default';
+            return;
+        }
+        const storageKey = isVietnamEraActive() ? 'themeVietnam' : 'theme';
+
+        if (selectedTheme === 'theme-default') {
+            localStorage.setItem('manualThemeOverride', 'true');
+            if (!isVietnamEraActive()) {
+                localStorage.setItem('themeUserChosen', 'true');
+            }
+            setTheme('theme-default', { forceStorageKey: storageKey });
+        } else {
+            localStorage.setItem('manualThemeOverride', 'false');
+            if (!isVietnamEraActive()) {
+                localStorage.setItem('themeUserChosen', 'true');
+            }
+            setTheme(selectedTheme, { forceStorageKey: storageKey });
+        }
+    });
+}
 
 // Periodically check for holiday themes (in case date changes while page is open)
 setInterval(function() {
-    const manualOverride = localStorage.getItem('manualThemeOverride') === 'true';
-    const savedTheme = localStorage.getItem('theme');
-    
-    // Only auto-apply holidays if user hasn't manually selected "Default"
-    if (!(manualOverride && savedTheme === 'theme-default')) {
-        const holidayTheme = getHolidayTheme();
-        const currentTheme = document.body.className;
-        
-        // If a holiday is active and it's not currently applied, apply it
-        if (holidayTheme !== 'theme-default' && currentTheme !== holidayTheme) {
-            setTheme(holidayTheme);
-        }
-        // If no holiday is active and we're on a holiday theme, go back to saved/default
-        else if (holidayTheme === 'theme-default' && 
-                 ['theme-christmas', 'theme-newyear', 'theme-valentines', 'theme-stpatricks', 
-                  'theme-july4', 'theme-halloween', 'theme-thanksgiving', 'theme-veterans'].includes(currentTheme)) {
-            // Holiday period ended, restore saved theme or default
-            if (savedTheme && savedTheme !== 'theme-default') {
-                setTheme(savedTheme);
-            } else {
-                setTheme('theme-default');
-            }
-        }
+    if (isVietnamEraActive()) {
+        return;
+    }
+    if (localStorage.getItem('themeUserChosen') === 'true') {
+        return;
+    }
+
+    const holidayTheme = getHolidayTheme();
+    const activeTheme = getActiveThemeClass();
+    const savedTheme = normalizeStoredWwiiTheme(localStorage.getItem('theme'));
+
+    // Auto-holiday themes are visual-only and never persisted.
+    if (holidayTheme !== 'theme-default' && activeTheme !== holidayTheme) {
+        setTheme(holidayTheme, { skipPersist: true });
+    } else if (holidayTheme === 'theme-default' && HOLIDAY_THEMES.includes(activeTheme)) {
+        setTheme(savedTheme || 'theme-default', { skipPersist: true });
     }
 }, 60000); // Check every minute
 
 // Force apply holiday theme (for testing/debugging)
 // This will override any manual selection and apply the current holiday
 function forceApplyHolidayTheme() {
+    if (isVietnamEraActive()) {
+        return;
+    }
     const holidayTheme = getHolidayTheme();
     if (holidayTheme !== 'theme-default') {
+        localStorage.setItem('themeUserChosen', 'false');
         localStorage.setItem('manualThemeOverride', 'false');
-        setTheme(holidayTheme);
+        setTheme(holidayTheme, { skipPersist: true });
     }
 }
 
@@ -3841,6 +4307,27 @@ function handleHashChange() {
         return;
     }
 
+    if (route.hub === 'infantry' && route.game === 'vietnam' && route.section !== 'overview') {
+        syncViewToRoute(
+            { hub: 'infantry', game: 'vietnam', section: 'overview', subRoute: null },
+            { updateHash: true }
+        );
+        return;
+    }
+
+    if (
+        !INFANTRY_CLASSES_ENABLED &&
+        route.hub === 'infantry' &&
+        route.game === 'wwii' &&
+        route.section === 'classes'
+    ) {
+        syncViewToRoute(
+            { hub: 'infantry', game: 'wwii', section: 'overview', subRoute: null },
+            { updateHash: true }
+        );
+        return;
+    }
+
     syncViewToRoute(route, { updateHash: false });
 
     if (route.hub === 'armor' && route.game === 'wwii' && route.subRoute) {
@@ -3942,6 +4429,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize hash routing
     initializeHashRouting();
+
+    initSpreadDemocracy();
+    initVietnamLaunchWidget();
 
     document.querySelectorAll('.hub-switch-btn[data-hub]').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -5236,4 +5726,109 @@ function toggleDrivingGuide() {
         text.textContent = 'more';
     }
 }
+
+/** Infantry Maps — click tactical thumbnail to open full-screen style lightbox */
+(function initInfantryTacLightbox() {
+    const root = document.getElementById('infantryTacLightbox');
+    const lbImg = document.getElementById('infantryTacLightboxImg');
+    const mapsSection = document.getElementById('infantry-maps');
+    if (!root || !lbImg || !mapsSection) {
+        return;
+    }
+    const closeBtn = root.querySelector('.infantry-tac-lightbox__close');
+    const backdrop = root.querySelector('.infantry-tac-lightbox__backdrop');
+    let lastFocus = null;
+
+    function openLightbox(src, alt) {
+        if (!src) {
+            return;
+        }
+        lastFocus = document.activeElement;
+        lbImg.src = src;
+        lbImg.alt = alt || 'Tactical map';
+        root.classList.add('infantry-tac-lightbox--open');
+        root.setAttribute('aria-hidden', 'false');
+        if (typeof lockBodyScrollForFullscreen === 'function') {
+            lockBodyScrollForFullscreen();
+        } else {
+            document.body.style.overflow = 'hidden';
+        }
+        if (closeBtn) {
+            closeBtn.focus();
+        }
+    }
+
+    function closeLightbox() {
+        if (!root.classList.contains('infantry-tac-lightbox--open')) {
+            return;
+        }
+        root.classList.remove('infantry-tac-lightbox--open');
+        root.setAttribute('aria-hidden', 'true');
+        lbImg.removeAttribute('src');
+        lbImg.alt = '';
+        if (typeof unlockBodyScrollForFullscreen === 'function') {
+            unlockBodyScrollForFullscreen();
+        } else {
+            document.body.style.overflow = '';
+        }
+        if (lastFocus && typeof lastFocus.focus === 'function') {
+            lastFocus.focus();
+        }
+        lastFocus = null;
+    }
+
+    function findInfantryMapThumb(el) {
+        return el.closest('img.infantry-map-img--tac') || el.closest('img.infantry-map-img--key');
+    }
+
+    mapsSection.addEventListener('click', function (e) {
+        const thumb = findInfantryMapThumb(e.target);
+        if (!thumb || !thumb.src) {
+            return;
+        }
+        e.preventDefault();
+        openLightbox(thumb.currentSrc || thumb.src, thumb.alt || '');
+    });
+
+    mapsSection.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') {
+            return;
+        }
+        const thumb = findInfantryMapThumb(e.target);
+        if (!thumb || !thumb.src) {
+            return;
+        }
+        e.preventDefault();
+        openLightbox(thumb.currentSrc || thumb.src, thumb.alt || '');
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            closeLightbox();
+        });
+    }
+    if (backdrop) {
+        backdrop.addEventListener('click', closeLightbox);
+    }
+    root.addEventListener('click', function (e) {
+        if (e.target === root) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && root.classList.contains('infantry-tac-lightbox--open')) {
+            closeLightbox();
+        }
+    });
+
+    mapsSection.querySelectorAll('img.infantry-map-img--tac, img.infantry-map-img--key').forEach(function (img) {
+        img.tabIndex = 0;
+        img.setAttribute('role', 'button');
+        const cap = img.closest('.infantry-map-figure')?.querySelector('figcaption');
+        const hint = cap ? cap.textContent.trim() : 'Map image';
+        img.setAttribute('aria-label', (img.alt || hint) + ' — tap to enlarge');
+    });
+})();
 

@@ -1,0 +1,35 @@
+{
+    "intro": "Tips and perspective from Draft Haus regulars. Join the Discord to squad up or share your own.",
+    "discordUrl": "https://discord.com/invite/drafthaus",
+    "tips": [
+        {
+            "author": "Xelicon",
+            "role": "Squad Leader",
+            "quote": "If you want to just get in the game and shoot people and not participate in the rest of the game, lock your squad.\n\nIf you want to play the role correctly then shooting people should be towards the bottom of your priority list.\n\nThis role should be about organizing the squad to achieve goals that will increase the team's ability to win a game. One of the most important things is building garrisons. The more, well placed, garrisons your team has the better chance your team has of winning. Map control wins games.\n\nUtilize your squad to make this happen. SL's can place garrisons more stealthily than anyone else. Have someone go support and drop 50 supplies. In the blue zone, that's all you need for a garrison. Looking to build a red zone garrison? Put your OP down in a quiet place and have two people swap the support role in order to do a \"double drop.\" Now you have the 100 supplies to build a red zone garrison. Make sure not to place these too close to the enemy strongpoint, or a place with a lot of enemy activity. Red zone garrisons will lock out if an enemy is within 100 meters of it. Ideally these should be placed a distance away and then OP's should spread, like a virus, towards the strongpoint.\n\nNext, communication is key. If you see a large enemy presence don't just start shooting. Mark it with an infantry marker. See people appear out of nowhere? There's probably a spawn nearby, mark it before trying to take it out. See a tank? Mark it and call it out on Command Chat. Marking tanks is the best way to help your team's tankers kill them.\n\nFinally, command chat doesn't need to know everything your doing. Concise call-outs are best. \"Enemy <Item of interest> on <Squad Designation> mark.\" \"My squad is going to defend.\" \"I think the enemy is spawning to the <direction> of <strongpoint>.\""
+        },
+        {
+            "author": "Jackosaurus",
+            "quote": "Playing as infantry, less is more. You don't need to be running up to every house, vaulting over every wall, and spraying everything you have. Move slowly along the walls, listen for the enemy, and bide your time. Let that one guy go so you can find their spawn."
+        },
+        {
+            "author": "Bruv",
+            "quote": "Ultimate role of an SL is to get their squad in a good position. Whether it's a good frontline OP in a defendable position or a clever flank. Keeping it moving is also ideal."
+        },
+        {
+            "author": "Jbrans",
+            "quote": "Every squad should have a support player — as an SL you need to manage your squad to do such. If you are in a squad with no support, it sounds like a perfect time for YOU to play support."
+        },
+        {
+            "author": "Sev",
+            "quote": "Support is the #1 most important infantry role."
+        },
+        {
+            "author": "Jbrans",
+            "quote": "#2: Nodes are a HUGE part and extremely important for the team as an infantry player — encourage your squad to build nodes."
+        },
+        {
+            "author": "Razbora",
+            "quote": "Read the flow of the map. Once you understand the flow and the gamemode, you'll be able to anticipate where people are rather than \"not know where you're dying from.\""
+        }
+    ]
+}

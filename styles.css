@@ -1756,7 +1756,8 @@ body.light-mode::before {
 }
 
 .nav-armor-vietnam,
-.nav-infantry-wwii {
+.nav-infantry-wwii,
+.nav-infantry-vietnam {
     display: none;
 }
 
@@ -1778,6 +1779,1347 @@ body.light-mode::before {
 
 .infantry-wip-banner i {
     margin-right: 0.5rem;
+    color: var(--accent);
+}
+
+/* Infantry Hub — Draft Haus tips */
+.infantry-tips-hub {
+    max-width: min(1100px, 100%);
+    margin: 0 auto 2.5rem;
+    padding: 0 clamp(0.5rem, 2vw, 0.75rem);
+    padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+    padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
+}
+
+.inf-tips-loading,
+.inf-tips-empty,
+.inf-tips-error {
+    color: var(--text-secondary);
+    line-height: 1.55;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+.inf-tips-error {
+    color: var(--accent);
+}
+
+.inf-tips-callout {
+    padding: 1rem 1.15rem;
+    margin-bottom: 1.25rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+}
+
+.inf-tips-callout-text {
+    margin: 0;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+}
+
+.inf-tips-discord-link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .inf-tips-discord-link {
+        white-space: normal;
+    }
+}
+
+.inf-tips-discord-link:hover {
+    text-decoration: underline;
+}
+
+.inf-tips-grid {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 44rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.inf-tip-card {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.light-mode .inf-tip-card {
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.inf-tip-card--static {
+    padding: 1rem 1.15rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.inf-tip-card--static:hover {
+    border-color: rgba(255, 152, 0, 0.35);
+}
+
+.inf-tip-head {
+    margin: 0;
+}
+
+.inf-tip-byline {
+    display: block;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+}
+
+/* Expandable tiles */
+.inf-tip-card--collapsible {
+    padding: 0;
+    overflow: hidden;
+}
+
+.inf-tip-card--collapsible:hover {
+    border-color: rgba(255, 152, 0, 0.25);
+}
+
+.inf-tip-card--collapsible.is-expanded {
+    border-color: rgba(255, 152, 0, 0.45);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.14);
+}
+
+.light-mode .inf-tip-card--collapsible.is-expanded {
+    box-shadow: 0 6px 18px var(--shadow);
+}
+
+.inf-tip-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.85rem;
+    width: 100%;
+    margin: 0;
+    padding: 1rem 1.15rem;
+    min-height: 3.25rem;
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(255, 152, 0, 0.18);
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.inf-tip-toggle:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.inf-tip-toggle:active {
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.light-mode .inf-tip-toggle:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.light-mode .inf-tip-toggle:active {
+    background: rgba(0, 0, 0, 0.07);
+}
+
+.inf-tip-toggle:focus {
+    outline: none;
+}
+
+.inf-tip-toggle:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.inf-tip-toggle-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    min-width: 0;
+}
+
+.inf-tip-snippet {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.inf-tip-card--collapsible.is-expanded .inf-tip-snippet {
+    display: none;
+}
+
+.inf-tip-chevron {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    margin: -0.35rem -0.25rem -0.35rem 0;
+    font-size: 0.85rem;
+    color: var(--accent);
+    opacity: 0.95;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.inf-tip-card--collapsible.is-expanded .inf-tip-chevron {
+    transform: rotate(180deg);
+}
+
+.inf-tip-expand-region {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.inf-tip-card--collapsible.is-expanded .inf-tip-expand-region {
+    grid-template-rows: 1fr;
+}
+
+.inf-tip-expand-inner {
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 1.15rem 1.15rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.light-mode .inf-tip-expand-inner {
+    border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.inf-tip-quote {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.inf-tip-expand-inner .inf-tip-quote {
+    padding-top: 0.75rem;
+}
+
+.inf-tip-quote p {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--text-primary);
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+.inf-tip-quote p:last-child {
+    margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .inf-tip-expand-region,
+    .inf-tip-chevron,
+    .inf-tip-card {
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Draft Haus tips — mobile: comfortable taps, readable type, spacing between cards */
+@media (max-width: 640px) {
+    .infantry-tips-hub {
+        padding-left: max(1rem, env(safe-area-inset-left, 0px));
+        padding-right: max(1rem, env(safe-area-inset-right, 0px));
+    }
+
+    .inf-tips-callout {
+        padding: 1rem 1rem 1.05rem;
+        margin-bottom: 1rem;
+    }
+
+    .inf-tips-callout-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .inf-tips-grid {
+        gap: 1rem;
+        max-width: none;
+    }
+
+    .inf-tip-card {
+        border-radius: 10px;
+    }
+
+    .inf-tip-card--static {
+        padding: 1.1rem 1rem 1.15rem;
+        gap: 0.75rem;
+    }
+
+    .inf-tip-byline {
+        font-size: 0.9rem;
+    }
+
+    .inf-tip-toggle {
+        min-height: 3.5rem;
+        padding: 0.9rem 1rem;
+        gap: 0.65rem;
+    }
+
+    .inf-tip-snippet {
+        font-size: 1rem;
+        line-height: 1.55;
+        -webkit-line-clamp: 4;
+    }
+
+    .inf-tip-chevron {
+        min-width: 3rem;
+        min-height: 3rem;
+        font-size: 0.95rem;
+    }
+
+    .inf-tip-expand-inner {
+        padding: 0 1rem 1.2rem;
+    }
+
+    .inf-tip-expand-inner .inf-tip-quote {
+        padding-top: 0.85rem;
+    }
+
+    .inf-tip-quote p {
+        font-size: 1rem;
+        line-height: 1.62;
+        margin-bottom: 0.85rem;
+    }
+}
+
+/* Infantry Hub — Maps roster */
+.infantry-maps-hub {
+    max-width: 1100px;
+    margin: 0 auto 2.5rem;
+    padding: 0 0.75rem;
+}
+
+.infantry-map-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.infantry-map-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    padding: 1.1rem 1.15rem 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.infantry-map-card-head {
+    display: block;
+}
+
+.infantry-map-card-head h3 {
+    margin: 0;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    color: #f5f5f5;
+}
+
+.light-mode .infantry-map-card-head h3 {
+    color: var(--text-primary);
+}
+
+.infantry-maps-tool-callout {
+    max-width: 46rem;
+    margin: 0 auto 1.75rem;
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 107, 0, 0.08);
+}
+
+.infantry-maps-tool-callout p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+.infantry-maps-tool-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.infantry-maps-tool-link:hover {
+    text-decoration: underline;
+}
+
+.light-mode .infantry-maps-tool-callout {
+    background: rgba(255, 107, 0, 0.06);
+}
+
+.infantry-map-history {
+    margin: 0 0 0.65rem;
+    font-size: 0.88rem;
+    line-height: 1.58;
+    color: var(--text-secondary);
+}
+
+.infantry-map-history strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.light-mode .infantry-map-history strong {
+    color: var(--text-primary);
+}
+
+.infantry-map-duals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+}
+
+@media (max-width: 420px) {
+    .infantry-map-duals {
+        grid-template-columns: 1fr;
+    }
+}
+
+.infantry-map-figure {
+    margin: 0;
+}
+
+.infantry-map-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.infantry-map-img--key {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+    cursor: zoom-in;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.infantry-map-img--tac {
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    object-position: center;
+    cursor: zoom-in;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Infantry tac map — full-screen lightbox */
+.infantry-tac-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.infantry-tac-lightbox.infantry-tac-lightbox--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.infantry-tac-lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: rgba(10, 14, 26, 0.92);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.light-mode .infantry-tac-lightbox__backdrop {
+    background: rgba(26, 26, 26, 0.94);
+}
+
+.infantry-tac-lightbox__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    max-width: min(100vw - 24px, 1680px);
+    max-height: 100%;
+    transform: scale(0.97);
+    transition: transform 0.22s ease;
+}
+
+.infantry-tac-lightbox--open .infantry-tac-lightbox__inner {
+    transform: scale(1);
+}
+
+.infantry-tac-lightbox__close {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.infantry-tac-lightbox__close:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.infantry-tac-lightbox__img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: min(85vh, calc(100dvh - 100px));
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.25);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.light-mode .infantry-tac-lightbox__img {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.infantry-map-figure figcaption {
+    margin-top: 0.4rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    opacity: 0.9;
+}
+
+.infantry-map-placeholder {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    border: 2px dashed rgba(255, 107, 0, 0.35);
+    background: rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.infantry-map-placeholder--tac {
+    aspect-ratio: 1 / 1;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.infantry-map-placeholder::after {
+    content: 'Image';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.infantry-map-placeholder--tac::after {
+    content: 'Tac map';
+}
+
+/* Infantry overview — intro cards + getting started */
+a.overview-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.infantry-overview-grid {
+    margin-bottom: 1rem;
+}
+
+.infantry-overview-card {
+    min-height: 11rem;
+}
+
+.light-mode .infantry-overview-card h3 {
+    color: var(--text-primary);
+}
+
+/* Infantry overview tiles — map key art, greyscale → color (mirrors armor overview cards) */
+.infantry-overview-card.infantry-card-getting-started,
+.infantry-overview-card.infantry-card-classes,
+.infantry-overview-card.infantry-card-maps,
+.infantry-overview-card.infantry-card-artillery {
+    position: relative;
+    overflow: hidden;
+}
+
+.infantry-overview-card.infantry-card-getting-started .card-background-image,
+.infantry-overview-card.infantry-card-classes .card-background-image,
+.infantry-overview-card.infantry-card-maps .card-background-image,
+.infantry-overview-card.infantry-card-artillery .card-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    filter: grayscale(100%);
+    transition: all 0.4s ease;
+    z-index: 1;
+    border-radius: 15px;
+    clip-path: inset(0 0 0 0);
+}
+
+.infantry-overview-card.infantry-card-getting-started .card-background-image {
+    background-image: url('images/infantry/maps/utah-beach/utahbeach-day.webp');
+    background-position: center 20%;
+}
+
+.infantry-overview-card.infantry-card-classes .card-background-image {
+    background-image: url('images/infantry/maps/carentan/carentan-day.webp');
+    background-position: center 35%;
+}
+
+.infantry-overview-card.infantry-card-maps .card-background-image {
+    background-image: url('images/infantry/maps/elsenborn-ridge/elsenbornridge-day.webp');
+    background-position: center 28%;
+}
+
+.infantry-overview-card.infantry-card-artillery .card-background-image {
+    background-image: url('images/infantry/maps/kursk/kursk-day.webp');
+    background-position: center 25%;
+}
+
+.infantry-overview-card.infantry-card-getting-started i,
+.infantry-overview-card.infantry-card-getting-started h3,
+.infantry-overview-card.infantry-card-getting-started p,
+.infantry-overview-card.infantry-card-classes i,
+.infantry-overview-card.infantry-card-classes h3,
+.infantry-overview-card.infantry-card-classes p,
+.infantry-overview-card.infantry-card-maps i,
+.infantry-overview-card.infantry-card-maps h3,
+.infantry-overview-card.infantry-card-maps p,
+.infantry-overview-card.infantry-card-artillery i,
+.infantry-overview-card.infantry-card-artillery h3,
+.infantry-overview-card.infantry-card-artillery p {
+    position: relative;
+    z-index: 15;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.85);
+}
+
+.infantry-overview-card.infantry-card-getting-started:hover .card-background-image,
+.infantry-overview-card.infantry-card-getting-started:focus-visible .card-background-image,
+.infantry-overview-card.infantry-card-classes:hover .card-background-image,
+.infantry-overview-card.infantry-card-classes:focus-visible .card-background-image,
+.infantry-overview-card.infantry-card-maps:hover .card-background-image,
+.infantry-overview-card.infantry-card-maps:focus-visible .card-background-image,
+.infantry-overview-card.infantry-card-artillery:hover .card-background-image,
+.infantry-overview-card.infantry-card-artillery:focus-visible .card-background-image {
+    opacity: 0.9;
+    filter: grayscale(0%);
+    transform: scale(1.3);
+    z-index: 10;
+}
+
+.infantry-overview-card.infantry-card-getting-started:hover i,
+.infantry-overview-card.infantry-card-getting-started:hover h3,
+.infantry-overview-card.infantry-card-getting-started:hover p,
+.infantry-overview-card.infantry-card-getting-started:focus-visible i,
+.infantry-overview-card.infantry-card-getting-started:focus-visible h3,
+.infantry-overview-card.infantry-card-getting-started:focus-visible p,
+.infantry-overview-card.infantry-card-classes:hover i,
+.infantry-overview-card.infantry-card-classes:hover h3,
+.infantry-overview-card.infantry-card-classes:hover p,
+.infantry-overview-card.infantry-card-classes:focus-visible i,
+.infantry-overview-card.infantry-card-classes:focus-visible h3,
+.infantry-overview-card.infantry-card-classes:focus-visible p,
+.infantry-overview-card.infantry-card-maps:hover i,
+.infantry-overview-card.infantry-card-maps:hover h3,
+.infantry-overview-card.infantry-card-maps:hover p,
+.infantry-overview-card.infantry-card-maps:focus-visible i,
+.infantry-overview-card.infantry-card-maps:focus-visible h3,
+.infantry-overview-card.infantry-card-maps:focus-visible p,
+.infantry-overview-card.infantry-card-artillery:hover i,
+.infantry-overview-card.infantry-card-artillery:hover h3,
+.infantry-overview-card.infantry-card-artillery:hover p,
+.infantry-overview-card.infantry-card-artillery:focus-visible i,
+.infantry-overview-card.infantry-card-artillery:focus-visible h3,
+.infantry-overview-card.infantry-card-artillery:focus-visible p {
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.95);
+}
+
+.infantry-overview-card.infantry-card-getting-started:hover,
+.infantry-overview-card.infantry-card-getting-started:focus-visible,
+.infantry-overview-card.infantry-card-classes:hover,
+.infantry-overview-card.infantry-card-classes:focus-visible,
+.infantry-overview-card.infantry-card-maps:hover,
+.infantry-overview-card.infantry-card-maps:focus-visible,
+.infantry-overview-card.infantry-card-artillery:hover,
+.infantry-overview-card.infantry-card-artillery:focus-visible {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(76, 175, 80, 0.45);
+    z-index: 5;
+}
+
+.light-mode .infantry-overview-card.infantry-card-getting-started:hover,
+.light-mode .infantry-overview-card.infantry-card-getting-started:focus-visible,
+.light-mode .infantry-overview-card.infantry-card-classes:hover,
+.light-mode .infantry-overview-card.infantry-card-classes:focus-visible,
+.light-mode .infantry-overview-card.infantry-card-maps:hover,
+.light-mode .infantry-overview-card.infantry-card-maps:focus-visible,
+.light-mode .infantry-overview-card.infantry-card-artillery:hover,
+.light-mode .infantry-overview-card.infantry-card-artillery:focus-visible {
+    box-shadow: 0 15px 32px rgba(76, 175, 80, 0.28);
+}
+
+.infantry-getting-started {
+    margin-top: 2.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.infantry-featured-video {
+    margin-top: 0;
+}
+
+.infantry-more-videos {
+    margin-top: 2.5rem;
+}
+
+.infantry-more-videos-heading {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    margin: 0 0 1.25rem;
+    text-align: center;
+    color: #f5f5f5;
+    letter-spacing: 0.04em;
+}
+
+.infantry-more-videos-heading i {
+    margin-right: 0.45rem;
+    color: var(--accent);
+}
+
+.light-mode .infantry-more-videos-heading {
+    color: var(--text-primary);
+}
+
+.infantry-role-guides-grid {
+    margin-bottom: 0;
+}
+
+/* Infantry — Getting started guide (tile layout mirrors armor #tactics strategy cards) */
+.infantry-guide {
+    max-width: min(72rem, 100%);
+    margin: 0 auto 2.5rem;
+    padding: 0 clamp(0.5rem, 2vw, 1rem);
+}
+
+.infantry-guide-strategies {
+    background-color: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+.light-mode .infantry-guide-strategies {
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+.infantry-guide-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    margin-top: 0;
+}
+
+.infantry-guide-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    margin-bottom: 0;
+}
+
+.light-mode .infantry-guide-block {
+    background: var(--bg-primary);
+    border: 2px solid var(--border);
+}
+
+.infantry-guide-block:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.light-mode .infantry-guide-block:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 16px var(--shadow);
+}
+
+/* Lift only on devices with real hover (avoids sticky “hover” state on touch while scrolling) */
+@media (hover: hover) and (pointer: fine) {
+    .infantry-guide-block:hover {
+        transform: translateY(-3px);
+    }
+}
+
+.infantry-guide-block:last-of-type {
+    margin-bottom: 0;
+}
+
+.infantry-guide-block h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.15rem;
+    color: #f5f5f5;
+    margin: 0 0 1rem;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.infantry-guide-block h3 i {
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+.light-mode .infantry-guide-block h3 {
+    color: var(--text-primary);
+}
+
+.infantry-guide-block p {
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0 0 1rem;
+    font-size: 0.98rem;
+}
+
+.infantry-guide-block ul {
+    margin: 0 0 1rem;
+    padding-left: 1.35rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.97rem;
+}
+
+.infantry-guide-block li {
+    margin-bottom: 0.65rem;
+}
+
+.infantry-guide-mode-list > li {
+    margin-bottom: 1.35rem;
+}
+
+.infantry-guide-mode-list > li:last-child {
+    margin-bottom: 0;
+}
+
+.infantry-guide-mode-list > li > p {
+    margin-bottom: 0.5rem;
+}
+
+.infantry-guide-mode-list > li > p:last-child {
+    margin-bottom: 0;
+}
+
+.infantry-guide-block a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.infantry-guide-block a:hover {
+    text-decoration: underline;
+}
+
+.infantry-guide-note {
+    font-size: 0.9rem !important;
+    font-style: italic;
+    opacity: 0.92;
+    margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .infantry-guide {
+        margin-bottom: 1.75rem;
+        padding: 0 0.25rem;
+    }
+
+    .infantry-guide-strategies {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .infantry-guide-grid {
+        gap: 1rem;
+    }
+
+    .infantry-guide-block {
+        padding: 1rem;
+        border-radius: 10px;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .infantry-guide-block h3 {
+        font-size: 1.05rem;
+        flex-wrap: wrap;
+    }
+
+    .infantry-guide-block p,
+    .infantry-guide-block ul {
+        font-size: 0.95rem;
+    }
+
+    /* Slightly larger vertical tap band for links without breaking inline flow */
+    .infantry-guide-block a {
+        padding: 0.2em 0;
+        touch-action: manipulation;
+    }
+}
+
+/* Infantry Hub — Classes loadout browser (infantry-classes-ui.js) */
+.infantry-classes-hub {
+    width: 100%;
+    max-width: min(1360px, calc(100% - 1.5rem));
+    margin: 0 auto 2rem;
+    padding: 0 clamp(0.25rem, 1.5vw, 0.5rem);
+}
+
+.inf-loadout-error {
+    padding: 1rem 1.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    background: rgba(255, 152, 0, 0.08);
+    color: var(--text-secondary);
+}
+
+.inf-toolbar {
+    margin-bottom: 1.25rem;
+    padding: clamp(0.65rem, 1.5vw, 0.85rem) clamp(0.85rem, 2vw, 1.15rem);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.light-mode .inf-toolbar {
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.inf-toolbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem 1.25rem;
+}
+
+.inf-toolbar-search-wrap {
+    flex: 1 1 220px;
+    min-width: min(100%, 12rem);
+}
+
+.inf-faction-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    flex-shrink: 0;
+}
+
+.inf-faction-select {
+    margin-left: 0.5rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    min-width: 11rem;
+}
+
+.inf-kit-filter {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.55rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.inf-kit-filter::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.85;
+}
+
+.inf-kit-filter:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.2);
+}
+
+.inf-filter-empty {
+    margin: 0;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.45;
+}
+
+.inf-browse-grid {
+    display: grid;
+    grid-template-columns: minmax(188px, 18%) minmax(0, 1fr);
+    gap: clamp(1rem, 2vw, 1.75rem);
+    /* Start-align so the loadout card height follows content — avoids a tall empty band under short kits */
+    align-items: start;
+}
+
+@media (min-width: 1100px) {
+    .inf-browse-grid {
+        grid-template-columns: minmax(200px, 220px) minmax(0, 1fr);
+    }
+}
+
+@media (min-width: 1400px) {
+    .inf-browse-grid {
+        grid-template-columns: 220px minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .inf-browse-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .inf-class-sidebar {
+        max-height: min(45vh, 320px);
+    }
+}
+
+@media (max-width: 640px) {
+    .inf-detail-head-tabs {
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .inf-detail-head-tabs .inf-variant-tabs {
+        justify-content: flex-start;
+    }
+}
+
+.inf-class-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    max-height: min(78vh, 720px);
+    overflow-y: auto;
+    padding: 0.5rem 0.45rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 701px) {
+    .inf-class-sidebar {
+        position: sticky;
+        top: 0.5rem;
+        align-self: start;
+    }
+}
+
+.inf-cat-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    margin: 0.65rem 0 0.25rem 0.35rem;
+}
+
+.inf-cat-label:first-child {
+    margin-top: 0;
+}
+
+.inf-class-row {
+    text-align: left;
+    padding: 0.5rem 0.65rem;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: background 0.12s ease;
+}
+
+.inf-class-row:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.light-mode .inf-class-row:hover:not(:disabled) {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.inf-class-row.active {
+    background: rgba(255, 152, 0, 0.18);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.inf-class-row--empty {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.inf-soon {
+    font-size: 0.75rem;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+.inf-detail {
+    padding: clamp(1.1rem, 2.2vw, 1.5rem) clamp(1.1rem, 2.8vw, 1.75rem);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1);
+    align-self: start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.light-mode .inf-detail {
+    box-shadow: 0 2px 10px var(--shadow);
+}
+
+.inf-detail-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inf-detail-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.inf-detail-head-main {
+    flex: 1 1 12rem;
+    min-width: 0;
+}
+
+.inf-detail-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.05rem, 2vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+    margin: 0 0 0.4rem 0;
+    line-height: 1.25;
+}
+
+.inf-detail-head-tabs {
+    flex: 1 1 14rem;
+    display: flex;
+    justify-content: flex-end;
+    min-width: 0;
+}
+
+.inf-detail-head-tabs .inf-variant-tabs {
+    justify-content: flex-end;
+}
+
+.inf-detail-empty {
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0;
+}
+
+.inf-variant-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0;
+}
+
+.inf-variant-tab {
+    padding: 0.45rem 0.95rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.inf-variant-tab:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+.inf-variant-tab.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(255, 152, 0, 0.14);
+}
+
+.inf-unlock {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.45;
+}
+
+.inf-kit-section {
+    flex: 0 0 auto;
+}
+
+.inf-kit-section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-secondary);
+    margin: 0 0 0.55rem 0;
+}
+
+.inf-kit-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+    gap: 0.55rem 0.65rem;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+@media (min-width: 900px) {
+    .inf-kit-list {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+}
+
+.inf-kit-item {
+    margin: 0;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    word-break: break-word;
+}
+
+.inf-kit-item--primary-slot {
+    border-color: rgba(255, 152, 0, 0.35);
+    background: rgba(255, 152, 0, 0.06);
+}
+
+.inf-kit-item--secondary-slot {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.light-mode .inf-kit-item--secondary-slot {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.inf-detail-foot {
+    margin-top: 0.35rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.light-mode .inf-detail-foot {
+    border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.inf-kit-note,
+.inf-kit-warn {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.45;
+}
+
+.inf-detail-foot .inf-kit-note:last-child,
+.inf-detail-foot .inf-kit-warn:last-child {
+    margin-bottom: 0;
+}
+
+.inf-kit-warn {
     color: var(--accent);
 }
 
@@ -3598,6 +4940,62 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     text-align: center;
 }
 
+.comparison-quick-outcome {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-bottom: 0.9rem;
+}
+
+.comparison-quick-outcome-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.comparison-quick-outcome-item {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.comparison-quick-outcome-label {
+    font-size: 0.68rem;
+    color: var(--text-secondary);
+    font-weight: 700;
+    letter-spacing: 0.25px;
+    text-transform: uppercase;
+}
+
+.comparison-quick-outcome-value {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.comparison-quick-highlight {
+    color: var(--accent-color);
+    font-weight: 800;
+    background: rgba(255, 152, 0, 0.16);
+    border: 1px solid rgba(255, 152, 0, 0.35);
+    border-radius: 4px;
+    padding: 0.05rem 0.3rem;
+    white-space: nowrap;
+}
+
+.comparison-quick-outcome-note {
+    margin: 0.65rem 0 0;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
 .comparison-stats-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -3843,6 +5241,18 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
     .comparison-stats-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .comparison-quick-outcome-list {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-quick-outcome-item {
+        padding: 0.7rem;
+    }
+
+    .comparison-quick-outcome-value {
+        font-size: 0.95rem;
     }
 
     .tank-selection-grid {
@@ -7943,6 +9353,44 @@ body.vietnam-jungle-theme .vietnam-features .feature span {
     color: #e8f5e8 !important;
 }
 
+/*
+ * Vietnam era — section nav (Overview tab strip). G.I. / Tunnel Runner use body classes
+ * that do not map --bg-secondary / --accent, so var() was invalid and the bar vanished.
+ * Default Vietnam uses jungle strip (not WWII navy/orange).
+ */
+body.vietnam-jungle-theme .nav {
+    background-color: #142218 !important;
+    border-bottom: 2px solid rgba(50, 180, 80, 0.55) !important;
+}
+
+body.vietnam-jungle-theme .nav-link {
+    color: #dcead8 !important;
+    border-bottom: 3px solid transparent !important;
+}
+
+body.vietnam-jungle-theme .nav-link:hover,
+body.vietnam-jungle-theme .nav-link.active {
+    color: #0d220d !important;
+    background-color: #b8e0b0 !important;
+    border-bottom-color: rgba(45, 160, 65, 0.9) !important;
+}
+
+.light-mode body.vietnam-jungle-theme .nav {
+    background-color: #e8f2e4 !important;
+    border-bottom-color: rgba(34, 100, 45, 0.45) !important;
+}
+
+.light-mode body.vietnam-jungle-theme .nav-link {
+    color: #1a2e1a !important;
+}
+
+.light-mode body.vietnam-jungle-theme .nav-link:hover,
+.light-mode body.vietnam-jungle-theme .nav-link.active {
+    color: #0d220d !important;
+    background-color: #c4e8bc !important;
+    border-bottom-color: rgba(34, 120, 50, 0.75) !important;
+}
+
 /* Header styling for jungle theme */
 body.vietnam-jungle-theme .header {
     background: linear-gradient(135deg, #1a2f1a 0%, #2d4a2d 100%) !important;
@@ -7989,9 +9437,354 @@ body.vietnam-jungle-theme .header-hub-stack .hub-switch:not(.game-era-switch) .h
     box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(50, 205, 50, 0.45) !important;
 }
 
-/* Logo styling for jungle theme */
+/* Logo styling for jungle theme (hero lockup — header uses .hll-logo / ::before) */
 body.vietnam-jungle-theme .hllv-logo {
-    filter: drop-shadow(0 8px 16px rgba(15, 31, 15, 0.6)) !important;
+    height: clamp(110px, 26vw, 168px);
+    width: auto;
+    filter: drop-shadow(0 4px 12px rgba(15, 31, 15, 0.55)) !important;
+}
+
+/* Vietnam overview (#vietnam): tighter scale below the nav strip */
+body.vietnam-jungle-theme #vietnam.vietnam-section {
+    min-height: 0;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-hero {
+    min-height: 0;
+    padding: 0.85rem 1rem 1.5rem;
+    justify-content: flex-start;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-logo {
+    margin-bottom: 0.85rem;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-title {
+    font-size: clamp(1.5rem, 4.8vw, 2.25rem) !important;
+    letter-spacing: 0.18em !important;
+    margin-bottom: 0.75rem !important;
+    line-height: 1.12 !important;
+}
+
+body.vietnam-jungle-theme #vietnam .coming-soon-banner {
+    max-width: min(520px, 100%) !important;
+    padding: 1.25rem 1.1rem !important;
+    border-radius: 14px !important;
+}
+
+body.vietnam-jungle-theme #vietnam .coming-soon-banner h2 {
+    font-size: clamp(1.2rem, 3.8vw, 1.65rem) !important;
+    margin-bottom: 0.5rem !important;
+    letter-spacing: 0.1em !important;
+}
+
+body.vietnam-jungle-theme #vietnam .coming-soon-banner p {
+    font-size: 0.95rem !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.5 !important;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-features {
+    gap: 0.65rem !important;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-features .feature {
+    padding: 0.55rem 0.75rem !important;
+    min-width: 96px !important;
+    border-radius: 10px !important;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-features .feature i {
+    font-size: 1.15rem !important;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-features .feature span {
+    font-size: 0.78rem !important;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-video-section {
+    margin-top: 1rem !important;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-video-section h3 {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-video-wrapper {
+    max-width: min(480px, 100%) !important;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-video-wrapper iframe {
+    height: clamp(200px, 52vw, 270px) !important;
+}
+
+/* Spread Democracy — Vietnam overview (CSS-only jets / fire; audio on user gesture) */
+.spread-democracy-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+body.vietnam-jungle-theme #vietnam .spread-democracy-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem 1rem;
+    margin: 0.75rem 0 0;
+}
+
+/* Vietnam launch widget — briefing / classified (no image assets; works in all themes) */
+.vietnam-launch-widget {
+    margin: 1rem auto 0;
+    max-width: 100%;
+    padding: 0.75rem 0.85rem 0.9rem;
+    border: 1px solid rgba(80, 120, 72, 0.55);
+    border-radius: 4px;
+    background:
+        linear-gradient(165deg, rgba(20, 32, 22, 0.92) 0%, rgba(28, 42, 30, 0.88) 100%),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.04) 2px,
+            rgba(0, 0, 0, 0.04) 3px
+        );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 18px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+}
+
+.vietnam-launch-widget::before,
+.vietnam-launch-widget::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: rgba(120, 180, 90, 0.45);
+    pointer-events: none;
+}
+
+.vietnam-launch-widget::before {
+    top: 5px;
+    left: 5px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+}
+
+.vietnam-launch-widget::after {
+    bottom: 5px;
+    right: 5px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+}
+
+.vietnam-launch-widget__top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.35rem 0.75rem;
+    margin-bottom: 0.55rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px dashed rgba(100, 140, 88, 0.35);
+}
+
+.vietnam-launch-widget__eyebrow {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: rgba(180, 210, 170, 0.85);
+}
+
+.vietnam-launch-widget__doc-no {
+    font-family: ui-monospace, 'Cascadia Code', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    color: rgba(160, 185, 150, 0.65);
+}
+
+.vietnam-launch-widget__classified {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.vietnam-launch-widget__stamp {
+    display: inline-block;
+    margin-bottom: 0.45rem;
+    padding: 0.2rem 0.65rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1rem, 3.5vw, 1.35rem);
+    letter-spacing: 0.22em;
+    color: rgba(40, 22, 22, 0.92);
+    background: repeating-linear-gradient(
+        -8deg,
+        #c4a574,
+        #c4a574 3px,
+        #d4bc94 3px,
+        #d4bc94 6px
+    );
+    border: 2px solid rgba(90, 50, 45, 0.75);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+    transform: rotate(-2deg);
+}
+
+.vietnam-launch-widget__redacted {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.35rem 0 0.45rem;
+}
+
+.vietnam-launch-widget__redacted span {
+    display: block;
+    height: 8px;
+    min-width: 2.2rem;
+    flex: 1 1 auto;
+    max-width: 4.5rem;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #0a0f0c 0%, #1a2820 50%, #0a0f0c 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.vietnam-launch-widget__classified-hint {
+    margin: 0;
+    font-size: 0.72rem;
+    color: rgba(170, 195, 165, 0.65);
+    font-style: italic;
+}
+
+.vietnam-launch-widget__countdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 0.85rem;
+    position: relative;
+    z-index: 1;
+}
+
+.vietnam-launch-widget__unit {
+    min-width: 3.25rem;
+    text-align: center;
+    padding: 0.35rem 0.45rem;
+    background: rgba(10, 18, 14, 0.65);
+    border: 1px solid rgba(90, 130, 78, 0.4);
+    border-radius: 3px;
+}
+
+.vietnam-launch-widget__value {
+    display: block;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #c8f0b8;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.vietnam-launch-widget__label {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    color: rgba(160, 190, 150, 0.75);
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-launch-widget {
+    margin-top: 0.65rem !important;
+    padding: 0.65rem 0.75rem 0.75rem !important;
+}
+
+.light-mode .vietnam-launch-widget {
+    background: linear-gradient(165deg, rgba(240, 245, 238, 0.98) 0%, rgba(220, 230, 216, 0.95) 100%);
+    border-color: rgba(80, 110, 70, 0.45);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.light-mode .vietnam-launch-widget__eyebrow {
+    color: rgba(50, 80, 45, 0.85);
+}
+
+.light-mode .vietnam-launch-widget__doc-no {
+    color: rgba(60, 80, 55, 0.65);
+}
+
+.light-mode .vietnam-launch-widget__classified-hint {
+    color: rgba(70, 90, 65, 0.7);
+}
+
+.light-mode .vietnam-launch-widget__value {
+    color: #1a3d1a;
+}
+
+.light-mode .vietnam-launch-widget__label {
+    color: rgba(50, 80, 48, 0.75);
+}
+
+.spread-democracy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem 0.55rem 0.75rem;
+    border-radius: 999px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 2px solid rgba(30, 58, 95, 0.9);
+    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+    color: #1e3a5f;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.spread-democracy-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.spread-democracy-btn.is-playing {
+    background: linear-gradient(180deg, #fff5f5 0%, #fecaca 100%);
+    border-color: #b91c1c;
+    color: #7f1d1d;
+}
+
+.spread-democracy-flag-wrap {
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.spread-democracy-flag {
+    width: 28px;
+    height: auto;
+    display: block;
+}
+
+.spread-democracy-vol-wrap {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.spread-democracy-vol {
+    width: min(130px, 38vw);
+    height: 6px;
+    accent-color: #b91c1c;
+    cursor: pointer;
 }
 
 body.vietnam-jungle-theme .logo-container::after {
@@ -8019,6 +9812,336 @@ body.vietnam-jungle-theme .logo-left::before {
 
 body.vietnam-jungle-theme .logo-container:hover .logo-left::before {
     filter: drop-shadow(0 6px 12px rgba(15, 31, 15, 0.55)) !important;
+}
+
+/* Vietnam-only palettes: U.S. OD / tan jungle vs PAVN khaki / field grays (stack with .vietnam-jungle-theme) */
+body.vietnam-jungle-theme.theme-vietnam-usa {
+    background: linear-gradient(145deg, #243622 0%, #35532a 38%, #3d4a30 72%, #263220 100%) !important;
+    color: #ece8dc !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa::before {
+    background: radial-gradient(circle at 15% 25%, rgba(196, 184, 150, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 85% 75%, rgba(72, 98, 58, 0.22) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(58, 82, 48, 0.14) 0%, transparent 55%) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .vietnam-section {
+    background: linear-gradient(145deg, #1a3018 0%, #2a4528 42%, #243220 100%) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .vietnam-section::before {
+    background: radial-gradient(circle at 20% 80%, rgba(90, 120, 72, 0.18) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(196, 184, 150, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(58, 95, 48, 0.12) 0%, transparent 50%) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .vietnam-title {
+    color: #d4c4a8 !important;
+    text-shadow: 3px 3px 0 #2a2218, 6px 6px 0 rgba(42, 34, 24, 0.45), 0 0 28px rgba(212, 196, 168, 0.35) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .coming-soon-banner {
+    background: rgba(55, 48, 36, 0.94) !important;
+    border: 3px solid rgba(212, 188, 140, 0.7) !important;
+    backdrop-filter: blur(16px) saturate(1.08) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(1.08) !important;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .coming-soon-banner h2 {
+    color: #c9a24d !important;
+    text-shadow: 0 0 18px rgba(201, 162, 77, 0.35) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .coming-soon-banner p {
+    color: #f2ebe0 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .vietnam-features .feature {
+    background: rgba(90, 80, 50, 0.35) !important;
+    border: 1px solid rgba(212, 188, 140, 0.45) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .vietnam-features .feature i {
+    color: #c9a24d !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .vietnam-features .feature span {
+    color: #f2ebe0 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .vietnam-video-section h3 {
+    color: #ebe4d4 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .header {
+    background: linear-gradient(135deg, #2a3224 0%, #3d4530 100%) !important;
+    border-bottom-color: rgba(196, 184, 150, 0.45) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .game-era-switch .hub-switch-btn,
+body.vietnam-jungle-theme.theme-vietnam-usa .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn {
+    background: rgba(74, 63, 46, 0.38) !important;
+    border-color: rgba(196, 184, 150, 0.42) !important;
+    color: #f0ebe0 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .game-era-switch .hub-switch-btn:hover,
+body.vietnam-jungle-theme.theme-vietnam-usa .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn:hover {
+    background: rgba(90, 78, 52, 0.5) !important;
+    border-color: rgba(212, 196, 168, 0.55) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .game-era-switch .hub-switch-btn.active,
+body.vietnam-jungle-theme.theme-vietnam-usa .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn.active {
+    background: #ebe4d4 !important;
+    border-color: #c9a24d !important;
+    color: #1f1a12 !important;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(201, 162, 77, 0.35) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .nav {
+    background-color: #2c3224 !important;
+    border-bottom: 2px solid rgba(201, 162, 77, 0.55) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .nav-link {
+    color: #f0ebe0 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .nav-link:hover,
+body.vietnam-jungle-theme.theme-vietnam-usa .nav-link.active {
+    color: #1f1a12 !important;
+    background-color: #d4c9a8 !important;
+    border-bottom-color: #b8923a !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn {
+    background: linear-gradient(145deg, #1f1610 0%, #2d2218 38%, #3a2a1e 72%, #1c1410 100%) !important;
+    color: #ebe4d8 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn::before {
+    background: radial-gradient(circle at 22% 28%, rgba(180, 55, 45, 0.09) 0%, transparent 42%),
+    radial-gradient(circle at 78% 72%, rgba(120, 88, 52, 0.2) 0%, transparent 48%),
+    radial-gradient(circle at 50% 50%, rgba(55, 40, 28, 0.35) 0%, transparent 58%) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .vietnam-section {
+    background: linear-gradient(145deg, #18120e 0%, #2a1f16 45%, #352818 100%) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .vietnam-section::before {
+    background: radial-gradient(circle at 18% 78%, rgba(110, 78, 48, 0.28) 0%, transparent 52%),
+    radial-gradient(circle at 82% 22%, rgba(90, 62, 40, 0.22) 0%, transparent 48%),
+    radial-gradient(circle at 45% 40%, rgba(70, 48, 32, 0.18) 0%, transparent 50%) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .vietnam-title {
+    color: #d4c4a8 !important;
+    text-shadow: 3px 3px 0 #1a120c, 0 0 24px rgba(160, 50, 42, 0.28) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .coming-soon-banner {
+    background: rgba(48, 36, 26, 0.94) !important;
+    border: 3px solid rgba(180, 140, 95, 0.65) !important;
+    backdrop-filter: blur(16px) saturate(1.05) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(1.05) !important;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .coming-soon-banner h2 {
+    color: #d4786a !important;
+    text-shadow: 0 0 18px rgba(180, 70, 60, 0.35) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .coming-soon-banner p {
+    color: #f0e8dc !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .vietnam-features .feature {
+    background: rgba(62, 46, 32, 0.55) !important;
+    border: 1px solid rgba(180, 140, 95, 0.45) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .vietnam-features .feature i {
+    color: #c65a4e !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .vietnam-features .feature span {
+    color: #ebe4d8 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .vietnam-video-section h3 {
+    color: #e8dcc8 !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .header {
+    background: linear-gradient(135deg, #221810 0%, #342518 100%) !important;
+    border-bottom-color: rgba(160, 118, 72, 0.5) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .game-era-switch .hub-switch-btn,
+body.vietnam-jungle-theme.theme-vietnam-pavn .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn {
+    background: rgba(48, 36, 26, 0.75) !important;
+    border-color: rgba(180, 140, 95, 0.48) !important;
+    color: #f0e8dc !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .game-era-switch .hub-switch-btn:hover,
+body.vietnam-jungle-theme.theme-vietnam-pavn .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn:hover {
+    background: rgba(62, 48, 34, 0.88) !important;
+    border-color: rgba(200, 160, 110, 0.55) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .game-era-switch .hub-switch-btn.active,
+body.vietnam-jungle-theme.theme-vietnam-pavn .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn.active {
+    background: #e8dcc8 !important;
+    border-color: #a05044 !important;
+    color: #1a120c !important;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(160, 80, 68, 0.35) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .nav {
+    background-color: #2a1f16 !important;
+    border-bottom: 2px solid rgba(170, 125, 78, 0.55) !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .nav-link {
+    color: #f0e8dc !important;
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .nav-link:hover,
+body.vietnam-jungle-theme.theme-vietnam-pavn .nav-link.active {
+    color: #1a120c !important;
+    background-color: #c8a882 !important;
+    border-bottom-color: #a05044 !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged {
+    background: linear-gradient(145deg, #140808 0%, #1a1210 45%, #0d0a0a 100%) !important;
+    color: #f5f0f0 !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged::before {
+    background: radial-gradient(circle at 25% 20%, rgba(220, 38, 38, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 75% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 50%) !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .vietnam-section {
+    background: linear-gradient(145deg, #0f0606 0%, #1a1010 50%, #0c0808 100%) !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .vietnam-section::before {
+    background: radial-gradient(circle at 30% 70%, rgba(220, 38, 38, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(80, 20, 20, 0.15) 0%, transparent 45%) !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .vietnam-title {
+    color: #ff6b6b !important;
+    text-shadow: 3px 3px 0 #1a0000, 0 0 24px rgba(255, 0, 0, 0.35) !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .coming-soon-banner {
+    background: rgba(52, 16, 16, 0.92) !important;
+    border: 3px solid rgba(220, 80, 80, 0.55) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+    position: relative !important;
+    z-index: 3 !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .coming-soon-banner h2 {
+    color: #ff8585 !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .coming-soon-banner p {
+    color: #ffecec !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .vietnam-features .feature {
+    background: rgba(40, 10, 10, 0.48) !important;
+    border-color: rgba(220, 38, 38, 0.35) !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .vietnam-features .feature i {
+    color: #ff8585 !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .vietnam-video-section h3 {
+    color: #ffe4e4 !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .header {
+    background: linear-gradient(135deg, #1a0808 0%, #2a1010 100%) !important;
+    border-bottom-color: rgba(220, 38, 38, 0.5) !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .game-era-switch .hub-switch-btn,
+body.vietnam-jungle-theme.theme-unhinged .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn {
+    background: rgba(60, 15, 15, 0.52) !important;
+    border-color: rgba(255, 80, 80, 0.45) !important;
+    color: #ffecec !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .game-era-switch .hub-switch-btn:hover,
+body.vietnam-jungle-theme.theme-unhinged .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn:hover {
+    background: rgba(80, 22, 22, 0.62) !important;
+    border-color: rgba(255, 120, 120, 0.55) !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .game-era-switch .hub-switch-btn.active,
+body.vietnam-jungle-theme.theme-unhinged .header-hub-stack .hub-switch:not(.game-era-switch) .hub-switch-btn.active {
+    background: #ffffff !important;
+    border-color: #ff4444 !important;
+    color: #1a0505 !important;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 68, 68, 0.4) !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .nav {
+    background-color: #1a0808 !important;
+    border-bottom: 2px solid rgba(220, 60, 60, 0.65) !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .nav-link {
+    color: #ffecec !important;
+}
+
+body.vietnam-jungle-theme.theme-unhinged .nav-link:hover,
+body.vietnam-jungle-theme.theme-unhinged .nav-link.active {
+    color: #1a0505 !important;
+    background-color: #ffffff !important;
+    border-bottom-color: #ff4444 !important;
+}
+
+body.vietnam-jungle-theme .theme-dropdown {
+    background: rgba(15, 22, 16, 0.9);
+    color: #e8f0e4;
+    border-color: rgba(120, 160, 120, 0.35);
+}
+
+body.vietnam-jungle-theme.theme-vietnam-usa .theme-dropdown {
+    background: rgba(36, 32, 24, 0.92);
+    color: #f0ebe0;
+    border-color: rgba(196, 184, 150, 0.4);
+}
+
+body.vietnam-jungle-theme.theme-vietnam-pavn .theme-dropdown {
+    background: rgba(42, 32, 24, 0.94);
+    color: #f0e8dc;
+    border-color: rgba(180, 140, 95, 0.5);
+}
+
+body.vietnam-jungle-theme.theme-unhinged .theme-dropdown {
+    background: rgba(30, 10, 10, 0.92);
+    color: #ffecec;
+    border-color: rgba(220, 80, 80, 0.45);
 }
 
 .vietnam-section.active {
@@ -8441,9 +10564,30 @@ body.vietnam-jungle-theme .logo-container:hover .logo-left::before {
     .ranging-card:hover .card-background-image,
     .tactics-card:hover .card-background-image,
     .featured-card:hover .card-background-image,
-    .community-card:hover .card-background-image {
+    .community-card:hover .card-background-image,
+    .infantry-overview-card.infantry-card-getting-started:hover .card-background-image,
+    .infantry-overview-card.infantry-card-getting-started:focus-visible .card-background-image,
+    .infantry-overview-card.infantry-card-classes:hover .card-background-image,
+    .infantry-overview-card.infantry-card-classes:focus-visible .card-background-image,
+    .infantry-overview-card.infantry-card-maps:hover .card-background-image,
+    .infantry-overview-card.infantry-card-maps:focus-visible .card-background-image,
+    .infantry-overview-card.infantry-card-artillery:hover .card-background-image,
+    .infantry-overview-card.infantry-card-artillery:focus-visible .card-background-image {
         transform: scale(1.1); /* Smaller scale on mobile */
         transition: all 0.3s ease;
+    }
+
+    /* Match general overview-card lift on mobile (infantry tiles use higher-specificity desktop hover) */
+    .infantry-overview-card.infantry-card-getting-started:hover,
+    .infantry-overview-card.infantry-card-getting-started:focus-visible,
+    .infantry-overview-card.infantry-card-classes:hover,
+    .infantry-overview-card.infantry-card-classes:focus-visible,
+    .infantry-overview-card.infantry-card-maps:hover,
+    .infantry-overview-card.infantry-card-maps:focus-visible,
+    .infantry-overview-card.infantry-card-artillery:hover,
+    .infantry-overview-card.infantry-card-artillery:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
     }
 
     /* Optimize 360 viewer for mobile */

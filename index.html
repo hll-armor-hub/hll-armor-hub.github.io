@@ -164,12 +164,13 @@
                 <li><a href="#armor/wwii/overview" class="nav-link active">Overview</a></li>
                 <li><a href="#armor/wwii/tactics" class="nav-link">Getting Started</a></li>
                 <li><a href="#armor/wwii/tanks" class="nav-link">Tanks</a></li>
-                <li><a href="#armor/wwii/ranging" class="nav-link" title="Calculators &amp; Sights — artillery, SPA, tank scopes">Calcs &amp; Sights</a></li>
+                <li><a href="#armor/wwii/ranging" class="nav-link" title="Calculators &amp; Sights: artillery, SPA, tank scopes">Calcs &amp; Sights</a></li>
                 <li><a href="#armor/wwii/identification" class="nav-link">Identification</a></li>
                 <li><a href="#armor/wwii/community" class="nav-link">Community</a></li>
             </ul>
             <ul class="nav-list nav-armor-vietnam">
                 <li><a href="#armor/vietnam/overview" class="nav-link active">Overview</a></li>
+                <li><a href="#armor/vietnam/tanks" class="nav-link">Tanks</a></li>
             </ul>
             <ul class="nav-list nav-infantry-wwii">
                 <li><a href="#infantry/wwii/overview" class="nav-link">Overview</a></li>
@@ -180,6 +181,10 @@
             </ul>
             <ul class="nav-list nav-infantry-vietnam">
                 <li><a href="#infantry/vietnam/overview" class="nav-link active">Overview</a></li>
+                <li><a href="#infantry/vietnam/getting-started" class="nav-link">Getting started</a></li>
+                <li><a href="#infantry/vietnam/squads" class="nav-link">Squads &amp; equipment</a></li>
+                <li><a href="#infantry/vietnam/maps" class="nav-link">Maps</a></li>
+                <li><a href="#infantry/vietnam/mortar-squad" class="nav-link">Mortar Calculator</a></li>
             </ul>
         </nav>
 
@@ -406,7 +411,7 @@
             <section id="ranging" class="section">
                 <div class="section-header">
                     <h2>Calculators &amp; sights</h2>
-                    <p>Artillery, SPA, and tank optics — mills, tools, and sight practice</p>
+                    <p>Artillery, SPA, and tank optics: mills, tools, and sight practice</p>
                 </div>
                 <div class="ranging-content">
                     <div class="ranging-tools">
@@ -481,7 +486,7 @@
                                         <button type="button" id="spaAdjustmentToggle" style="padding: 0.5rem 1rem; background: rgba(255, 152, 0, 0.2); border: 1px solid var(--accent); color: var(--accent); border-radius: 4px; cursor: pointer; font-weight: 600; min-width: 50px;">+</button>
                                         <input type="number" id="spaTerrainAdjustment" step="1" placeholder="0" style="flex: 1;">
                                 </div>
-                                    <small style="display: block; margin-top: 0.25rem; opacity: 0.7; font-size: 0.85rem;">+ adds mills to the solution; − subtracts (terrain angle and tank pitch).</small>
+                                    <small style="display: block; margin-top: 0.25rem; opacity: 0.7; font-size: 0.85rem;">+ subtracts mills from the solution; − adds mills (terrain angle and tank pitch).</small>
                             </div>
                                 <button type="button" class="calculate-btn" id="spaCalculateBtn">Calculate</button>
                                 
@@ -735,21 +740,21 @@
                                     <img src="images/HLL_Icons/Roles/Artillery Observer.png"
                                          alt="Artillery Observer Icon" class="role-icon" loading="lazy">
                                          <div class="role-details">
-                                        <strong>Artillery Observer</strong> — Squad leader for the artillery unit. Acts as the link between command chat and the gun line. While able to work from an SPA, the Observer is often strongest on the front line calling targets, directing fire, and marking with the flare gun.
+                                        <strong>Artillery Observer</strong>. Squad leader for the artillery unit. Acts as the link between command chat and the gun line. While able to work from an SPA, the Observer is often strongest on the front line calling targets, directing fire, and marking with the flare gun.
                                          </div>
                                      </div>
                                      <div class="role-item">
                                     <img src="images/HLL_Icons/Roles/Artillery Operator.png"
                                          alt="Artillery Operator Icon" class="role-icon" loading="lazy">
                                          <div class="role-details">
-                                        <strong>Operator</strong> — Artillery squad crew role (replaces the former Artillery Engineer naming in-game as of U19.1). Works with the Observer and Gunner to run static pieces and SPA. Detailed loadout and subclass breakdown TBD.
+                                        <strong>Operator</strong>. Artillery squad crew role (replaces the former Artillery Engineer naming in-game as of U19.1). Works with the Observer and Gunner to run static pieces and SPA. Detailed loadout and subclass breakdown TBD.
                                          </div>
                                      </div>
                                      <div class="role-item">
                                     <img src="images/HLL_Icons/Roles/Artillery Gunner.png"
                                          alt="Artillery Gunner Icon" class="role-icon" loading="lazy">
                                          <div class="role-details">
-                                        <strong>Gunner</strong> — Artillery squad crew role (replaces the former Artillery Support naming in-game as of U19.1). Works with the Observer and Operator on fire missions and crew-served weapons. Detailed loadout and subclass breakdown TBD.
+                                        <strong>Gunner</strong>. Artillery squad crew role (replaces the former Artillery Support naming in-game as of U19.1). Works with the Observer and Operator on fire missions and crew-served weapons. Detailed loadout and subclass breakdown TBD.
                                          </div>
                                      </div>
                                  </div>
@@ -1299,7 +1304,7 @@
                         <div class="card-background-image" aria-hidden="true"></div>
                         <i class="fas fa-bullseye" aria-hidden="true"></i>
                         <h3>Artillery calculator</h3>
-                        <p>Mill solutions and tables for team artillery — same tool as <strong>Armor Hub → Calcs &amp; Sights</strong>.</p>
+                        <p>Mill solutions and tables for team artillery, same tool as <strong>Armor Hub → Calcs &amp; Sights</strong>.</p>
                     </a>
                 </div>
                 <div class="infantry-getting-started">
@@ -1464,14 +1469,14 @@
                 </div>
                 <div class="infantry-maps-hub">
                     <div class="infantry-maps-tool-callout" role="note">
-                        <p><a href="https://mattw.io/maps-let-loose/" class="infantry-maps-tool-link" target="_blank" rel="noopener noreferrer"><strong>Maps Let Loose</strong></a> (Made by <a href="https://mattw.io/" class="infantry-maps-tool-link" target="_blank">Winston</a>) — Interactive tac-map tool for Hell Let Loose: explore default spawns, sectors, strongpoints, and overlays; draw and annotate on tactical maps for planning and callouts.</p>
+                        <p><a href="https://mattw.io/maps-let-loose/" class="infantry-maps-tool-link" target="_blank" rel="noopener noreferrer"><strong>Maps Let Loose</strong></a> (Made by <a href="https://mattw.io/" class="infantry-maps-tool-link" target="_blank">Winston</a>). Interactive tac-map tool for Hell Let Loose: explore default spawns, sectors, strongpoints, and overlays; draw and annotate on tactical maps for planning and callouts.</p>
                     </div>
                     <div class="infantry-map-grid" role="list">
                         <article class="infantry-map-card" role="listitem" id="infantry-map-hurtgen-forest">
                             <div class="infantry-map-card-head">
                                 <h3>Hürtgen Forest</h3>
                             </div>
-                            <p class="infantry-map-history">The <strong>Battle of the Hürtgen Forest</strong> (1944–45) saw the U.S. First Army fight through dense woods and fortifications on the German–Belgian border—one of the longest and costliest American campaigns in Northwest Europe.</p>
+                            <p class="infantry-map-history">The <strong>Battle of the Hürtgen Forest</strong> (1944–45) saw the U.S. First Army fight through dense woods and fortifications on the German–Belgian border. One of the longest and costliest American campaigns in Northwest Europe.</p>
                             <div class="infantry-map-duals">
                                 <figure class="infantry-map-figure">
                                     <img src="images/infantry/maps/hurtgen-forest/hurtgenforest-day.webp" alt="Hürtgen Forest key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
@@ -1519,7 +1524,7 @@
                             <div class="infantry-map-card-head">
                                 <h3>Carentan</h3>
                             </div>
-                            <p class="infantry-map-history"><strong>Carentan</strong> was fought over in <strong>June 1944</strong> as U.S. forces pushed inland to join the <strong>Omaha</strong> and <strong>Utah</strong> beachheads—a key crossroads in the <strong>Normandy</strong> bocage.</p>
+                            <p class="infantry-map-history"><strong>Carentan</strong> was fought over in <strong>June 1944</strong> as U.S. forces pushed inland to join the <strong>Omaha</strong> and <strong>Utah</strong> beachheads. A key crossroads in the <strong>Normandy</strong> bocage.</p>
                             <div class="infantry-map-duals">
                                 <figure class="infantry-map-figure">
                                     <img src="images/infantry/maps/carentan/carentan-day.webp" alt="Carentan key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
@@ -1567,7 +1572,7 @@
                             <div class="infantry-map-card-head">
                                 <h3>Omaha Beach</h3>
                             </div>
-                            <p class="infantry-map-history">On <strong>6 June 1944</strong>, <strong>Omaha Beach</strong> was the hardest of the Allied landings—U.S. troops stormed bluffs and bunkers against a heavily prepared German defense.</p>
+                            <p class="infantry-map-history">On <strong>6 June 1944</strong>, <strong>Omaha Beach</strong> was the hardest of the Allied landings. U.S. troops stormed bluffs and bunkers against a heavily prepared German defense.</p>
                             <div class="infantry-map-duals">
                                 <figure class="infantry-map-figure">
                                     <img src="images/infantry/maps/omaha-beach/omahabeach-day.webp" alt="Omaha Beach key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
@@ -1599,7 +1604,7 @@
                             <div class="infantry-map-card-head">
                                 <h3>Hill 400</h3>
                             </div>
-                            <p class="infantry-map-history"><strong>Hill 400</strong> (Bergstein) was contested in the <strong>Hürtgen Forest</strong> fighting of <strong>late 1944</strong>—an exposed height both sides attacked and counterattacked for control of the Roer river line.</p>
+                            <p class="infantry-map-history"><strong>Hill 400</strong> (Bergstein) was contested in the <strong>Hürtgen Forest</strong> fighting of <strong>late 1944</strong>. An exposed height both sides attacked and counterattacked for control of the Roer river line.</p>
                             <div class="infantry-map-duals">
                                 <figure class="infantry-map-figure">
                                     <img src="images/infantry/maps/hill-400/hill400-day.webp" alt="Hill 400 key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
@@ -1615,7 +1620,7 @@
                             <div class="infantry-map-card-head">
                                 <h3>Kursk</h3>
                             </div>
-                            <p class="infantry-map-history"><strong>Operation Citadel</strong> (July–August <strong>1943</strong>) produced the <strong>Battle of Kursk</strong>—the largest tank engagement of the war—as Germany tried to pinch off a Soviet salient on the Eastern Front.</p>
+                            <p class="infantry-map-history"><strong>Operation Citadel</strong> (July–August <strong>1943</strong>) produced the <strong>Battle of Kursk</strong>. The largest tank engagement of the war, as Germany tried to pinch off a Soviet salient on the Eastern Front.</p>
                             <div class="infantry-map-duals">
                                 <figure class="infantry-map-figure">
                                     <img src="images/infantry/maps/kursk/kursk-day.webp" alt="Kursk key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
@@ -1759,7 +1764,7 @@
                             <div class="infantry-map-card-head">
                                 <h3>Smolensk</h3>
                             </div>
-                            <p class="infantry-map-history">The <strong>Smolensk</strong> region saw major fighting in <strong>1941</strong> and <strong>1943</strong> on the road to Moscow—large-scale Soviet–German battles for a key rail and road hub on the Eastern Front.</p>
+                            <p class="infantry-map-history">The <strong>Smolensk</strong> region saw major fighting in <strong>1941</strong> and <strong>1943</strong> on the road to Moscow. Large-scale Soviet–German battles for a key rail and road hub on the Eastern Front.</p>
                             <div class="infantry-map-duals">
                                 <figure class="infantry-map-figure">
                                     <img src="images/infantry/maps/smolensk/smolensk-day.webp" alt="Smolensk key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
@@ -1778,10 +1783,244 @@
             <section id="infantry-tips" class="section">
                 <div class="section-header">
                     <h2>Tips</h2>
-                    <p>From the Draft Haus community — tactics and perspective from regulars on Armor Hub’s home server.</p>
+                    <p>From the Draft Haus community: tactics and perspective from regulars on Armor Hub’s home server.</p>
                 </div>
                 <div id="infantry-tips-root" class="infantry-tips-hub" data-ready="0"></div>
             </section>
+
+            <!-- Infantry Hub: Hell Let Loose Vietnam -->
+            <section id="infantry-vietnam-overview" class="section vietnam-infantry-section">
+                <div class="section-header">
+                    <h2>Infantry overview</h2>
+                    <p>Closed Beta details. Subject to change upon open beta and full release.</p>
+                </div>
+                <div class="overview-grid infantry-overview-grid">
+                    <a href="#infantry/vietnam/getting-started" class="overview-card infantry-overview-card infantry-card-getting-started">
+                        <div class="card-background-image" aria-hidden="true"></div>
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                        <h3>Getting started</h3>
+                        <p>Vietnam-specific notes: modes, movement, logistics, and how it differs from WWII.</p>
+                    </a>
+                    <a href="#infantry/vietnam/squads" class="overview-card infantry-overview-card infantry-card-squads">
+                        <div class="card-background-image" aria-hidden="true"></div>
+                        <i class="fas fa-users" aria-hidden="true"></i>
+                        <h3>Squads &amp; equipment</h3>
+                        <p>Every battlefield unit and role, from Commander to mortar crews, with kit focus.</p>
+                    </a>
+                    <a href="#infantry/vietnam/maps" class="overview-card infantry-overview-card infantry-card-maps">
+                        <div class="card-background-image" aria-hidden="true"></div>
+                        <i class="fas fa-map" aria-hidden="true"></i>
+                        <h3>Maps</h3>
+                        <p>Same card layout as WWII maps; <strong>Thanh Hòa Bridge</strong> for now, with overview art and a text placeholder for the tac map until more maps ship.</p>
+                    </a>
+                    <a href="#infantry/vietnam/mortar-squad" class="overview-card infantry-overview-card infantry-card-artillery">
+                        <div class="card-background-image" aria-hidden="true"></div>
+                        <i class="fas fa-bullseye" aria-hidden="true"></i>
+                        <h3>Mortar Calculator</h3>
+                        <p>Mill calculator for Vietnam mortars (US &amp; NVA), same range band as in-game tables.</p>
+                    </a>
+                </div>
+                <div class="coming-soon-banner infantry-vietnam-overview-banner">
+                    <h2 class="infantry-vietnam-overview-kicker">COMING IN 2026</h2>
+                    <p class="vietnam-tagline infantry-vietnam-overview-tagline">Experience the next chapter of Hell Let Loose with Vietnam-era infantry combat</p>
+                    <div class="vietnam-launch-widget" data-launch-target="">
+                        <div class="vietnam-launch-widget__top">
+                            <span class="vietnam-launch-widget__eyebrow">FIELD BRIEF // LAUNCH WINDOW</span>
+                            <span class="vietnam-launch-widget__doc-no">HLL-VN-2026-███</span>
+                        </div>
+                        <div class="vietnam-launch-widget__classified">
+                            <span class="vietnam-launch-widget__stamp" aria-hidden="true">CLASSIFIED</span>
+                            <div class="vietnam-launch-widget__redacted" aria-hidden="true">
+                                <span></span><span></span><span></span><span></span><span></span>
+                            </div>
+                            <p class="vietnam-launch-widget__classified-hint">Check back SOON</p>
+                        </div>
+                        <div class="vietnam-launch-widget__countdown" hidden>
+                            <div class="vietnam-launch-widget__unit">
+                                <span class="vietnam-launch-widget__value">00</span>
+                                <span class="vietnam-launch-widget__label">DAYS</span>
+                            </div>
+                            <div class="vietnam-launch-widget__unit">
+                                <span class="vietnam-launch-widget__value">00</span>
+                                <span class="vietnam-launch-widget__label">HRS</span>
+                            </div>
+                            <div class="vietnam-launch-widget__unit">
+                                <span class="vietnam-launch-widget__value">00</span>
+                                <span class="vietnam-launch-widget__label">MIN</span>
+                            </div>
+                            <div class="vietnam-launch-widget__unit">
+                                <span class="vietnam-launch-widget__value">00</span>
+                                <span class="vietnam-launch-widget__label">SEC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="infantry-vietnam-getting-started" class="section vietnam-infantry-section">
+                <div class="section-header">
+                    <h2>Getting started</h2>
+                </div>
+                <article class="infantry-guide">
+                    <div class="infantry-guide-strategies">
+                        <section class="infantry-guide-block infantry-guide-kicker" aria-labelledby="infantry-vn-whats-new-title">
+                            <h3 id="infantry-vn-whats-new-title"><i class="fas fa-clipboard-list" aria-hidden="true"></i> What&rsquo;s new</h3>
+                            <p>New systems and tweaks in <strong>Hell Let Loose: Vietnam</strong> for the closed beta build.</p>
+                        </section>
+                        <div class="infantry-guide-grid infantry-guide-grid--vn-whats-new">
+                            <section class="infantry-guide-block">
+                                <h3><i class="fas fa-water" aria-hidden="true"></i> Swimming</h3>
+                                <ul>
+                                    <li>Double-tap <strong>Ctrl</strong> to dive underwater.</li>
+                                    <li>~<strong>6 s</strong> underwater before the drowning warning.</li>
+                                    <li>~<strong>6 s</strong> on the drowning timer after that, then instant death.</li>
+                                    <li>Up to ~<strong>11 s</strong> underwater if you time surfacing for air.</li>
+                                    <li><strong>Vaulting</strong> out of the water while swimming works.</li>
+                                </ul>
+                            </section>
+                            <section class="infantry-guide-block">
+                                <h3><i class="fas fa-helicopter" aria-hidden="true"></i> Helicopters</h3>
+                                <ul>
+                                    <li>Door guns: <strong>M60D</strong>, <strong>400</strong> rounds + <strong>1</strong> spare belt each side.</li>
+                                    <li>Damage zones: <strong>Hull</strong>, <strong>Engine</strong>, <strong>Main Rotor</strong>, <strong>Tail Rotor</strong>.</li>
+                                    <li><strong>Rotors</strong> make no sound when colliding with objects, but if someone is piloting they do physical damage to players.</li>
+                                </ul>
+                            </section>
+                            <section class="infantry-guide-block">
+                                <h3><i class="fas fa-map" aria-hidden="true"></i> Map &amp; HQs</h3>
+                                <ul>
+                                    <li><strong>3D live tactical map</strong> (not the flat WWII-style map).</li>
+                                    <li>All <strong>three HQs</strong> start with <strong>150 supplies</strong>; resource <strong>nodes</strong> still matter, but base resupply is less painful.</li>
+                                </ul>
+                            </section>
+                            <section class="infantry-guide-block">
+                                <h3><i class="fas fa-dungeon" aria-hidden="true"></i> NVA tunnels</h3>
+                                <ul>
+                                    <li><strong>100 m</strong> build radius · <strong>no</strong> supply cost · ~<strong>120 s</strong> place cooldown.</li>
+                                    <li><strong>500 m</strong> link radius · max <strong>4</strong> links per network (<strong>5</strong> sites total).</li>
+                                    <li><strong>15</strong> tunnels per team (up to <strong>3</strong> full five-node nets).</li>
+                                    <li>Links connect / disconnect <strong>instantly</strong> with <strong>no cost</strong>.</li>
+                                    <li>Fast travel to <strong>any</strong> node in the net in a couple of seconds — distance does not change travel time.</li>
+                                    <li>No <strong>spawn on</strong> tunnel hatches; walk to a tunnel to use it.</li>
+                                </ul>
+                            </section>
+                        </div>
+                        <div class="infantry-guide-grid">
+                            <section class="infantry-guide-block">
+                                <h3><i class="fas fa-link" aria-hidden="true"></i> Still new to Hell Let Loose?</h3>
+                                <p>Servers, comms, spawns, and core mode rules are still the backbone of the game. The <a href="#infantry/wwii/getting-started">WWII Infantry Hub → Getting started</a> guide is the best general onboarding; read that first, then use the Vietnam notes here for era-specific changes.</p>
+                            </section>
+                            <section class="infantry-guide-block">
+                                <h3><i class="fas fa-flag-checkered" aria-hidden="true"></i> Modes (Vietnam)</h3>
+                                <ul class="infantry-guide-mode-list">
+                                    <li><p><strong>Warfare</strong>: normal ~1h 30m matches.</p></li>
+                                    <li><p><strong>Offensive</strong></p></li>
+                                    <li><p><strong>Conquest</strong></p></li>
+                                    <li><p><strong>Domination</strong></p></li>
+                                </ul>
+                            </section>
+                            <section class="infantry-guide-block">
+                                <h3><i class="fas fa-parachute-box" aria-hidden="true"></i> Logistics &amp; spawns (highlights)</h3>
+                                <ul>
+                                    <li>All three HQs start with <strong>150 supplies</strong>; resource nodes still exist.</li>
+                                    <li><strong>No jeeps or halftracks</strong>; trucks still drop <strong>150 supplies</strong>.</li>
+                                    <li><strong>Garrisons:</strong> 200m build radius; <strong>50</strong> supplies in blue, <strong>100</strong> in red; <strong>cannot</strong> be placed in neutral territory.</li>
+                                    <li><strong>Outposts</strong> and <strong>NVA tunnels</strong> <em>can</em> be placed in neutral territory.</li>
+                                    <li><strong>NVA tunnels:</strong> 100m build radius, <strong>no</strong> supply cost, ~120s placement cooldown, 500m connection radius; max <strong>4</strong> links per network (5 locations total), <strong>15</strong> tunnels per team.</li>
+                                </ul>
+                            </section>
+                            <section class="infantry-guide-block">
+                                <h3><i class="fas fa-helicopter" aria-hidden="true"></i> Helicopters &amp; boats (highlights)</h3>
+                                <ul>
+                                    <li><strong>Transport helicopters</strong> can put troops <strong>in the air at any time</strong>; spawns are <strong>not</strong> limited to sitting on the ground with the engine off (you can spawn into flight / mid-insert).</li>
+                                    <li><strong>Supply helicopters</strong> are <strong>not</strong> spawned by default; only the <strong>Commander</strong> can spawn them. The pilot can fly the aircraft, and the co-pilot can drop supplies once a minimum altitude has been met. Each drop delivers <strong>50 supplies</strong>; the helicopter must resupply at HQs.</li>
+                                    <li>Exiting a heli mid-air causes <strong>fall damage</strong>; if no pilot remains, the aircraft <strong>drops</strong>.</li>
+                                    <li><strong>Boats</strong> act like <strong>halftracks with the engine off</strong>: when the motor is shut down, friendly infantry can <strong>spawn on the deck</strong> as a mobile rally surface. Armed boats carry front/rear <strong>M2</strong> (300 rounds + 1 belt); hull + engine health; with engine on they <strong>drift</strong> slowly with the water.</li>
+                                </ul>
+                            </section>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section id="infantry-vietnam-squads" class="section vietnam-infantry-section">
+                <div class="section-header">
+                    <h2>Squads &amp; equipment</h2>
+                    <p>
+                        These classes and weapons are as they appeared in the closed playtest. Please note they are
+                        subject to change; this also does <strong>not</strong> take into account the new weight system
+                        for loadouts in HLL Vietnam.
+                    </p>
+                </div>
+                <article class="infantry-guide">
+                    <div id="infantry-vietnam-squads-root" class="infantry-vietnam-squads-root" data-loaded="0" data-loading="0"></div>
+                    <p class="vietnam-squad-note">Tank roster: <a href="#armor/vietnam/tanks">Armor Hub → Vietnam → Tanks</a>. Mortar mills: <a href="#infantry/vietnam/mortar-squad">Mortar Calculator</a>.</p>
+                </article>
+            </section>
+            <section id="infantry-vietnam-maps" class="section vietnam-infantry-section">
+                <div class="section-header">
+                    <h2>Maps</h2>
+                    <p>Only one map confirmed for closed beta</p>
+                </div>
+                <div class="infantry-maps-hub">
+                    <div class="infantry-maps-tool-callout" role="note">
+                        <p><a href="https://mattw.io/maps-let-loose/" class="infantry-maps-tool-link" target="_blank" rel="noopener noreferrer"><strong>Maps Let Loose</strong></a> (Made by <a href="https://mattw.io/" class="infantry-maps-tool-link" target="_blank" rel="noopener noreferrer">Winston</a>). Interactive tac-map tool for Hell Let Loose: explore default spawns, sectors, strongpoints, and overlays; draw and annotate on tactical maps for planning and callouts.</p>
+                    </div>
+                    <div class="infantry-map-grid" role="list">
+                        <article class="infantry-map-card" role="listitem" id="infantry-vietnam-map-thanh-hoa-bridge">
+                            <div class="infantry-map-card-head">
+                                <h3>Thanh Hòa Bridge</h3>
+                            </div>
+                            <p class="infantry-map-history">The <strong>Thanh Hóa</strong> crossings over the <strong>Mã River</strong> on <strong>North Vietnam's Route 1</strong>—often associated with the <strong>Hàm Rồng (&ldquo;Dragon's Jaw&rdquo;)</strong> bridge complex—were a <strong>strategic bottleneck</strong> for road and rail traffic through <strong>1965–1972</strong>. U.S. Navy and Air Force strike packages hit the bridges and defenses repeatedly under <strong>Rolling Thunder</strong> and later campaigns, facing dense <strong>anti-aircraft</strong> fire and early <strong>SA-2</strong> missile coverage; <strong>laser-guided bombs</strong> finally severed the main spans in <strong>1972</strong>. <em>Hell Let Loose: Vietnam</em> uses the setting as a <strong>combined-arms</strong> ground map rather than a full recreation of those air campaigns.</p>
+                            <div class="infantry-map-duals">
+                                <figure class="infantry-map-figure">
+                                    <img src="Vietnam/1920x1080_Village.webp" alt="Thanh Hòa Bridge — overview / key art" class="infantry-map-img infantry-map-img--key" loading="lazy" decoding="async">
+                                    <figcaption>Overview / key art</figcaption>
+                                </figure>
+                                <figure class="infantry-map-figure">
+                                    <div class="infantry-map-tac-placeholder-box" role="img" aria-label="Tactical map not available yet">Tactical map — no image yet.</div>
+                                    <figcaption>Tactical map (placeholder)</figcaption>
+                                </figure>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+            <section id="infantry-vietnam-mortar-squad" class="section vietnam-infantry-section">
+                <div class="section-header">
+                    <h2>Mortar Calculator</h2>
+                    <p>Vietnam replaces WWII artillery with <strong>mortar squads</strong>. Mill solution is the same for <strong>US</strong> and <strong>NVA</strong> in this build.</p>
+                </div>
+                <div class="infantry-mortar-squad-wrap">
+                    <div class="calculator">
+                        <div class="input-group">
+                            <label for="vnMortarDistance">Distance (meters):</label>
+                            <input type="number" id="vnMortarDistance" min="100" max="450" step="10"
+                                   placeholder="Enter distance (100–450m)">
+                        </div>
+                        <button type="button" class="calculate-btn" id="vnMortarCalculateBtn">Calculate</button>
+                        <div class="recent-calculation" id="recentVietnamMortarCalculation">
+                            <p>No calculation performed yet</p>
+                        </div>
+                        <div class="arty-results">
+                            <h4>Saved results</h4>
+                            <table class="arty-table">
+                                <thead>
+                                    <tr>
+                                        <th>Result</th>
+                                        <th>Distance</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="vnMortarResultsBody">
+                                    <tr class="no-results">
+                                        <td colspan="3">No calculations saved yet</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Vietnam Section -->
             <section id="vietnam" class="section vietnam-section">
                 <div class="vietnam-hero">
@@ -1798,33 +2037,33 @@
                             <p class="vietnam-tagline">Experience the next chapter of Hell Let Loose with Vietnam-era armored warfare</p>
 
                             <!-- Launch: leave data-launch-target empty for CLASSIFIED; set to ISO date (e.g. 2026-11-15T17:00:00Z) for countdown -->
-                            <div id="vietnamLaunchWidget" class="vietnam-launch-widget" data-launch-target="">
+                            <div class="vietnam-launch-widget" data-launch-target="">
                                 <div class="vietnam-launch-widget__top">
                                     <span class="vietnam-launch-widget__eyebrow">FIELD BRIEF // LAUNCH WINDOW</span>
                                     <span class="vietnam-launch-widget__doc-no">HLL-VN-2026-███</span>
                                 </div>
-                                <div id="vietnamLaunchClassified" class="vietnam-launch-widget__classified">
+                                <div class="vietnam-launch-widget__classified">
                                     <span class="vietnam-launch-widget__stamp" aria-hidden="true">CLASSIFIED</span>
                                     <div class="vietnam-launch-widget__redacted" aria-hidden="true">
                                         <span></span><span></span><span></span><span></span><span></span>
                                     </div>
                                     <p class="vietnam-launch-widget__classified-hint">Check back SOON</p>
                                 </div>
-                                <div id="vietnamLaunchCountdown" class="vietnam-launch-widget__countdown" hidden>
+                                <div class="vietnam-launch-widget__countdown" hidden>
                                     <div class="vietnam-launch-widget__unit">
-                                        <span id="vietnamLaunchDays" class="vietnam-launch-widget__value">00</span>
+                                        <span class="vietnam-launch-widget__value">00</span>
                                         <span class="vietnam-launch-widget__label">DAYS</span>
                                     </div>
                                     <div class="vietnam-launch-widget__unit">
-                                        <span id="vietnamLaunchHours" class="vietnam-launch-widget__value">00</span>
+                                        <span class="vietnam-launch-widget__value">00</span>
                                         <span class="vietnam-launch-widget__label">HRS</span>
                                     </div>
                                     <div class="vietnam-launch-widget__unit">
-                                        <span id="vietnamLaunchMins" class="vietnam-launch-widget__value">00</span>
+                                        <span class="vietnam-launch-widget__value">00</span>
                                         <span class="vietnam-launch-widget__label">MIN</span>
                                     </div>
                                     <div class="vietnam-launch-widget__unit">
-                                        <span id="vietnamLaunchSecs" class="vietnam-launch-widget__value">00</span>
+                                        <span class="vietnam-launch-widget__value">00</span>
                                         <span class="vietnam-launch-widget__label">SEC</span>
                                     </div>
                                 </div>
@@ -1844,6 +2083,10 @@
                                     <span>New Combat Mechanics</span>
                                 </div>
                             </div>
+
+                            <p class="vietnam-tanks-cta">
+                                <a href="#armor/vietnam/tanks" class="vietnam-tanks-cta-link">Open Vietnam tank roster <span aria-hidden="true">→</span></a>
+                            </p>
 
                             <div class="spread-democracy-row">
                                 <button type="button" id="spreadDemocracyBtn" class="spread-democracy-btn"
@@ -1882,6 +2125,22 @@
                     </div>
                 </div>
             </section>
+
+            <section id="armor-vietnam-tanks" class="section vietnam-section vietnam-infantry-section">
+                <div class="armor-vietnam-tanks-inner">
+                    <div class="section-header">
+                        <h2>Vietnam tank roster</h2>
+                        <p>
+                            Vietnam armour uses <strong>two</strong> playable gun tanks: the <strong>M48 Patton</strong> (US) and the <strong>T-54</strong> (NVA). Commander and crewman roles work like base HLL.
+                        </p>
+                        <p class="update-info">Shell load, speed, and reload from Vietnam playtest notes (other stats TBD).</p>
+                    </div>
+
+                    <div class="tank-grid vietnam-armor-tank-grid" id="vietnamTankGrid" aria-label="Vietnam tank database">
+                        <!-- Populated by script.js (vietnamTankDatabase + createTankCard) -->
+                    </div>
+                </div>
+            </section>
         </main>
 
         <audio id="spreadDemocracyAudio" preload="metadata" playsinline
@@ -1898,12 +2157,12 @@
             <div class="footer-content">
                 <div class="footer-whats-new" role="region" aria-labelledby="footer-whats-new-heading">
                     <h4 id="footer-whats-new-heading" class="footer-whats-new-heading">What&rsquo;s new</h4>
-                    <p class="footer-whats-new-lead">Latest updates include SPA calculator improvements, enhanced tank comparison outcomes, and major infantry hub additions.</p>
+                    <p class="footer-whats-new-lead">Full update to expand everything featured in the Hell Let Loose Vietnam Closed Beta.</p>
                     <ul>
-                        <li><strong><a href="#armor/wwii/ranging/spa">SPA Calculator update</a>:</strong> Refined calculator behavior and data flow for quicker, clearer results.</li>
-                        <li><strong><a href="#armor/wwii/tanks">Tank Compare function enhanced</a>:</strong> Added a top Quick Outcome summary with two-way Shots to Kill, faster tank (max speed), and faster reload callouts.</li>
-                        <li><strong><a href="#infantry/wwii/overview">Infantry hub created</a>:</strong> New dedicated infantry hub section for infantry-focused content and tools.</li>
-                        <li><strong><a href="#infantry/wwii/maps">Added "Maps" section</a>:</strong> Added a maps area in Infantry for easier map browsing and quick reference.</li>
+                        <li><strong><a href="#infantry/vietnam/overview">Vietnam Infantry overview</a>:</strong> Getting started, Squads &amp; equipment, Maps, and Mortar Calculator cards now sit above the COMING IN 2026 teaser so the main links stay up front.</li>
+                        <li><strong><a href="#infantry/vietnam/getting-started">Getting started &amp; What&rsquo;s new</a>:</strong> Vietnam-specific guide blocks plus a dedicated What&rsquo;s new strip (swimming, helicopters, map &amp; HQs, NVA tunnels) in one panel.</li>
+                        <li><strong><a href="#infantry/vietnam/squads">Squads &amp; equipment</a>:</strong> Browseable closed-beta roster by section and role, with kit-focused rows for every battlefield unit.</li>
+                        <li><strong><a href="#infantry/vietnam/mortar-squad">Vietnam Mortar Calculator</a>:</strong> Mill solutions for US and NVA mortars on the same 100&ndash;450&nbsp;m band as the in-game tables, with saveable results.</li>
                     </ul>
                 </div>
                 <p>&copy; 2026 Hell Let Loose Armor Hub. All rights reserved.</p>
@@ -1934,7 +2193,7 @@
     </div>
 </div>
 
-<!-- Infantry Maps — tactical map lightbox (tap / click thumbnail to enlarge) -->
+<!-- Infantry Maps: tactical map lightbox (tap / click thumbnail to enlarge) -->
 <div id="infantryTacLightbox" class="infantry-tac-lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Enlarged map image">
     <button type="button" class="infantry-tac-lightbox__backdrop" aria-label="Close enlarged map"></button>
     <div class="infantry-tac-lightbox__inner">
@@ -1945,6 +2204,7 @@
 
 <script src="infantry-classes-ui.js?v={{ site.time | date_to_xmlschema }}" defer></script>
 <script src="infantry-tips-ui.js?v={{ site.time | date_to_xmlschema }}" defer></script>
+<script src="vietnam-squads-ui.js?v={{ site.time | date_to_xmlschema }}" defer></script>
 <script src="script.js?v={{ site.time | date_to_xmlschema }}" defer></script>
 <script src="fireworks.js?v={{ site.time | date_to_xmlschema }}" defer></script>
 </body>

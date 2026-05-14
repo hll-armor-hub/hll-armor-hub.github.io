@@ -44,6 +44,18 @@ function parseAppHash(hash) {
     return { hub: 'armor', game: 'wwii', section: sec, subRoute: parts[1] || null };
 }
 
+/** Valid `#infantry/vietnam/...` section slugs (hash routing). */
+const INFANTRY_VIETNAM_SECTIONS = [
+    'overview',
+    'getting-started',
+    'squads',
+    'maps',
+    'mortar-squad'
+];
+
+/** Valid `#armor/vietnam/...` section slugs (hash routing). */
+const ARMOR_VIETNAM_SECTIONS = ['overview', 'tanks'];
+
 const VIETNAM_HERO_ARMOR = {
     title: 'ARMOR HUB',
     tagline: 'Experience the next chapter of Hell Let Loose with Vietnam-era armored warfare',
@@ -215,53 +227,65 @@ function initSpreadDemocracy() {
 }
 
 function initVietnamLaunchWidget() {
-    const root = document.getElementById('vietnamLaunchWidget');
-    if (!root) {
+    const widgets = Array.from(document.querySelectorAll('.vietnam-launch-widget'));
+    if (widgets.length === 0) {
         return;
     }
-    const iso = (root.getAttribute('data-launch-target') || '').trim();
-    const classifiedEl = document.getElementById('vietnamLaunchClassified');
-    const countdownEl = document.getElementById('vietnamLaunchCountdown');
-    const elD = document.getElementById('vietnamLaunchDays');
-    const elH = document.getElementById('vietnamLaunchHours');
-    const elM = document.getElementById('vietnamLaunchMins');
-    const elS = document.getElementById('vietnamLaunchSecs');
-    if (!classifiedEl || !countdownEl || !elD || !elH || !elM || !elS) {
-        return;
-    }
-    if (!iso) {
-        return;
-    }
-    const targetMs = Date.parse(iso);
-    if (Number.isNaN(targetMs)) {
-        return;
-    }
-
-    classifiedEl.hidden = true;
-    countdownEl.hidden = false;
 
     function pad2(n) {
         return String(Math.max(0, n)).padStart(2, '0');
     }
 
+    const tickers = widgets
+        .map(root => {
+            const iso = (root.getAttribute('data-launch-target') || '').trim();
+            const classifiedEl = root.querySelector('.vietnam-launch-widget__classified');
+            const countdownEl = root.querySelector('.vietnam-launch-widget__countdown');
+            const valueSpans = root.querySelectorAll('.vietnam-launch-widget__unit .vietnam-launch-widget__value');
+            if (!classifiedEl || !countdownEl || valueSpans.length < 4) {
+                return null;
+            }
+            const elD = valueSpans[0];
+            const elH = valueSpans[1];
+            const elM = valueSpans[2];
+            const elS = valueSpans[3];
+            if (!iso) {
+                return null;
+            }
+            const targetMs = Date.parse(iso);
+            if (Number.isNaN(targetMs)) {
+                return null;
+            }
+            classifiedEl.hidden = true;
+            countdownEl.hidden = false;
+            return { targetMs, elD, elH, elM, elS };
+        })
+        .filter(Boolean);
+
+    if (tickers.length === 0) {
+        return;
+    }
+
     function tick() {
-        const ms = targetMs - Date.now();
-        if (ms <= 0) {
-            elD.textContent = '00';
-            elH.textContent = '00';
-            elM.textContent = '00';
-            elS.textContent = '00';
-            return;
-        }
-        const s = Math.floor(ms / 1000);
-        const days = Math.floor(s / 86400);
-        const hours = Math.floor((s % 86400) / 3600);
-        const mins = Math.floor((s % 3600) / 60);
-        const secs = s % 60;
-        elD.textContent = days >= 100 ? String(days) : pad2(days);
-        elH.textContent = pad2(hours);
-        elM.textContent = pad2(mins);
-        elS.textContent = pad2(secs);
+        tickers.forEach(({ targetMs, elD, elH, elM, elS }) => {
+            const ms = targetMs - Date.now();
+            if (ms <= 0) {
+                elD.textContent = '00';
+                elH.textContent = '00';
+                elM.textContent = '00';
+                elS.textContent = '00';
+                return;
+            }
+            const s = Math.floor(ms / 1000);
+            const days = Math.floor(s / 86400);
+            const hours = Math.floor((s % 86400) / 3600);
+            const mins = Math.floor((s % 3600) / 60);
+            const secs = s % 60;
+            elD.textContent = days >= 100 ? String(days) : pad2(days);
+            elH.textContent = pad2(hours);
+            elM.textContent = pad2(mins);
+            elS.textContent = pad2(secs);
+        });
     }
 
     tick();
@@ -270,7 +294,14 @@ function initVietnamLaunchWidget() {
 
 function resolveSectionDomId(route) {
     if (route.hub === 'infantry' && route.game === 'vietnam') {
-        return 'vietnam';
+        const map = {
+            overview: 'infantry-vietnam-overview',
+            'getting-started': 'infantry-vietnam-getting-started',
+            squads: 'infantry-vietnam-squads',
+            maps: 'infantry-vietnam-maps',
+            'mortar-squad': 'infantry-vietnam-mortar-squad'
+        };
+        return map[route.section] || 'infantry-vietnam-overview';
     }
     if (route.hub === 'infantry') {
         const map = {
@@ -283,7 +314,11 @@ function resolveSectionDomId(route) {
         return map[route.section] || 'infantry-overview';
     }
     if (route.hub === 'armor' && route.game === 'vietnam') {
-        return 'vietnam';
+        const map = {
+            overview: 'vietnam',
+            tanks: 'armor-vietnam-tanks'
+        };
+        return map[route.section] || 'vietnam';
     }
     const armorWwii = ['overview', 'tanks', 'tactics', 'identification', 'ranging', 'community'];
     if (armorWwii.includes(route.section)) {
@@ -490,6 +525,16 @@ function syncViewToRoute(route, { updateHash = false } = {}) {
             window.initInfantryTipsHub();
         }
     }
+    if (domId === 'infantry-vietnam-mortar-squad' && route.hub === 'infantry' && route.game === 'vietnam') {
+        scheduleWhenIdle(() => loadVietnamMortarSquadResults());
+    }
+    if (domId === 'infantry-vietnam-squads' && route.hub === 'infantry' && route.game === 'vietnam') {
+        scheduleWhenIdle(() => {
+            if (typeof window.initVietnamSquadsHub === 'function') {
+                window.initVietnamSquadsHub();
+            }
+        });
+    }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -535,6 +580,9 @@ function toggleComparisonMode() {
 function showCompareButtons() {
     const tankCards = document.querySelectorAll('.tank-card');
     tankCards.forEach(card => {
+        if (card.dataset.skipCompare === '1') {
+            return;
+        }
         if (!card.querySelector('.compare-btn')) {
             const compareBtn = document.createElement('button');
             compareBtn.className = 'compare-btn';
@@ -928,12 +976,22 @@ function switchGameVersion(version) {
         return;
     }
     if (route.hub === 'armor') {
-        window.location.hash = formatAppHash('armor', version, 'overview');
+        if (version === 'vietnam') {
+            const vnArmorSection = ARMOR_VIETNAM_SECTIONS.includes(route.section)
+                ? route.section
+                : 'overview';
+            window.location.hash = formatAppHash('armor', 'vietnam', vnArmorSection);
+            return;
+        }
+        const armorWwii = ['overview', 'tanks', 'tactics', 'identification', 'ranging', 'community'];
+        const section = armorWwii.includes(route.section) ? route.section : 'overview';
+        window.location.hash = formatAppHash('armor', version, section);
         return;
     }
     if (route.hub === 'infantry') {
         if (version === 'vietnam') {
-            window.location.hash = formatAppHash('infantry', 'vietnam', 'overview');
+            const vnSection = INFANTRY_VIETNAM_SECTIONS.includes(route.section) ? route.section : 'overview';
+            window.location.hash = formatAppHash('infantry', 'vietnam', vnSection);
             return;
         }
         const validSections = INFANTRY_CLASSES_ENABLED
@@ -2041,6 +2099,68 @@ const tankDatabase = {
     ]
 };
 
+/** Vietnam playable gun tanks: same in-game banding for both (playtest notes). */
+const vietnamTankDatabase = [
+    {
+        name: 'M48 Patton',
+        type: 'Medium Tank',
+        faction: 'USA',
+        armor: 'TBD',
+        gun: '90 mm M41 rifled gun',
+        penetration: 'TBD',
+        speed: '28 km/h',
+        crew: '3',
+        description:
+            'US medium tank in Hell Let Loose Vietnam. Card art is a cropped front three-quarter shot (site asset), not an in-game render; armour values and matchup tables will be added when published.',
+        weakSpots: 'TBD. Detailed weak spots when armour values are published.',
+        strengths:
+            'Current playtest data matches the NVA T-54 on ammunition, listed speed, and reload time: a symmetric medium-tank envelope.',
+        icon: 'fas fa-tank',
+        has360View: false,
+        tankPhoto: 'images/armor/vietnam/M48_Patton_0.webp',
+        routeGame: 'vietnam',
+        skipCompare: true,
+        figureNumber: 1,
+        statsBlurb: 'Shell counts, max speed, and reload from Hell Let Loose Vietnam playtest notes; other fields TBD.',
+        detailedStats: {
+            maxShellsAP: 40,
+            maxShellsHE: 40,
+            maxShellsSmoke: 10,
+            reloadSpeed: 8,
+            maxSpeed: 28
+        }
+    },
+    {
+        name: 'T-54',
+        type: 'Medium Tank',
+        faction: 'NVA',
+        armor: 'TBD',
+        gun: '100 mm D-10T rifled gun',
+        penetration: 'TBD',
+        speed: '28 km/h',
+        crew: '3',
+        description:
+            'NVA medium tank in Hell Let Loose Vietnam. Card art is a cropped front three-quarter shot (site asset), not an in-game render; armour values and matchup tables will be added when published.',
+        weakSpots: 'TBD. Detailed weak spots when armour values are published.',
+        strengths:
+            'Current playtest data matches the US M48 Patton on ammunition, listed speed, and reload time: a symmetric medium-tank envelope.',
+        icon: 'fas fa-tank',
+        has360View: false,
+        tankPhoto: 'images/armor/vietnam/T-54_0.webp',
+        routeGame: 'vietnam',
+        skipCompare: true,
+        figureNumber: 2,
+        statsBlurb: 'Shell counts, max speed, and reload from Hell Let Loose Vietnam playtest notes; other fields TBD.',
+        detailedStats: {
+            maxShellsAP: 40,
+            maxShellsHE: 40,
+            maxShellsSmoke: 10,
+            reloadSpeed: 8,
+            maxSpeed: 28
+        }
+    }
+];
+
             // Penetration Data - Updated to match all tanks in Hell Let Loose
             const penetrationData = [
                 // Heavy Tanks
@@ -2280,6 +2400,7 @@ const tankTypeBtns = document.querySelectorAll('[data-tank-type]');
 const filterToggle = document.getElementById('filterToggle');
 const filterDropdown = document.getElementById('filterDropdown');
 const tankGrid = document.getElementById('tankGrid');
+const vietnamTankGrid = document.getElementById('vietnamTankGrid');
 const penetrationTableBody = document.getElementById('penetrationTableBody');
 
 const practiceTankImage = document.getElementById('practiceTankImage');
@@ -3053,6 +3174,16 @@ const TANK_VEHICLE_HISTORY = {
         designation: 'Ordnance QF 25-pounder on Valentine chassis (“Bishop”)',
         service:
             'British interim self-propelled 25-pounder on a Valentine tank hull, fielded from 1942. Saw service in North Africa and Italy; limited elevation and cramped layout led to replacement by better SP designs.'
+    },
+    'M48 Patton': {
+        designation: '90 mm Gun Tank M48 (US Army; M48A3 diesel retrofit common in Vietnam)',
+        service:
+            'US Army and ARVN Pattons were used across South Vietnam from the mid-1960s for firebase security, highway escort, reaction forces, and close support in jungle clearings, coastal plains, and urban fights. The M48A3 brought a reliable diesel powerpack and a stabilized 90 mm M41 gun well suited to bunkers, convoy ambushes, and counterattacks during major shocks such as Tet 1968 and the Easter Offensive of 1972. Mass and width limited movement on narrow trails and rice dikes compared with lighter AFVs, yet the type remained a core medium tank for Allied armour through 1975.'
+    },
+    'T-54': {
+        designation: 'T-54 medium tank (Soviet design; 100 mm D-10T family)',
+        service:
+            'PAVN forces fielded T-54s and closely related Chinese Type 59s in rising numbers from the late 1960s, committing them to conventional thrusts such as the 1972 battles for Quang Tri and to supporting strikes on allied bases and lines of communication. The low silhouette and 100 mm gun favored road ambushes, tree-line snaps, and deliberate assaults on bunkers and lighter vehicles. When North Vietnamese tank columns met US and ARVN Pattons, M113-based weapons, and infantry anti-armour teams, engagements ran from point-blank jungle brawls to multi-axis armour fights; examined hulls added to US intelligence on Warsaw Pact equipment.'
     }
 };
 
@@ -3103,6 +3234,26 @@ function createTankCard(tank) {
             : ds && ds.gearSwitchTime !== null && ds.gearSwitchTime !== undefined
               ? `${ds.gearSwitchTime}s`
               : 'N/A';
+    const fmtDs = (key, suffix = '') => {
+        if (!ds || ds[key] === null || ds[key] === undefined) return 'N/A';
+        const v = ds[key];
+        if (typeof v !== 'number') return String(v);
+        return `${v}${suffix}`;
+    };
+    const pitchRangeStr =
+        ds && typeof ds.pitchAngleMin === 'number' && typeof ds.pitchAngleMax === 'number'
+            ? `${ds.pitchAngleMin}° to ${ds.pitchAngleMax}°`
+            : 'N/A';
+    const maxSpeedStr =
+        ds && typeof ds.maxSpeed === 'number'
+            ? `${ds.maxSpeed} km/h`
+            : tank.speed
+              ? escapeHtml(String(tank.speed))
+              : 'N/A';
+    const statsIntroHtml =
+        tank.statsBlurb && String(tank.statsBlurb).trim()
+            ? escapeHtml(tank.statsBlurb)
+            : 'Comprehensive stats from game data (U19.1):';
     const vh = tank.vehicleHistory || TANK_VEHICLE_HISTORY[tank.name];
     const vhDes = vh && vh.designation ? escapeHtml(vh.designation) : '';
     const vhSvc = vh && vh.service ? escapeHtml(vh.service) : '';
@@ -3143,22 +3294,46 @@ function createTankCard(tank) {
                             </div>
                             ${historyFooter}
                         </div>`;
-    const viewerContent = has360View ? create360Viewer(tank) : `<i class="${tank.icon}"></i>`;
-    
-    return `
-        <div class="tank-card" data-tank-id="${tank.name.replace(/\s+/g, '-').toLowerCase()}">
-            <div class="tank-image bg-${globalBackground}">
-                <div class="background-selector">
-                    <button class="bg-btn ${globalBackground === 'grass' ? 'active' : ''}" data-background="grass" title="Grass Background">
+    const viewerContent = tank.tankPhoto
+        ? `<img class="tank-card-photo" src="${escapeHtml(
+              tank.tankPhoto
+          )}" alt="${escapeHtml(`${tank.name} — front three-quarter view (site image)`)}" loading="lazy" decoding="async">`
+        : tank.usePlaceholderImage
+          ? `<div class="tank-image-placeholder-mark" role="img" aria-label="Tank image placeholder"><i class="fas fa-image" aria-hidden="true"></i><span class="tank-image-placeholder-label">Image placeholder</span></div>`
+          : has360View
+            ? create360Viewer(tank)
+            : `<i class="${tank.icon}"></i>`;
+
+    const routeGameAttr = tank.routeGame ? ` data-route-game="${escapeHtml(tank.routeGame)}"` : '';
+    const skipCompareAttr = tank.skipCompare ? ` data-skip-compare="1"` : '';
+
+    const isVietnamArmorCard = tank.routeGame === 'vietnam';
+    const tankImageBgClass = isVietnamArmorCard ? `bg-vn-${globalVietnamBackground}` : `bg-${globalBackground}`;
+    const backgroundSelectorHtml = isVietnamArmorCard
+        ? `<div class="background-selector">
+                    ${VIETNAM_TANK_BACKDROPS.map(
+                        b => `
+                    <button type="button" class="bg-btn ${globalVietnamBackground === b.key ? 'active' : ''}" data-bg-set="vietnam" data-background="${b.key}" title="${escapeHtml(b.title)}">
+                        <i class="fas ${b.icon}"></i>
+                    </button>`
+                    ).join('')}
+                </div>`
+        : `<div class="background-selector">
+                    <button type="button" class="bg-btn ${globalBackground === 'grass' ? 'active' : ''}" data-bg-set="wwii" data-background="grass" title="Grass Background">
                         <i class="fas fa-seedling"></i>
                     </button>
-                    <button class="bg-btn ${globalBackground === 'snow' ? 'active' : ''}" data-background="snow" title="Snow Background">
+                    <button type="button" class="bg-btn ${globalBackground === 'snow' ? 'active' : ''}" data-bg-set="wwii" data-background="snow" title="Snow Background">
                         <i class="fas fa-snowflake"></i>
                     </button>
-                    <button class="bg-btn ${globalBackground === 'desert' ? 'active' : ''}" data-background="desert" title="Desert Background">
+                    <button type="button" class="bg-btn ${globalBackground === 'desert' ? 'active' : ''}" data-bg-set="wwii" data-background="desert" title="Desert Background">
                         <i class="fas fa-sun"></i>
                     </button>
-                </div>
+                </div>`;
+
+    return `
+        <div class="tank-card"${routeGameAttr}${skipCompareAttr} data-tank-id="${tank.name.replace(/\s+/g, '-').toLowerCase()}">
+            <div class="tank-image ${tankImageBgClass}">
+                ${backgroundSelectorHtml}
                 ${viewerContent}
             </div>
             <div class="tank-info">
@@ -3196,44 +3371,44 @@ function createTankCard(tank) {
                 <div class="tank-details-content">
                     <div class="tank-stats-section">
                         <h3>Combat Statistics</h3>
-                        <p>Comprehensive stats from game data (U19.1):</p>
+                        <p>${statsIntroHtml}</p>
                         <div class="stats-grid-compact">
                             <div class="stat-group">
                                 <h4><i class="fas fa-shield-alt"></i> Health & Armor</h4>
                                 <div class="stat-pair">
                                     <span class="stat-label">Hull Health:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.hullHealth : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('hullHealth')}</span>
                     </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Turret Health:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.turretHealth : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('turretHealth')}</span>
                     </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Engine Health:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.engineHealth : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('engineHealth')}</span>
                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Track Health:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.trackHealth : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('trackHealth')}</span>
                                 </div>
                             </div>
                             <div class="stat-group">
                                 <h4><i class="fas fa-crosshairs"></i> Firepower</h4>
                                 <div class="stat-pair">
                                     <span class="stat-label">AP Damage:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.apDamage : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('apDamage')}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Reload Speed:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.reloadSpeed + 's' : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('reloadSpeed', 's')}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Max AP Shells:</span>
-                                    <span class="stat-value">${tank.detailedStats && tank.detailedStats.maxShellsAP !== null && tank.detailedStats.maxShellsAP !== undefined ? tank.detailedStats.maxShellsAP : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('maxShellsAP')}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Max HE Shells:</span>
-                                    <span class="stat-value">${tank.detailedStats && tank.detailedStats.maxShellsHE !== null && tank.detailedStats.maxShellsHE !== undefined ? tank.detailedStats.maxShellsHE : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('maxShellsHE')}</span>
                                 </div>
                                 ${smokeRow}
                                 ${weaponRangeRow}
@@ -3242,15 +3417,15 @@ function createTankCard(tank) {
                                 <h4><i class="fas fa-tachometer-alt"></i> Mobility</h4>
                                 <div class="stat-pair">
                                     <span class="stat-label">Max Speed:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.maxSpeed + ' km/h' : tank.speed}</span>
+                                    <span class="stat-value">${maxSpeedStr}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Yaw Rate:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.yawRate + '°/s' : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('yawRate', '°/s')}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Pitch Rate:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.pitchRate + '°/s' : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('pitchRate', '°/s')}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Gear Switch:</span>
@@ -3261,15 +3436,15 @@ function createTankCard(tank) {
                                 <h4><i class="fas fa-bullseye"></i> Turret & Utility</h4>
                                 <div class="stat-pair">
                                     <span class="stat-label">Pitch Range:</span>
-                                    <span class="stat-value">${tank.detailedStats ? tank.detailedStats.pitchAngleMin + '° to ' + tank.detailedStats.pitchAngleMax + '°' : 'N/A'}</span>
+                                    <span class="stat-value">${pitchRangeStr}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Explosion Damage (when destroyed):</span>
-                                    <span class="stat-value">${tank.detailedStats && tank.detailedStats.explosionDamage !== null && tank.detailedStats.explosionDamage !== undefined ? tank.detailedStats.explosionDamage : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('explosionDamage')}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">Explosion Radius (when destroyed):</span>
-                                    <span class="stat-value">${tank.detailedStats && tank.detailedStats.explosionRadius !== null && tank.detailedStats.explosionRadius !== undefined ? tank.detailedStats.explosionRadius + 'cm' : 'N/A'}</span>
+                                    <span class="stat-value">${fmtDs('explosionRadius', 'cm')}</span>
                                 </div>
                                 <div class="stat-pair">
                                     <span class="stat-label">${commanderLabel}</span>
@@ -3297,6 +3472,9 @@ function createTankCard(tank) {
 }
 
 function displayTanks(faction = 'all', tankType = 'all') {
+    if (!tankGrid) {
+        return;
+    }
     let tanksToShow = [];
     
     // Get tanks based on faction filter
@@ -3338,8 +3516,8 @@ function displayTanks(faction = 'all', tankType = 'all') {
     
     tankGrid.innerHTML = tanksToShow.map(tank => createTankCard(tank)).join('');
     
-    // Add click event listeners to expand buttons
-    const expandButtons = document.querySelectorAll('.tank-expand-btn');
+    // Add click event listeners to expand buttons (WWII grid only; Vietnam uses displayVietnamTanks)
+    const expandButtons = tankGrid.querySelectorAll('.tank-expand-btn');
     expandButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -3352,6 +3530,26 @@ function displayTanks(faction = 'all', tankType = 'all') {
     if (comparisonMode) {
         showCompareButtons();
         // Ensure comparison panel is visible if tanks are selected
+        if (selectedTank1 || selectedTank2) {
+            comparisonPanel.style.display = 'block';
+        }
+    }
+}
+
+function displayVietnamTanks() {
+    if (!vietnamTankGrid) {
+        return;
+    }
+    vietnamTankGrid.innerHTML = vietnamTankDatabase.map(tank => createTankCard(tank)).join('');
+    vietnamTankGrid.querySelectorAll('.tank-expand-btn').forEach(button => {
+        button.addEventListener('click', e => {
+            e.stopPropagation();
+            const card = button.closest('.tank-card');
+            expandTankCard(card);
+        });
+    });
+    if (comparisonMode) {
+        showCompareButtons();
         if (selectedTank1 || selectedTank2) {
             comparisonPanel.style.display = 'block';
         }
@@ -3389,15 +3587,17 @@ function expandTankCard(card) {
             const tankName = card.querySelector('.tank-name');
             if (tankName) {
                 const tankNameSlug = tankName.textContent.toLowerCase().replace(/\s+/g, '-');
+                const routeGame = card.dataset.routeGame || 'wwii';
                 isUpdatingHash = true;
-                window.location.hash = formatAppHash('armor', 'wwii', 'tanks', tankNameSlug);
+                window.location.hash = formatAppHash('armor', routeGame, 'tanks', tankNameSlug);
             }
         } else {
             button.innerHTML = '<i class="fas fa-plus"></i>';
             button.title = 'Expand Details';
             // Reset hash to just tanks section
+            const routeGame = card.dataset.routeGame || 'wwii';
             isUpdatingHash = true;
-            window.location.hash = formatAppHash('armor', 'wwii', 'tanks');
+            window.location.hash = formatAppHash('armor', routeGame, 'tanks');
             // Scroll back to top when collapsing
             window.scrollTo({
                 top: 0,
@@ -3414,6 +3614,9 @@ function expandTankCard(card) {
 
 // Helper functions for detailed tank information
 function getTankFigureNumber(tank) {
+    if (tank.figureNumber != null && tank.figureNumber !== '') {
+        return tank.figureNumber;
+    }
     const allTanks = Object.values(tankDatabase).flat();
     const index = allTanks.findIndex(t => t.name === tank.name);
     return index + 1;
@@ -4238,45 +4441,65 @@ function playVictorySound() {
     }
 }
 
-// Global background state
+// Global background state (WWII tank grid: grass / snow / desert)
 let globalBackground = 'snow'; // Default background
+
+/** Vietnam armor tank strip: backdrops from site-root Vietnam/ (same art as infantry overview). */
+let globalVietnamBackground = 'house';
+
+const VIETNAM_TANK_BACKDROPS = [
+    { key: 'house', file: 'Vietnam/1920x1080_House.webp', title: 'House backdrop', icon: 'fa-building' },
+    { key: 'jungle', file: 'Vietnam/1920x1080_Jungle.webp', title: 'Jungle backdrop', icon: 'fa-tree' },
+    { key: 'camp', file: 'Vietnam/1920x1080_Camp.webp', title: 'Camp backdrop', icon: 'fa-campground' },
+    { key: 'village', file: 'Vietnam/1920x1080_Village.webp', title: 'Village backdrop', icon: 'fa-home' }
+];
 
 // Background switching functionality
 function initializeBackgroundSwitching() {
-    // Add event delegation for background buttons
-    document.addEventListener('click', (e) => {
+    const vnBgClasses = VIETNAM_TANK_BACKDROPS.map(b => `bg-vn-${b.key}`);
+    const wwiiBgClasses = ['bg-grass', 'bg-snow', 'bg-desert'];
+
+    document.addEventListener('click', e => {
         if (e.target.closest('.bg-btn')) {
             e.preventDefault();
             e.stopPropagation();
 
             const button = e.target.closest('.bg-btn');
+            const bgSet = button.dataset.bgSet || 'wwii';
             const backgroundType = button.dataset.background;
-            
-            // Update global background state
-            globalBackground = backgroundType;
-            
-            // Update all tank images to use the new background
-            const allTankImages = document.querySelectorAll('.tank-image');
+            if (!backgroundType) {
+                return;
+            }
 
-            allTankImages.forEach(tankImage => {
-                // Remove all background classes
-                tankImage.classList.remove('bg-grass', 'bg-snow', 'bg-desert');
-                
-                // Add the selected background class
+            if (bgSet === 'vietnam') {
+                globalVietnamBackground = backgroundType;
+                document.querySelectorAll('#vietnamTankGrid .tank-image').forEach(tankImage => {
+                    vnBgClasses.forEach(c => tankImage.classList.remove(c));
+                    tankImage.classList.add(`bg-vn-${backgroundType}`);
+                    tankImage.querySelectorAll('.bg-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.dataset.bgSet === 'vietnam' && btn.dataset.background === backgroundType) {
+                            btn.classList.add('active');
+                        }
+                    });
+                });
+                return;
+            }
+
+            globalBackground = backgroundType;
+
+            document.querySelectorAll('#tankGrid .tank-image').forEach(tankImage => {
+                wwiiBgClasses.forEach(c => tankImage.classList.remove(c));
                 tankImage.classList.add(`bg-${backgroundType}`);
-                
-                // Update button states in this tank image
-                const allButtons = tankImage.querySelectorAll('.bg-btn');
-                allButtons.forEach(btn => {
+                tankImage.querySelectorAll('.bg-btn').forEach(btn => {
                     btn.classList.remove('active');
-                    if (btn.dataset.background === backgroundType) {
+                    if ((btn.dataset.bgSet || 'wwii') === 'wwii' && btn.dataset.background === backgroundType) {
                         btn.classList.add('active');
                     }
                 });
             });
         }
     });
-    
 }
 
 // Hash Routing System
@@ -4307,14 +4530,6 @@ function handleHashChange() {
         return;
     }
 
-    if (route.hub === 'infantry' && route.game === 'vietnam' && route.section !== 'overview') {
-        syncViewToRoute(
-            { hub: 'infantry', game: 'vietnam', section: 'overview', subRoute: null },
-            { updateHash: true }
-        );
-        return;
-    }
-
     if (
         !INFANTRY_CLASSES_ENABLED &&
         route.hub === 'infantry' &&
@@ -4328,9 +4543,25 @@ function handleHashChange() {
         return;
     }
 
+    if (route.hub === 'armor' && route.game === 'vietnam' && !ARMOR_VIETNAM_SECTIONS.includes(route.section)) {
+        syncViewToRoute(
+            { hub: 'armor', game: 'vietnam', section: 'overview', subRoute: null },
+            { updateHash: true }
+        );
+        return;
+    }
+
+    if (route.hub === 'infantry' && route.game === 'vietnam' && !INFANTRY_VIETNAM_SECTIONS.includes(route.section)) {
+        syncViewToRoute(
+            { hub: 'infantry', game: 'vietnam', section: 'overview', subRoute: null },
+            { updateHash: true }
+        );
+        return;
+    }
+
     syncViewToRoute(route, { updateHash: false });
 
-    if (route.hub === 'armor' && route.game === 'wwii' && route.subRoute) {
+    if (route.hub === 'armor' && (route.game === 'wwii' || route.game === 'vietnam') && route.subRoute) {
         setTimeout(() => {
             handleSubRoute(route.section, route.subRoute);
         }, 300);
@@ -4404,8 +4635,10 @@ function expandTankByName(tankName) {
     // Normalize the tank name (replace hyphens with spaces and match case-insensitive)
     const normalizedName = tankName.replace(/-/g, ' ');
 
-    // Find the tank card
-    const tankCards = document.querySelectorAll('.tank-card');
+    const activeSection = document.querySelector('.section.active');
+    const tankCards = activeSection
+        ? activeSection.querySelectorAll('.tank-card')
+        : document.querySelectorAll('.tank-card');
     tankCards.forEach(card => {
         const cardTankName = card.querySelector('.tank-name');
         if (cardTankName && cardTankName.textContent.toLowerCase() === normalizedName.toLowerCase()) {
@@ -4418,6 +4651,7 @@ function expandTankByName(tankName) {
 document.addEventListener('DOMContentLoaded', () => {
     // Display initial content
     displayTanks('all', 'all');
+    displayVietnamTanks();
     initializePracticeTanks();
     // Don't start practice immediately - let user select difficulty first
     
@@ -4594,6 +4828,21 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Load saved results from localStorage (defer to idle time — improves INP / main-thread work)
     scheduleWhenIdle(() => loadArtilleryResults());
+
+    const vnMortarCalculateBtn = document.getElementById('vnMortarCalculateBtn');
+    const vnMortarDistance = document.getElementById('vnMortarDistance');
+    if (vnMortarCalculateBtn) {
+        vnMortarCalculateBtn.addEventListener('click', calculateVietnamMortarSquad);
+    }
+    if (vnMortarDistance) {
+        vnMortarDistance.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                calculateVietnamMortarSquad();
+            }
+        });
+    }
+    scheduleWhenIdle(() => loadVietnamMortarSquadResults());
 });
 
 function calculateArtillery() {
@@ -4765,6 +5014,109 @@ function displayRecentCalculation(result, distance, faction) {
     `;
 }
 
+const VIETNAM_MORTAR_STORAGE_KEY = 'vietnamMortarSquadResults';
+
+function calculateVietnamMortarSquadResult(distance) {
+    const xMin = 100;
+    const xMax = 450;
+    if (distance < xMin || distance > xMax) {
+        throw new Error(`Enter a distance between ${xMin} and ${xMax} meters`);
+    }
+    const mills = Math.round(109.466 - 0.243359 * distance);
+    return `${mills} mills`;
+}
+
+function calculateVietnamMortarSquad() {
+    const input = document.getElementById('vnMortarDistance');
+    const distance = parseInt(input && input.value, 10);
+    if (!input || !input.value.trim() || !distance || distance <= 0) {
+        alert('Please enter a valid distance');
+        return;
+    }
+    try {
+        const result = calculateVietnamMortarSquadResult(distance);
+        saveVietnamMortarSquadResult(distance, result);
+        runAfterNextPaint(() => {
+            displayRecentVietnamMortarCalculation(result, distance);
+            const liveEl = document.getElementById('recentVietnamMortarCalculation');
+            focusCalcDistanceWithResultVisible(liveEl, input);
+            loadVietnamMortarSquadResults();
+        });
+    } catch (error) {
+        alert(error.message);
+    }
+}
+
+function saveVietnamMortarSquadResult(distance, result) {
+    let results = JSON.parse(localStorage.getItem(VIETNAM_MORTAR_STORAGE_KEY) || '[]');
+    const newResult = {
+        id: Date.now(),
+        distance: distance,
+        result: result,
+        timestamp: new Date().toLocaleString()
+    };
+    results.unshift(newResult);
+    if (results.length > 3) {
+        results = results.slice(0, 3);
+    }
+    localStorage.setItem(VIETNAM_MORTAR_STORAGE_KEY, JSON.stringify(results));
+}
+
+function loadVietnamMortarSquadResults() {
+    const tbody = document.getElementById('vnMortarResultsBody');
+    if (!tbody) {
+        return;
+    }
+    const results = JSON.parse(localStorage.getItem(VIETNAM_MORTAR_STORAGE_KEY) || '[]');
+    if (results.length > 0) {
+        displayRecentVietnamMortarCalculation(results[0].result, results[0].distance);
+    } else {
+        const recentDiv = document.getElementById('recentVietnamMortarCalculation');
+        if (recentDiv) {
+            recentDiv.innerHTML = '<p>No calculation performed yet</p>';
+        }
+    }
+    if (results.length === 0) {
+        tbody.innerHTML = '<tr class="no-results"><td colspan="3">No calculations saved yet</td></tr>';
+        return;
+    }
+    let html = '';
+    results.forEach(entry => {
+        const millsMatch = entry.result.match(/^(-?\d+)\s+mills/);
+        const millsValue = millsMatch ? millsMatch[1] : '';
+        html += `
+            <tr>
+                <td><strong style="color: var(--accent);">${millsValue} mills</strong></td>
+                <td>${entry.distance}m</td>
+                <td><button class="delete-btn" onclick="deleteVietnamMortarSquadResult(${entry.id})">Delete</button></td>
+            </tr>
+        `;
+    });
+    tbody.innerHTML = html;
+}
+
+function deleteVietnamMortarSquadResult(id) {
+    let results = JSON.parse(localStorage.getItem(VIETNAM_MORTAR_STORAGE_KEY) || '[]');
+    results = results.filter(r => r.id !== id);
+    localStorage.setItem(VIETNAM_MORTAR_STORAGE_KEY, JSON.stringify(results));
+    loadVietnamMortarSquadResults();
+}
+
+function displayRecentVietnamMortarCalculation(result, distance) {
+    const recentCalculationDiv = document.getElementById('recentVietnamMortarCalculation');
+    if (!recentCalculationDiv) {
+        return;
+    }
+    const millsMatch = result.match(/^(-?\d+)\s+mills/);
+    const millsValue = millsMatch ? millsMatch[1] : '';
+    recentCalculationDiv.innerHTML = `
+        <div class="recent-result">
+            <span class="mills-value">${millsValue} mills</span>
+            <span class="calculation-details">Mortar Calculator (US &amp; NVA) at ${distance}m</span>
+        </div>
+    `;
+}
+
 // SPA Calculator Functionality
 document.addEventListener('DOMContentLoaded', function () {
     const spaCalculateBtn = document.getElementById('spaCalculateBtn');
@@ -4832,8 +5184,8 @@ function calculateSPA() {
     const distance = parseInt(document.getElementById('spaDistance').value);
     const spaType = document.getElementById('spaType').value;
     const terrainAdjustment = parseFloat(document.getElementById('spaTerrainAdjustment').value) || 0;
-    // "+" adds the entered mills to the rounded solution; "−" subtracts them.
-    const adjustmentSign = document.getElementById('spaAdjustmentToggle').textContent === '+' ? 1 : -1;
+    // Pitch adjustment is inverted: negative pitch adds mills, positive pitch subtracts them.
+    const adjustmentSign = document.getElementById('spaAdjustmentToggle').textContent === '+' ? -1 : 1;
     const finalAdjustment = terrainAdjustment * adjustmentSign;
     
     if (!distance || distance <= 0) {
@@ -5731,8 +6083,11 @@ function toggleDrivingGuide() {
 (function initInfantryTacLightbox() {
     const root = document.getElementById('infantryTacLightbox');
     const lbImg = document.getElementById('infantryTacLightboxImg');
-    const mapsSection = document.getElementById('infantry-maps');
-    if (!root || !lbImg || !mapsSection) {
+    const mapHosts = [
+        document.getElementById('infantry-maps'),
+        document.getElementById('infantry-vietnam-maps')
+    ].filter(Boolean);
+    if (!root || !lbImg || !mapHosts.length) {
         return;
     }
     const closeBtn = root.querySelector('.infantry-tac-lightbox__close');
@@ -5781,25 +6136,35 @@ function toggleDrivingGuide() {
         return el.closest('img.infantry-map-img--tac') || el.closest('img.infantry-map-img--key');
     }
 
-    mapsSection.addEventListener('click', function (e) {
-        const thumb = findInfantryMapThumb(e.target);
-        if (!thumb || !thumb.src) {
-            return;
-        }
-        e.preventDefault();
-        openLightbox(thumb.currentSrc || thumb.src, thumb.alt || '');
-    });
+    mapHosts.forEach(function (mapsSection) {
+        mapsSection.addEventListener('click', function (e) {
+            const thumb = findInfantryMapThumb(e.target);
+            if (!thumb || !thumb.src) {
+                return;
+            }
+            e.preventDefault();
+            openLightbox(thumb.currentSrc || thumb.src, thumb.alt || '');
+        });
 
-    mapsSection.addEventListener('keydown', function (e) {
-        if (e.key !== 'Enter' && e.key !== ' ') {
-            return;
-        }
-        const thumb = findInfantryMapThumb(e.target);
-        if (!thumb || !thumb.src) {
-            return;
-        }
-        e.preventDefault();
-        openLightbox(thumb.currentSrc || thumb.src, thumb.alt || '');
+        mapsSection.addEventListener('keydown', function (e) {
+            if (e.key !== 'Enter' && e.key !== ' ') {
+                return;
+            }
+            const thumb = findInfantryMapThumb(e.target);
+            if (!thumb || !thumb.src) {
+                return;
+            }
+            e.preventDefault();
+            openLightbox(thumb.currentSrc || thumb.src, thumb.alt || '');
+        });
+
+        mapsSection.querySelectorAll('img.infantry-map-img--tac, img.infantry-map-img--key').forEach(function (img) {
+            img.tabIndex = 0;
+            img.setAttribute('role', 'button');
+            const cap = img.closest('.infantry-map-figure')?.querySelector('figcaption');
+            const hint = cap ? cap.textContent.trim() : 'Map image';
+            img.setAttribute('aria-label', (img.alt || hint) + ' — tap to enlarge');
+        });
     });
 
     if (closeBtn) {
@@ -5823,12 +6188,5 @@ function toggleDrivingGuide() {
         }
     });
 
-    mapsSection.querySelectorAll('img.infantry-map-img--tac, img.infantry-map-img--key').forEach(function (img) {
-        img.tabIndex = 0;
-        img.setAttribute('role', 'button');
-        const cap = img.closest('.infantry-map-figure')?.querySelector('figcaption');
-        const hint = cap ? cap.textContent.trim() : 'Map image';
-        img.setAttribute('aria-label', (img.alt || hint) + ' — tap to enlarge');
-    });
 })();
 

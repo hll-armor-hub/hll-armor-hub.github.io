@@ -242,7 +242,7 @@ function initVietnamLaunchWidget() {
             const classifiedEl = root.querySelector('.vietnam-launch-widget__classified');
             const countdownEl = root.querySelector('.vietnam-launch-widget__countdown');
             const valueSpans = root.querySelectorAll('.vietnam-launch-widget__unit .vietnam-launch-widget__value');
-            if (!classifiedEl || !countdownEl || valueSpans.length < 4) {
+            if (!countdownEl || valueSpans.length < 4) {
                 return null;
             }
             const elD = valueSpans[0];
@@ -256,7 +256,9 @@ function initVietnamLaunchWidget() {
             if (Number.isNaN(targetMs)) {
                 return null;
             }
-            classifiedEl.hidden = true;
+            if (classifiedEl) {
+                classifiedEl.hidden = true;
+            }
             countdownEl.hidden = false;
             return { targetMs, elD, elH, elM, elS };
         })

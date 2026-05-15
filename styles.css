@@ -10382,6 +10382,35 @@ body.vietnam-jungle-theme #vietnam .spread-democracy-row {
     margin: 0.75rem 0 0;
 }
 
+/* Vietnam launch widgets — stacked beta + full release countdowns */
+.vietnam-launch-widgets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1rem auto 0;
+    max-width: 100%;
+}
+
+.vietnam-launch-widgets .vietnam-launch-widget {
+    margin: 0;
+}
+
+.vietnam-launch-widget--beta {
+    border-color: rgba(196, 165, 90, 0.55);
+}
+
+.vietnam-launch-widget--beta .vietnam-launch-widget__eyebrow {
+    color: rgba(230, 210, 160, 0.9);
+}
+
+.vietnam-launch-widget--beta .vietnam-launch-widget__value {
+    color: #f0e4b8;
+}
+
+.light-mode .vietnam-launch-widget--beta {
+    border-color: rgba(140, 110, 50, 0.5);
+}
+
 /* Vietnam launch widget — briefing / classified (no image assets; works in all themes) */
 .vietnam-launch-widget {
     margin: 1rem auto 0;
@@ -10540,9 +10569,14 @@ body.vietnam-jungle-theme #vietnam .spread-democracy-row {
     color: rgba(160, 190, 150, 0.75);
 }
 
-body.vietnam-jungle-theme #vietnam .vietnam-launch-widget,
-body.vietnam-jungle-theme .vietnam-infantry-section .vietnam-launch-widget {
+body.vietnam-jungle-theme #vietnam .vietnam-launch-widgets,
+body.vietnam-jungle-theme .vietnam-infantry-section .vietnam-launch-widgets {
     margin-top: 0.65rem !important;
+}
+
+body.vietnam-jungle-theme #vietnam .vietnam-launch-widgets .vietnam-launch-widget,
+body.vietnam-jungle-theme .vietnam-infantry-section .vietnam-launch-widgets .vietnam-launch-widget {
+    margin-top: 0 !important;
     padding: 0.65rem 0.75rem 0.75rem !important;
 }
 
@@ -10573,12 +10607,42 @@ body.vietnam-jungle-theme .vietnam-infantry-section .vietnam-launch-widget {
 }
 
 /* Infantry Hub — Vietnam sub-pages */
-.infantry-vietnam-overview-banner {
+#infantry-vietnam-overview .infantry-vietnam-overview-banner {
     margin-top: 1.25rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: min(520px, 100%);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#infantry-vietnam-overview .infantry-vietnam-overview-kicker,
+#infantry-vietnam-overview .infantry-vietnam-overview-tagline {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .infantry-vietnam-overview-kicker {
     margin-top: 0;
+}
+
+body.vietnam-jungle-theme #infantry-vietnam-overview .infantry-vietnam-overview-banner {
+    max-width: min(520px, 100%) !important;
+    padding: 1.25rem 1.1rem !important;
+    border-radius: 14px !important;
+}
+
+body.vietnam-jungle-theme #infantry-vietnam-overview .infantry-vietnam-overview-kicker {
+    font-size: clamp(1.2rem, 3.8vw, 1.65rem) !important;
+    margin-bottom: 0.5rem !important;
+    letter-spacing: 0.1em !important;
+}
+
+body.vietnam-jungle-theme #infantry-vietnam-overview .infantry-vietnam-overview-tagline {
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0 !important;
 }
 
 .infantry-mortar-squad-wrap {
@@ -13963,10 +14027,11 @@ body.vietnam-jungle-theme.theme-unhinged .theme-dropdown {
         line-height: 1.45;
     }
 
-    .infantry-vietnam-overview-banner {
+    #infantry-vietnam-overview .infantry-vietnam-overview-banner {
         max-width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
         padding-left: max(1rem, env(safe-area-inset-left, 0px)) !important;
         padding-right: max(1rem, env(safe-area-inset-right, 0px)) !important;
         box-sizing: border-box;

@@ -3885,6 +3885,73 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     will-change: z-index;
 }
 
+/* Armor overview: featured banner + 3×2 card grid with centered bottom row */
+#overview .overview-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 1080px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    #overview .overview-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 1.35rem;
+    }
+
+    #overview .overview-card.featured-card {
+        grid-column: 1 / -1;
+    }
+
+    #overview .overview-card:not(.featured-card) {
+        grid-column: span 2;
+    }
+
+    #overview .overview-card.ranging-card {
+        grid-column: 2 / span 2;
+    }
+
+    #overview .overview-card.community-card {
+        grid-column: 4 / span 2;
+    }
+}
+
+@media (max-width: 767px) {
+    #overview .overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #overview .overview-card.ranging-card,
+    #overview .overview-card.community-card {
+        grid-column: auto;
+    }
+}
+
+#overview .overview-card:not(.featured-card) {
+    padding: 1.5rem 1.25rem;
+    min-height: 10.5rem;
+}
+
+#overview .overview-card:not(.featured-card) i {
+    font-size: 2.25rem;
+    margin-bottom: 0.65rem;
+}
+
+#overview .overview-card:not(.featured-card) h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.55rem;
+}
+
+#overview .overview-card:not(.featured-card) p {
+    font-size: 0.88rem;
+    line-height: 1.45;
+}
+
+#overview .overview-card.featured-card {
+    padding: 2rem 1.75rem;
+}
+
 .overview-card {
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -4531,6 +4598,78 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(255, 193, 7, 0.5);
     z-index: 5;
+}
+
+.tankulator-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.tankulator-card .card-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/360/is-1/7.webp');
+    background-size: cover;
+    background-position: center 0%;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    filter: grayscale(100%);
+    transition: all 0.4s ease;
+    z-index: 1;
+    border-radius: 15px;
+    clip-path: inset(0 0 0 0);
+}
+
+.tankulator-card i,
+.tankulator-card h3,
+.tankulator-card p {
+    position: relative;
+    z-index: 15;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.tankulator-card-credit {
+    margin-top: 0.45rem !important;
+    font-size: 0.78rem !important;
+    opacity: 0.88;
+    line-height: 1.35;
+}
+
+.tankulator-card-credit a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.tankulator-card-credit a:hover {
+    text-decoration: underline;
+}
+
+.tankulator-card:hover i,
+.tankulator-card:hover h3,
+.tankulator-card:hover p {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+    z-index: 15;
+}
+
+.tankulator-card:hover .card-background-image {
+    opacity: 0.9;
+    filter: grayscale(0%);
+    transform: scale(1.3);
+    z-index: 10;
+}
+
+.tankulator-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.45);
+    z-index: 5;
+}
+
+.light-mode .tankulator-card:hover {
+    box-shadow: 0 15px 35px rgba(211, 47, 47, 0.25);
 }
 
 /* Community card with greyscale hover effect */
@@ -5625,7 +5764,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 .tank-card.expanded {
     grid-column: 1 / -1;
     max-width: none;
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 
 .tank-card.expanded .tank-details {
@@ -5634,7 +5773,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 .tank-details {
     display: none;
-    padding: 2rem;
+    padding: 1.25rem;
     border-top: 2px solid var(--border);
     background-color: var(--bg-primary);
 }
@@ -5646,17 +5785,17 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 .tank-details-header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .tank-details-header h2 {
     font-family: 'Orbitron', monospace;
-    font-size: 2rem;
+    font-size: 1.45rem;
     font-weight: 700;
     color: var(--accent);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 0.5rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.35rem;
 }
 
 .light-mode .tank-details-header h2 {
@@ -5665,26 +5804,33 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 .tank-details-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    max-width: 1200px;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 960px;
     margin: 0 auto;
-    align-items: stretch;
+    align-items: start;
+}
+
+.tank-details-content > .tank-stats-section,
+.tank-details-content > .tank-hull-pen-section,
+.tank-details-content > .tank-analysis-split {
+    grid-column: 1 / -1;
+    min-width: 0;
 }
 
 /* Compact Stats Grid */
 .stats-grid-compact {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.65rem;
+    margin-top: 0.65rem;
 }
 
 .stat-group {
     background: var(--bg-primary);
     border: 1px solid var(--border);
     border-radius: 6px;
-    padding: 1rem;
+    padding: 0.7rem 0.75rem;
     transition: all 0.3s ease;
 }
 
@@ -5696,14 +5842,14 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 .stat-group h4 {
     color: var(--accent);
-    margin-bottom: 0.75rem;
-    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.82rem;
     font-weight: 600;
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.35rem;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.35rem;
 }
 
 .stat-group h4 i {
@@ -5714,8 +5860,8 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.3rem 0;
-    font-size: 0.85rem;
+    padding: 0.2rem 0;
+    font-size: 0.78rem;
     max-width: 100%;
 }
 
@@ -5734,28 +5880,506 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 .tank-stats-section {
     background-color: var(--bg-secondary);
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
 }
 
 .light-mode .tank-stats-section {
     background-color: var(--bg-secondary);
-    border: 2px solid var(--border);
-    box-shadow: 0 4px 6px var(--shadow);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 4px var(--shadow);
 }
 
 .tank-stats-section h3 {
     font-family: 'Orbitron', monospace;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     color: var(--accent);
+}
+
+.tank-stats-section > p {
+    margin: 0 0 0.25rem;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
 }
 
 .light-mode .tank-stats-section h3 {
     color: var(--accent);
+}
+
+/* U20 — collapsible armor reference on Tanks page */
+.u20-armor-reference {
+    max-width: 1200px;
+    margin: 0 auto 1.25rem;
+    padding: 0 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-secondary);
+}
+
+.u20-armor-reference summary {
+    cursor: pointer;
+    padding: 0.85rem 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.u20-armor-reference summary::-webkit-details-marker {
+    display: none;
+}
+
+.u20-armor-reference[open] summary {
+    border-bottom: 1px solid var(--border);
+}
+
+.u20-armor-reference-body {
+    padding: 1rem 1.25rem 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+.u20-highlights {
+    margin-bottom: 1.15rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.u20-highlights h4,
+.u20-reference-subhead {
+    margin: 0 0 0.55rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.u20-reference-subhead {
+    margin-top: 1rem;
+}
+
+.u20-highlights ul {
+    margin: 0;
+    padding: 0 0 0 1.1rem;
+    display: grid;
+    gap: 0.45rem;
+}
+
+.u20-highlights li {
+    line-height: 1.45;
+    font-size: 0.86rem;
+}
+
+.u20-highlights li strong {
+    color: var(--text-primary);
+}
+
+.u20-highlights a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.u20-highlights a:hover {
+    text-decoration: underline;
+}
+
+.u20-badge {
+    display: inline-block;
+    margin-left: 0.45rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.22), rgba(255, 152, 0, 0.1));
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+.u20-at-threats-card {
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.08), rgba(255, 152, 0, 0.03));
+    border: 1px solid rgba(255, 152, 0, 0.22);
+}
+
+.u20-at-threats-card > p:first-of-type {
+    margin-top: 0.35rem;
+}
+
+.u20-at-threats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 0.85rem;
+    margin-top: 0.85rem;
+}
+
+.u20-at-threat-panel {
+    padding: 0.85rem 0.95rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 152, 0, 0.14);
+}
+
+.u20-at-threat-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem 0.5rem;
+    margin-bottom: 0.45rem;
+}
+
+.u20-at-threat-head i {
+    color: var(--accent);
+    font-size: 1.05rem;
+}
+
+.u20-at-threat-head strong {
+    color: var(--accent);
+}
+
+.u20-at-weapon-note {
+    flex: 1 1 100%;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    opacity: 0.9;
+}
+
+.u20-at-stat {
+    margin: 0 0 0.65rem;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+}
+
+.u20-at-stat strong {
+    color: #fff;
+}
+
+.u20-at-delta {
+    font-size: 0.82em;
+    opacity: 0.75;
+}
+
+.u20-at-threat-box {
+    padding: 0.65rem 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 0.65rem;
+}
+
+.u20-at-threat-box--high {
+    background: rgba(220, 53, 69, 0.14);
+    border-left: 3px solid #dc3545;
+}
+
+.u20-at-threat-box--medium {
+    background: rgba(255, 193, 7, 0.12);
+    border-left: 3px solid #ffc107;
+}
+
+.u20-at-threat-box-title {
+    margin: 0 0 0.35rem;
+    font-size: 0.84rem;
+    font-weight: 600;
+}
+
+.u20-at-threat-box--high .u20-at-threat-box-title {
+    color: #ff6b6b;
+}
+
+.u20-at-threat-box--medium .u20-at-threat-box-title {
+    color: #ffd54f;
+}
+
+.u20-at-threat-box ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    font-size: 0.84rem;
+    line-height: 1.55;
+}
+
+.u20-at-note {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    opacity: 0.92;
+}
+
+.u20-at-footer {
+    margin: 0.85rem 0 0;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    opacity: 0.92;
+}
+
+.u20-at-footer a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.u20-at-footer a:hover {
+    text-decoration: underline;
+}
+
+.u20-shots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.u20-shots-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.75rem;
+}
+
+.u20-shots-card h4 {
+    margin: 0 0 0.5rem;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.u20-shots-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.82rem;
+}
+
+.u20-armor-reference-source {
+    margin: 0.75rem 0 0;
+    font-size: 0.82rem;
+}
+
+.u20-armor-reference-source a {
+    color: var(--accent);
+}
+
+/* U20 — per-tank hull penetration matrix */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.tank-hull-pen-section {
+    margin-top: 0;
+    padding: 0.85rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+.hull-pen-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.35rem;
+}
+
+.tank-hull-pen-section h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.95rem;
+    margin: 0;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hull-pen-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.hull-pen-legend-item--yes {
+    color: #81c784;
+}
+
+.hull-pen-legend-item--no {
+    color: var(--text-secondary);
+}
+
+.light-mode .hull-pen-legend-item--yes {
+    color: #2e7d32;
+}
+
+.hull-pen-intro {
+    margin: 0 0 0.6rem;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.hull-pen-matrix-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.hull-pen-matrix {
+    width: 100%;
+    min-width: 320px;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    table-layout: fixed;
+}
+
+.hull-pen-matrix th,
+.hull-pen-matrix td {
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.4rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.hull-pen-matrix thead th {
+    background: var(--bg-primary);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.hull-pen-matrix-subhead th {
+    font-weight: 500;
+    font-size: 0.68rem;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    padding: 0.2rem 0.35rem;
+}
+
+.hull-pen-matrix-subhead th[colspan='2'] {
+    text-align: left;
+    padding-left: 0.55rem;
+}
+
+.hull-pen-matrix-face {
+    text-align: left !important;
+    font-weight: 700;
+    color: var(--text-primary);
+    width: 18%;
+    padding-left: 0.55rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+}
+
+.hull-pen-matrix-tier {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    width: 12%;
+    font-weight: 600;
+}
+
+.hull-pen-matrix-gun {
+    width: 14%;
+}
+
+.hull-pen-matrix-cell--yes {
+    background: rgba(76, 175, 80, 0.18);
+}
+
+.hull-pen-matrix-cell--no {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-secondary);
+    opacity: 0.75;
+}
+
+.light-mode .hull-pen-matrix-cell--yes {
+    background: rgba(46, 125, 50, 0.12);
+}
+
+.light-mode .hull-pen-matrix-cell--no {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.hull-pen-matrix-mark {
+    display: inline-block;
+    font-size: 0.95rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.hull-pen-matrix-cell--yes .hull-pen-matrix-mark {
+    color: #81c784;
+}
+
+.hull-pen-matrix-cell--no .hull-pen-matrix-mark {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.light-mode .hull-pen-matrix-cell--yes .hull-pen-matrix-mark {
+    color: #2e7d32;
+}
+
+.hull-pen-matrix-notes {
+    margin: 0.55rem 0 0;
+    padding: 0.55rem 0.65rem;
+    list-style: none;
+    border-radius: 6px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    font-size: 0.72rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
+}
+
+.hull-pen-matrix-notes li + li {
+    margin-top: 0.35rem;
+}
+
+.hull-pen-matrix-notes strong {
+    color: var(--text-primary);
+}
+
+@media (max-width: 480px) {
+    .hull-pen-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hull-pen-matrix {
+        font-size: 0.72rem;
+        min-width: 280px;
+    }
+
+    .hull-pen-matrix th,
+    .hull-pen-matrix td {
+        padding: 0.3rem 0.25rem;
+    }
 }
 
 .tank-stats-table {
@@ -5836,19 +6460,18 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 .tank-analysis-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    gap: 0.85rem;
     align-items: stretch;
     align-self: stretch;
     min-width: 0;
-    min-height: 100%;
 }
 
 .tank-combat-analysis-section,
 .tank-vehicle-history-section {
     background-color: var(--bg-secondary);
-    border: 2px solid var(--border);
-    border-radius: 10px;
-    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
     min-width: 0;
     display: flex;
     flex-direction: column;
@@ -5921,14 +6544,14 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 .tank-combat-analysis-section h3,
 .tank-vehicle-history-section h3 {
     font-family: 'Orbitron', monospace;
-    font-size: 1.15rem;
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     color: var(--accent);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 }
 
 .light-mode .tank-combat-analysis-section h3,
@@ -5944,10 +6567,11 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 .tank-combat-analysis-section p,
 .tank-vehicle-history-section p {
-    margin-bottom: 1rem;
-    line-height: 1.65;
+    margin-bottom: 0.65rem;
+    line-height: 1.5;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.82rem;
+}
 }
 
 .light-mode .tank-combat-analysis-section p,
@@ -5996,20 +6620,20 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
     .tank-card.expanded .tank-image {
         height: auto !important;
-        max-height: min(72vh, 520px) !important;
-        min-height: 200px !important;
+        max-height: min(52vh, 360px) !important;
+        min-height: 180px !important;
     }
 
     .tank-card.expanded .tank-360-viewer {
         height: auto !important;
-        max-height: min(72vh, 520px) !important;
-        min-height: 220px !important;
+        max-height: min(52vh, 360px) !important;
+        min-height: 180px !important;
     }
 
     .tank-card.expanded .tank-360-container {
         height: auto !important;
-        max-height: min(72vh, 520px) !important;
-        min-height: 220px !important;
+        max-height: min(52vh, 360px) !important;
+        min-height: 180px !important;
     }
 }
 
@@ -6032,7 +6656,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     .tank-card.expanded .tank-image,
     .tank-card.expanded .tank-360-viewer,
     .tank-card.expanded .tank-360-container {
-        height: clamp(260px, 38vh, 420px);
+        height: clamp(200px, 28vh, 300px);
     }
 }
 
@@ -6077,7 +6701,7 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
 
 @media (min-width: 769px) {
     .tank-card.expanded .tank-card-photo {
-        max-height: min(400px, 36vh);
+        max-height: min(280px, 28vh);
     }
 }
 
@@ -6352,7 +6976,729 @@ body:has(.scope-viewer.active) .fullscreen-close-btn {
     width: 100%;
 }
 
-/* Ranging Section */
+/* Tankulator */
+#tankulator .tankulator-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+    width: 100%;
+}
+
+#tankulator .tankulator-presets {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.55rem 0.65rem;
+    padding: 0.85rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+#tankulator .tankulator-presets-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    flex: 0 0 auto;
+}
+
+#tankulator .tankulator-preset-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+#tankulator .tankulator-preset-btn {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border-radius: 999px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+    font-family: 'Exo 2', sans-serif;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#tankulator .tankulator-preset-btn:hover,
+#tankulator .tankulator-preset-btn:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+    outline: none;
+}
+
+#tankulator .tankulator-controls,
+#tankulator .tankulator-output {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#tankulator .tankulator-controls {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: grid;
+    gap: 0.85rem;
+    align-self: start;
+}
+
+#tankulator .tankulator-controls .input-group {
+    min-width: 0;
+    width: 100%;
+}
+
+#tankulator .tankulator-controls .input-group label {
+    font-size: 0.82rem;
+}
+
+#tankulator .tankulator-controls .input-group input,
+#tankulator .tankulator-controls .input-group select {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+#tankulator .tankulator-controls .calculate-btn {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-top: 0.25rem;
+}
+
+#tankulator .tankulator-swap-btn {
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.85rem;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+#tankulator .tankulator-swap-btn:hover,
+#tankulator .tankulator-swap-btn:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+    outline: none;
+}
+
+#tankulator .tankulator-output {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    overflow: hidden;
+}
+
+#tankulator .tankulator-summary {
+    margin-bottom: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+#tankulator .tankulator-summary p {
+    margin: 0.25rem 0;
+}
+
+#tankulator .tankulator-summary strong {
+    color: var(--text-primary);
+}
+
+#tankulator .tankulator-status {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.85rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+#tankulator .tankulator-status[hidden] {
+    display: none !important;
+}
+
+#tankulator .tankulator-status--kill {
+    background: rgba(244, 67, 54, 0.15);
+    border: 1px solid rgba(244, 67, 54, 0.45);
+    color: #ff8a80;
+}
+
+#tankulator .tankulator-status--survive {
+    background: rgba(255, 193, 7, 0.12);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    color: #ffd54f;
+}
+
+#tankulator .tankulator-status--no-pen {
+    background: rgba(158, 158, 158, 0.12);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+.light-mode #tankulator .tankulator-status--kill {
+    background: rgba(198, 40, 40, 0.1);
+    border-color: rgba(198, 40, 40, 0.35);
+    color: #c62828;
+}
+
+.light-mode #tankulator .tankulator-status--survive {
+    background: rgba(245, 124, 0, 0.1);
+    border-color: rgba(245, 124, 0, 0.35);
+    color: #e65100;
+}
+
+#tankulator .tankulator-hp-bar {
+    margin-bottom: 0.85rem;
+}
+
+#tankulator .tankulator-hp-bar[hidden] {
+    display: none !important;
+}
+
+#tankulator .tankulator-hp-bar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.78rem;
+}
+
+#tankulator .tankulator-hp-bar-head-left {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 0.5rem;
+    min-width: 0;
+}
+
+#tankulator .tankulator-hp-scenario {
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: rgba(255, 152, 0, 0.14);
+    border: 1px solid rgba(255, 152, 0, 0.28);
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+#tankulator .tankulator-hp-bar--turret .tankulator-hp-scenario {
+    background: rgba(33, 150, 243, 0.12);
+    border-color: rgba(33, 150, 243, 0.28);
+    color: #90caf9;
+}
+
+#tankulator .tankulator-hp-bar--engine .tankulator-hp-scenario {
+    background: rgba(255, 152, 0, 0.12);
+    border-color: rgba(255, 152, 0, 0.28);
+    color: #ffcc80;
+}
+
+#tankulator .tankulator-hp-bar-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+
+#tankulator .tankulator-hp-bar-value {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+#tankulator .tankulator-hp-track {
+    position: relative;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    overflow: visible;
+}
+
+#tankulator .tankulator-hp-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.25s ease;
+}
+
+#tankulator .tankulator-hp-fill--alive {
+    background: linear-gradient(90deg, #66bb6a, #43a047);
+}
+
+#tankulator .tankulator-hp-fill--critical {
+    background: linear-gradient(90deg, #ffb74d, #f57c00);
+}
+
+#tankulator .tankulator-hp-fill--dead {
+    background: linear-gradient(90deg, #ef5350, #c62828);
+    width: 0 !important;
+}
+
+#tankulator .tankulator-hp-marker {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.55);
+    pointer-events: none;
+}
+
+#tankulator .tankulator-hp-marker--kill {
+    width: 3px;
+    height: 22px;
+    background: #ff5252;
+    box-shadow: 0 0 6px rgba(255, 82, 82, 0.65);
+}
+
+#tankulator .tankulator-hp-marker-label {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+#tankulator .tankulator-hp-marker--kill .tankulator-hp-marker-label {
+    color: #ff8a80;
+}
+
+#tankulator .tankulator-hp-legend {
+    margin: 0.35rem 0 0;
+    font-size: 0.68rem;
+    color: var(--text-secondary);
+    line-height: 1.35;
+}
+
+#tankulator .tankulator-component-bars {
+    display: grid;
+    gap: 0.65rem;
+    margin-bottom: 0.85rem;
+}
+
+#tankulator .tankulator-component-bars[hidden] {
+    display: none !important;
+}
+
+#tankulator .tankulator-hp-bar--turret .tankulator-hp-bar-title {
+    color: #90caf9;
+}
+
+#tankulator .tankulator-hp-bar--engine .tankulator-hp-bar-title {
+    color: #ffcc80;
+}
+
+#tankulator .tankulator-hp-fill--turret {
+    background: linear-gradient(90deg, #64b5f6, #1e88e5);
+}
+
+#tankulator .tankulator-hp-fill--turret-critical {
+    background: linear-gradient(90deg, #42a5f5, #1565c0);
+}
+
+#tankulator .tankulator-hp-fill--turret-dead {
+    background: linear-gradient(90deg, #5c6bc0, #3949ab);
+    width: 0 !important;
+}
+
+#tankulator .tankulator-hp-fill--engine {
+    background: linear-gradient(90deg, #ffb74d, #fb8c00);
+}
+
+#tankulator .tankulator-hp-fill--engine-critical {
+    background: linear-gradient(90deg, #ffa726, #ef6c00);
+}
+
+#tankulator .tankulator-hp-fill--engine-dead {
+    background: linear-gradient(90deg, #ff7043, #d84315);
+    width: 0 !important;
+}
+
+#tankulator .tankulator-hp-marker--knock {
+    width: 3px;
+    height: 22px;
+    background: #ffb74d;
+    box-shadow: 0 0 6px rgba(255, 183, 77, 0.55);
+}
+
+#tankulator .tankulator-hp-marker--knock .tankulator-hp-marker-label {
+    color: #ffcc80;
+}
+
+#tankulator .tankulator-summary-components {
+    margin: 0.25rem 0 0;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+#tankulator .tankulator-table-caption {
+    margin: 0 0 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+}
+
+#tankulator .tankulator-face-overview {
+    margin-bottom: 0.85rem;
+    padding: 0.75rem 0.85rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+#tankulator .tankulator-face-overview-title {
+    margin: 0 0 0.25rem;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+}
+
+#tankulator .tankulator-face-overview-intro {
+    margin: 0 0 0.55rem;
+    font-size: 0.72rem;
+    line-height: 1.4;
+    color: var(--text-secondary);
+}
+
+#tankulator .tankulator-face-overview-wrap {
+    overflow-x: auto;
+}
+
+#tankulator .tankulator-face-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.78rem;
+}
+
+#tankulator .tankulator-face-table th,
+#tankulator .tankulator-face-table td {
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.55rem;
+    text-align: left;
+}
+
+#tankulator .tankulator-face-table thead th {
+    color: var(--accent);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: var(--bg-secondary);
+}
+
+#tankulator .tankulator-face-row--active {
+    background: rgba(255, 107, 107, 0.08);
+}
+
+#tankulator .tankulator-face-select {
+    appearance: none;
+    border: none;
+    background: none;
+    padding: 0;
+    font: inherit;
+    font-weight: 700;
+    color: var(--text-primary);
+    cursor: pointer;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+#tankulator .tankulator-face-row--active .tankulator-face-select {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+}
+
+#tankulator .tankulator-face-select:hover,
+#tankulator .tankulator-face-select:focus-visible {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+    outline: none;
+}
+
+#tankulator .tankulator-face-pill {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.15rem 0.4rem;
+    border-radius: 999px;
+}
+
+#tankulator .tankulator-face-pill--yes {
+    background: rgba(76, 175, 80, 0.18);
+    color: #81c784;
+}
+
+#tankulator .tankulator-face-pill--no {
+    background: rgba(158, 158, 158, 0.15);
+    color: var(--text-secondary);
+}
+
+.light-mode #tankulator .tankulator-face-pill--yes {
+    color: #2e7d32;
+}
+
+#tankulator .tankulator-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -0.25rem;
+    padding: 0 0.25rem;
+}
+
+#tankulator .tankulator-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 480px;
+}
+
+#tankulator .tankulator-table th,
+#tankulator .tankulator-table td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.6rem;
+    text-align: left;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+#tankulator .tankulator-table td {
+    color: var(--text-primary);
+}
+
+#tankulator .tankulator-table th {
+    color: var(--accent);
+    font-weight: 700;
+    background: var(--bg-primary);
+}
+
+#tankulator .tankulator-row--kill {
+    background: rgba(244, 67, 54, 0.12);
+}
+
+#tankulator .tankulator-row--kill td {
+    font-weight: 700;
+}
+
+#tankulator .tankulator-kill-badge {
+    display: inline-block;
+    margin-left: 0.35rem;
+    padding: 0.12rem 0.45rem;
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: rgba(244, 67, 54, 0.25);
+    border: 1px solid rgba(244, 67, 54, 0.5);
+    color: #ff8a80;
+    vertical-align: middle;
+}
+
+.light-mode #tankulator .tankulator-kill-badge {
+    background: rgba(198, 40, 40, 0.12);
+    border-color: rgba(198, 40, 40, 0.4);
+    color: #c62828;
+}
+
+#tankulator .tankulator-row--skipped td {
+    text-align: center;
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    padding: 0.45rem 0.6rem;
+}
+
+#tankulator .tankulator-row--no-pen td {
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    padding: 0.65rem 0.6rem;
+}
+
+@media (max-width: 900px) {
+    #tankulator .tankulator-wrap {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    #tankulator .tankulator-controls {
+        order: 1;
+    }
+
+    #tankulator .tankulator-output {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    #tankulator .section-header {
+        margin-bottom: 1.75rem;
+    }
+
+    #tankulator .section-header h2 {
+        font-size: 1.85rem;
+    }
+
+    #tankulator .tankulator-controls,
+    #tankulator .tankulator-output {
+        padding: 1rem;
+    }
+
+    #tankulator .tankulator-preset-btn {
+        min-height: 40px !important;
+        min-width: unset !important;
+        padding: 0.45rem 0.75rem !important;
+        font-size: 0.8rem !important;
+    }
+
+    #tankulator .tankulator-swap-btn {
+        min-height: 40px !important;
+        min-width: unset !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.82rem !important;
+    }
+
+    #tankulator .tankulator-table {
+        min-width: 420px;
+        font-size: 0.8rem;
+    }
+
+    #tankulator .tankulator-table th,
+    #tankulator .tankulator-table td {
+        padding: 0.45rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #tankulator .tankulator-presets {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #tankulator .tankulator-preset-list {
+        width: 100%;
+    }
+
+    #tankulator .tankulator-preset-btn {
+        flex: 1 1 calc(50% - 0.45rem);
+        text-align: center;
+        min-height: 40px;
+    }
+
+    #tankulator .tankulator-table {
+        min-width: 0;
+    }
+
+    #tankulator .tankulator-table thead {
+        display: none;
+    }
+
+    #tankulator .tankulator-table,
+    #tankulator .tankulator-table tbody,
+    #tankulator .tankulator-table tr,
+    #tankulator .tankulator-table td {
+        display: block;
+        width: 100%;
+        white-space: normal;
+    }
+
+    #tankulator .tankulator-table tr {
+        margin-bottom: 0.65rem;
+        padding: 0.65rem 0.75rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--bg-primary);
+    }
+
+    #tankulator .tankulator-table td {
+        display: grid;
+        grid-template-columns: minmax(7rem, 42%) 1fr;
+        gap: 0.35rem 0.75rem;
+        padding: 0.3rem 0;
+        border: none;
+        text-align: right;
+    }
+
+    #tankulator .tankulator-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--accent);
+        text-align: left;
+    }
+
+    #tankulator .tankulator-table td:first-child {
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding-bottom: 0.45rem;
+        margin-bottom: 0.2rem;
+        border-bottom: 1px solid var(--border);
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    #tankulator .tankulator-table td:first-child::before {
+        content: none;
+    }
+
+    #tankulator .tankulator-row--skipped td,
+    #tankulator .tankulator-row--no-pen td {
+        display: block;
+        width: 100%;
+        text-align: center;
+        grid-template-columns: 1fr;
+        padding: 0.55rem 0.75rem;
+    }
+
+    #tankulator .tankulator-row--skipped td::before,
+    #tankulator .tankulator-row--no-pen td::before {
+        content: none;
+    }
+}
+
 .ranging-content {
     max-width: 800px;
     margin: 0 auto;
@@ -12645,6 +13991,7 @@ body.vietnam-jungle-theme.theme-unhinged .theme-dropdown {
     .identification-card:hover .card-background-image,
     .ranging-card:hover .card-background-image,
     .tactics-card:hover .card-background-image,
+    .tankulator-card:hover .card-background-image,
     .featured-card:hover .card-background-image,
     .community-card:hover .card-background-image,
     .infantry-overview-card.infantry-card-getting-started:hover .card-background-image,

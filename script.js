@@ -36,7 +36,7 @@ function parseAppHash(hash) {
         }
         return { hub, game, section, subRoute };
     }
-    const legacySections = ['overview', 'tanks', 'tactics', 'identification', 'ranging', 'community'];
+    const legacySections = ['overview', 'tanks', 'tankulator', 'tactics', 'identification', 'ranging', 'community'];
     const sec = parts[0] || 'overview';
     if (!legacySections.includes(sec)) {
         return null;
@@ -322,7 +322,7 @@ function resolveSectionDomId(route) {
         };
         return map[route.section] || 'vietnam';
     }
-    const armorWwii = ['overview', 'tanks', 'tactics', 'identification', 'ranging', 'community'];
+    const armorWwii = ['overview', 'tanks', 'tankulator', 'tactics', 'identification', 'ranging', 'community'];
     if (armorWwii.includes(route.section)) {
         return route.section;
     }
@@ -755,7 +755,7 @@ function generateComparisonStats() {
                     <span class="comparison-quick-outcome-value">${reloadOutcome}</span>
                 </div>
             </div>
-            <p class="comparison-quick-outcome-note">Based on AP damage against penetrable hull armor.</p>
+            <p class="comparison-quick-outcome-note">Rough hull HP ÷ AP damage only — U20 armor resistance (% reduction per plate) not applied. See each tank&rsquo;s hull penetration section for pen matchups.</p>
         </div>
         <h4>Detailed Comparison</h4>
         <div class="comparison-stats-grid">
@@ -985,7 +985,7 @@ function switchGameVersion(version) {
             window.location.hash = formatAppHash('armor', 'vietnam', vnArmorSection);
             return;
         }
-        const armorWwii = ['overview', 'tanks', 'tactics', 'identification', 'ranging', 'community'];
+        const armorWwii = ['overview', 'tanks', 'tankulator', 'tactics', 'identification', 'ranging', 'community'];
         const section = armorWwii.includes(route.section) ? route.section : 'overview';
         window.location.hash = formatAppHash('armor', version, section);
         return;
@@ -1004,1164 +1004,892 @@ function switchGameVersion(version) {
     }
 }
 
-const tankDatabase = {
-    usa: [
-        {
-            name: "M4 Sherman",
-            type: "Medium Tank",
-            faction: "USA",
-            armor: "Front: 63mm, Sides: 38mm, Rear: 38mm",
-            gun: "75mm M3",
-            penetration: "Front: 76mm, Sides: 89mm",
-            speed: "29 km/h",
-            crew: "3",
-            description: "The workhorse of the US Army. Balanced armor and firepower with good mobility.",
-            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
-            strengths: "Reliable, good mobility, decent armor",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/m4-sherman/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 900,
-                turretHealth: 790,
-                engineHealth: 420,
-                trackHealth: 710,
-                apDamage: 650,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 6.0,
-                maxSpeed: 29,
-                yawRate: 14.0,
-                pitchRate: 5.0,
-                pitchAngleMin: -10.0,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.7,
-                maxShellsAP: 35,
-                maxShellsHE: 35,
-                fuelCost: 200
-            }
-        },
-        {
-            name: "Sherman 75 Jumbo",
-            type: "Heavy Tank",
-            faction: "USA",
-            armor: "Front: 101mm, Sides: 76mm, Rear: 51mm",
-            gun: "75mm M3",
-            penetration: "Front: 76mm, Sides: 89mm",
-            speed: "20 km/h",
-            crew: "3",
-            description: "Heavily armored Sherman variant with thick frontal armor for breakthrough operations.",
-            weakSpots: "Sides, rear. This tank has a 75mm gun so this cannot pen heavy tank armor from the front. This tank almost should never be used as the price of fuel is not logical as compared to a 76 jumbo",
-            strengths: "Good first gear and reverse gear speed. These tanks are good for playing off of cover. Excellent frontal armor, good mobility for heavy tank",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/sherman-75-jumbo/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 1170,
-                turretHealth: 1050,
-                engineHealth: 550,
-                trackHealth: 910,
-                apDamage: 700,
-                explosionDamage: 100,
-                explosionRadius: 1200,
-                reloadSpeed: 6.0,
-                maxSpeed: 20,
-                yawRate: 14.0,
-                pitchRate: 6.0,
-                pitchAngleMin: -10.0,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.9,
-                maxShellsAP: 25,
-                maxShellsHE: 60,
-                fuelCost: 500
-            }
-        },
-        {
-            name: "Sherman 76 Jumbo",
-            type: "Heavy Tank",
-            faction: "USA",
-            armor: "Front: 101mm, Sides: 76mm, Rear: 51mm",
-            gun: "76mm M1A1",
-            penetration: "Front: 116mm, Sides: 139mm",
-            speed: "20 km/h",
-            crew: "3",
-            description: "Heavily armored Sherman with improved 76mm gun for better anti-tank capability.",
-            weakSpots: "Sides, rear",
-            strengths: "Good first gear and reverse gear speed. These tanks are good for playing off of cover. Excellent frontal armor, good firepower",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/sherman-76-jumbo/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 1190,
-                turretHealth: 1070,
-                engineHealth: 550,
-                trackHealth: 910,
-                apDamage: 800,
-                explosionDamage: 100,
-                explosionRadius: 1200,
-                reloadSpeed: 8.0,
-                maxSpeed: 20,
-                yawRate: 12.0,
-                pitchRate: 5.0,
-                pitchAngleMin: -8.0,
-                pitchAngleMax: 23.0,
-                gearSwitchTime: 0.9,
-                maxShellsAP: 45,
-                maxShellsHE: 30,
-                fuelCost: 600
-            }
-        },
-        {
-            name: "M5A1 Stuart",
-            type: "Light Tank",
-            faction: "USA",
-            armor: "Front: 44mm, Sides: 25mm, Rear: 25mm",
-            gun: "37mm M6",
-            penetration: "Front: 61mm, Sides: 76mm",
-            speed: "34 km/h",
-            crew: "3",
-            description: "Fast light tank with light armor but excellent mobility.",
-            weakSpots: "All sides vulnerable",
-            strengths: "Very fast, good for scouting",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/m5a1-stuart/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 620,
-                turretHealth: 550,
-                engineHealth: 290,
-                trackHealth: 490,
-                apDamage: 420,
-                explosionDamage: 90,
-                explosionRadius: 800,
-                reloadSpeed: 4.0,
-                maxSpeed: 34,
-                yawRate: 14.0,
-                pitchRate: 6.0,
-                pitchAngleMin: -12.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.6,
-                maxShellsAP: 50,
-                maxShellsHE: 50,
-                fuelCost: 150
-            }
-        },
-        {
-            name: "Greyhound",
-            type: "Recon Vehicle",
-            faction: "USA",
-            armor: "Front: 25mm, Sides: 13mm, Rear: 13mm",
-            gun: "37mm M6",
-            penetration: "Front: 61mm, Sides: 76mm",
-            speed: "37 km/h",
-            crew: "3",
-            description: "Fast armored car with excellent mobility for reconnaissance and harassment.",
-            weakSpots: "All sides vulnerable",
-            strengths: "Extremely fast, excellent for scouting",
-            icon: "fas fa-car",
-            has360View: true,
-            images360: {
-                prefix: "images/360/greyhound/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 440,
-                turretHealth: 380,
-                engineHealth: 200,
-                trackHealth: 240,
-                apDamage: 220,
-                explosionDamage: 90,
-                explosionRadius: 800,
-                reloadSpeed: 4,
-                maxSpeed: 37,
-                yawRate: 16,
-                pitchRate: 8,
-                pitchAngleMin: -5.5,
-                pitchAngleMax: 20,
-                gearSwitchTime: null,
-                gearSwitchDisplay: "Automatic",
-                maxShellsAP: 26,
-                maxShellsHE: 26,
-                fuelCost: 100
-            }
-        },
-        {
-            name: "Sherman M4A3 105",
-            type: "SPA (Self Propelled Artillery)",
-            faction: "USA",
-            armor: "TBD",
-            gun: "105mm M4",
-            penetration: "TBD",
-            speed: "24 km/h",
-            crew: "3",
-            description: "Self-propelled artillery variant of the M4 Sherman.",
-            weakSpots: SPA_WEAK_SPOTS,
-            strengths: SPA_STRENGTHS,
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/Sherman SPA/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 900,
-                turretHealth: 790,
-                engineHealth: 420,
-                trackHealth: 710,
-                apDamage: 950,
-                explosionDamage: null,
-                explosionRadius: null,
-                reloadSpeed: 10,
-                maxSpeed: 24,
-                yawRate: 7,
-                pitchRate: 1,
-                pitchAngleMin: -5,
-                pitchAngleMax: 30,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 20,
-                maxShellsHE: 50,
-                fuelCost: null,
-                munitionsCost: 280,
-                maxShellsSmoke: 45,
-                weaponRange: "600m"
-            }
-        }
-    ],
-    germany: [
-        {
-            name: "Panzer IV",
-            type: "Medium Tank",
-            faction: "Germany",
-            armor: "Front: 80mm, Sides: 30mm, Rear: 20mm",
-            gun: "75mm KwK 40",
-            penetration: "Front: 98mm, Sides: 121mm",
-            speed: "27 km/h",
-            crew: "3",
-            description: "Versatile medium tank with good balance of armor, firepower, and mobility.",
-            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
-            strengths: "Good firepower, decent armor",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/panzer-iv/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 910,
-                turretHealth: 830,
-                engineHealth: 430,
-                trackHealth: 710,
-                apDamage: 750,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 6.0,
-                maxSpeed: 27,
-                yawRate: 10.0,
-                pitchRate: 5.0,
-                pitchAngleMin: -8.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 50,
-                maxShellsHE: 35,
-                fuelCost: 200
-            }
-        },
-        {
-            name: "Panther",
-            type: "Heavy Tank",
-            faction: "Germany",
-            armor: "Front: 80mm, Sides: 40mm, Rear: 40mm",
-            gun: "75mm KwK 42",
-            penetration: "Front: 149mm, Sides: 185mm",
-            speed: "26 km/h",
-            crew: "3",
-            description: "Excellent heavy tank with sloped armor and powerful long-barreled 75mm gun.",
-            weakSpots: "Sides, rear. Very slow reverse gear and third to fourth gear. Be very mindful of RPM's as you speed up",
-            strengths: "Really good top end speed, fastest heavy tank. Excellent gun, good armor, decent speed",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/panther/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 1170,
-                turretHealth: 990,
-                engineHealth: 550,
-                trackHealth: 910,
-                apDamage: 800,
-                explosionDamage: 100,
-                explosionRadius: 1200,
-                reloadSpeed: 8.0,
-                maxSpeed: 26,
-                yawRate: 12.0,
-                pitchRate: 5.0,
-                pitchAngleMin: -8.0,
-                pitchAngleMax: 18.0,
-                gearSwitchTime: 0.85,
-                maxShellsAP: 40,
-                maxShellsHE: 40,
-                fuelCost: 600
-            }
-        },
-        {
-            name: "Tiger I",
-            type: "Heavy Tank",
-            faction: "Germany",
-            armor: "Front: 100mm, Sides: 80mm, Rear: 80mm",
-            gun: "88mm KwK 36",
-            penetration: "Front: 165mm, Sides: 198mm",
-            speed: "23 km/h",
-            crew: "3",
-            description: "Fearsome heavy tank with thick armor and devastating 88mm gun.",
-            weakSpots: "Sides, rear",
-            strengths: "Good first gear and reverse gear speed. These tanks are good for playing off of cover. Excellent armor, devastating gun",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/tiger-i/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 1220,
-                turretHealth: 1070,
-                engineHealth: 570,
-                trackHealth: 950,
-                apDamage: 850,
-                explosionDamage: 100,
-                explosionRadius: 1200,
-                reloadSpeed: 8.0,
-                maxSpeed: 23,
-                yawRate: 7.0,
-                pitchRate: 4.5,
-                pitchAngleMin: -8.0,
-                pitchAngleMax: 15.0,
-                gearSwitchTime: 1.0,
-                maxShellsAP: 55,
-                maxShellsHE: 40,
-                fuelCost: 600
-            }
-        },
-        {
-            name: "Luchs",
-            type: "Light Tank",
-            faction: "Germany",
-            armor: "Front: 30mm, Sides: 15mm, Rear: 15mm",
-            gun: "20mm KwK 30",
-            penetration: "Front: 23mm, Sides: 29mm",
-            speed: "37 km/h",
-            crew: "3",
-            description: "Light tank with minimal armor and anti-infantry armament.",
-            weakSpots: "All sides vulnerable",
-            strengths: "Fast, good for scouting",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/luchs/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 600,
-                turretHealth: 520,
-                engineHealth: 280,
-                trackHealth: 470,
-                apDamage: null,
-                explosionDamage: 90,
-                explosionRadius: 800,
-                reloadSpeed: 8.0,
-                maxSpeed: 37,
-                yawRate: 22.0,
-                pitchRate: 8.0,
-                pitchAngleMin: -9.0,
-                pitchAngleMax: 18.0,
-                gearSwitchTime: 0.6,
-                maxShellsAP: null,
-                maxShellsHE: 20,
-                fuelCost: 150
-            }
-        },
-        {
-            name: "Puma",
-            type: "Recon Vehicle",
-            faction: "Germany",
-            armor: "Front: 30mm, Sides: 15mm, Rear: 15mm",
-            gun: "50mm KwK 39",
-            penetration: "Front: 67mm, Sides: 84mm",
-            speed: "40 km/h",
-            crew: "3",
-            description: "Fast armored car with good anti-tank capability and excellent mobility.",
-            weakSpots: "All sides vulnerable",
-            strengths: "Extremely fast, good anti-tank gun",
-            icon: "fas fa-car",
-            has360View: true,
-            images360: {
-                prefix: "images/360/puma/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 450,
-                turretHealth: 390,
-                engineHealth: 210,
-                trackHealth: 250,
-                apDamage: 260,
-                explosionDamage: 90,
-                explosionRadius: 800,
-                reloadSpeed: 4,
-                maxSpeed: 40,
-                yawRate: 12,
-                pitchRate: 8,
-                pitchAngleMin: -5.5,
-                pitchAngleMax: 20,
-                gearSwitchTime: null,
-                gearSwitchDisplay: "Automatic",
-                maxShellsAP: 26,
-                maxShellsHE: 26,
-                fuelCost: 100
-            }
-        },
-        {
-            name: "Sturmpanzer IV Brummbar",
-            type: "SPA (Self Propelled Artillery)",
-            faction: "Germany",
-            armor: "TBD",
-            gun: "150mm StuH 43",
-            penetration: "TBD",
-            speed: "24 km/h",
-            crew: "3",
-            description: "Self-propelled artillery based on the Panzer IV chassis.",
-            weakSpots: SPA_WEAK_SPOTS,
-            strengths: SPA_STRENGTHS,
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/Bummbar SPA/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 910,
-                turretHealth: 830,
-                engineHealth: 430,
-                trackHealth: 710,
-                apDamage: 950,
-                explosionDamage: null,
-                explosionRadius: null,
-                reloadSpeed: 11,
-                maxSpeed: 24,
-                yawRate: 8,
-                pitchRate: 1,
-                pitchAngleMin: -5,
-                pitchAngleMax: 30,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 20,
-                maxShellsHE: 50,
-                fuelCost: null,
-                munitionsCost: 280,
-                maxShellsSmoke: 45,
-                weaponRange: "500m"
-            }
-        },
-        {
-            name: "Panzer III Ausf.N",
-            type: "SPA (Self Propelled Artillery)",
-            faction: "Germany",
-            armor: "TBD",
-            gun: "75mm KwK 37 L/24",
-            penetration: "TBD",
-            speed: "24 km/h",
-            crew: "3",
-            description: "Self-propelled artillery variant of the Panzer III.",
-            weakSpots: SPA_WEAK_SPOTS,
-            strengths: SPA_STRENGTHS,
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/Panzer III SPA/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 910,
-                turretHealth: 830,
-                engineHealth: 430,
-                trackHealth: 710,
-                apDamage: 610,
-                explosionDamage: null,
-                explosionRadius: null,
-                reloadSpeed: 7,
-                maxSpeed: 24,
-                yawRate: 9,
-                pitchRate: 1,
-                pitchAngleMin: -5,
-                pitchAngleMax: 30,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 20,
-                maxShellsHE: 50,
-                fuelCost: null,
-                munitionsCost: 280,
-                maxShellsSmoke: 45,
-                weaponRange: "500m"
-            }
-        }
-    ],
-    soviet: [
-        {
-            name: "T-34",
-            type: "Medium Tank",
-            faction: "Soviet Union",
-            armor: "Front: 45mm, Sides: 45mm, Rear: 45mm",
-            gun: "76.2mm F-34",
-            penetration: "Front: 76mm, Sides: 89mm",
-            speed: "31 km/h",
-            crew: "3",
-            description: "Revolutionary tank with sloped armor and good mobility.",
-            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
-            strengths: "Good mobility, sloped armor",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/t-34/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 890,
-                turretHealth: 830,
-                engineHealth: 420,
-                trackHealth: 700,
-                apDamage: 750,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 6.0,
-                maxSpeed: 31,
-                yawRate: 15.0,
-                pitchRate: 6.0,
-                pitchAngleMin: -5.0,
-                pitchAngleMax: 29.0,
-                gearSwitchTime: 0.9,
-                maxShellsAP: 40,
-                maxShellsHE: 45,
-                fuelCost: 200
-            }
-        },
-        {
-            name: "IS-1",
-            type: "Heavy Tank",
-            faction: "Soviet Union",
-            armor: "Front: 120mm, Sides: 90mm, Rear: 60mm",
-            gun: "85mm D-5T",
-            penetration: "Front: 102mm, Sides: 119mm",
-            speed: "21 km/h",
-            crew: "3",
-            description: "Heavy breakthrough tank with thick armor and good firepower.",
-            weakSpots: "Sides, rear",
-            strengths: "Excellent armor, good firepower",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/is-1/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 1220,
-                turretHealth: 1060,
-                engineHealth: 570,
-                trackHealth: 950,
-                apDamage: 800,
-                explosionDamage: 100,
-                explosionRadius: 1200,
-                reloadSpeed: 8.0,
-                maxSpeed: 21,
-                yawRate: 8.0,
-                pitchRate: 4.5,
-                pitchAngleMin: -4.0,
-                pitchAngleMax: 22.0,
-                gearSwitchTime: 1.0,
-                maxShellsAP: 40,
-                maxShellsHE: 35,
-                fuelCost: 600
-            }
-        },
-        {
-            name: "T-70",
-            type: "Light Tank",
-            faction: "Soviet Union",
-            armor: "Front: 35mm, Sides: 35mm, Rear: 25mm",
-            gun: "45mm 20-K",
-            penetration: "Front: 51mm, Sides: 61mm",
-            speed: "32 km/h",
-            crew: "3",
-            description: "Light tank with minimal armor and small crew.",
-            weakSpots: "All sides vulnerable",
-            strengths: "Fast, small target",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/t-70/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 630,
-                turretHealth: 550,
-                engineHealth: 290,
-                trackHealth: 490,
-                apDamage: 400,
-                explosionDamage: 90,
-                explosionRadius: 800,
-                reloadSpeed: 4.0,
-                maxSpeed: 32,
-                yawRate: 10.0,
-                pitchRate: 5.0,
-                pitchAngleMin: -6.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.7,
-                maxShellsAP: 45,
-                maxShellsHE: 45,
-                fuelCost: 150
-            }
-        },
-        {
-            name: "BA-10 Scout Car",
-            type: "Recon Vehicle",
-            faction: "Soviet Union",
-            armor: "Front: 10mm, Sides: 10mm, Rear: 10mm",
-            gun: "45mm 20-K",
-            penetration: "Front: 51mm, Sides: 61mm",
-            speed: "35 km/h",
-            crew: "3",
-            description: "Light armored car with good mobility for reconnaissance missions.",
-            weakSpots: "All sides vulnerable",
-            strengths: "Fast, good for scouting",
-            icon: "fas fa-car",
-            has360View: true,
-            images360: {
-                prefix: "images/360/ba-10-scout-car/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 460,
-                turretHealth: 400,
-                engineHealth: 210,
-                trackHealth: 260,
-                apDamage: 240,
-                explosionDamage: 90,
-                explosionRadius: 800,
-                reloadSpeed: 4,
-                maxSpeed: 35,
-                yawRate: 14,
-                pitchRate: 8,
-                pitchAngleMin: -5.5,
-                pitchAngleMax: 20,
-                gearSwitchTime: null,
-                gearSwitchDisplay: "Automatic",
-                maxShellsAP: 26,
-                maxShellsHE: 26,
-                fuelCost: 100
-            }
-        },
-        {
-            name: "KV-2",
-            type: "SPA (Self Propelled Artillery)",
-            faction: "Soviet Union",
-            armor: "TBD",
-            gun: "152mm M-10T",
-            penetration: "TBD",
-            speed: "23 km/h",
-            crew: "3",
-            description: "Heavy self-propelled artillery with massive 152mm howitzer.",
-            weakSpots: SPA_WEAK_SPOTS,
-            strengths: SPA_STRENGTHS,
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/KV-2 SPA/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 890,
-                turretHealth: 830,
-                engineHealth: 420,
-                trackHealth: 700,
-                apDamage: 950,
-                explosionDamage: null,
-                explosionRadius: null,
-                reloadSpeed: 12,
-                maxSpeed: 23,
-                yawRate: 6,
-                pitchRate: 1,
-                pitchAngleMin: -5,
-                pitchAngleMax: 30,
-                gearSwitchTime: 0.8,
-                maxShellsAP: 20,
-                maxShellsHE: 50,
-                fuelCost: null,
-                munitionsCost: 280,
-                maxShellsSmoke: 45,
-                weaponRange: "600m"
-            }
-        }
-    ],
-         british: [
-                  {
-             name: "Daimler",
-             type: "Recon Vehicle",
-             faction: "Great Britain",
-            armor: "Front: 16mm, Sides: 16mm, Rear: 16mm",
-            gun: "40mm QF 2-pounder",
-            penetration: "Front: 57mm, Sides: 71mm",
-            speed: "37 km/h",
-            crew: "3",
-            description: "Fast armored car with good mobility for reconnaissance and harassment.",
-            weakSpots: "All sides vulnerable",
-            strengths: "Extremely fast, good for scouting",
-            icon: "fas fa-car",
-            has360View: true,
-            images360: {
-                prefix: "images/360/daimler/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 430,
-                turretHealth: 370,
-                engineHealth: 200,
-                trackHealth: 230,
-                apDamage: 220,
-                explosionDamage: 90,
-                explosionRadius: 800,
-                reloadSpeed: 4,
-                maxSpeed: 37,
-                yawRate: 17,
-                pitchRate: 8,
-                pitchAngleMin: -5.5,
-                pitchAngleMax: 20,
-                gearSwitchTime: null,
-                gearSwitchDisplay: "Automatic",
-                maxShellsAP: 20,
-                maxShellsHE: 40,
-                fuelCost: 100
-            }
-         },
-                                            {
-              name: "M3 Stuart 'Honey'",
-              type: "Light Tank",
-              faction: "Great Britain",
-                          armor: "Front: 38mm, Sides: 25mm, Rear: 25mm",
-              gun: "37mm M6",
-              penetration: "Front: 61mm, Sides: 76mm",
-            speed: "36 km/h",
-              crew: "3",
-             description: "Fast light tank with light armor but excellent mobility.",
-             weakSpots: "All sides vulnerable",
-             strengths: "Very fast, good for scouting",
-              icon: "fas fa-tank",
-              has360View: true,
-                          images360: {
-                prefix: "images/360/m3-stuart-honey/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 610,
-                turretHealth: 540,
-                engineHealth: 290,
-                trackHealth: 480,
-                apDamage: 420,
-                explosionDamage: 90,
-                explosionRadius: 800,
-                reloadSpeed: 4.0,
-                maxSpeed: 36,
-                yawRate: 14.0,
-                pitchRate: 6.0,
-                pitchAngleMin: -12.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.6,
-                maxShellsAP: 50,
-                maxShellsHE: 50,
-                fuelCost: 150
-            }
-          },
-                                  {
-                           name: "Tetrarch",
-              type: "Light Tank",
-              faction: "Great Britain",
-             armor: "Front: 14mm, Sides: 10mm, Rear: 10mm",
-             gun: "40mm QF 2-pounder",
-             penetration: "Front: 57mm, Sides: 71mm",
-            speed: "39 km/h",
-             crew: "3",
-             description: "Ultra-light tank designed for airborne operations with minimal armor.",
-            weakSpots: "All sides vulnerable",
-            strengths: "Very fast, airborne capable",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/tetrarch/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 610,
-                turretHealth: 530,
-                engineHealth: 290,
-                trackHealth: 480,
-                apDamage: 380,
-                explosionDamage: 90,
-                explosionRadius: 800,
-                reloadSpeed: 4.0,
-                maxSpeed: 39,
-                yawRate: 10.0,
-                pitchRate: 5.5,
-                pitchAngleMin: -10.0,
-                pitchAngleMax: 25.0,
-                gearSwitchTime: 0.7,
-                maxShellsAP: 40,
-                maxShellsHE: 40,
-                fuelCost: 150
-            }
-         },
-                                  {
-             name: "Cromwell",
-             type: "Medium Tank",
-             faction: "Great Britain",
-                         armor: "Front: 76mm, Sides: 32mm, Rear: 32mm",
-             gun: "75mm QF Mk V",
-             penetration: "Front: 91mm, Sides: 114mm",
-            speed: "30 km/h",
-             crew: "3",
-            description: "Fast medium tank with good mobility and balanced firepower.",
-            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
-            strengths: "Excellent speed, good firepower",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/cromwell/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 930,
-                turretHealth: 810,
-                engineHealth: 440,
-                trackHealth: 730,
-                apDamage: 750,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 6.0,
-                maxSpeed: 30,
-                yawRate: 14.0,
-                pitchRate: 6.0,
-                pitchAngleMin: -12.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.7,
-                maxShellsAP: 40,
-                maxShellsHE: 35,
-                fuelCost: 200
-            }
-         },
-                                  {
-             name: "Crusader Mk III",
-             type: "Medium Tank",
-             faction: "Great Britain",
-            armor: "Front: 49mm, Sides: 28mm, Rear: 28mm",
-            gun: "57mm QF 6-pounder",
-            penetration: "Front: 81mm, Sides: 101mm",
-            speed: "27 km/h",
-            crew: "3",
-            description: "Medium tank with good anti-tank capability and decent mobility.",
-            weakSpots: "All faction rocket launchers can penetrate the front, sides, and rear (previously only sides and rear).",
-            strengths: "Good anti-tank gun, decent speed",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/crusader-mk-iii/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 910,
-                turretHealth: 790,
-                engineHealth: 420,
-                trackHealth: 710,
-                apDamage: 700,
-                explosionDamage: 100,
-                explosionRadius: 1000,
-                reloadSpeed: 6.0,
-                maxSpeed: 27,
-                yawRate: 20.0,
-                pitchRate: 6.5,
-                pitchAngleMin: -12.0,
-                pitchAngleMax: 30.0,
-                gearSwitchTime: 0.9,
-                maxShellsAP: 30,
-                maxShellsHE: 35,
-                fuelCost: 200
-            }
-         },
-                                  {
-             name: "Churchill Mk III",
-             type: "Heavy Tank",
-             faction: "Great Britain",
-                         armor: "Front: 102mm, Sides: 76mm, Rear: 51mm",
-             gun: "57mm QF 6-pounder",
-             penetration: "Front: 81mm, Sides: 101mm",
-            speed: "20 km/h",
-             crew: "3",
-            description: "Heavily armored infantry tank with excellent protection but slow speed.",
-            weakSpots: "Sides, rear. This tank can be difficult to turn so be mindful of RPM's and how far you turn",
-            strengths: "The side of this tank is nearly ALL tracks. This tank can be angled very effectively as the hull is very difficult to hit if you always angle at 90 degrees. Excellent armor, good for infantry support",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/churchill-iii/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 1230,
-                turretHealth: 1080,
-                engineHealth: 580,
-                trackHealth: 960,
-                apDamage: 750,
-                explosionDamage: 100,
-                explosionRadius: 1200,
-                reloadSpeed: 8.0,
-                maxSpeed: 20,
-                yawRate: 12.0,
-                pitchRate: 5.0,
-                pitchAngleMin: -6.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 1.0,
-                maxShellsAP: 30,
-                maxShellsHE: 45,
-                fuelCost: 600
-            }
-         },
-                                  {
-             name: "Churchill Mk.VII",
-            type: "Heavy Tank",
-            faction: "Great Britain",
-            armor: "Front: 152mm, Sides: 95mm, Rear: 64mm",
-            gun: "75mm QF Mk V",
-            penetration: "Front: 91mm, Sides: 114mm",
-            speed: "18 km/h",
-            crew: "3",
-            description: "Heavily armored infantry tank with thick frontal armor and improved protection.",
-            weakSpots: "Sides, rear. This tank can be difficult to turn so be mindful of RPM's and how far you turn",
-            strengths: "The side of this tank is nearly ALL tracks. This tank can be angled very effectively as the hull is very difficult to hit if you always angle at 90 degrees. Excellent frontal armor, good for infantry support",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/churchill-vii/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 1240,
-                turretHealth: 1090,
-                engineHealth: 620,
-                trackHealth: 1030,
-                apDamage: 800,
-                explosionDamage: 100,
-                explosionRadius: 1200,
-                reloadSpeed: 8.0,
-                maxSpeed: 18,
-                yawRate: 10.0,
-                pitchRate: 5.0,
-                pitchAngleMin: -6.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 1.0,
-                maxShellsAP: 40,
-                maxShellsHE: 45,
-                fuelCost: 600
-            }
-         },
-                                  {
-             name: "Sherman Firefly",
-            type: "Heavy Tank",
-             faction: "Great Britain",
-                         armor: "Front: 63mm, Sides: 38mm, Rear: 38mm",
-             gun: "76.2mm QF 17-pounder",
-             penetration: "Front: 140mm, Sides: 175mm",
-            speed: "22 km/h",
-             crew: "3",
-            description: "Sherman variant with powerful 17-pounder gun for anti-tank warfare.",
-            weakSpots: "Sides, rear. This heavy tank has no hull turret as well as maneuverability is very poor. This tank actually uses an old M4 sherman driving model and should strictly be used to fight enemy heavy armor. Think of this as a tank destroyer nearly exclusively",
-            strengths: "This is the only heavy tank in the game that has a 6 second reload. It is by far the fastest reloading tank in the game. Excellent anti-tank capability, good mobility",
-            icon: "fas fa-tank",
-            has360View: true,
-            images360: {
-                prefix: "images/360/sherman-firefly/",
-                suffix: ".webp"
-            },
-            detailedStats: {
-                hullHealth: 1200,
-                turretHealth: 1020,
-                engineHealth: 580,
-                trackHealth: 960,
-                apDamage: 850,
-                explosionDamage: 100,
-                explosionRadius: 1200,
-                reloadSpeed: 8.0,
-                maxSpeed: 22,
-                yawRate: 10.0,
-                pitchRate: 6.0,
-                pitchAngleMin: -5.0,
-                pitchAngleMax: 20.0,
-                gearSwitchTime: 0.9,
-                maxShellsAP: 40,
-                maxShellsHE: 25,
-                fuelCost: 600
-            }
-         },
-         {
-             name: "Churchill Mk III A.V.R.E.",
-             type: "SPA (Self Propelled Artillery)",
-             faction: "Great Britain",
-             armor: "TBD",
-             gun: "290mm Petard",
-             penetration: "TBD",
-             speed: "20 km/h",
-             crew: "3",
-             description: "Armoured Vehicle Royal Engineers variant of the Churchill tank.",
-             weakSpots: SPA_WEAK_SPOTS,
-             strengths: SPA_STRENGTHS,
-             icon: "fas fa-tank",
-             has360View: true,
-             images360: {
-                 prefix: "images/360/Churchill SPA/",
-                 suffix: ".webp"
-             },
-             detailedStats: {
-                 hullHealth: 1230,
-                 turretHealth: 1080,
-                 engineHealth: 580,
-                 trackHealth: 960,
-                 apDamage: 1300,
-                 explosionDamage: null,
-                 explosionRadius: null,
-                 reloadSpeed: 16,
-                 maxSpeed: 20,
-                 yawRate: 7,
-                 pitchRate: 1,
-                 pitchAngleMin: -5,
-                 pitchAngleMax: 20,
-                 gearSwitchTime: 1.1,
-                 maxShellsAP: 20,
-                 maxShellsHE: 50,
-                 fuelCost: null,
-                 munitionsCost: 360,
-                 maxShellsSmoke: 45,
-                 weaponRange: "250m"
-             }
-         },
-         {
-             name: "Bishop SP 25pdr",
-             type: "SPA (Self Propelled Artillery)",
-             faction: "Great Britain",
-             armor: "TBD",
-             gun: "25-pounder (87.6mm)",
-             penetration: "TBD",
-             speed: "21 km/h",
-             crew: "3",
-             description: "Self-propelled artillery mounting a 25-pounder field gun.",
-             weakSpots: SPA_WEAK_SPOTS,
-             strengths: SPA_STRENGTHS,
-             icon: "fas fa-tank",
-             has360View: true,
-             images360: {
-                 prefix: "images/360/Bishop SPA/",
-                 suffix: ".webp"
-             },
-             detailedStats: {
-                 hullHealth: 880,
-                 turretHealth: 850,
-                 engineHealth: 400,
-                 trackHealth: 710,
-                 apDamage: 950,
-                 explosionDamage: null,
-                 explosionRadius: null,
-                 reloadSpeed: 10,
-                 maxSpeed: 21,
-                 yawRate: 4,
-                 pitchRate: 1,
-                 pitchAngleMin: -5,
-                 pitchAngleMax: 15,
-                 gearSwitchTime: 0.8,
-                 maxShellsAP: 20,
-                 maxShellsHE: 50,
-                 fuelCost: null,
-                 munitionsCost: 280,
-                 maxShellsSmoke: 45,
-                 weaponRange: "800m"
-            }
-         }
-    ]
-};
+let tankDatabase = {};
+let vietnamTankDatabase = [];
+let tankU20Data = null;
+let tankDataReady = false;
+let tankDataLoadPromise = null;
 
-/** Vietnam playable gun tanks: same in-game banding for both (playtest notes). */
-const vietnamTankDatabase = [
-    {
-        name: 'M48 Patton',
-        type: 'Medium Tank',
-        faction: 'USA',
-        armor: 'TBD',
-        gun: '90 mm M41 rifled gun',
-        penetration: 'TBD',
-        speed: '28 km/h',
-        crew: '3',
-        description:
-            'US medium tank in Hell Let Loose Vietnam. Card art is a cropped front three-quarter shot (site asset), not an in-game render; armour values and matchup tables will be added when published.',
-        weakSpots: 'TBD. Detailed weak spots when armour values are published.',
-        strengths:
-            'Current playtest data matches the NVA T-54 on ammunition, listed speed, and reload time: a symmetric medium-tank envelope.',
-        icon: 'fas fa-tank',
-        has360View: false,
-        tankPhoto: 'images/armor/vietnam/M48_Patton_0.webp',
-        routeGame: 'vietnam',
-        skipCompare: true,
-        figureNumber: 1,
-        statsBlurb: 'Shell counts, max speed, and reload from Hell Let Loose Vietnam playtest notes; other fields TBD.',
-        detailedStats: {
-            maxShellsAP: 40,
-            maxShellsHE: 40,
-            maxShellsSmoke: 10,
-            reloadSpeed: 8,
-            maxSpeed: 28
+function loadTankData() {
+    if (tankDataReady) {
+        return Promise.resolve();
+    }
+    if (tankDataLoadPromise) {
+        return tankDataLoadPromise;
+    }
+    tankDataLoadPromise = Promise.all([
+        fetch('data/tanks-wwii.json').then(function (response) {
+            if (!response.ok) {
+                throw new Error('Failed to load tanks-wwii.json');
+            }
+            return response.json();
+        }),
+        fetch('data/tanks-u20-overrides.json').then(function (response) {
+            if (!response.ok) {
+                throw new Error('Failed to load tanks-u20-overrides.json');
+            }
+            return response.json();
+        }),
+        fetch('data/tanks-vietnam.json').then(function (response) {
+            if (!response.ok) {
+                throw new Error('Failed to load tanks-vietnam.json');
+            }
+            return response.json();
+        })
+    ])
+        .then(function (docs) {
+            const wwiiDoc = docs[0];
+            const u20Doc = docs[1];
+            const vietnamDoc = docs[2];
+            tankDatabase = wwiiDoc.tanks || {};
+            vietnamTankDatabase = vietnamDoc.tanks || [];
+            tankU20Data = u20Doc;
+            if (typeof window !== 'undefined') {
+                window.TANK_U20_DATA = u20Doc;
+            }
+            applyU20TankData();
+            tankDataReady = true;
+        })
+        .catch(function (err) {
+            tankDataLoadPromise = null;
+            console.error('Tank data load failed:', err);
+            throw err;
+        });
+    return tankDataLoadPromise;
+}
+
+function initializeTankDataViews() {
+    displayTanks('all', 'all');
+    displayVietnamTanks();
+    initializeTankulator();
+    initializePracticeTanks();
+}
+
+const HULL_PEN_GUN_CLASSES = [
+    { key: 'recon', label: 'Recon' },
+    { key: 'light', label: 'Light' },
+    { key: 'medium', label: 'Medium' },
+    { key: 'heavy', label: 'Heavy' }
+];
+
+const HULL_PEN_FACE_ORDER = [
+    { key: 'front', label: 'Front' },
+    { key: 'left', label: 'Left' },
+    { key: 'right', label: 'Right' },
+    { key: 'rear', label: 'Rear' }
+];
+
+function applyU20TankData() {
+    const u20 = typeof window !== 'undefined' ? window.TANK_U20_DATA : null;
+    if (!u20 || !u20.detailedStats) {
+        return;
+    }
+    Object.values(tankDatabase).forEach(factionTanks => {
+        factionTanks.forEach(tank => {
+            const patch = u20.detailedStats[tank.name];
+            if (!patch) {
+                return;
+            }
+            if (!tank.detailedStats) {
+                tank.detailedStats = {};
+            }
+            Object.assign(tank.detailedStats, patch);
+            if (typeof patch.maxSpeed === 'number') {
+                tank.speed = `${patch.maxSpeed} km/h`;
+            }
+        });
+    });
+}
+
+function cloneHullPenFace(face) {
+    return {
+        tier: face.tier,
+        pen: { ...face.pen },
+        note: face.note || ''
+    };
+}
+
+function getDefaultHullPenProfile(tank) {
+    const type = tank.type;
+    const allTrue = { recon: true, light: true, medium: true, heavy: true };
+    const medUp = { recon: false, light: false, medium: true, heavy: true };
+    const lightUp = { recon: false, light: true, medium: true, heavy: true };
+    const heavyFront = { recon: false, light: false, medium: false, heavy: true };
+    const heavySide = { recon: false, light: false, medium: true, heavy: true };
+
+    if (type === 'Heavy Tank') {
+        return {
+            front: { tier: 'heavy', pen: { ...heavyFront } },
+            left: { tier: 'medium', pen: { ...heavySide } },
+            right: { tier: 'medium', pen: { ...heavySide } },
+            rear: { tier: 'light', pen: { ...allTrue } }
+        };
+    }
+    if (type === 'Medium Tank') {
+        return {
+            front: { tier: 'medium', pen: { ...medUp } },
+            left: {
+                tier: 'light',
+                pen: { ...lightUp },
+                note: 'U20: side hull weakened — lights can pen.'
+            },
+            right: {
+                tier: 'light',
+                pen: { ...lightUp },
+                note: 'U20: side hull weakened — lights can pen.'
+            },
+            rear: { tier: 'light', pen: { ...allTrue } }
+        };
+    }
+    if (type === 'Light Tank') {
+        return {
+            front: {
+                tier: 'light',
+                pen: { ...lightUp },
+                note: 'U20: light front hull mutual pen (except T-70).'
+            },
+            left: { tier: 'light', pen: { ...lightUp } },
+            right: { tier: 'light', pen: { ...lightUp } },
+            rear: { tier: 'light', pen: { ...allTrue } }
+        };
+    }
+    if (type === 'Recon Vehicle') {
+        return {
+            front: { tier: 'light', pen: { ...lightUp } },
+            left: { tier: 'light', pen: { ...lightUp } },
+            right: { tier: 'light', pen: { ...lightUp } },
+            rear: { tier: 'light', pen: { ...allTrue } }
+        };
+    }
+    if (type === SPA_TANK_TYPE) {
+        return {
+            front: { tier: 'medium', pen: { ...medUp } },
+            left: { tier: 'light', pen: { ...lightUp } },
+            right: { tier: 'light', pen: { ...lightUp } },
+            rear: { tier: 'light', pen: { ...allTrue } }
+        };
+    }
+    return null;
+}
+
+function getHullPenetrationProfile(tank) {
+    const u20 = typeof window !== 'undefined' ? window.TANK_U20_DATA : null;
+    const defaults = getDefaultHullPenProfile(tank);
+    if (!defaults) {
+        return null;
+    }
+    const overrides = u20 && u20.hullPenOverrides ? u20.hullPenOverrides[tank.name] : null;
+    if (!overrides) {
+        return defaults;
+    }
+    const profile = {};
+    HULL_PEN_FACE_ORDER.forEach(({ key }) => {
+        if (overrides[key]) {
+            profile[key] = {
+                tier: overrides[key].tier || defaults[key].tier,
+                pen: { ...defaults[key].pen, ...overrides[key].pen },
+                note: overrides[key].note || defaults[key].note || ''
+            };
+        } else {
+            profile[key] = cloneHullPenFace(defaults[key]);
         }
+    });
+    return profile;
+}
+
+function getArmorTierMeta(tierKey) {
+    const u20 =
+        tankU20Data || (typeof window !== 'undefined' ? window.TANK_U20_DATA : null);
+    const tiers = u20 && u20.resistanceTiers ? u20.resistanceTiers : null;
+    if (!tiers || !tiers[tierKey]) {
+        return { label: 'Plate', percent: null };
+    }
+    return tiers[tierKey];
+}
+
+function getDisplayWeakSpots(tank) {
+    return (tank.weakSpots || '').trim();
+}
+
+function renderHullPenetrationSection(tank) {
+    if (tank.routeGame === 'vietnam') {
+        return '';
+    }
+    const profile = getHullPenetrationProfile(tank);
+    if (!profile) {
+        return '';
+    }
+
+    const matrixRows = HULL_PEN_FACE_ORDER.map(({ key, label }) => {
+        const face = profile[key];
+        const resistTier = getU20ResistTier(tank, key);
+        const tierMeta = getArmorTierMeta(resistTier);
+        const tierShort =
+            tierMeta.percent != null ? `${tierMeta.percent}%` : escapeHtml(tierMeta.label);
+        const cells = HULL_PEN_GUN_CLASSES.map(({ key: gunKey, label: gunLabel }) => {
+            const canPen = !!face.pen[gunKey];
+            return `<td class="hull-pen-matrix-cell ${canPen ? 'hull-pen-matrix-cell--yes' : 'hull-pen-matrix-cell--no'}" title="${
+                canPen
+                    ? `${gunLabel} tanks can penetrate this hull face with AP`
+                    : `${gunLabel} tanks cannot penetrate this hull face with AP`
+            }"><span class="hull-pen-matrix-mark" aria-hidden="true">${canPen ? '✓' : '—'}</span><span class="sr-only">${
+                canPen ? 'Can pen' : 'Cannot pen'
+            }</span></td>`;
+        }).join('');
+        return `
+            <tr>
+                <th scope="row" class="hull-pen-matrix-face">${escapeHtml(label)}</th>
+                <td class="hull-pen-matrix-tier">${tierShort}</td>
+                ${cells}
+            </tr>`;
+    }).join('');
+
+    const gunHeaders = HULL_PEN_GUN_CLASSES.map(
+        ({ label }) => `<th scope="col" class="hull-pen-matrix-gun">${escapeHtml(label)}</th>`
+    ).join('');
+
+    const faceNotes = HULL_PEN_FACE_ORDER.map(({ key, label }) => {
+        const note = profile[key] && profile[key].note ? String(profile[key].note).trim() : '';
+        if (!note) {
+            return '';
+        }
+        return `<li><strong>${escapeHtml(label)}:</strong> ${escapeHtml(note)}</li>`;
+    })
+        .filter(Boolean)
+        .join('');
+
+    const notesHtml = faceNotes
+        ? `<ul class="hull-pen-matrix-notes">${faceNotes}</ul>`
+        : '';
+
+    return `
+        <div class="tank-hull-pen-section">
+            <div class="hull-pen-head">
+                <h3><i class="fas fa-shield-alt" aria-hidden="true"></i> Hull penetration (U20)</h3>
+                <div class="hull-pen-legend" aria-hidden="true">
+                    <span class="hull-pen-legend-item hull-pen-legend-item--yes">✓ Can pen</span>
+                    <span class="hull-pen-legend-item hull-pen-legend-item--no">— Cannot pen</span>
+                </div>
+            </div>
+            <p class="hull-pen-intro">Columns are <strong>attacker tank type</strong> (Recon / Light / Medium / Heavy). Rows are hull faces. ✓ = can penetrate that face with AP.</p>
+            <div class="hull-pen-matrix-wrap">
+                <table class="hull-pen-matrix">
+                    <caption class="sr-only">Hull penetration by attacker tank class and hull face</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Hull face</th>
+                            <th scope="col">Resist</th>
+                            ${gunHeaders}
+                        </tr>
+                    </thead>
+                    <tbody>${matrixRows}</tbody>
+                </table>
+            </div>
+            ${notesHtml}
+        </div>`;
+}
+
+function getResistanceMultiplier(tierKey) {
+    const u20 = tankU20Data || (typeof window !== 'undefined' ? window.TANK_U20_DATA : null);
+    const pct = u20 && u20.resistanceTiers && u20.resistanceTiers[tierKey]
+        ? u20.resistanceTiers[tierKey].percent
+        : null;
+    if (typeof pct !== 'number') {
+        return 0.92;
+    }
+    return 1 - pct / 100;
+}
+
+/**
+ * U20 AP damage reduction by target class + hull face (Update 20 bands).
+ * Separate from hull pen profile tier, which describes armor thickness / who can pen.
+ * 32% heavy front · 16% medium front & heavy sides · 8% light front, medium sides, all rear.
+ */
+function getU20ResistTier(targetTank, face) {
+    if (!targetTank || targetTank.routeGame === 'vietnam') {
+        return 'light';
+    }
+    if (face === 'rear') {
+        return 'light';
+    }
+    const type = targetTank.type;
+    if (type === 'Heavy Tank') {
+        return face === 'front' ? 'heavy' : 'medium';
+    }
+    if (type === 'Medium Tank') {
+        return face === 'front' ? 'medium' : 'light';
+    }
+    if (type === SPA_TANK_TYPE) {
+        return face === 'front' ? 'medium' : 'light';
+    }
+    return 'light';
+}
+
+function getTankulatorModifier(targetTank, face, apDamage) {
+    const resistTier = getU20ResistTier(targetTank, face);
+    const modifier = getResistanceMultiplier(resistTier);
+    const tierMeta = getArmorTierMeta(resistTier);
+    const label =
+        tierMeta.percent != null ? `−${tierMeta.percent}% resist` : tierMeta.label;
+    const effectiveDamage =
+        Number.isFinite(Number(apDamage)) && Number(apDamage) > 0
+            ? Math.max(1, Math.round(Number(apDamage) * modifier))
+            : null;
+    return { tier: resistTier, modifier, label, effectiveDamage };
+}
+
+function getTankulatorClassKey(attackerTank) {
+    if (!attackerTank) return 'recon';
+    if (attackerTank.type === 'Heavy Tank') return 'heavy';
+    if (attackerTank.type === 'Medium Tank') return 'medium';
+    if (attackerTank.type === 'Light Tank') return 'light';
+    return 'recon';
+}
+
+const TANKULATOR_PRESETS = [
+    {
+        label: 'Tiger vs Jumbo (front)',
+        attacker: 'Tiger I',
+        target: 'Sherman 76 Jumbo',
+        face: 'front'
     },
     {
-        name: 'T-54',
-        type: 'Medium Tank',
-        faction: 'NVA',
-        armor: 'TBD',
-        gun: '100 mm D-10T rifled gun',
-        penetration: 'TBD',
-        speed: '28 km/h',
-        crew: '3',
-        description:
-            'NVA medium tank in Hell Let Loose Vietnam. Card art is a cropped front three-quarter shot (site asset), not an in-game render; armour values and matchup tables will be added when published.',
-        weakSpots: 'TBD. Detailed weak spots when armour values are published.',
-        strengths:
-            'Current playtest data matches the US M48 Patton on ammunition, listed speed, and reload time: a symmetric medium-tank envelope.',
-        icon: 'fas fa-tank',
-        has360View: false,
-        tankPhoto: 'images/armor/vietnam/T-54_0.webp',
-        routeGame: 'vietnam',
-        skipCompare: true,
-        figureNumber: 2,
-        statsBlurb: 'Shell counts, max speed, and reload from Hell Let Loose Vietnam playtest notes; other fields TBD.',
-        detailedStats: {
-            maxShellsAP: 40,
-            maxShellsHE: 40,
-            maxShellsSmoke: 10,
-            reloadSpeed: 8,
-            maxSpeed: 28
-        }
+        label: 'Panther vs Sherman',
+        attacker: 'Panther',
+        target: 'M4 Sherman',
+        face: 'front'
+    },
+    {
+        label: 'Firefly vs Panther',
+        attacker: 'Sherman Firefly',
+        target: 'Panther',
+        face: 'front'
+    },
+    {
+        label: 'IS-1 vs Tiger',
+        attacker: 'IS-1',
+        target: 'Tiger I',
+        face: 'front'
+    },
+    {
+        label: 'Tiger vs Panther (side)',
+        attacker: 'Tiger I',
+        target: 'Panther',
+        face: 'left'
+    },
+    {
+        label: 'Panzer IV vs Stuart',
+        attacker: 'Panzer IV',
+        target: 'M5A1 Stuart',
+        face: 'front'
     }
 ];
+
+function collectTankulatorTanks() {
+    return Object.values(tankDatabase)
+        .flat()
+        .filter(t => t.routeGame !== 'vietnam' && t.detailedStats && Number.isFinite(Number(t.detailedStats.apDamage)))
+        .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function applyTankulatorPreset(preset) {
+    const attackerSelect = document.getElementById('tankulatorAttacker');
+    const targetSelect = document.getElementById('tankulatorTarget');
+    const faceSelect = document.getElementById('tankulatorHitFace');
+    if (!attackerSelect || !targetSelect || !faceSelect || !preset) {
+        return;
+    }
+    if ([...attackerSelect.options].some(opt => opt.value === preset.attacker)) {
+        attackerSelect.value = preset.attacker;
+    }
+    if ([...targetSelect.options].some(opt => opt.value === preset.target)) {
+        targetSelect.value = preset.target;
+    }
+    if ([...faceSelect.options].some(opt => opt.value === preset.face)) {
+        faceSelect.value = preset.face;
+    }
+    runTankulatorSimulation();
+}
+
+function renderTankulatorPresets() {
+    const container = document.getElementById('tankulatorPresetList');
+    if (!container) {
+        return;
+    }
+    container.innerHTML = TANKULATOR_PRESETS.map(
+        (preset, index) =>
+            `<button type="button" class="tankulator-preset-btn" data-preset-index="${index}">${escapeHtml(
+                preset.label
+            )}</button>`
+    ).join('');
+    container.querySelectorAll('.tankulator-preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const index = Number.parseInt(btn.getAttribute('data-preset-index'), 10);
+            applyTankulatorPreset(TANKULATOR_PRESETS[index]);
+        });
+    });
+}
+
+function renderTankulatorOptions(selectEl, tanks) {
+    if (!selectEl) return;
+    selectEl.innerHTML = tanks
+        .map(t => `<option value="${escapeHtml(t.name)}">${escapeHtml(t.name)} (${escapeHtml(t.type)})</option>`)
+        .join('');
+}
+
+function simulateComponentPool(poolHp, effectiveDamage, canPen, maxShots) {
+    if (!Number.isFinite(poolHp) || poolHp <= 0) {
+        return null;
+    }
+
+    let remaining = poolHp;
+    let depletedOnShot = null;
+    const shotResults = [];
+
+    for (let i = 1; i <= maxShots; i += 1) {
+        const hpBefore = remaining;
+        const dealt = canPen && remaining > 0 ? Math.min(remaining, effectiveDamage) : 0;
+        remaining = Math.max(0, remaining - dealt);
+        if (remaining === 0 && depletedOnShot == null && canPen) {
+            depletedOnShot = i;
+        }
+        shotResults.push({ shot: i, dealt, remaining, hpBefore });
+    }
+
+    const shotsToDeplete = canPen && effectiveDamage > 0 ? Math.ceil(poolHp / effectiveDamage) : null;
+
+    return {
+        poolHp,
+        depletedOnShot,
+        shotsToDeplete,
+        shotResults
+    };
+}
+
+function simulateTankulatorFace(attacker, target, face, maxShots) {
+    const apDamage = Number(attacker.detailedStats?.apDamage || 0);
+    const hullHp = Number(target.detailedStats?.hullHealth || 0);
+    const turretHp = Number(target.detailedStats?.turretHealth || 0);
+    const engineHp = Number(target.detailedStats?.engineHealth || 0);
+    const classKey = getTankulatorClassKey(attacker);
+    const profile = getHullPenetrationProfile(target);
+    const faceData = profile && profile[face] ? profile[face] : null;
+    const canPen = !!(faceData && faceData.pen && faceData.pen[classKey]);
+    const modMeta = getTankulatorModifier(target, face, apDamage);
+    const effectiveDamage = canPen ? modMeta.effectiveDamage || 0 : 0;
+    const hullSim = simulateComponentPool(hullHp, effectiveDamage, canPen, maxShots);
+
+    return {
+        apDamage,
+        hullHp,
+        turretHp,
+        engineHp,
+        canPen,
+        modMeta,
+        effectiveDamage,
+        killedOnShot: hullSim ? hullSim.depletedOnShot : null,
+        shotsToKill: hullSim ? hullSim.shotsToDeplete : null,
+        shotResults: hullSim ? hullSim.shotResults : [],
+        turret:
+            turretHp > 0
+                ? simulateComponentPool(turretHp, effectiveDamage, canPen, maxShots)
+                : null,
+        engine:
+            face === 'rear' && engineHp > 0
+                ? simulateComponentPool(engineHp, effectiveDamage, canPen, maxShots)
+                : null
+    };
+}
+
+function renderTankulatorComponentBar(config) {
+    const {
+        scenarioLabel,
+        title,
+        poolHp,
+        componentSim,
+        canPen,
+        markerClass = '',
+        fillVariants = {},
+        legend
+    } = config;
+
+    if (!poolHp || !canPen || !componentSim) {
+        return '';
+    }
+
+    const markers = componentSim.shotResults
+        .filter(shot => shot.dealt > 0 || shot.shot === 1)
+        .map(shot => {
+            const pct = Math.max(0, Math.min(100, (shot.remaining / poolHp) * 100));
+            const isEvent = componentSim.depletedOnShot === shot.shot;
+            const markerType = isEvent ? markerClass : '';
+            return `<span class="tankulator-hp-marker ${markerType}" style="left: ${pct}%" title="After shot ${shot.shot}: ${shot.remaining} HP"><span class="tankulator-hp-marker-label">${shot.shot}</span></span>`;
+        })
+        .join('');
+
+    const finalRemaining = componentSim.shotResults[componentSim.shotResults.length - 1]?.remaining ?? poolHp;
+    const fillPct = Math.max(0, Math.min(100, (finalRemaining / poolHp) * 100));
+    const fillClass =
+        finalRemaining === 0
+            ? fillVariants.dead || 'tankulator-hp-fill--dead'
+            : fillPct <= 25
+              ? fillVariants.critical || 'tankulator-hp-fill--critical'
+              : fillVariants.alive || 'tankulator-hp-fill--alive';
+
+    return `
+        <div class="tankulator-hp-bar ${config.barClass || ''}">
+            <div class="tankulator-hp-bar-head">
+                <div class="tankulator-hp-bar-head-left">
+                    <span class="tankulator-hp-scenario">${escapeHtml(scenarioLabel)}</span>
+                    <span class="tankulator-hp-bar-title">${escapeHtml(title)}</span>
+                </div>
+                <span class="tankulator-hp-bar-value">${finalRemaining} / ${poolHp}</span>
+            </div>
+            <div class="tankulator-hp-track" role="img" aria-label="${escapeHtml(scenarioLabel)} ${escapeHtml(title)} after each shot">
+                <div class="tankulator-hp-fill ${fillClass}" style="width: ${fillPct}%"></div>
+                ${markers}
+            </div>
+            <p class="tankulator-hp-legend">${escapeHtml(legend)}</p>
+        </div>`;
+}
+
+function renderTankulatorComponentBars(result, face) {
+    const el = document.getElementById('tankulatorComponentBars');
+    if (!el) {
+        return;
+    }
+
+    if (!result.hullHp || !result.canPen) {
+        el.innerHTML = '';
+        el.hidden = true;
+        return;
+    }
+
+    el.hidden = false;
+
+    const bars = [
+        renderTankulatorComponentBar({
+            scenarioLabel: 'If hull shot',
+            title: 'Hull HP',
+            poolHp: result.hullHp,
+            componentSim: {
+                depletedOnShot: result.killedOnShot,
+                shotResults: result.shotResults
+            },
+            canPen: result.canPen,
+            markerClass: 'tankulator-hp-marker--kill',
+            legend:
+                result.killedOnShot != null
+                    ? `Hull destroyed on shot ${result.killedOnShot}.`
+                    : 'Depleting hull HP destroys the vehicle.'
+        }),
+        renderTankulatorComponentBar({
+            scenarioLabel: 'If turret shot',
+            title: 'Turret HP',
+            barClass: 'tankulator-hp-bar--turret',
+            poolHp: result.turretHp,
+            componentSim: result.turret,
+            canPen: result.canPen && !!result.turret,
+            markerClass: 'tankulator-hp-marker--knock',
+            fillVariants: {
+                alive: 'tankulator-hp-fill--turret',
+                critical: 'tankulator-hp-fill--turret-critical',
+                dead: 'tankulator-hp-fill--turret-dead'
+            },
+            legend:
+                result.turret?.depletedOnShot != null
+                    ? `Turret knocked on shot ${result.turret.depletedOnShot} — slower rotation, coax disabled. Tank survives until hull is destroyed.`
+                    : result.turret?.shotsToDeplete
+                      ? `~${result.turret.shotsToDeplete} AP hit${result.turret.shotsToDeplete === 1 ? '' : 's'} to knock turret. Does not destroy the tank.`
+                      : 'Knocking the turret disables rotation and coax — tank survives on hull HP.'
+        })
+    ];
+
+    if (face === 'rear' && result.engine) {
+        bars.push(
+            renderTankulatorComponentBar({
+                scenarioLabel: 'If rear hull shot',
+                title: 'Engine HP',
+                barClass: 'tankulator-hp-bar--engine',
+                poolHp: result.engineHp,
+                componentSim: result.engine,
+                canPen: result.canPen,
+                markerClass: 'tankulator-hp-marker--knock',
+                fillVariants: {
+                    alive: 'tankulator-hp-fill--engine',
+                    critical: 'tankulator-hp-fill--engine-critical',
+                    dead: 'tankulator-hp-fill--engine-dead'
+                },
+                legend:
+                    result.engine.depletedOnShot != null
+                        ? `Engine knocked on shot ${result.engine.depletedOnShot} — tank immobilized. Keep shooting hull to destroy the vehicle.`
+                        : result.engine.shotsToDeplete
+                          ? `~${result.engine.shotsToDeplete} rear AP hit${result.engine.shotsToDeplete === 1 ? '' : 's'} to knock engine. Immobilized ≠ destroyed — hull must reach 0.`
+                          : 'Rear hull hits also damage the engine. Engine knock immobilizes; hull must be destroyed to kill the tank.'
+            })
+        );
+    }
+
+    el.innerHTML = bars.filter(Boolean).join('');
+}
+
+function renderTankulatorStatus(result, maxShots, face) {
+    const el = document.getElementById('tankulatorStatus');
+    if (!el) {
+        return;
+    }
+
+    let statusClass = 'tankulator-status--survive';
+    let icon = 'fa-shield-alt';
+    let text = '';
+
+    if (!result.canPen) {
+        statusClass = 'tankulator-status--no-pen';
+        icon = 'fa-ban';
+        text = 'No penetration on selected hull face';
+    } else if (result.killedOnShot) {
+        statusClass = 'tankulator-status--kill';
+        icon = 'fa-skull-crossbones';
+        text = `Hull destroyed on shot ${result.killedOnShot}`;
+    } else {
+        icon = 'fa-heart';
+        const finalHp = result.shotResults[result.shotResults.length - 1]?.remaining ?? result.hullHp;
+        text = `Hull survives — ${finalHp} HP remaining after ${maxShots} shots`;
+    }
+
+    if (face === 'rear' && result.engine?.depletedOnShot) {
+        if (result.killedOnShot && result.engine.depletedOnShot <= result.killedOnShot) {
+            text += ` · Engine knocked on shot ${result.engine.depletedOnShot}`;
+        } else if (!result.killedOnShot) {
+            text += ` · Engine knocked on shot ${result.engine.depletedOnShot} (immobilized — hull not destroyed)`;
+        }
+    }
+
+    el.hidden = false;
+    el.className = `tankulator-status ${statusClass}`;
+    el.innerHTML = `<i class="fas ${icon}" aria-hidden="true"></i><span>${escapeHtml(text)}</span>`;
+}
+
+function renderTankulatorFaceOverview(attacker, target, currentFace, maxShots) {
+    const el = document.getElementById('tankulatorFaceOverview');
+    if (!el) {
+        return;
+    }
+
+    const rows = HULL_PEN_FACE_ORDER.map(({ key, label }) => {
+        const faceResult = simulateTankulatorFace(attacker, target, key, maxShots);
+        const isActive = key === currentFace;
+        let penCell = '';
+        let killCell = '';
+
+        if (!faceResult.canPen) {
+            penCell = '<span class="tankulator-face-pill tankulator-face-pill--no">No pen</span>';
+            killCell = '—';
+        } else if (faceResult.killedOnShot) {
+            penCell = '<span class="tankulator-face-pill tankulator-face-pill--yes">AP pens</span>';
+            killCell = `${faceResult.killedOnShot} shot${faceResult.killedOnShot === 1 ? '' : 's'}`;
+        } else if (faceResult.shotsToKill) {
+            penCell = '<span class="tankulator-face-pill tankulator-face-pill--yes">AP pens</span>';
+            killCell =
+                faceResult.shotsToKill > maxShots
+                    ? `${faceResult.shotsToKill}+ shots`
+                    : `${faceResult.shotsToKill} shots`;
+        } else {
+            penCell = '<span class="tankulator-face-pill tankulator-face-pill--yes">AP pens</span>';
+            killCell = '—';
+        }
+
+        return `
+            <tr class="${isActive ? 'tankulator-face-row--active' : ''}">
+                <th scope="row">
+                    <button type="button" class="tankulator-face-select" data-face="${key}" aria-pressed="${isActive}">
+                        ${escapeHtml(label)}
+                    </button>
+                </th>
+                <td>${penCell}</td>
+                <td>${killCell}</td>
+            </tr>`;
+    }).join('');
+
+    el.innerHTML = `
+        <h4 class="tankulator-face-overview-title">All hull faces</h4>
+        <p class="tankulator-face-overview-intro">Click a face to simulate it. Shows whether your attacker pens and how many AP shots to destroy the hull.</p>
+        <div class="tankulator-face-overview-wrap">
+            <table class="tankulator-face-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Face</th>
+                        <th scope="col">Penetration</th>
+                        <th scope="col">To destroy</th>
+                    </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </div>`;
+
+    el.querySelectorAll('.tankulator-face-select').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const faceSelect = document.getElementById('tankulatorHitFace');
+            if (!faceSelect) {
+                return;
+            }
+            faceSelect.value = btn.getAttribute('data-face');
+            runTankulatorSimulation();
+        });
+    });
+}
+
+function renderTankulatorShotRows(result, maxShots) {
+    if (!result.canPen) {
+        return `
+            <tr class="tankulator-row--no-pen">
+                <td colspan="5">No AP penetration on this hull face — no hull damage dealt.</td>
+            </tr>
+        `;
+    }
+
+    const rows = [];
+    for (let i = 0; i < result.shotResults.length; i += 1) {
+        const shot = result.shotResults[i];
+        const isKill = result.killedOnShot === shot.shot;
+        if (result.killedOnShot && shot.shot > result.killedOnShot) {
+            continue;
+        }
+
+        rows.push(`
+            <tr class="${isKill ? 'tankulator-row--kill' : ''}">
+                <td>Shot ${shot.shot}${isKill ? ' <span class="tankulator-kill-badge">Destroyed</span>' : ''}</td>
+                <td data-label="Base Damage">${result.apDamage}</td>
+                <td data-label="Modifier">${result.canPen ? `${result.modMeta.label} → ${result.effectiveDamage} dmg` : 'No pen'}</td>
+                <td data-label="Damage Dealt">${shot.dealt}</td>
+                <td data-label="Remaining HP">${shot.remaining}</td>
+            </tr>
+        `);
+    }
+
+    if (result.killedOnShot && result.killedOnShot < maxShots) {
+        rows.push(`
+            <tr class="tankulator-row--skipped">
+                <td colspan="5">Shots ${result.killedOnShot + 1}–${maxShots}: target already destroyed</td>
+            </tr>
+        `);
+    }
+
+    return rows.join('');
+}
+
+function swapTankulatorMatchup() {
+    const attackerSelect = document.getElementById('tankulatorAttacker');
+    const targetSelect = document.getElementById('tankulatorTarget');
+    if (!attackerSelect || !targetSelect) {
+        return;
+    }
+    const prevAttacker = attackerSelect.value;
+    attackerSelect.value = targetSelect.value;
+    targetSelect.value = prevAttacker;
+    runTankulatorSimulation();
+}
+
+function runTankulatorSimulation() {
+    const attackerSelect = document.getElementById('tankulatorAttacker');
+    const targetSelect = document.getElementById('tankulatorTarget');
+    const faceSelect = document.getElementById('tankulatorHitFace');
+    const shotInput = document.getElementById('tankulatorShots');
+    const summary = document.getElementById('tankulatorSummary');
+    const body = document.getElementById('tankulatorResultsBody');
+    const statusEl = document.getElementById('tankulatorStatus');
+    const componentBarsEl = document.getElementById('tankulatorComponentBars');
+    const faceOverviewEl = document.getElementById('tankulatorFaceOverview');
+
+    if (!attackerSelect || !targetSelect || !faceSelect || !shotInput || !summary || !body) {
+        return;
+    }
+
+    const attacker = findTankByName(attackerSelect.value);
+    const target = findTankByName(targetSelect.value);
+    const face = faceSelect.value;
+    const maxShots = Math.max(1, Math.min(12, Number.parseInt(shotInput.value, 10) || 1));
+
+    if (!attacker || !target) {
+        summary.innerHTML = '<p>Select both attacker and target tanks.</p>';
+        body.innerHTML = '';
+        if (statusEl) {
+            statusEl.hidden = true;
+            statusEl.innerHTML = '';
+        }
+        if (componentBarsEl) {
+            componentBarsEl.hidden = true;
+            componentBarsEl.innerHTML = '';
+        }
+        if (faceOverviewEl) {
+            faceOverviewEl.innerHTML = '';
+        }
+        return;
+    }
+
+    const result = simulateTankulatorFace(attacker, target, face, maxShots);
+
+    body.innerHTML = renderTankulatorShotRows(result, maxShots);
+    renderTankulatorStatus(result, maxShots, face);
+    renderTankulatorComponentBars(result, face);
+    renderTankulatorFaceOverview(attacker, target, face, maxShots);
+
+    const resultDetail = !result.canPen
+        ? 'Cannot penetrate this hull face'
+        : result.killedOnShot
+          ? `Hull destroyed in ${result.killedOnShot} shot${result.killedOnShot === 1 ? '' : 's'}`
+          : result.shotsToKill
+            ? `Needs ${result.shotsToKill}+ AP hits to destroy hull (simulated ${maxShots})`
+            : `No hull kill in ${maxShots} simulated shots`;
+
+    const componentDetail = [];
+    if (result.turret?.shotsToDeplete) {
+        componentDetail.push(`Turret knock ~${result.turret.shotsToDeplete} hit${result.turret.shotsToDeplete === 1 ? '' : 's'} if turret shot`);
+    }
+    if (face === 'rear' && result.engine?.shotsToDeplete) {
+        componentDetail.push(`Engine knock ~${result.engine.shotsToDeplete} rear hit${result.engine.shotsToDeplete === 1 ? '' : 's'}`);
+    }
+
+    summary.innerHTML = `
+        <p><strong>${escapeHtml(attacker.name)}</strong> vs <strong>${escapeHtml(target.name)}</strong> · ${escapeHtml(face[0].toUpperCase() + face.slice(1))} hull</p>
+        <p>AP ${result.apDamage} · Hull ${result.hullHp} · Turret ${result.turretHp || '—'}${face === 'rear' && result.engineHp ? ` · Engine ${result.engineHp}` : ''} · ${result.effectiveDamage} dmg/shot · ${escapeHtml(resultDetail)}</p>
+        ${componentDetail.length ? `<p class="tankulator-summary-components">${escapeHtml(componentDetail.join(' · '))}</p>` : ''}
+    `;
+}
+
+let tankulatorInitialized = false;
+
+function initializeTankulator() {
+    const attackerSelect = document.getElementById('tankulatorAttacker');
+    const targetSelect = document.getElementById('tankulatorTarget');
+    const runBtn = document.getElementById('tankulatorRunBtn');
+    if (!attackerSelect || !targetSelect || !runBtn) {
+        return;
+    }
+
+    const tanks = collectTankulatorTanks();
+    if (!tanks.length) {
+        return;
+    }
+
+    renderTankulatorOptions(attackerSelect, tanks);
+    renderTankulatorOptions(targetSelect, tanks);
+    renderTankulatorPresets();
+
+    if (!tankulatorInitialized) {
+        runBtn.addEventListener('click', runTankulatorSimulation);
+        document.getElementById('tankulatorHitFace')?.addEventListener('change', runTankulatorSimulation);
+        document.getElementById('tankulatorShots')?.addEventListener('input', runTankulatorSimulation);
+        document.getElementById('tankulatorSwapBtn')?.addEventListener('click', swapTankulatorMatchup);
+        attackerSelect.addEventListener('change', runTankulatorSimulation);
+        targetSelect.addEventListener('change', runTankulatorSimulation);
+        tankulatorInitialized = true;
+    }
+
+    attackerSelect.value = 'Tiger I';
+    targetSelect.value = 'Sherman 76 Jumbo';
+    runTankulatorSimulation();
+}
 
             // Penetration Data - Updated to match all tanks in Hell Let Loose
             const penetrationData = [
@@ -3255,7 +2983,7 @@ function createTankCard(tank) {
     const statsIntroHtml =
         tank.statsBlurb && String(tank.statsBlurb).trim()
             ? escapeHtml(tank.statsBlurb)
-            : 'Comprehensive stats from game data (U19.1):';
+            : 'Comprehensive stats from game data (U20):';
     const vh = tank.vehicleHistory || TANK_VEHICLE_HISTORY[tank.name];
     const vhDes = vh && vh.designation ? escapeHtml(vh.designation) : '';
     const vhSvc = vh && vh.service ? escapeHtml(vh.service) : '';
@@ -3455,12 +3183,13 @@ function createTankCard(tank) {
                             </div>
                         </div>
                     </div>
+                    ${renderHullPenetrationSection(tank)}
                     <div class="tank-analysis-split">
                         <div class="tank-combat-analysis-section">
                             <h3><i class="fas fa-crosshairs"></i> Combat analysis</h3>
                             <div class="analysis-panel-main">
                             <p><strong>Strengths:</strong> ${tank.strengths}</p>
-                            <p><strong>Weak spots:</strong> ${tank.weakSpots}</p>
+                            <p><strong>Weak spots:</strong> ${escapeHtml(getDisplayWeakSpots(tank))}</p>
                             <p><strong>In-game description:</strong> ${tank.description}</p>
                             </div>
                             ${analysisFooter}
@@ -4651,12 +4380,18 @@ function expandTankByName(tankName) {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Display initial content
-    displayTanks('all', 'all');
-    displayVietnamTanks();
-    initializePracticeTanks();
+    loadTankData()
+        .then(() => {
+            initializeTankDataViews();
+        })
+        .catch(() => {
+            const tankGrid = document.getElementById('tankGrid');
+            if (tankGrid) {
+                tankGrid.innerHTML =
+                    '<p class="tank-data-error">Could not load tank data. Please refresh the page.</p>';
+            }
+        });
     // Don't start practice immediately - let user select difficulty first
-    
     // Initialize background switching functionality
     initializeBackgroundSwitching();
     

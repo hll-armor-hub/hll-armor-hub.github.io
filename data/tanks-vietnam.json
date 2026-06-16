@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "tanks": [
+    {
+      "name": "M48 Patton",
+      "type": "Medium Tank",
+      "faction": "USA",
+      "armor": "TBD",
+      "gun": "90 mm M41 rifled gun",
+      "penetration": "TBD",
+      "speed": "28 km/h",
+      "crew": "3",
+      "description": "US medium tank in Hell Let Loose Vietnam. Card art is a cropped front three-quarter shot (site asset), not an in-game render; armour values and matchup tables will be added when published.",
+      "weakSpots": "TBD. Detailed weak spots when armour values are published.",
+      "strengths": "Current playtest data matches the NVA T-54 on ammunition, listed speed, and reload time: a symmetric medium-tank envelope.",
+      "icon": "fas fa-tank",
+      "has360View": false,
+      "tankPhoto": "images/armor/vietnam/M48_Patton_0.webp",
+      "routeGame": "vietnam",
+      "skipCompare": true,
+      "figureNumber": 1,
+      "statsBlurb": "Shell counts, max speed, and reload from Hell Let Loose Vietnam playtest notes; other fields TBD.",
+      "detailedStats": {
+        "maxShellsAP": 40,
+        "maxShellsHE": 40,
+        "maxShellsSmoke": 10,
+        "reloadSpeed": 8,
+        "maxSpeed": 28
+      }
+    },
+    {
+      "name": "T-54",
+      "type": "Medium Tank",
+      "faction": "NVA",
+      "armor": "TBD",
+      "gun": "100 mm D-10T rifled gun",
+      "penetration": "TBD",
+      "speed": "28 km/h",
+      "crew": "3",
+      "description": "NVA medium tank in Hell Let Loose Vietnam. Card art is a cropped front three-quarter shot (site asset), not an in-game render; armour values and matchup tables will be added when published.",
+      "weakSpots": "TBD. Detailed weak spots when armour values are published.",
+      "strengths": "Current playtest data matches the US M48 Patton on ammunition, listed speed, and reload time: a symmetric medium-tank envelope.",
+      "icon": "fas fa-tank",
+      "has360View": false,
+      "tankPhoto": "images/armor/vietnam/T-54_0.webp",
+      "routeGame": "vietnam",
+      "skipCompare": true,
+      "figureNumber": 2,
+      "statsBlurb": "Shell counts, max speed, and reload from Hell Let Loose Vietnam playtest notes; other fields TBD.",
+      "detailedStats": {
+        "maxShellsAP": 40,
+        "maxShellsHE": 40,
+        "maxShellsSmoke": 10,
+        "reloadSpeed": 8,
+        "maxSpeed": 28
+      }
+    }
+  ]
+}

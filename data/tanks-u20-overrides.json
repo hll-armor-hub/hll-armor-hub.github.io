@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 1,
+  "version": "U20",
+  "resistanceTiers": {
+    "heavy": {
+      "label": "Heavy plate",
+      "percent": 32
+    },
+    "medium": {
+      "label": "Medium plate",
+      "percent": 16
+    },
+    "light": {
+      "label": "Light plate",
+      "percent": 8
+    }
+  },
+  "detailedStats": {
+    "M4 Sherman": {
+      "hullHealth": 860,
+      "turretHealth": 750,
+      "engineHealth": 400,
+      "trackHealth": 670,
+      "apDamage": 690,
+      "maxShellsAP": 45,
+      "maxShellsHE": 45,
+      "fuelCost": 190,
+      "maxSpeed": 29
+    },
+    "Sherman 75 Jumbo": {
+      "hullHealth": 1230,
+      "turretHealth": 1020,
+      "engineHealth": 550,
+      "trackHealth": 910,
+      "apDamage": 710,
+      "maxShellsAP": 25,
+      "maxShellsHE": 65,
+      "fuelCost": 410,
+      "maxSpeed": 20,
+      "yawRate": 12
+    },
+    "Sherman 76 Jumbo": {
+      "hullHealth": 1260,
+      "turretHealth": 1070,
+      "engineHealth": 550,
+      "trackHealth": 910,
+      "apDamage": 800,
+      "maxShellsAP": 55,
+      "maxShellsHE": 30,
+      "fuelCost": 600,
+      "maxSpeed": 20,
+      "yawRate": 10
+    },
+    "M5A1 Stuart": {
+      "hullHealth": 580,
+      "turretHealth": 510,
+      "engineHealth": 270,
+      "trackHealth": 460,
+      "apDamage": 425,
+      "fuelCost": 110,
+      "maxSpeed": 34
+    },
+    "Greyhound": {
+      "hullHealth": 370,
+      "turretHealth": 330,
+      "engineHealth": 180,
+      "trackHealth": 190,
+      "apDamage": 220,
+      "fuelCost": 70,
+      "maxSpeed": 40,
+      "yawRate": 16
+    },
+    "Sherman M4A3 105": {
+      "hullHealth": 900,
+      "turretHealth": 790,
+      "engineHealth": 420,
+      "trackHealth": 710,
+      "apDamage": 1025,
+      "munitionsCost": 280
+    },
+    "Panzer IV": {
+      "hullHealth": 840,
+      "turretHealth": 770,
+      "engineHealth": 390,
+      "trackHealth": 660,
+      "apDamage": 730,
+      "maxShellsAP": 45,
+      "maxShellsHE": 35
+    },
+    "Panther": {
+      "hullHealth": 980,
+      "turretHealth": 900,
+      "engineHealth": 500,
+      "trackHealth": 780,
+      "apDamage": 820,
+      "maxShellsAP": 45,
+      "maxShellsHE": 30,
+      "fuelCost": 450,
+      "yawRate": 10
+    },
+    "Tiger I": {
+      "hullHealth": 1220,
+      "maxShellsHE": 35,
+      "fuelCost": 620
+    },
+    "Luchs": {
+      "hullHealth": 570,
+      "turretHealth": 500,
+      "engineHealth": 270,
+      "trackHealth": 440,
+      "fuelCost": 90
+    },
+    "Puma": {
+      "hullHealth": 370,
+      "turretHealth": 330,
+      "engineHealth": 180,
+      "trackHealth": 190,
+      "fuelCost": 90
+    },
+    "Sturmpanzer IV Brummbar": {
+      "hullHealth": 910,
+      "turretHealth": 830,
+      "engineHealth": 430,
+      "trackHealth": 710,
+      "apDamage": 1025
+    },
+    "Panzer III Ausf.N": {
+      "hullHealth": 910,
+      "turretHealth": 830,
+      "engineHealth": 430,
+      "trackHealth": 710,
+      "apDamage": 690
+    },
+    "T-34": {
+      "hullHealth": 830,
+      "turretHealth": 780,
+      "engineHealth": 390,
+      "trackHealth": 650,
+      "apDamage": 710,
+      "fuelCost": 190
+    },
+    "IS-1": {
+      "hullHealth": 1250,
+      "turretHealth": 1080,
+      "engineHealth": 580,
+      "trackHealth": 960,
+      "apDamage": 830,
+      "maxShellsHE": 45,
+      "fuelCost": 620
+    },
+    "T-70": {
+      "hullHealth": 560,
+      "turretHealth": 490,
+      "engineHealth": 260,
+      "trackHealth": 440,
+      "apDamage": 420,
+      "fuelCost": 120,
+      "yawRate": 12
+    },
+    "BA-10 Scout Car": {
+      "hullHealth": 380,
+      "turretHealth": 340,
+      "engineHealth": 180,
+      "trackHealth": 200,
+      "fuelCost": 80,
+      "maxSpeed": 35
+    },
+    "KV-2": {
+      "hullHealth": 890,
+      "apDamage": 1025
+    },
+    "Daimler": {
+      "hullHealth": 360,
+      "turretHealth": 320,
+      "engineHealth": 170,
+      "trackHealth": 190,
+      "fuelCost": 70
+    },
+    "M3 Stuart 'Honey'": {
+      "hullHealth": 580,
+      "turretHealth": 510,
+      "engineHealth": 270,
+      "trackHealth": 460,
+      "apDamage": 425,
+      "fuelCost": 110
+    },
+    "Tetrarch": {
+      "hullHealth": 550,
+      "turretHealth": 480,
+      "engineHealth": 260,
+      "trackHealth": 430,
+      "fuelCost": 100
+    },
+    "Cromwell": {
+      "hullHealth": 850,
+      "turretHealth": 740,
+      "engineHealth": 400,
+      "trackHealth": 670,
+      "apDamage": 710
+    },
+    "Crusader Mk III": {
+      "hullHealth": 820,
+      "turretHealth": 720,
+      "engineHealth": 390,
+      "trackHealth": 640,
+      "apDamage": 690,
+      "maxShellsAP": 35,
+      "maxShellsHE": 45,
+      "fuelCost": 180,
+      "yawRate": 18
+    },
+    "Churchill Mk III": {
+      "hullHealth": 1250,
+      "trackHealth": 1000,
+      "engineHealth": 590,
+      "apDamage": 790,
+      "maxShellsHE": 50
+    },
+    "Churchill Mk.VII": {
+      "hullHealth": 1230,
+      "turretHealth": 1080,
+      "trackHealth": 1010,
+      "engineHealth": 610,
+      "apDamage": 830,
+      "maxShellsAP": 35,
+      "maxShellsHE": 50,
+      "fuelCost": 610,
+      "yawRate": 9
+    },
+    "Sherman Firefly": {
+      "hullHealth": 900,
+      "turretHealth": 830,
+      "engineHealth": 460,
+      "trackHealth": 710,
+      "apDamage": 920,
+      "fuelCost": 560,
+      "yawRate": 12
+    },
+    "Churchill Mk III A.V.R.E.": {
+      "hullHealth": 1230
+    },
+    "Bishop SP 25pdr": {
+      "apDamage": 1025,
+      "munitionsCost": 240
+    }
+  },
+  "hullPenOverrides": {
+    "Panther": {
+      "front": {
+        "tier": "heavy",
+        "pen": {
+          "recon": false,
+          "light": false,
+          "medium": false,
+          "heavy": true
+        },
+        "note": "Top hull deck weakened in U20 — lights can pen deck hits."
+      },
+      "left": {
+        "tier": "heavy",
+        "pen": {
+          "recon": false,
+          "light": false,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "Upper side: medium+ only. Lower plate behind tracks: light+."
+      },
+      "right": {
+        "tier": "heavy",
+        "pen": {
+          "recon": false,
+          "light": false,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "Upper side: medium+ only. Lower plate behind tracks: light+."
+      },
+      "rear": {
+        "tier": "light",
+        "pen": {
+          "recon": true,
+          "light": true,
+          "medium": true,
+          "heavy": true
+        }
+      }
+    },
+    "Sherman Firefly": {
+      "front": {
+        "tier": "medium",
+        "pen": {
+          "recon": false,
+          "light": false,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "U20: front hull weakened — medium+ can pen."
+      },
+      "left": {
+        "tier": "light",
+        "pen": {
+          "recon": false,
+          "light": true,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "U20: side & top hull weakened — light+."
+      },
+      "right": {
+        "tier": "light",
+        "pen": {
+          "recon": false,
+          "light": true,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "U20: side & top hull weakened — light+."
+      },
+      "rear": {
+        "tier": "light",
+        "pen": {
+          "recon": true,
+          "light": true,
+          "medium": true,
+          "heavy": true
+        }
+      }
+    },
+    "T-70": {
+      "front": {
+        "tier": "medium",
+        "pen": {
+          "recon": false,
+          "light": false,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "T-70 front hull not reduced in U20 (unlike other lights)."
+      }
+    },
+    "Sturmpanzer IV Brummbar": {
+      "front": {
+        "tier": "medium",
+        "pen": {
+          "recon": false,
+          "light": false,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "Lower front hull section — medium+."
+      },
+      "left": {
+        "tier": "light",
+        "pen": {
+          "recon": false,
+          "light": true,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "U20: side hull weakened — light+."
+      },
+      "right": {
+        "tier": "light",
+        "pen": {
+          "recon": false,
+          "light": true,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "U20: side hull weakened — light+."
+      }
+    },
+    "Panzer III Ausf.N": {
+      "left": {
+        "tier": "light",
+        "pen": {
+          "recon": false,
+          "light": true,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "U20: side hull weakened — light+."
+      },
+      "right": {
+        "tier": "light",
+        "pen": {
+          "recon": false,
+          "light": true,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "U20: side hull weakened — light+."
+      }
+    },
+    "Bishop SP 25pdr": {
+      "left": {
+        "tier": "heavy",
+        "pen": {
+          "recon": false,
+          "light": false,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "U20: side hull strengthened — medium+ only."
+      },
+      "right": {
+        "tier": "heavy",
+        "pen": {
+          "recon": false,
+          "light": false,
+          "medium": true,
+          "heavy": true
+        },
+        "note": "U20: side hull strengthened — medium+ only."
+      }
+    }
+  }
+}

@@ -164,6 +164,7 @@
                 <li><a href="#armor/wwii/overview" class="nav-link active">Overview</a></li>
                 <li><a href="#armor/wwii/tactics" class="nav-link">Getting Started</a></li>
                 <li><a href="#armor/wwii/tanks" class="nav-link">Tanks</a></li>
+                <li><a href="#armor/wwii/tankulator" class="nav-link">Tankulator</a></li>
                 <li><a href="#armor/wwii/ranging" class="nav-link" title="Calculators &amp; Sights: artillery, SPA, tank scopes">Calcs &amp; Sights</a></li>
                 <li><a href="#armor/wwii/identification" class="nav-link">Identification</a></li>
                 <li><a href="#armor/wwii/community" class="nav-link">Community</a></li>
@@ -195,25 +196,33 @@
                 <div class="section-header">
                     <h2>Armor Overview</h2>
                     <p>Master the art of tank warfare in Hell Let Loose</p>
+                    <p class="update-info">Update 20 Values are now up to date!</p>
                 </div>
                 <div class="overview-grid">
                     <div class="overview-card featured-card" onclick="showSection('tanks')">
-                         <div class="card-background-image"></div>
-                         <i></i>
+                        <div class="card-background-image"></div>
+                        <i></i>
                         <h3>Tanks</h3>
-                        <p>Complete database of all tanks with detailed stats, armor values, and combat analysis (U19.1).</p>
+                        <p>Complete database of all tanks with detailed stats, armor values, and combat analysis (U20).</p>
                     </div>
-                     <div class="overview-card tactics-card" onclick="showSection('tactics')">
-                         <div class="card-background-image"></div>
-                         <i class="fas fa-graduation-cap"></i>
-                         <h3>Getting Started</h3>
-                         <p>Essential fundamentals and beginner-friendly tips for new tank crews.</p>
-                     </div>
+                    <div class="overview-card tactics-card" onclick="showSection('tactics')">
+                        <div class="card-background-image"></div>
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Getting Started</h3>
+                        <p>Essential fundamentals and beginner-friendly tips for new tank crews.</p>
+                    </div>
                     <div class="overview-card identification-card" onclick="showSection('identification')">
                         <div class="card-background-image"></div>
                         <i class="fas fa-crosshairs"></i>
                         <h3>Identification</h3>
                         <p>Learn to identify enemy tanks at a glance and understand their capabilities.</p>
+                    </div>
+                    <div class="overview-card tankulator-card" onclick="showSection('tankulator')">
+                        <div class="card-background-image"></div>
+                        <i class="fas fa-calculator"></i>
+                        <h3>Tankulator</h3>
+                        <p>Tank vs. Tank calculator built for pro tankers.</p>
+                        <p class="tankulator-card-credit">Created in partnership with <a href="https://www.youtube.com/@wixstreams" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">WIX</a></p>
                     </div>
                     <div class="overview-card ranging-card" onclick="showSection('ranging')">
                         <div class="card-background-image"></div>
@@ -221,36 +230,37 @@
                         <h3>Calculators &amp; sights</h3>
                         <p>Artillery and SPA mill calculators, plus armor sight practice for distance reads.</p>
                     </div>
-                <div class="overview-card community-card" onclick="showSection('community')">
+                    <div class="overview-card community-card" onclick="showSection('community')">
                         <div class="card-background-image"></div>
-                    <i class="fas fa-users"></i>
-                    <h3>Community</h3>
-                    <p>Connect with other tank crews, share strategies, and join the community.</p>
+                        <i class="fas fa-users"></i>
+                        <h3>Community</h3>
+                        <p>Connect with other tank crews, share strategies, and join the community.</p>
                     </div>
                 </div>
                 
-                <!-- Featured Video: Update 19.1 Arty and SPA -->
+                <!-- Featured Video: Update 20 armor rework -->
                 <div class="featured-video-section">
                     <div class="featured-video-header">
                         <div class="featured-badge">
                             <i class="fas fa-star"></i>
                             <span>FEATURED</span>
                         </div>
-                        <h3><i class="fas fa-cog"></i> Update 19.1 Arty and SPA changes</h3>
-                        <p>Latest changes to artillery and self-propelled artillery in Hell Let Loose</p>
+                        <h3><i class="fas fa-shield-alt"></i> Update 20 — massive armor rework</h3>
+                        <p>Hell Let Loose Update 20 armor changes explained by a top tanker</p>
                     </div>
                     <div class="featured-video-container">
                         <div class="video-wrapper">
                             <iframe 
-                                src="https://www.youtube.com/embed/oQSCjqd7xNU?start=124&enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
-                                title="Update 19.1 Arty and SPA changes - Hell Let Loose"
+                                src="https://www.youtube.com/embed/mh1lbHyKQzI?start=282&enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
+                                title="Hell Let Loose Update 20 - Massive Armor Rework Explained by a Top Tanker"
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                             </iframe>
                         </div>
                         <div class="featured-video-footer">
-                            <a href="https://www.youtube.com/watch?v=oQSCjqd7xNU&t=124s" target="_blank"
+                            <a href="https://www.youtube.com/watch?v=mh1lbHyKQzI&t=282s" target="_blank"
+                               rel="noopener noreferrer"
                                class="featured-video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
@@ -263,20 +273,21 @@
                     <div class="video-grid">
                         <div class="video-card">
                             <div class="video-header">
-                            <h3><i class="fas fa-crosshairs"></i> New tanker tries our tactics</h3>
-                            <p>Putting Armor Hub fundamentals into practice in a real match</p>
+                            <h3><i class="fas fa-shield-alt"></i> Churchill A.V.R.E — strongest tank in the game</h3>
+                            <p>Deep dive on the Churchill Mk III A.V.R.E and why it dominates in the right hands</p>
                             </div>
                             <div class="video-wrapper">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/n-6WFHqrDdA?start=31&enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
-                                    title="New tanker tries our tactics - Hell Let Loose"
+                                    src="https://www.youtube.com/embed/ltDPlcPjuD8?start=1&enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
+                                    title="Churchill A.V.R.E the strongest tank in the game - Hell Let Loose"
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen>
                                 </iframe>
                             </div>
                         <div class="video-footer">
-                            <a href="https://www.youtube.com/watch?v=n-6WFHqrDdA&t=31s" target="_blank"
+                            <a href="https://www.youtube.com/watch?v=ltDPlcPjuD8&t=1s" target="_blank"
+                               rel="noopener noreferrer"
                                class="video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
@@ -285,20 +296,21 @@
                         
                         <div class="video-card">
                             <div class="video-header">
-                            <h3><i class="fas fa-shield-alt"></i> World War 2 armor in real life</h3>
-                            <p>Historical armored vehicles and how they compare to the game</p>
+                            <h3><i class="fas fa-tank"></i> First matches on Update 20 tank rework</h3>
+                            <p>Early live gameplay with the U20 armor and tank balance changes</p>
                     </div>
                             <div class="video-wrapper">
                                 <iframe 
-                                    src="https://www.youtube.com/embed/K_KEHNqqwAg?enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
-                                    title="World War 2 armor in real life"
+                                    src="https://www.youtube.com/embed/nrDLLtcZPe0?start=156&enablejsapi=1&origin=https://www.youtube.com&rel=0&modestbranding=1"
+                                    title="First matches on Update 20 tank rework - Hell Let Loose"
                                     frameborder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowfullscreen>
                                 </iframe>
                 </div>
                         <div class="video-footer">
-                            <a href="https://www.youtube.com/watch?v=K_KEHNqqwAg" target="_blank"
+                            <a href="https://www.youtube.com/watch?v=nrDLLtcZPe0&t=156s" target="_blank"
+                               rel="noopener noreferrer"
                                class="video-link">
                                 <i class="fab fa-youtube"></i> Watch on YouTube
                             </a>
@@ -314,8 +326,69 @@
                 <div class="section-header">
                     <h2>Tank Database</h2>
                     <p>Complete guide to all tanks in Hell Let Loose</p>
-                <p class="update-info">Data as of U19.1</p>
+                <p class="update-info">Data as of U20 (stats: T17 sheet; hull pen: official changelog)</p>
                 </div>
+
+                <details class="u20-armor-reference">
+                    <summary><i class="fas fa-shield-alt"></i> U20 armor — what changed &amp; shots-to-kill</summary>
+                    <div class="u20-armor-reference-body">
+                        <div class="u20-highlights">
+                            <h4><i class="fas fa-bolt" aria-hidden="true"></i> Big armor changes in Update 20</h4>
+                            <ul>
+                                <li><strong>Plate resistance is new.</strong> Penetrating AP no longer deals full listed damage — hull plates cut it by <strong>32%</strong> (heavy front), <strong>16%</strong> (medium front &amp; heavy sides), or <strong>8%</strong> (medium sides, light fronts, all rears). Use <a href="#armor/wwii/tankulator">Tankulator</a> to see effective damage per shot.</li>
+                                <li><strong>Medium side hulls weakened.</strong> Light tanks can penetrate medium-tank side hull with AP — side-scrape angles matter more.</li>
+                                <li><strong>Light-tank fronts opened up.</strong> Most lights now have mutual front-hull pen at range. <strong>T-70</strong> is the exception (front stays medium-tier).</li>
+                                <li><strong>Sherman Firefly hull softened.</strong> Front hull is medium-tier (medium+ AP pens); sides/top are light-tier (light+ AP pens).</li>
+                                <li><strong>Panther side armor reworked.</strong> Upper side plates need medium+ AP; lower plate behind the tracks can be penned by lights. Top deck hits can be penned by lights.</li>
+                                <li><strong>Bishop SPA sides toughened.</strong> Side hull now needs medium+ AP (was easier to punch through pre-U20).</li>
+                                <li><strong>Rocket launchers vs hull.</strong> All faction launchers now deal <strong>420</strong> damage with <strong>2</strong> rockets (was 330 / 3). One-shot recon; several medium fronts (e.g. Sherman, T-34) are pen-able.</li>
+                                <li><strong>Anti-Tank emplacements buffed.</strong> Deployable 57&nbsp;mm guns now deal <strong>535</strong> damage per hit (was 400).</li>
+                                <li><strong>Full tank stat pass.</strong> Hull HP, AP damage, shell counts, and fuel/munitions costs were rebalanced across the WWII roster.</li>
+                            </ul>
+                        </div>
+
+                        <h4 class="u20-reference-subhead">Resistance tiers (AP damage reduction)</h4>
+                        <p>Plates reduce incoming AP after a pen: <strong>32%</strong> heavy front · <strong>16%</strong> medium front &amp; heavy sides · <strong>8%</strong> medium sides, light fronts, all rears. Expand any tank card for per-face penetration and resist %.</p>
+
+                        <h4 class="u20-reference-subhead">Typical hull shots-to-kill (after resistance)</h4>
+                        <div class="u20-shots-grid">
+                            <div class="u20-shots-card">
+                                <h4>Heavy AP</h4>
+                                <ul>
+                                    <li>vs Heavy: 3 front / 2 side &amp; rear</li>
+                                    <li>vs Medium &amp; below: 2 shots</li>
+                                    <li>Sherman Firefly vs Heavy front: 2 shots</li>
+                                </ul>
+                            </div>
+                            <div class="u20-shots-card">
+                                <h4>Medium AP</h4>
+                                <ul>
+                                    <li>vs Heavy: 3 side / 2 rear</li>
+                                    <li>vs Medium &amp; below: 2 shots</li>
+                                </ul>
+                            </div>
+                            <div class="u20-shots-card">
+                                <h4>Light AP</h4>
+                                <ul>
+                                    <li>vs Heavy: 3–4 rear only</li>
+                                    <li>vs Medium: 3 shots</li>
+                                    <li>vs Light/Recon: 1–2 shots</li>
+                                </ul>
+                            </div>
+                            <div class="u20-shots-card">
+                                <h4>Recon AP</h4>
+                                <ul>
+                                    <li>vs Heavy: 5–6 rear</li>
+                                    <li>vs Medium: 4–6 shots</li>
+                                    <li>vs Light/Recon: 2–3 shots</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="u20-armor-reference-source">
+                            <a href="https://www.hellletloose.com/blog/update-20-changelog" target="_blank" rel="noopener noreferrer">Official Update 20 changelog</a>
+                        </p>
+                    </div>
+                </details>
                 
                 <!-- Faction Filter with Compact Type Filter -->
                 <div class="faction-filter">
@@ -404,6 +477,68 @@
                 <!-- Tank Grid -->
                 <div class="tank-grid" id="tankGrid">
                     <!-- Tanks will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Section id=ranging: calculators & sights (URL unchanged for bookmarks) -->
+            <section id="tankulator" class="section">
+                <div class="section-header">
+                    <h2>Tankulator</h2>
+                    <p>Simulate AP shots by attacker, hit face, and U20 armor resistance — hull, turret, and engine HP.</p>
+                </div>
+                <div class="tankulator-wrap">
+                    <div class="tankulator-presets">
+                        <span class="tankulator-presets-label">Quick matchups</span>
+                        <div class="tankulator-preset-list" id="tankulatorPresetList"></div>
+                    </div>
+                    <div class="tankulator-controls">
+                        <div class="input-group">
+                            <label for="tankulatorAttacker">Attacker</label>
+                            <select id="tankulatorAttacker"></select>
+                        </div>
+                        <div class="input-group">
+                            <label for="tankulatorTarget">Target</label>
+                            <select id="tankulatorTarget"></select>
+                        </div>
+                        <button type="button" class="tankulator-swap-btn" id="tankulatorSwapBtn" title="Swap attacker and target">
+                            <i class="fas fa-exchange-alt" aria-hidden="true"></i> Swap matchup
+                        </button>
+                        <div class="input-group">
+                            <label for="tankulatorHitFace">Hit Face (Hull)</label>
+                            <select id="tankulatorHitFace">
+                                <option value="front">Front</option>
+                                <option value="left">Left</option>
+                                <option value="right">Right</option>
+                                <option value="rear">Rear</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="tankulatorShots">Simulate Shots</label>
+                            <input type="number" id="tankulatorShots" min="1" max="12" value="1">
+                        </div>
+                        <button class="calculate-btn" id="tankulatorRunBtn">Run Simulation</button>
+                    </div>
+                    <div class="tankulator-output">
+                        <div id="tankulatorSummary" class="tankulator-summary"></div>
+                        <div id="tankulatorStatus" class="tankulator-status" hidden></div>
+                        <div id="tankulatorComponentBars" class="tankulator-component-bars"></div>
+                        <div id="tankulatorFaceOverview" class="tankulator-face-overview"></div>
+                        <div class="tankulator-table-wrap">
+                            <p class="tankulator-table-caption">If hull shot — per-shot breakdown</p>
+                            <table class="tankulator-table">
+                                <thead>
+                                    <tr>
+                                        <th>Shot</th>
+                                        <th>Base Damage</th>
+                                        <th>Modifier</th>
+                                        <th>Damage Dealt</th>
+                                        <th>Remaining HP</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tankulatorResultsBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -864,59 +999,79 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="strategy-card" style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.08), rgba(255, 152, 0, 0.03)); border: 1px solid rgba(255, 152, 0, 0.2);">
-                            <h4><i class="fas fa-crosshairs"></i> Infantry Weapon Damage (vs Tanks) - Update 19 Changes</h4>
-                            <p>Know your enemy's firepower to assess threats and prioritize targets:</p>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem;">
-                                <div style="padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 152, 0, 0.15);">
-                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                                        <i class="fas fa-rocket" style="color: var(--accent); font-size: 1.2rem;"></i>
-                                        <strong style="color: var(--accent);">Rocket Launchers</strong>
+                        <div class="strategy-card u20-at-threats-card">
+                            <h4><i class="fas fa-crosshairs"></i> Infantry anti-tank threats <span class="u20-badge">Update 20</span></h4>
+                            <p>Know what infantry can bring against your hull in U20 — rocket counts, emplaced AT gun damage, and where launchers can pen after the armor rework.</p>
+                            <div class="u20-at-threats-grid">
+                                <div class="u20-at-threat-panel u20-at-threat-panel--high">
+                                    <div class="u20-at-threat-head">
+                                        <i class="fas fa-rocket" aria-hidden="true"></i>
+                                        <strong>Rocket launchers</strong>
+                                        <span class="u20-at-weapon-note">Bazooka · Panzerschreck · PIAT</span>
                                     </div>
-                                    <p style="margin: 0 0 0.75rem 0; color: var(--text-secondary); font-size: 0.95rem;">Approx. <strong style="color: #fff;">330 damage</strong> per hit</p>
-                                    <div style="background: rgba(220, 53, 69, 0.15); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #dc3545; margin-bottom: 0.75rem;">
-                                        <p style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #ff6b6b;">High Threat - Shots to Kill:</p>
-                                        <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; font-size: 0.85rem; line-height: 1.6;">
-                                            <li><strong>4 shots</strong> to kill Heavy tanks</li>
-                                            <li><strong>3 shots</strong> to kill Medium tanks</li>
-                                            <li><strong>2 shots</strong> to kill Light tanks</li>
+                                    <p class="u20-at-stat"><strong>420</strong> damage per hit <span class="u20-at-delta">(was 330)</span> · <strong>2</strong> rockets carried <span class="u20-at-delta">(was 3)</span></p>
+                                    <div class="u20-at-threat-box u20-at-threat-box--high">
+                                        <p class="u20-at-threat-box-title">High threat — hull shots to destroy</p>
+                                        <ul>
+                                            <li><strong>1 shot</strong> — Recon vehicles <span class="u20-at-delta">(new in U20)</span></li>
+                                            <li><strong>2 shots</strong> — Light tanks</li>
+                                            <li><strong>3 shots</strong> — Medium &amp; Heavy tanks</li>
                                         </ul>
                                     </div>
-                                    <p style="margin: 0; font-size: 0.85rem; opacity: 0.9; line-height: 1.5;"><strong>Note:</strong> New in U19- All launchers now do the same damage and can pen the front of all mediums. The bazooka has been brought in line with other launchers.</p>
+                                    <p class="u20-at-note"><strong>U20 penetration:</strong> Launchers can now pen the <strong>front hull</strong> of several mediums (e.g. M4 Sherman, T-34) — not just sides and rear. Heavies still demand side/rear angles or multiple hits. Each shot hurts more, but AT infantry only gets two rockets — finish the job or they are empty.</p>
                                 </div>
-                                <div style="padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 152, 0, 0.15);">
-                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                                        <i class="fas fa-bullseye" style="color: var(--accent); font-size: 1.2rem;"></i>
-                                        <strong style="color: var(--accent);">AT Rifles</strong>
+                                <div class="u20-at-threat-panel u20-at-threat-panel--high">
+                                    <div class="u20-at-threat-head">
+                                        <i class="fas fa-chess-rook" aria-hidden="true"></i>
+                                        <strong>Anti-tank guns</strong>
+                                        <span class="u20-at-weapon-note">Deployed 57 mm emplacements (all factions)</span>
                                     </div>
-                                    <p style="margin: 0 0 0.75rem 0; color: var(--text-secondary); font-size: 0.95rem;">Approx. <strong style="color: #fff;">64 damage</strong> per hit</p>
-                                    <div style="background: rgba(255, 193, 7, 0.15); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #ffc107;">
-                                        <p style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #ffd54f;">Medium Threat - Shots to Kill:</p>
-                                        <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; font-size: 0.85rem; line-height: 1.6;">
-                                            <li><strong>19 shots</strong> for Heavy tanks</li>
-                                            <li><strong>15 shots</strong> for Cromwell Mk.IV</li>
-                                            <li><strong>14 shots</strong> for Medium tanks</li>
-                                            <li><strong>10 shots</strong> for Light tanks</li>
-                                        </ul>
-                                         </div>
-                                     </div>
-                                <div style="padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 152, 0, 0.15);">
-                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
-                                        <i class="fas fa-bomb" style="color: var(--accent); font-size: 1.2rem;"></i>
-                                        <strong style="color: var(--accent);">Anti-Tank Mines</strong>
-                                    </div>
-                                    <p style="margin: 0 0 0.75rem 0; color: var(--text-secondary); font-size: 0.95rem;">Approx. <strong style="color: #fff;">600 damage</strong> per hit</p>
-                                    <div style="background: rgba(220, 53, 69, 0.15); padding: 0.75rem; border-radius: 6px; border-left: 3px solid #dc3545;">
-                                        <p style="margin: 0; font-size: 0.9rem; font-weight: 600; color: #ff6b6b;">Extreme Threat - Shots to Kill:</p>
-                                        <ul style="margin: 0.5rem 0 0 0; padding-left: 1.2rem; font-size: 0.85rem; line-height: 1.6;">
-                                            <li><strong>2 shots</strong> to kill Heavy tanks</li>
-                                            <li><strong>2 shots</strong> to kill Medium tanks</li>
-                                            <li><strong>1 shot</strong> to kill Light tanks</li>
+                                    <p class="u20-at-stat"><strong>535</strong> damage per hit <span class="u20-at-delta">(was 400)</span></p>
+                                    <div class="u20-at-threat-box u20-at-threat-box--high">
+                                        <p class="u20-at-threat-box-title">High threat — hull shots to destroy</p>
+                                        <ul>
+                                            <li><strong>3 shots</strong> — Heavy tanks <span class="u20-at-delta">(was 4)</span></li>
+                                            <li><strong>2 shots</strong> — Medium tanks <span class="u20-at-delta">(was 3)</span></li>
+                                            <li><strong>2 shots</strong> — Light tanks</li>
                                         </ul>
                                     </div>
+                                    <p class="u20-at-note"><strong>U20 change:</strong> Emplaced AT guns hit substantially harder. A gun line that covers a lane is more dangerous than pre-U20 — clear AT emplacements before pushing or expect faster hull bursts.</p>
                                 </div>
-                                 </div>
-                             </div>
+                                <div class="u20-at-threat-panel u20-at-threat-panel--medium">
+                                    <div class="u20-at-threat-head">
+                                        <i class="fas fa-bullseye" aria-hidden="true"></i>
+                                        <strong>AT rifles</strong>
+                                        <span class="u20-at-weapon-note">PTRS-41 · Boys · etc.</span>
+                                    </div>
+                                    <p class="u20-at-stat">Approx. <strong>64</strong> damage per hit <span class="u20-at-delta">(unchanged in U20)</span></p>
+                                    <div class="u20-at-threat-box u20-at-threat-box--medium">
+                                        <p class="u20-at-threat-box-title">Medium threat — harassment &amp; chip damage</p>
+                                        <ul>
+                                            <li><strong>19 shots</strong> — Heavy tanks</li>
+                                            <li><strong>14 shots</strong> — Medium tanks</li>
+                                            <li><strong>10 shots</strong> — Light tanks</li>
+                                        </ul>
+                                    </div>
+                                    <p class="u20-at-note">Still a nuisance for tracks and modules, not a primary kill tool vs full-health armor. U20 hull HP rebalance may shift exact counts slightly — treat as harassment.</p>
+                                </div>
+                                <div class="u20-at-threat-panel u20-at-threat-panel--high">
+                                    <div class="u20-at-threat-head">
+                                        <i class="fas fa-bomb" aria-hidden="true"></i>
+                                        <strong>Anti-tank mines</strong>
+                                    </div>
+                                    <p class="u20-at-stat">Approx. <strong>600</strong> damage per hit</p>
+                                    <div class="u20-at-threat-box u20-at-threat-box--high">
+                                        <p class="u20-at-threat-box-title">Extreme threat</p>
+                                        <ul>
+                                            <li><strong>2 shots</strong> — Heavy &amp; Medium tanks</li>
+                                            <li><strong>1 shot</strong> — Light tanks</li>
+                                        </ul>
+                                    </div>
+                                    <p class="u20-at-note">Watch road shoulders and choke points — unchanged role, still deletes careless pushes.</p>
+                                </div>
+                            </div>
+                            <p class="u20-at-footer">Tank vs tank damage uses the new <strong>armor resistance</strong> system (32 / 16 / 8% plate reduction). See the <a href="#armor/wwii/tanks">Tanks</a> tab reference panel or <a href="#armor/wwii/tankulator">Tankulator</a> for AP matchups. <a href="https://www.hellletloose.com/blog/update-20-changelog" target="_blank" rel="noopener noreferrer">Official U20 changelog</a></p>
+                        </div>
                              <div class="strategy-card">
                                  <h4>Always Peek Cover</h4>
                             <p>Position your tank so only the turret is visible (Hull down), or peek cover to where you
@@ -1821,37 +1976,13 @@
                     </a>
                 </div>
                 <div class="coming-soon-banner infantry-vietnam-overview-banner">
-                    <h2 class="infantry-vietnam-overview-kicker">Vietnam Launches June 18th, 2026</h2>
+                    <h2 class="infantry-vietnam-overview-kicker">Vietnam Launches August 13th, 2026</h2>
                     <p class="vietnam-tagline infantry-vietnam-overview-tagline">Experience the next chapter of Hell Let Loose with Vietnam-era infantry combat</p>
                     <div class="vietnam-launch-widgets">
-                        <div class="vietnam-launch-widget vietnam-launch-widget--beta" data-launch-target="2026-05-29T00:00:00Z">
+                        <div class="vietnam-launch-widget vietnam-launch-widget--release" data-launch-target="2026-08-13T00:00:00Z">
                             <div class="vietnam-launch-widget__top">
-                                <span class="vietnam-launch-widget__eyebrow">OPEN BETA // MAY 29, 2026</span>
-                                <span class="vietnam-launch-widget__doc-no">HLL-VN-BETA-0529</span>
-                            </div>
-                            <div class="vietnam-launch-widget__countdown" hidden>
-                                <div class="vietnam-launch-widget__unit">
-                                    <span class="vietnam-launch-widget__value">00</span>
-                                    <span class="vietnam-launch-widget__label">DAYS</span>
-                                </div>
-                                <div class="vietnam-launch-widget__unit">
-                                    <span class="vietnam-launch-widget__value">00</span>
-                                    <span class="vietnam-launch-widget__label">HRS</span>
-                                </div>
-                                <div class="vietnam-launch-widget__unit">
-                                    <span class="vietnam-launch-widget__value">00</span>
-                                    <span class="vietnam-launch-widget__label">MIN</span>
-                                </div>
-                                <div class="vietnam-launch-widget__unit">
-                                    <span class="vietnam-launch-widget__value">00</span>
-                                    <span class="vietnam-launch-widget__label">SEC</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="vietnam-launch-widget vietnam-launch-widget--release" data-launch-target="2026-06-18T00:00:00Z">
-                            <div class="vietnam-launch-widget__top">
-                                <span class="vietnam-launch-widget__eyebrow">FULL RELEASE // JUNE 18, 2026</span>
-                                <span class="vietnam-launch-widget__doc-no">HLL-VN-2026-0618</span>
+                                <span class="vietnam-launch-widget__eyebrow">FULL RELEASE // AUGUST 13, 2026</span>
+                                <span class="vietnam-launch-widget__doc-no">HLL-VN-2026-0813</span>
                             </div>
                             <div class="vietnam-launch-widget__countdown" hidden>
                                 <div class="vietnam-launch-widget__unit">
@@ -2052,38 +2183,14 @@
                     <div class="vietnam-content">
                         <h1 class="vietnam-title">ARMOR HUB</h1>
                         <div class="coming-soon-banner">
-                            <h2>Vietnam Launches June 18th, 2026</h2>
+                            <h2>Vietnam Launches August 13th, 2026</h2>
                             <p class="vietnam-tagline">Experience the next chapter of Hell Let Loose with Vietnam-era armored warfare</p>
 
                             <div class="vietnam-launch-widgets">
-                                <div class="vietnam-launch-widget vietnam-launch-widget--beta" data-launch-target="2026-05-29T00:00:00Z">
+                                <div class="vietnam-launch-widget vietnam-launch-widget--release" data-launch-target="2026-08-13T00:00:00Z">
                                     <div class="vietnam-launch-widget__top">
-                                        <span class="vietnam-launch-widget__eyebrow">OPEN BETA // MAY 29, 2026</span>
-                                        <span class="vietnam-launch-widget__doc-no">HLL-VN-BETA-0529</span>
-                                    </div>
-                                    <div class="vietnam-launch-widget__countdown" hidden>
-                                        <div class="vietnam-launch-widget__unit">
-                                            <span class="vietnam-launch-widget__value">00</span>
-                                            <span class="vietnam-launch-widget__label">DAYS</span>
-                                        </div>
-                                        <div class="vietnam-launch-widget__unit">
-                                            <span class="vietnam-launch-widget__value">00</span>
-                                            <span class="vietnam-launch-widget__label">HRS</span>
-                                        </div>
-                                        <div class="vietnam-launch-widget__unit">
-                                            <span class="vietnam-launch-widget__value">00</span>
-                                            <span class="vietnam-launch-widget__label">MIN</span>
-                                        </div>
-                                        <div class="vietnam-launch-widget__unit">
-                                            <span class="vietnam-launch-widget__value">00</span>
-                                            <span class="vietnam-launch-widget__label">SEC</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="vietnam-launch-widget vietnam-launch-widget--release" data-launch-target="2026-06-18T00:00:00Z">
-                                    <div class="vietnam-launch-widget__top">
-                                        <span class="vietnam-launch-widget__eyebrow">FULL RELEASE // JUNE 18, 2026</span>
-                                        <span class="vietnam-launch-widget__doc-no">HLL-VN-2026-0618</span>
+                                        <span class="vietnam-launch-widget__eyebrow">FULL RELEASE // AUGUST 13, 2026</span>
+                                        <span class="vietnam-launch-widget__doc-no">HLL-VN-2026-0813</span>
                                     </div>
                                     <div class="vietnam-launch-widget__countdown" hidden>
                                         <div class="vietnam-launch-widget__unit">
@@ -2194,12 +2301,11 @@
             <div class="footer-content">
                 <div class="footer-whats-new" role="region" aria-labelledby="footer-whats-new-heading">
                     <h4 id="footer-whats-new-heading" class="footer-whats-new-heading">What&rsquo;s new</h4>
-                    <p class="footer-whats-new-lead">Full update to expand everything featured in the Hell Let Loose Vietnam Closed Beta.</p>
+                    <p class="footer-whats-new-lead">Update 20 armor tools and new Tankulator features.</p>
                     <ul>
-                        <li><strong><a href="#infantry/vietnam/overview">Vietnam Infantry overview</a>:</strong> Getting started, Squads &amp; equipment, Maps, and Mortar Calculator cards now sit above the COMING IN 2026 teaser so the main links stay up front.</li>
-                        <li><strong><a href="#infantry/vietnam/getting-started">Getting started &amp; What&rsquo;s new</a>:</strong> Vietnam-specific guide blocks plus a dedicated What&rsquo;s new strip (swimming, helicopters, map &amp; HQs, NVA tunnels) in one panel.</li>
-                        <li><strong><a href="#infantry/vietnam/squads">Squads &amp; equipment</a>:</strong> Browseable closed-beta roster by section and role, with kit-focused rows for every battlefield unit.</li>
-                        <li><strong><a href="#infantry/vietnam/mortar-squad">Vietnam Mortar Calculator</a>:</strong> Mill solutions for US and NVA mortars on the same 100&ndash;450&nbsp;m band as the in-game tables, with saveable results.</li>
+                        <li><strong><a href="#armor/wwii/tankulator">Tankulator</a>:</strong> New AP shot simulator with U20 armor resistance, quick matchup presets, swap button, and an all-faces penetration overview.</li>
+                        <li><strong><a href="#armor/wwii/tankulator">Tankulator — component HP</a>:</strong> Hull, turret, and rear-engine bars labeled <em>If hull shot</em> / <em>If turret shot</em> so knock vs destroy is clear (turret knock and engine immobilize without killing the tank).</li>
+                        <li><strong><a href="#armor/wwii/tactics">Getting Started — U20 anti-tank</a>:</strong> Rocket launcher and emplaced AT gun damage updated for Update 20 (420 dmg / 2 rockets, 535 dmg AT guns).</li>
                     </ul>
                 </div>
                 <p>&copy; 2026 Hell Let Loose Armor Hub. All rights reserved.</p>

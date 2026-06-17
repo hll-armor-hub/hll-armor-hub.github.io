@@ -1782,7 +1782,7 @@ body.light-mode::before {
     color: var(--accent);
 }
 
-/* Infantry Hub — Draft Haus tips */
+/* Infantry Hub — AHO community tips */
 .infantry-tips-hub {
     max-width: min(1100px, 100%);
     margin: 0 auto 2.5rem;
@@ -2042,7 +2042,7 @@ body.light-mode::before {
     }
 }
 
-/* Draft Haus tips — mobile: comfortable taps, readable type, spacing between cards */
+/* AHO community tips — mobile: comfortable taps, readable type, spacing between cards */
 @media (max-width: 640px) {
     .infantry-tips-hub {
         padding-left: max(1rem, env(safe-area-inset-left, 0px));
@@ -9491,8 +9491,27 @@ body.theme-unhinged .expand-close-btn:hover {
     background: rgba(var(--accent-rgb), 0.15);
 }
 
+.landing-discord-footnote {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.landing-discord-footnote a {
+    color: #5865F2;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.landing-discord-footnote a:hover {
+    text-decoration: underline;
+}
+
 /* Community Banner Styles */
 .community-banner {
+    display: block;
     background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(255, 215, 0, 0.08) 100%);
     border: 3px solid #FFD700;
     border-radius: 15px;
@@ -9502,6 +9521,8 @@ body.theme-unhinged .expand-close-btn:hover {
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+    text-decoration: none;
+    color: inherit;
 }
 
 .light-mode .community-banner {
@@ -9536,35 +9557,20 @@ body.theme-unhinged .expand-close-btn:hover {
     flex-shrink: 0;
 }
 
-.draft-haus-logo-banner {
+.aho-logo-banner {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, #FFD700 0%, #FFA500 100%),
-    linear-gradient(45deg, #000000 0%, #333333 100%);
-    position: relative;
+    object-fit: cover;
     border: 4px solid #FFD700;
     box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
     transition: all 0.3s ease;
     animation: logoGlow 3s ease-in-out infinite;
 }
 
-.community-banner:hover .draft-haus-logo-banner {
+.community-banner:hover .aho-logo-banner {
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
-}
-
-.draft-haus-logo-banner::before {
-    content: 'DH';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    font-size: 2rem;
-    color: #000000;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .banner-text {
@@ -9611,6 +9617,7 @@ body.theme-unhinged .expand-close-btn:hover {
     font-weight: 600;
     border: 2px solid rgba(255, 215, 0, 0.3);
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .community-banner:hover .banner-badge {
@@ -9696,13 +9703,11 @@ body.theme-unhinged .expand-close-btn:hover {
     align-items: center;
 }
 
-.draft-haus-logo-large {
+.aho-logo-large {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle at center, #FFD700 0%, #FFA500 100%),
-    linear-gradient(45deg, #000000 0%, #333333 100%);
-    position: relative;
+    object-fit: cover;
     border: 5px solid #FFD700;
     box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
     animation: logoGlow 3s ease-in-out infinite;
@@ -9715,19 +9720,6 @@ body.theme-unhinged .expand-close-btn:hover {
     50% {
         box-shadow: 0 8px 35px rgba(255, 215, 0, 0.6);
     }
-}
-
-.draft-haus-logo-large::before {
-    content: 'DH';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    font-size: 3rem;
-    color: #000000;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
 }
 
 .community-info h3 {
@@ -15524,5 +15516,214 @@ body.vietnam-jungle-theme.theme-unhinged .theme-dropdown {
     body.vietnam-jungle-theme #vietnam .vietnam-tanks-cta .vietnam-tanks-cta-link {
         width: 100%;
         text-align: center;
+    }
+}
+
+/* WWII tank database — expanded card mobile layout */
+@media (max-width: 768px) {
+    #tanks .tank-grid {
+        gap: 1rem !important;
+        padding: 0 0.5rem !important;
+        grid-template-columns: 1fr !important;
+    }
+
+    #tanks .tank-card {
+        padding: 0 !important;
+        margin-bottom: 0.75rem !important;
+        overflow: hidden;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #tanks .tank-card.expanded {
+        margin-bottom: 1.25rem !important;
+    }
+
+    #tanks .tank-image {
+        height: auto !important;
+        max-height: none;
+        min-height: 0;
+    }
+
+    #tanks .tank-card:not(.expanded) .tank-image {
+        max-height: min(38vw, 200px);
+        min-height: 140px;
+    }
+
+    #tanks .tank-card.expanded .tank-image,
+    #tanks .tank-card.expanded .tank-360-viewer,
+    #tanks .tank-card.expanded .tank-360-container {
+        height: auto !important;
+        max-height: min(44vh, 260px) !important;
+        min-height: 155px !important;
+        aspect-ratio: 16 / 9;
+    }
+
+    #tanks .tank-info {
+        padding: 0.85rem 2.75rem 0.85rem 0.85rem !important;
+    }
+
+    #tanks .tank-card.expanded .tank-details {
+        padding: 0.7rem 0.65rem 1rem !important;
+        overflow-x: hidden;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    #tanks .tank-details-header {
+        margin-bottom: 0.65rem;
+        padding-bottom: 0.5rem;
+    }
+
+    #tanks .tank-details-header h2 {
+        font-size: 1rem !important;
+        line-height: 1.35;
+        letter-spacing: 0.04em;
+        word-break: break-word;
+    }
+
+    #tanks .tank-details-content {
+        max-width: 100%;
+        gap: 0.7rem;
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
+
+    #tanks .tank-details-content > .tank-stats-section,
+    #tanks .tank-details-content > .tank-hull-pen-section,
+    #tanks .tank-details-content > .tank-analysis-split {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    #tanks .stats-grid-compact {
+        grid-template-columns: 1fr !important;
+        gap: 0.5rem;
+    }
+
+    #tanks .stat-group {
+        padding: 0.6rem 0.65rem;
+    }
+
+    #tanks .stat-group h4 {
+        font-size: 0.7rem;
+        margin-bottom: 0.4rem;
+    }
+
+    #tanks .stat-pair {
+        font-size: 0.75rem;
+        gap: 0.35rem;
+        align-items: flex-start;
+    }
+
+    #tanks .stat-pair .stat-label {
+        flex: 1 1 55%;
+        min-width: 0;
+        line-height: 1.35;
+    }
+
+    #tanks .stat-pair .stat-value {
+        min-width: 0 !important;
+        flex: 0 1 auto;
+        text-align: right;
+        font-size: 0.85rem;
+        word-break: break-word;
+    }
+
+    #tanks .tank-stats-section,
+    #tanks .tank-hull-pen-section {
+        padding: 0.7rem 0.65rem !important;
+    }
+
+    #tanks .tank-hull-pen-section h3 {
+        font-size: 0.85rem;
+    }
+
+    #tanks .hull-pen-matrix-wrap {
+        margin-left: -0.1rem;
+        margin-right: -0.1rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #tanks .hull-pen-matrix {
+        min-width: min(100%, 300px);
+        font-size: 0.72rem;
+    }
+
+    #tanks .tank-analysis-split {
+        grid-template-columns: 1fr !important;
+        gap: 0.65rem;
+    }
+
+    #tanks .tank-combat-analysis-section,
+    #tanks .tank-vehicle-history-section {
+        padding: 0.7rem 0.65rem !important;
+    }
+
+    #tanks .tank-stats {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.5rem !important;
+        margin-bottom: 0.65rem !important;
+    }
+
+    #tanks .tank-name {
+        font-size: 1.15rem !important;
+        margin-bottom: 0.5rem !important;
+        padding-right: 0.25rem;
+        line-height: 1.25;
+        word-break: break-word;
+    }
+
+    #tanks .tank-description {
+        font-size: 0.85rem;
+        line-height: 1.45;
+    }
+
+    #tanks .tank-expand-btn {
+        top: 0.6rem !important;
+        right: 0.6rem !important;
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1rem !important;
+    }
+
+    #tanks .tank-card.expanded .background-selector {
+        top: 0.55rem;
+        left: 0.55rem;
+    }
+
+    #tanks .tank-card.expanded .bg-btn {
+        min-width: 36px;
+        min-height: 36px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    #tanks .tank-card.expanded .tank-image,
+    #tanks .tank-card.expanded .tank-360-viewer,
+    #tanks .tank-card.expanded .tank-360-container {
+        max-height: min(40vh, 220px) !important;
+        min-height: 140px !important;
+    }
+
+    #tanks .tank-details-header h2 {
+        font-size: 0.92rem !important;
+    }
+
+    #tanks .stat-pair {
+        font-size: 0.72rem;
+    }
+
+    #tanks .hull-pen-matrix {
+        font-size: 0.68rem;
+    }
+
+    #tanks .tank-stats {
+        grid-template-columns: 1fr !important;
     }
 }

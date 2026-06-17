@@ -1,4 +1,6 @@
 _site/
 .idea/
 /.vs
+node_modules/
+package-lock.json
 Gemfile.lock

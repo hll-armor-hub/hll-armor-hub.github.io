@@ -30,11 +30,11 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 900,
-          "turretHealth": 790,
-          "engineHealth": 420,
-          "trackHealth": 710,
-          "apDamage": 650,
+          "hullHealth": 860,
+          "turretHealth": 750,
+          "engineHealth": 500,
+          "trackHealth": 670,
+          "apDamage": 690,
           "explosionDamage": 100,
           "explosionRadius": 1000,
           "reloadSpeed": 6,
@@ -44,9 +44,9 @@
           "pitchAngleMin": -10,
           "pitchAngleMax": 25,
           "gearSwitchTime": 0.7,
-          "maxShellsAP": 35,
-          "maxShellsHE": 35,
-          "fuelCost": 200
+          "maxShellsAP": 45,
+          "maxShellsHE": 45,
+          "fuelCost": 190
         }
       },
       {
@@ -68,23 +68,23 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 1170,
-          "turretHealth": 1050,
-          "engineHealth": 550,
+          "hullHealth": 1230,
+          "turretHealth": 1020,
+          "engineHealth": 600,
           "trackHealth": 910,
-          "apDamage": 700,
+          "apDamage": 710,
           "explosionDamage": 100,
           "explosionRadius": 1200,
           "reloadSpeed": 6,
           "maxSpeed": 20,
-          "yawRate": 14,
+          "yawRate": 12,
           "pitchRate": 6,
           "pitchAngleMin": -10,
           "pitchAngleMax": 25,
           "gearSwitchTime": 0.9,
           "maxShellsAP": 25,
-          "maxShellsHE": 60,
-          "fuelCost": 500
+          "maxShellsHE": 65,
+          "fuelCost": 410
         }
       },
       {
@@ -106,21 +106,21 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 1190,
+          "hullHealth": 1260,
           "turretHealth": 1070,
-          "engineHealth": 550,
+          "engineHealth": 600,
           "trackHealth": 910,
           "apDamage": 800,
           "explosionDamage": 100,
           "explosionRadius": 1200,
           "reloadSpeed": 8,
           "maxSpeed": 20,
-          "yawRate": 12,
+          "yawRate": 10,
           "pitchRate": 5,
           "pitchAngleMin": -8,
           "pitchAngleMax": 23,
           "gearSwitchTime": 0.9,
-          "maxShellsAP": 45,
+          "maxShellsAP": 55,
           "maxShellsHE": 30,
           "fuelCost": 600
         }
@@ -144,11 +144,11 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 620,
-          "turretHealth": 550,
-          "engineHealth": 290,
-          "trackHealth": 490,
-          "apDamage": 420,
+          "hullHealth": 580,
+          "turretHealth": 510,
+          "engineHealth": 270,
+          "trackHealth": 460,
+          "apDamage": 425,
           "explosionDamage": 90,
           "explosionRadius": 800,
           "reloadSpeed": 4,
@@ -160,7 +160,7 @@
           "gearSwitchTime": 0.6,
           "maxShellsAP": 50,
           "maxShellsHE": 50,
-          "fuelCost": 150
+          "fuelCost": 110
         }
       },
       {
@@ -170,7 +170,7 @@
         "armor": "Front: 25mm, Sides: 13mm, Rear: 13mm",
         "gun": "37mm M6",
         "penetration": "Front: 61mm, Sides: 76mm",
-        "speed": "37 km/h",
+        "speed": "40 km/h",
         "crew": "3",
         "description": "Fast armored car with excellent mobility for reconnaissance and harassment.",
         "weakSpots": "All sides vulnerable",
@@ -182,15 +182,15 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 440,
-          "turretHealth": 380,
-          "engineHealth": 200,
-          "trackHealth": 240,
+          "hullHealth": 370,
+          "turretHealth": 330,
+          "engineHealth": 180,
+          "trackHealth": 190,
           "apDamage": 220,
           "explosionDamage": 90,
           "explosionRadius": 800,
           "reloadSpeed": 4,
-          "maxSpeed": 37,
+          "maxSpeed": 40,
           "yawRate": 16,
           "pitchRate": 8,
           "pitchAngleMin": -5.5,
@@ -199,7 +199,7 @@
           "gearSwitchDisplay": "Automatic",
           "maxShellsAP": 26,
           "maxShellsHE": 26,
-          "fuelCost": 100
+          "fuelCost": 70
         }
       },
       {
@@ -223,9 +223,9 @@
         "detailedStats": {
           "hullHealth": 900,
           "turretHealth": 790,
-          "engineHealth": 420,
+          "engineHealth": 520,
           "trackHealth": 710,
-          "apDamage": 950,
+          "apDamage": 1025,
           "explosionDamage": null,
           "explosionRadius": null,
           "reloadSpeed": 10,
@@ -264,11 +264,11 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 910,
-          "turretHealth": 830,
-          "engineHealth": 430,
-          "trackHealth": 710,
-          "apDamage": 750,
+          "hullHealth": 840,
+          "turretHealth": 770,
+          "engineHealth": 490,
+          "trackHealth": 660,
+          "apDamage": 730,
           "explosionDamage": 100,
           "explosionRadius": 1000,
           "reloadSpeed": 6,
@@ -278,7 +278,7 @@
           "pitchAngleMin": -8,
           "pitchAngleMax": 20,
           "gearSwitchTime": 0.8,
-          "maxShellsAP": 50,
+          "maxShellsAP": 45,
           "maxShellsHE": 35,
           "fuelCost": 200
         }
@@ -302,23 +302,23 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 1170,
-          "turretHealth": 990,
+          "hullHealth": 980,
+          "turretHealth": 900,
           "engineHealth": 550,
-          "trackHealth": 910,
-          "apDamage": 800,
+          "trackHealth": 780,
+          "apDamage": 820,
           "explosionDamage": 100,
           "explosionRadius": 1200,
           "reloadSpeed": 8,
           "maxSpeed": 26,
-          "yawRate": 12,
+          "yawRate": 10,
           "pitchRate": 5,
           "pitchAngleMin": -8,
           "pitchAngleMax": 18,
           "gearSwitchTime": 0.85,
-          "maxShellsAP": 40,
-          "maxShellsHE": 40,
-          "fuelCost": 600
+          "maxShellsAP": 45,
+          "maxShellsHE": 30,
+          "fuelCost": 450
         }
       },
       {
@@ -342,7 +342,7 @@
         "detailedStats": {
           "hullHealth": 1220,
           "turretHealth": 1070,
-          "engineHealth": 570,
+          "engineHealth": 620,
           "trackHealth": 950,
           "apDamage": 850,
           "explosionDamage": 100,
@@ -355,8 +355,8 @@
           "pitchAngleMax": 15,
           "gearSwitchTime": 1,
           "maxShellsAP": 55,
-          "maxShellsHE": 40,
-          "fuelCost": 600
+          "maxShellsHE": 35,
+          "fuelCost": 620
         }
       },
       {
@@ -378,10 +378,10 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 600,
-          "turretHealth": 520,
-          "engineHealth": 280,
-          "trackHealth": 470,
+          "hullHealth": 570,
+          "turretHealth": 500,
+          "engineHealth": 270,
+          "trackHealth": 440,
           "apDamage": null,
           "explosionDamage": 90,
           "explosionRadius": 800,
@@ -394,7 +394,7 @@
           "gearSwitchTime": 0.6,
           "maxShellsAP": null,
           "maxShellsHE": 20,
-          "fuelCost": 150
+          "fuelCost": 90
         }
       },
       {
@@ -416,10 +416,10 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 450,
-          "turretHealth": 390,
-          "engineHealth": 210,
-          "trackHealth": 250,
+          "hullHealth": 370,
+          "turretHealth": 330,
+          "engineHealth": 180,
+          "trackHealth": 190,
           "apDamage": 260,
           "explosionDamage": 90,
           "explosionRadius": 800,
@@ -433,7 +433,7 @@
           "gearSwitchDisplay": "Automatic",
           "maxShellsAP": 26,
           "maxShellsHE": 26,
-          "fuelCost": 100
+          "fuelCost": 90
         }
       },
       {
@@ -457,9 +457,9 @@
         "detailedStats": {
           "hullHealth": 910,
           "turretHealth": 830,
-          "engineHealth": 430,
+          "engineHealth": 530,
           "trackHealth": 710,
-          "apDamage": 950,
+          "apDamage": 1025,
           "explosionDamage": null,
           "explosionRadius": null,
           "reloadSpeed": 11,
@@ -498,9 +498,9 @@
         "detailedStats": {
           "hullHealth": 910,
           "turretHealth": 830,
-          "engineHealth": 430,
+          "engineHealth": 530,
           "trackHealth": 710,
-          "apDamage": 610,
+          "apDamage": 690,
           "explosionDamage": null,
           "explosionRadius": null,
           "reloadSpeed": 7,
@@ -539,11 +539,11 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 890,
-          "turretHealth": 830,
-          "engineHealth": 420,
-          "trackHealth": 700,
-          "apDamage": 750,
+          "hullHealth": 830,
+          "turretHealth": 780,
+          "engineHealth": 490,
+          "trackHealth": 650,
+          "apDamage": 710,
           "explosionDamage": 100,
           "explosionRadius": 1000,
           "reloadSpeed": 6,
@@ -555,7 +555,7 @@
           "gearSwitchTime": 0.9,
           "maxShellsAP": 40,
           "maxShellsHE": 45,
-          "fuelCost": 200
+          "fuelCost": 190
         }
       },
       {
@@ -577,11 +577,11 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 1220,
-          "turretHealth": 1060,
-          "engineHealth": 570,
-          "trackHealth": 950,
-          "apDamage": 800,
+          "hullHealth": 1250,
+          "turretHealth": 1080,
+          "engineHealth": 630,
+          "trackHealth": 960,
+          "apDamage": 830,
           "explosionDamage": 100,
           "explosionRadius": 1200,
           "reloadSpeed": 8,
@@ -592,8 +592,8 @@
           "pitchAngleMax": 22,
           "gearSwitchTime": 1,
           "maxShellsAP": 40,
-          "maxShellsHE": 35,
-          "fuelCost": 600
+          "maxShellsHE": 45,
+          "fuelCost": 620
         }
       },
       {
@@ -615,23 +615,23 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 630,
-          "turretHealth": 550,
-          "engineHealth": 290,
-          "trackHealth": 490,
-          "apDamage": 400,
+          "hullHealth": 560,
+          "turretHealth": 490,
+          "engineHealth": 260,
+          "trackHealth": 440,
+          "apDamage": 420,
           "explosionDamage": 90,
           "explosionRadius": 800,
           "reloadSpeed": 4,
           "maxSpeed": 32,
-          "yawRate": 10,
+          "yawRate": 12,
           "pitchRate": 5,
           "pitchAngleMin": -6,
           "pitchAngleMax": 20,
           "gearSwitchTime": 0.7,
           "maxShellsAP": 45,
           "maxShellsHE": 45,
-          "fuelCost": 150
+          "fuelCost": 120
         }
       },
       {
@@ -653,10 +653,10 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 460,
-          "turretHealth": 400,
-          "engineHealth": 210,
-          "trackHealth": 260,
+          "hullHealth": 380,
+          "turretHealth": 340,
+          "engineHealth": 180,
+          "trackHealth": 200,
           "apDamage": 240,
           "explosionDamage": 90,
           "explosionRadius": 800,
@@ -670,7 +670,7 @@
           "gearSwitchDisplay": "Automatic",
           "maxShellsAP": 26,
           "maxShellsHE": 26,
-          "fuelCost": 100
+          "fuelCost": 80
         }
       },
       {
@@ -694,9 +694,9 @@
         "detailedStats": {
           "hullHealth": 890,
           "turretHealth": 830,
-          "engineHealth": 420,
+          "engineHealth": 520,
           "trackHealth": 700,
-          "apDamage": 950,
+          "apDamage": 1025,
           "explosionDamage": null,
           "explosionRadius": null,
           "reloadSpeed": 12,
@@ -735,10 +735,10 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 430,
-          "turretHealth": 370,
-          "engineHealth": 200,
-          "trackHealth": 230,
+          "hullHealth": 360,
+          "turretHealth": 320,
+          "engineHealth": 170,
+          "trackHealth": 190,
           "apDamage": 220,
           "explosionDamage": 90,
           "explosionRadius": 800,
@@ -752,7 +752,7 @@
           "gearSwitchDisplay": "Automatic",
           "maxShellsAP": 20,
           "maxShellsHE": 40,
-          "fuelCost": 100
+          "fuelCost": 70
         }
       },
       {
@@ -774,11 +774,11 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 610,
-          "turretHealth": 540,
-          "engineHealth": 290,
-          "trackHealth": 480,
-          "apDamage": 420,
+          "hullHealth": 580,
+          "turretHealth": 510,
+          "engineHealth": 270,
+          "trackHealth": 460,
+          "apDamage": 425,
           "explosionDamage": 90,
           "explosionRadius": 800,
           "reloadSpeed": 4,
@@ -790,7 +790,7 @@
           "gearSwitchTime": 0.6,
           "maxShellsAP": 50,
           "maxShellsHE": 50,
-          "fuelCost": 150
+          "fuelCost": 110
         }
       },
       {
@@ -812,10 +812,10 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 610,
-          "turretHealth": 530,
-          "engineHealth": 290,
-          "trackHealth": 480,
+          "hullHealth": 550,
+          "turretHealth": 480,
+          "engineHealth": 260,
+          "trackHealth": 430,
           "apDamage": 380,
           "explosionDamage": 90,
           "explosionRadius": 800,
@@ -828,7 +828,7 @@
           "gearSwitchTime": 0.7,
           "maxShellsAP": 40,
           "maxShellsHE": 40,
-          "fuelCost": 150
+          "fuelCost": 100
         }
       },
       {
@@ -850,11 +850,11 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 930,
-          "turretHealth": 810,
-          "engineHealth": 440,
-          "trackHealth": 730,
-          "apDamage": 750,
+          "hullHealth": 850,
+          "turretHealth": 740,
+          "engineHealth": 500,
+          "trackHealth": 670,
+          "apDamage": 710,
           "explosionDamage": 100,
           "explosionRadius": 1000,
           "reloadSpeed": 6,
@@ -888,23 +888,23 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 910,
-          "turretHealth": 790,
-          "engineHealth": 420,
-          "trackHealth": 710,
-          "apDamage": 700,
+          "hullHealth": 820,
+          "turretHealth": 720,
+          "engineHealth": 490,
+          "trackHealth": 640,
+          "apDamage": 690,
           "explosionDamage": 100,
           "explosionRadius": 1000,
           "reloadSpeed": 6,
           "maxSpeed": 27,
-          "yawRate": 20,
+          "yawRate": 18,
           "pitchRate": 6.5,
           "pitchAngleMin": -12,
           "pitchAngleMax": 30,
           "gearSwitchTime": 0.9,
-          "maxShellsAP": 30,
-          "maxShellsHE": 35,
-          "fuelCost": 200
+          "maxShellsAP": 35,
+          "maxShellsHE": 45,
+          "fuelCost": 180
         }
       },
       {
@@ -926,11 +926,11 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 1230,
+          "hullHealth": 1250,
           "turretHealth": 1080,
-          "engineHealth": 580,
-          "trackHealth": 960,
-          "apDamage": 750,
+          "engineHealth": 640,
+          "trackHealth": 1000,
+          "apDamage": 790,
           "explosionDamage": 100,
           "explosionRadius": 1200,
           "reloadSpeed": 8,
@@ -941,7 +941,7 @@
           "pitchAngleMax": 20,
           "gearSwitchTime": 1,
           "maxShellsAP": 30,
-          "maxShellsHE": 45,
+          "maxShellsHE": 50,
           "fuelCost": 600
         }
       },
@@ -964,23 +964,23 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 1240,
-          "turretHealth": 1090,
-          "engineHealth": 620,
-          "trackHealth": 1030,
-          "apDamage": 800,
+          "hullHealth": 1230,
+          "turretHealth": 1080,
+          "engineHealth": 660,
+          "trackHealth": 1010,
+          "apDamage": 830,
           "explosionDamage": 100,
           "explosionRadius": 1200,
           "reloadSpeed": 8,
           "maxSpeed": 18,
-          "yawRate": 10,
+          "yawRate": 9,
           "pitchRate": 5,
           "pitchAngleMin": -6,
           "pitchAngleMax": 20,
           "gearSwitchTime": 1,
-          "maxShellsAP": 40,
-          "maxShellsHE": 45,
-          "fuelCost": 600
+          "maxShellsAP": 35,
+          "maxShellsHE": 50,
+          "fuelCost": 610
         }
       },
       {
@@ -1002,23 +1002,23 @@
           "suffix": ".webp"
         },
         "detailedStats": {
-          "hullHealth": 1200,
-          "turretHealth": 1020,
-          "engineHealth": 580,
-          "trackHealth": 960,
-          "apDamage": 850,
+          "hullHealth": 900,
+          "turretHealth": 830,
+          "engineHealth": 510,
+          "trackHealth": 710,
+          "apDamage": 920,
           "explosionDamage": 100,
           "explosionRadius": 1200,
           "reloadSpeed": 8,
           "maxSpeed": 22,
-          "yawRate": 10,
+          "yawRate": 12,
           "pitchRate": 6,
           "pitchAngleMin": -5,
           "pitchAngleMax": 20,
           "gearSwitchTime": 0.9,
           "maxShellsAP": 40,
           "maxShellsHE": 25,
-          "fuelCost": 600
+          "fuelCost": 560
         }
       },
       {
@@ -1042,7 +1042,7 @@
         "detailedStats": {
           "hullHealth": 1230,
           "turretHealth": 1080,
-          "engineHealth": 580,
+          "engineHealth": 630,
           "trackHealth": 960,
           "apDamage": 1300,
           "explosionDamage": null,
@@ -1083,9 +1083,9 @@
         "detailedStats": {
           "hullHealth": 880,
           "turretHealth": 850,
-          "engineHealth": 400,
+          "engineHealth": 500,
           "trackHealth": 710,
-          "apDamage": 950,
+          "apDamage": 1025,
           "explosionDamage": null,
           "explosionRadius": null,
           "reloadSpeed": 10,
@@ -1098,7 +1098,7 @@
           "maxShellsAP": 20,
           "maxShellsHE": 50,
           "fuelCost": null,
-          "munitionsCost": 280,
+          "munitionsCost": 240,
           "maxShellsSmoke": 45,
           "weaponRange": "800m"
         }

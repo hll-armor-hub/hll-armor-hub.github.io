@@ -1,0 +1,13 @@
+{
+  "name": "hell-let-loose-armor-hub",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync:tanks": "node scripts/sync-tank-stats.mjs pull",
+    "sync:tanks:push": "node scripts/sync-tank-stats.mjs push",
+    "sync:tanks:validate": "node scripts/sync-tank-stats.mjs validate"
+  },
+  "devDependencies": {
+    "xlsx": "^0.18.5"
+  }
+}

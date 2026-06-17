@@ -1598,10 +1598,10 @@ function renderTankulatorComponentBars(result, face) {
             },
             legend:
                 result.turret?.depletedOnShot != null
-                    ? `Turret knocked on shot ${result.turret.depletedOnShot} — slower rotation, coax disabled. Tank survives until hull is destroyed.`
+                    ? `Turret knocked on shot ${result.turret.depletedOnShot} — slower rotation, coax disabled.`
                     : result.turret?.shotsToDeplete
-                      ? `~${result.turret.shotsToDeplete} AP hit${result.turret.shotsToDeplete === 1 ? '' : 's'} to knock turret. Does not destroy the tank.`
-                      : 'Knocking the turret disables rotation and coax — tank survives on hull HP.'
+                      ? `~${result.turret.shotsToDeplete} AP hit${result.turret.shotsToDeplete === 1 ? '' : 's'} to knock turret.`
+                      : 'Knocking the turret disables rotation and coax.'
         })
     ];
 
@@ -4173,7 +4173,7 @@ function playVictorySound() {
 }
 
 // Global background state (WWII tank grid: grass / snow / desert)
-let globalBackground = 'snow'; // Default background
+let globalBackground = 'desert'; // Default background
 
 /** Vietnam armor tank strip: backdrops from site-root Vietnam/ (same art as infantry overview). */
 let globalVietnamBackground = 'house';

@@ -1,4 +1,4 @@
-/** Infantry Hub — Draft Haus community tips (loaded at runtime). */
+/** Infantry Hub — After Hours Operators community tips (loaded at runtime). */
 (function () {
     'use strict';
 
@@ -56,7 +56,7 @@
 
     function render(root, data) {
         const intro = (data && data.intro) || '';
-        const discordUrl = (data && data.discordUrl) || 'https://discord.com/invite/drafthaus';
+        const discordUrl = (data && data.discordUrl) || 'https://discord.gg/guFSTDfsCb';
         const rawTips = (data && data.tips) || [];
         const tips = rawTips.filter(function (t) {
             return t && String(t.quote || '').trim();
@@ -68,7 +68,7 @@
             escapeHtml(intro) +
             ' <a href="' +
             escapeHtml(discordUrl) +
-            '" class="inf-tips-discord-link" target="_blank" rel="noopener noreferrer">Draft Haus Discord</a>' +
+            '" class="inf-tips-discord-link" target="_blank" rel="noopener noreferrer">AHO Discord</a>' +
             '</p></div>';
 
         if (!tips.length) {
@@ -149,7 +149,7 @@
         root.innerHTML =
             '<p class="inf-tips-loading">Loading tips…</p>';
 
-        fetch('data/infantry-drafthaus-tips.json')
+        fetch('data/infantry-aho-tips.json')
             .then(function (r) {
                 return r.json();
             })

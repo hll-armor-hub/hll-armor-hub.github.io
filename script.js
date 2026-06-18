@@ -1346,6 +1346,43 @@ function getTankulatorClassKey(attackerTank) {
     return 'recon';
 }
 
+/** Infantry AT weapons for Tankulator attacker list (U20 Getting Started stats). */
+const TANKULATOR_INFANTRY_ATTACKERS = [
+    {
+        name: 'Rocket Launcher',
+        type: 'Infantry AT',
+        faction: 'All factions',
+        tankulatorPenClass: 'medium',
+        detailedStats: { apDamage: 420 }
+    },
+    {
+        name: 'AT Gun Emplacement',
+        type: 'Infantry AT',
+        faction: 'All factions',
+        tankulatorPenClass: 'heavy',
+        detailedStats: { apDamage: 535 }
+    }
+];
+
+function getTankulatorPenClass(attacker) {
+    if (attacker && attacker.tankulatorPenClass) {
+        return attacker.tankulatorPenClass;
+    }
+    return getTankulatorClassKey(attacker);
+}
+
+function isTankulatorInfantryAttacker(name) {
+    return TANKULATOR_INFANTRY_ATTACKERS.some(weapon => weapon.name === name);
+}
+
+function findTankulatorAttackerByName(name) {
+    const infantry = TANKULATOR_INFANTRY_ATTACKERS.find(weapon => weapon.name === name);
+    if (infantry) {
+        return infantry;
+    }
+    return findTankByName(name);
+}
+
 const TANKULATOR_PRESETS = [
     {
         label: 'Tiger vs Jumbo (front)',
@@ -1382,6 +1419,18 @@ const TANKULATOR_PRESETS = [
         attacker: 'Panzer IV',
         target: 'M5A1 Stuart',
         face: 'front'
+    },
+    {
+        label: 'Rocket vs Sherman (front)',
+        attacker: 'Rocket Launcher',
+        target: 'M4 Sherman',
+        face: 'front'
+    },
+    {
+        label: 'AT Gun vs Tiger (side)',
+        attacker: 'AT Gun Emplacement',
+        target: 'Tiger I',
+        face: 'left'
     }
 ];
 
@@ -1390,6 +1439,10 @@ function collectTankulatorTanks() {
         .flat()
         .filter(t => t.routeGame !== 'vietnam' && t.detailedStats && Number.isFinite(Number(t.detailedStats.apDamage)))
         .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function collectTankulatorAttackers() {
+    return [...TANKULATOR_INFANTRY_ATTACKERS, ...collectTankulatorTanks()];
 }
 
 function applyTankulatorPreset(preset) {
@@ -1430,11 +1483,24 @@ function renderTankulatorPresets() {
     });
 }
 
+function renderTankulatorOption(t) {
+    const label =
+        t.type === 'Infantry AT' ? `${t.name} — All Factions` : `${t.name} (${t.type})`;
+    return `<option value="${escapeHtml(t.name)}">${escapeHtml(label)}</option>`;
+}
+
 function renderTankulatorOptions(selectEl, tanks) {
     if (!selectEl) return;
-    selectEl.innerHTML = tanks
-        .map(t => `<option value="${escapeHtml(t.name)}">${escapeHtml(t.name)} (${escapeHtml(t.type)})</option>`)
-        .join('');
+    selectEl.innerHTML = tanks.map(renderTankulatorOption).join('');
+}
+
+function renderTankulatorAttackerOptions(selectEl, attackers, tanks) {
+    if (!selectEl) return;
+    const infantryOptions = attackers.map(renderTankulatorOption).join('');
+    const tankOptions = tanks.map(renderTankulatorOption).join('');
+    selectEl.innerHTML = `
+        <optgroup label="Infantry AT">${infantryOptions}</optgroup>
+        <optgroup label="Tanks">${tankOptions}</optgroup>`;
 }
 
 function simulateComponentPool(poolHp, effectiveDamage, canPen, maxShots) {
@@ -1471,10 +1537,10 @@ function simulateTankulatorFace(attacker, target, face, maxShots) {
     const hullHp = Number(target.detailedStats?.hullHealth || 0);
     const turretHp = Number(target.detailedStats?.turretHealth || 0);
     const engineHp = Number(target.detailedStats?.engineHealth || 0);
-    const classKey = getTankulatorClassKey(attacker);
+    const penClass = getTankulatorPenClass(attacker);
     const profile = getHullPenetrationProfile(target);
     const faceData = profile && profile[face] ? profile[face] : null;
-    const canPen = !!(faceData && faceData.pen && faceData.pen[classKey]);
+    const canPen = !!(faceData && faceData.pen && faceData.pen[penClass]);
     const modMeta = getTankulatorModifier(target, face, apDamage);
     const effectiveDamage = canPen ? modMeta.effectiveDamage || 0 : 0;
     const hullSim = simulateComponentPool(hullHp, effectiveDamage, canPen, maxShots);
@@ -1784,6 +1850,12 @@ function swapTankulatorMatchup() {
     if (!attackerSelect || !targetSelect) {
         return;
     }
+    if (
+        isTankulatorInfantryAttacker(attackerSelect.value) ||
+        isTankulatorInfantryAttacker(targetSelect.value)
+    ) {
+        return;
+    }
     const prevAttacker = attackerSelect.value;
     attackerSelect.value = targetSelect.value;
     targetSelect.value = prevAttacker;
@@ -1805,7 +1877,7 @@ function runTankulatorSimulation() {
         return;
     }
 
-    const attacker = findTankByName(attackerSelect.value);
+    const attacker = findTankulatorAttackerByName(attackerSelect.value);
     const target = findTankByName(targetSelect.value);
     const face = faceSelect.value;
     const maxShots = Math.max(1, Math.min(12, Number.parseInt(shotInput.value, 10) || 1));
@@ -1872,7 +1944,7 @@ function initializeTankulator() {
         return;
     }
 
-    renderTankulatorOptions(attackerSelect, tanks);
+    renderTankulatorAttackerOptions(attackerSelect, TANKULATOR_INFANTRY_ATTACKERS, tanks);
     renderTankulatorOptions(targetSelect, tanks);
     renderTankulatorPresets();
 

@@ -10,15 +10,15 @@
     --border-light: #e0e0e0;
     --shadow-light: rgba(0, 0, 0, 0.1);
 
-    /* Default Theme - Keep original blue/orange as fallback */
-    --bg-primary-default: #0a0e1a;
-    --bg-secondary-default: #1a1f2e;
-    --text-primary-default: #ffffff;
-    --text-secondary-default: #b8c5d6;
-    --accent-default: #ff6b00;
-    --accent-secondary-default: #ff8533;
-    --border-default: #2a3441;
-    --shadow-default: rgba(255, 255, 255, 0.05);
+    /* Default Theme - Gunmetal dark with cobalt blue */
+    --bg-primary-default: #0a0b0d;
+    --bg-secondary-default: #12161a;
+    --text-primary-default: #e8eaed;
+    --text-secondary-default: #8b929a;
+    --accent-default: #3B60E4;
+    --accent-secondary-default: #5B7CEB;
+    --border-default: #1e2429;
+    --shadow-default: rgba(0, 0, 0, 0.35);
 
     /* US Airborne Theme - Green, Brown, and Yellow (101st Airborne) */
     --bg-primary-marines: #4F4C38;
@@ -187,11 +187,11 @@ body {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="%23ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8.5"/><circle cx="10" cy="10" r="2.5"/></svg>') 10 10, auto;
 }
 
-/* Default Theme - Blue with Orange (Original) */
+/* Default Theme - Gunmetal dark with cobalt blue */
 body.theme-default {
-    background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
-    linear-gradient(135deg, var(--bg-primary) 0%, #1a1f2e 50%, var(--bg-primary) 100%);
+    background: radial-gradient(circle at 20% 80%, rgba(59, 96, 228, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(100, 110, 120, 0.04) 0%, transparent 50%),
+    linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-secondary) 45%, var(--bg-primary) 100%);
     color: var(--text-primary);
     position: relative;
 }
@@ -207,8 +207,8 @@ body.theme-default::before {
             45deg,
             transparent,
             transparent 2px,
-            rgba(59, 130, 246, 0.03) 2px,
-            rgba(59, 130, 246, 0.03) 4px
+            rgba(100, 110, 120, 0.02) 2px,
+            rgba(100, 110, 120, 0.02) 4px
     );
     pointer-events: none;
     z-index: -1;

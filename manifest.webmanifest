@@ -1,0 +1,42 @@
+{
+    "name": "Hell Let Loose Armor Hub",
+    "short_name": "Armor Hub",
+    "description": "Tank database, Tankulator, artillery and SPA calculators for Hell Let Loose.",
+    "start_url": "/app.html",
+    "display": "standalone",
+    "background_color": "#0C0A09",
+    "theme_color": "#0C0A09",
+    "icons": [
+        {
+            "src": "/images/HLL_Icons/Map Markers/icn_tank_marker.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Artillery Calculator",
+            "short_name": "Artillery",
+            "url": "/app.html#/armor/wwii/calculators?focus=artillery",
+            "icons": [{ "src": "/images/HLL_Icons/Map Markers/icn_tank_marker.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "SPA Calculator",
+            "short_name": "SPA",
+            "url": "/app.html#/armor/wwii/calculators?focus=spa",
+            "icons": [{ "src": "/images/HLL_Icons/Map Markers/icn_tank_marker.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Tankulator",
+            "short_name": "Tankulator",
+            "url": "/app.html#/armor/wwii/tankulator?focus=1",
+            "icons": [{ "src": "/images/HLL_Icons/Map Markers/icn_tank_marker.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "Mortar Calculator",
+            "short_name": "Mortar",
+            "url": "/app.html#/infantry/vietnam/mortar?focus=1",
+            "icons": [{ "src": "/images/HLL_Icons/Map Markers/icn_tank_marker.png", "sizes": "192x192" }]
+        }
+    ]
+}

@@ -1,0 +1,123 @@
+{
+  "roles": [
+    {
+      "id": "ArmyCommander",
+      "label": "Commander",
+      "category": "Command",
+      "progressionKey": "Default",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "SquadLeader",
+      "label": "Squad Leader",
+      "category": "Infantry",
+      "progressionKey": "SquadLeader",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "Rifleman",
+      "label": "Rifleman",
+      "category": "Infantry",
+      "progressionKey": "Default",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "Medic",
+      "label": "Medic",
+      "category": "Infantry",
+      "progressionKey": "Medic",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "Specialist",
+      "label": "Specialist",
+      "category": "Infantry",
+      "progressionKey": "Specialist",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "HeavyMachineGunner",
+      "label": "Machine Gunner",
+      "category": "Infantry",
+      "progressionKey": "HeavyMachineGunner",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "Grenadier",
+      "label": "Grenadier",
+      "category": "Infantry",
+      "progressionKey": "Grenadier",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "Engineer",
+      "label": "Engineer",
+      "category": "Infantry",
+      "progressionKey": "Engineer",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "TankCommander",
+      "label": "Tank Commander",
+      "category": "Armor",
+      "progressionKey": "Default",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "Crewman",
+      "label": "Crewman",
+      "category": "Armor",
+      "progressionKey": "Default",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "Spotter",
+      "label": "Spotter",
+      "category": "Recon",
+      "progressionKey": "Spotter",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "Sniper",
+      "label": "Sniper",
+      "category": "Recon",
+      "progressionKey": "Sniper",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "MortarObserver",
+      "label": "Observer",
+      "category": "Mortar",
+      "progressionKey": "MortarObserver",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "MortarSupport",
+      "label": "Support",
+      "category": "Mortar",
+      "progressionKey": "MortarSupport",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "MortarGunner",
+      "label": "Gunner",
+      "category": "Mortar",
+      "progressionKey": "MortarGunner",
+      "factions": ["US", "NVA"]
+    },
+    {
+      "id": "HelicopterPilot",
+      "label": "Pilot",
+      "category": "Helicopter",
+      "progressionKey": "Default",
+      "factions": ["US"]
+    },
+    {
+      "id": "HelicopterLogisticsOfficer",
+      "label": "Logistics Officer",
+      "category": "Helicopter",
+      "progressionKey": "Default",
+      "factions": ["US"]
+    }
+  ]
+}

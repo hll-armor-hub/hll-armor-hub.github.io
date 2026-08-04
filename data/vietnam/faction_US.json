@@ -1,0 +1,928 @@
+{
+  "name": "US",
+  "onAllLoadouts": [
+    "M3_Knife",
+    "WFL_USBandage"
+  ],
+  "weapons": {
+    "M16A1": {
+      "DisplayName": "M16A1",
+      "ItemWeight": 4,
+      "BaseAmmo": 4,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 0,
+        "Medic": 0,
+        "Spotter": 0,
+        "Specialist": 0,
+        "Grenadier": 0,
+        "Engineer": 0,
+        "SquadLeader": 0,
+        "Crewman": 3,
+        "TankCommander": 3,
+        "MortarSupport": 0,
+        "MortarObserver": 0,
+        "MortarGunner": 0,
+        "HelicopterPilot": 3,
+        "HelicopterLogisticsOfficer": 3,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Rifle",
+        "Automatic",
+        "Semi-Automatic"
+      ]
+    },
+    "WFL_TNT": {
+      "DisplayName": "WFL_TNT",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {},
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "USLightMortar": {
+      "DisplayName": "Light Mortar",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarGunner": 0
+      },
+      "ItemLimit": 0,
+      "Tags": []
+    },
+    "M18_Claymore": {
+      "DisplayName": "M18 Claymore",
+      "ItemWeight": 2,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarObserver": 3,
+        "MortarSupport": 3,
+        "Spotter": 3,
+        "Sniper": 3,
+        "Engineer": 3,
+        "HeavyMachineGunner": 3,
+        "Specialist": 3,
+        "Grenadier": 3
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "1911A1": {
+      "DisplayName": "M1911A1",
+      "ItemWeight": 2,
+      "BaseAmmo": 3,
+      "MaxAmmo": 6,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 0,
+        "Medic": 0,
+        "Spotter": 0,
+        "Specialist": 0,
+        "HeavyMachineGunner": 0,
+        "Grenadier": 0,
+        "Engineer": 0,
+        "SquadLeader": 0,
+        "Sniper": 0,
+        "Crewman": 0,
+        "TankCommander": 0,
+        "MortarSupport": 0,
+        "MortarObserver": 0,
+        "MortarGunner": 0,
+        "HelicopterPilot": 0,
+        "HelicopterLogisticsOfficer": 0,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Secondary",
+        "Pistol",
+        "Semi-Automatic"
+      ]
+    },
+    "M203": {
+      "DisplayName": "M16A1-M203",
+      "ItemWeight": 6,
+      "BaseAmmo": 4,
+      "MaxAmmo": 6,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 10,
+        "Grenadier": 10,
+        "Specialist": 10,
+        "Engineer": 10
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Rifle",
+        "Automatic",
+        "Semi-Automatic",
+        "Grenade Launcher"
+      ]
+    },
+    "M16A1_Bayonet": {
+      "DisplayName": "M16A1 With Bayonet",
+      "ItemWeight": 5,
+      "BaseAmmo": 4,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "ArmyCommander": 4,
+        "Assault": 4,
+        "Rifleman": 4,
+        "Medic": 4,
+        "Spotter": 4,
+        "Specialist": 4,
+        "Grenadier": 4,
+        "Engineer": 4,
+        "Crewman": 4,
+        "TankCommander": 4,
+        "MortarSupport": 4,
+        "MortarObserver": 4,
+        "MortarGunner": 4,
+        "HelicopterPilot": 4,
+        "HelicopterLogisticsOfficer": 4,
+        "SquadLeader": 4
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Rifle",
+        "Automatic",
+        "Semi-Automatic"
+      ]
+    },
+    "M60": {
+      "DisplayName": "M60",
+      "ItemWeight": 4,
+      "BaseAmmo": 3,
+      "MaxAmmo": 6,
+      "AmmoWeight": 2,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "HeavyMachineGunner": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Machine Gun",
+        "Automatic"
+      ]
+    },
+    "M61": {
+      "DisplayName": "M61 Frag Grenade",
+      "ItemWeight": 2,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {},
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "M183_Demo": {
+      "DisplayName": "M183 Demolition Charge",
+      "ItemWeight": 5,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Engineer": 5,
+        "Grenadier": 5
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "USMortarWrench": {
+      "DisplayName": "Wrench ",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarGunner": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "M18_Smoke": {
+      "DisplayName": "M18 Smoke Grenade",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {},
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "M40": {
+      "DisplayName": "M40",
+      "ItemWeight": 4,
+      "BaseAmmo": 4,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Sniper": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Sniper",
+        "Bolt Action"
+      ]
+    },
+    "M79": {
+      "DisplayName": "M79 ",
+      "ItemWeight": 5,
+      "BaseAmmo": 3,
+      "MaxAmmo": 5,
+      "AmmoWeight": 3,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Grenadier": 0,
+        "Engineer": 7,
+        "Spotter": 10,
+        "MortarObserver": 10
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Grenade Launcher",
+        "Secondary"
+      ]
+    },
+    "M72": {
+      "DisplayName": "M72 ",
+      "ItemWeight": 6,
+      "BaseAmmo": 2,
+      "MaxAmmo": 4,
+      "AmmoWeight": 3,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Grenadier": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Secondary",
+        "Launcher"
+      ]
+    },
+    "M2_FlameThrower": {
+      "DisplayName": "M2A1-7",
+      "ItemWeight": 6,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 2,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Specialist": 7
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Incendiary Weapon"
+      ]
+    },
+    "Model_77E_Shotgun": {
+      "DisplayName": "Model 77E",
+      "ItemWeight": 3,
+      "BaseAmmo": 4,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Engineer": 7,
+        "SquadLeader": 7,
+        "Specialist": 7,
+        "Grenadier": 7,
+        "HelicopterPilot": 7,
+        "HelicopterLogisticsOfficer": 7,
+        "Spotter": 7,
+        "ArmyCommander": 7,
+        "MortarObserver": 7,
+        "Sniper": 7,
+        "Crewman": 7,
+        "TankCommander": 7,
+        "MortarGunner": 7,
+        "MortarSupport": 7,
+        "HeavyMachineGunner": 7
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Shotgun",
+        "Pump Action"
+      ]
+    },
+    "M3_Knife": {
+      "DisplayName": "M3 Knife",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {},
+      "ItemLimit": 0,
+      "Tags": [
+        "Melee"
+      ]
+    },
+    "WFL_USWrench": {
+      "DisplayName": "Wrench",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Engineer": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "WFL_USMortarWrench": {
+      "DisplayName": "Wrench",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarGunner": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "WFL_USBinoculars": {
+      "DisplayName": "M3 Binoculars",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Specialist": 0,
+        "TankCommander": 0,
+        "Crewman": 0,
+        "HelicopterLogisticsOfficer": 0,
+        "HelicopterPilot": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "WFL_USFieldPad": {
+      "DisplayName": "FIELD PAD",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "SquadLeader": 0,
+        "Spotter": 0,
+        "MortarObserver": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "WFL_USFieldPadCommander": {
+      "DisplayName": "FIELD PAD",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "WFL_USSupply": {
+      "DisplayName": "Supplies",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Specialist": 0,
+        "MortarSupport": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_USHAmmer": {
+      "DisplayName": "Hammer",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 0,
+        "Medic": 0,
+        "Spotter": 0,
+        "Specialist": 0,
+        "HeavyMachineGunner": 0,
+        "Grenadier": 0,
+        "Engineer": 0,
+        "SquadLeader": 0,
+        "Sniper": 0,
+        "Crewman": 0,
+        "TankCommander": 0,
+        "MortarSupport": 0,
+        "MortarObserver": 0,
+        "MortarGunner": 0,
+        "HelicopterPilot": 0,
+        "HelicopterLogisticsOfficer": 0,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Role Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_USMedicAmmoBox": {
+      "DisplayName": "Medical Supplies",
+      "ItemWeight": 2,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Medic": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Role Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_USMedicKit": {
+      "DisplayName": "REVIVE",
+      "ItemWeight": 1,
+      "BaseAmmo": 20,
+      "MaxAmmo": 20,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Medic": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_USBandage": {
+      "DisplayName": "BANDAGE",
+      "ItemWeight": 1,
+      "BaseAmmo": 2,
+      "MaxAmmo": 20,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 0,
+        "Spotter": 0,
+        "Specialist": 0,
+        "HeavyMachineGunner": 0,
+        "Grenadier": 0,
+        "Engineer": 0,
+        "SquadLeader": 0,
+        "Sniper": 0,
+        "Crewman": 0,
+        "TankCommander": 0,
+        "MortarSupport": 0,
+        "MortarObserver": 0,
+        "MortarGunner": 0,
+        "HelicopterPilot": 0,
+        "HelicopterLogisticsOfficer": 0,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment"
+      ]
+    },
+    "WFL_USAmmonbox": {
+      "DisplayName": "Small Ammunition Box",
+      "ItemWeight": 3,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Engineer": 0,
+        "Specialist": 0,
+        "Spotter": 0,
+        "MortarSupport": 0,
+        "SquadLeader": 0,
+        "Grenadier": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_USHEAmmoBox": {
+      "DisplayName": "Explosive Ammo Box",
+      "ItemWeight": 4,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "SquadLeader": 0,
+        "HeavyMachineGunner": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_M21_AT": {
+      "DisplayName": "M21 AT Mine",
+      "ItemWeight": 3,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 2,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Grenadier": 0,
+        "Engineer": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "DEBUG_WEAPON": {
+      "DisplayName": "DEBUG_WEAPON",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {},
+      "ItemLimit": 0,
+      "Tags": []
+    },
+    "USTorch": {
+      "DisplayName": "BLOW TORCH",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Specialist": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_US_Flare": {
+      "DisplayName": "AN-M8 Flare",
+      "ItemWeight": 4,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Specialist": 9,
+        "ArmyCommander": 0,
+        "MortarObserver": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "M61x2": {
+      "DisplayName": "M61 Frag Grenade x2",
+      "ItemWeight": 4,
+      "BaseAmmo": 2,
+      "MaxAmmo": 2,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 5,
+      "RolesLevelRequirement": {},
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "M61x3": {
+      "DisplayName": "M61 Frag Grenade x3",
+      "ItemWeight": 6,
+      "BaseAmmo": 3,
+      "MaxAmmo": 3,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarObserver": 8,
+        "MortarGunner": 8,
+        "MortarSupport": 8,
+        "Spotter": 8,
+        "Sniper": 8,
+        "Rifleman": 8,
+        "Engineer": 8,
+        "HeavyMachineGunner": 8,
+        "Specialist": 8,
+        "Grenadier": 8
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "M18_Smokex2": {
+      "DisplayName": "M18 Smoke Grenade x2",
+      "ItemWeight": 3,
+      "BaseAmmo": 2,
+      "MaxAmmo": 2,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 3,
+      "RolesLevelRequirement": {},
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "M18_Smokex3": {
+      "DisplayName": "M18 Smoke Grenade x3",
+      "ItemWeight": 5,
+      "BaseAmmo": 3,
+      "MaxAmmo": 3,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 5,
+      "RolesLevelRequirement": {},
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "M18_Claymorex2": {
+      "DisplayName": "M18 Claymore x2",
+      "ItemWeight": 4,
+      "BaseAmmo": 2,
+      "MaxAmmo": 2,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarObserver": 6,
+        "MortarSupport": 6,
+        "Spotter": 6,
+        "Sniper": 6,
+        "Engineer": 6,
+        "HeavyMachineGunner": 6,
+        "Specialist": 6,
+        "Grenadier": 6
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "WFL_M21_ATx2": {
+      "DisplayName": "M21 AT Mine x2",
+      "ItemWeight": 6,
+      "BaseAmmo": 2,
+      "MaxAmmo": 2,
+      "AmmoWeight": 2,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Grenadier": 3,
+        "Engineer": 3
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "WFL_USBandage_Medic": {
+      "DisplayName": "BANDAGE",
+      "ItemWeight": 1,
+      "BaseAmmo": 2,
+      "MaxAmmo": 20,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Medic": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment"
+      ]
+    }
+  },
+  "loadouts": {
+    "Rifleman": [
+      "M16A1",
+      "M61",
+      "WFL_USBandage",
+      "WFL_USHAmmer",
+      "WFL_USAmmonbox",
+      "WFL_USHEAmmoBox",
+      "M3_Knife"
+    ],
+    "Assault": [
+      "M203",
+      "M18_Smoke",
+      "WFL_USHAmmer",
+      "WFL_USBandage",
+      "M3_Knife"
+    ],
+    "AutomaticRifleman": [
+      "M16A1",
+      "M61",
+      "USBandage",
+      "USHammer",
+      "USMeleeM3Knife"
+    ],
+    "Medic": [
+      "M16A1",
+      "1911A1",
+      "M18_Smoke",
+      "WFL_USMedicKit",
+      "WFL_USMedicAmmoBox",
+      "WFL_USBandage",
+      "M3_Knife"
+    ],
+    "Spotter": [
+      "M16A1",
+      "M61",
+      "WFL_USBandage",
+      "M18_Claymore",
+      "WFL_USAmmonbox",
+      "USFlareGun",
+      "WFL_USWatch",
+      "WFL_USBinoculars",
+      "M3_Knife"
+    ],
+    "MachineGunner": [
+      "M60",
+      "1911A1",
+      "WFL_USBandage",
+      "WFL_USHAmmer",
+      "USExplosiveAmmoBox",
+      "M3_Knife"
+    ],
+    "Engineer": [
+      "Model_77E_Shotgun",
+      "WFL_USBandage",
+      "WFL_USWrench",
+      "WFL_USHAmmer",
+      "USTorch",
+      "M18_Claymore",
+      "M183_Demo",
+      "WFL_M21_AT",
+      "M3_Knife"
+    ],
+    "Sniper": [
+      "M40",
+      "1911A1",
+      "M61",
+      "WFL_USBandage",
+      "M3_Knife"
+    ],
+    "Crewman": [
+      "1911A1",
+      "WFL_USBandage",
+      "USTorch",
+      "M3_Knife"
+    ],
+    "TankCommander": [
+      "M16A1",
+      "1911A1",
+      "WFL_USBandage",
+      "USBinoculars",
+      "USTorch",
+      "M3_Knife"
+    ],
+    "MortarGunner": [
+      "M16A1",
+      "M61",
+      "WFL_USHAmmer",
+      "WFL_USBandage",
+      "WFL_USMortarWrench",
+      "M3_Knife"
+    ],
+    "MortarSupport": [
+      "M16A1",
+      "WFL_USSupply",
+      "WFL_USAmmonbox",
+      "WFL_USHEAmmoBox",
+      "WFL_USBandage",
+      "WFL_USHAmmer",
+      "M3_Knife"
+    ],
+    "HelicopterPilot": [
+      "M16A1",
+      "1911A1",
+      "M61",
+      "M18_Smoke",
+      "WFL_USBandage",
+      "M3_Knife"
+    ],
+    "HelicopterLogisticsOfficer": [
+      "M16A1",
+      "M18_Smoke",
+      "USHammer",
+      "WFL_USBandage",
+      "WFL_USBinoculars",
+      "M3_Knife"
+    ],
+    "HelicopterFlightEngineer": [
+      "M16A1",
+      "M61",
+      "M18_Smoke",
+      "USWrench",
+      "USHammer",
+      "WFL_USBandage",
+      "M3_Knife"
+    ],
+    "HelicopterMedic": [
+      "M16A1",
+      "1911A1",
+      "M18_Smoke",
+      "USMorphine",
+      "USMedicAmmoBox",
+      "WFL_USBandage",
+      "M3_Knife"
+    ],
+    "ArmyCommander": [
+      "M16A1",
+      "1911A1",
+      "M18_Smoke",
+      "WFL_USBandage",
+      "WFL_USWatchCommander",
+      "WFL_USBinoculars",
+      "USFlareGun",
+      "M3_Knife"
+    ]
+  }
+}

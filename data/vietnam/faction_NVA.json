@@ -1,0 +1,983 @@
+{
+  "name": "NVA",
+  "onAllLoadouts": [
+    "NVA_Knife",
+    "WFL_NVABandage"
+  ],
+  "weapons": {
+    "RPG2": {
+      "DisplayName": "RPG-02",
+      "ItemWeight": 6,
+      "BaseAmmo": 2,
+      "MaxAmmo": 4,
+      "AmmoWeight": 3,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Grenadier": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Secondary",
+        "Launcher"
+      ]
+    },
+    "TM-46": {
+      "DisplayName": "TM-46 AT Mine",
+      "ItemWeight": 3,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Engineer": 0,
+        "Grenadier": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "NVAMortarWrench": {
+      "DisplayName": "Wrench",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "SquadLeader": 0,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "Type53_PU": {
+      "DisplayName": "Type 53 PU",
+      "ItemWeight": 4,
+      "BaseAmmo": 4,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Sniper": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Sniper",
+        "Bolt Action"
+      ]
+    },
+    "LPO50": {
+      "DisplayName": "LPO-50",
+      "ItemWeight": 6,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 2,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Specialist": 7
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Incendiary Weapon"
+      ]
+    },
+    "IZH58": {
+      "DisplayName": "IZH 58",
+      "ItemWeight": 3,
+      "BaseAmmo": 6,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "ArmyCommander": 7,
+        "TankCommander": 7,
+        "Crewman": 7,
+        "Engineer": 7,
+        "Spotter": 7,
+        "HeavyMachineGunner": 7,
+        "Grenadier": 7,
+        "SquadLeader": 7,
+        "Sniper": 7,
+        "MortarSupport": 7,
+        "MortarObserver": 7,
+        "MortarGunner": 7
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Shotgun",
+        "Break Action"
+      ]
+    },
+    "N4_Rifle_Launcher": {
+      "DisplayName": "Type 53 W/ N4 Rifle Launcher",
+      "ItemWeight": 6,
+      "BaseAmmo": 6,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Specialist": 10,
+        "Grenadier": 0,
+        "Rifleman": 10,
+        "Engineer": 10,
+        "Spotter": 10,
+        "MortarObserver": 10
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Rifle",
+        "Semi-Automatic",
+        "Grenade Launcher"
+      ]
+    },
+    "RPD": {
+      "DisplayName": "RPD",
+      "ItemWeight": 4,
+      "BaseAmmo": 3,
+      "MaxAmmo": 6,
+      "AmmoWeight": 2,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "HeavyMachineGunner": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Machine Gun",
+        "Automatic"
+      ]
+    },
+    "K50M": {
+      "DisplayName": "K50M",
+      "ItemWeight": 3,
+      "BaseAmmo": 4,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "ArmyCommander": 3,
+        "TankCommander": 3,
+        "Crewman": 3,
+        "MortarObserver": 3,
+        "Sniper": 3,
+        "SquadLeader": 3,
+        "Medic": 3,
+        "Specialist": 3,
+        "Engineer": 3,
+        "Grenadier": 3
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Submachine Gun",
+        "Automatic",
+        "Semi-Automatic"
+      ]
+    },
+    "K50M_Drum": {
+      "DisplayName": "K50M Drum",
+      "ItemWeight": 4,
+      "BaseAmmo": 3,
+      "MaxAmmo": 6,
+      "AmmoWeight": 2,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Grenadier": 6,
+        "Engineer": 6,
+        "HeavyMachineGunner": 6
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Submachine Gun",
+        "Automatic",
+        "Semi-Automatic"
+      ]
+    },
+    "Type54": {
+      "DisplayName": "Type 54",
+      "ItemWeight": 2,
+      "BaseAmmo": 6,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "ArmyCommander": 0,
+        "TankCommander": 0,
+        "Crewman": 0,
+        "MortarObserver": 0,
+        "MortarSupport": 0,
+        "MortarGunner": 0,
+        "Sniper": 0,
+        "Spotter": 0,
+        "SquadLeader": 0,
+        "Rifleman": 0,
+        "HeavyMachineGunner": 0,
+        "Medic": 0,
+        "Specialist": 0,
+        "Grenadier": 0,
+        "Engineer": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Secondary",
+        "Pistol",
+        "Semi-Automatic"
+      ]
+    },
+    "DH10_AP": {
+      "DisplayName": "DH10 AP Mine",
+      "ItemWeight": 2,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 2,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarObserver": 3,
+        "MortarSupport": 3,
+        "Spotter": 3,
+        "Sniper": 3,
+        "Engineer": 3,
+        "HeavyMachineGunner": 3,
+        "Specialist": 3,
+        "Grenadier": 3
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "Type67": {
+      "DisplayName": "Type 67",
+      "ItemWeight": 2,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 0,
+        "Medic": 0,
+        "Spotter": 0,
+        "Specialist": 0,
+        "HeavyMachineGunner": 0,
+        "Grenadier": 0,
+        "Engineer": 0,
+        "SquadLeader": 0,
+        "Sniper": 0,
+        "Crewman": 0,
+        "TankCommander": 0,
+        "MortarSupport": 0,
+        "MortarObserver": 0,
+        "MortarGunner": 0,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "NVA_Knife": {
+      "DisplayName": "Knife",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 0,
+        "Assault": 0,
+        "AutomaticRifleman": 0,
+        "Medic": 0,
+        "Spotter": 0,
+        "Specialist": 0,
+        "HeavyMachineGunner": 0,
+        "Grenadier": 0,
+        "Engineer": 0,
+        "SquadLeader": 0,
+        "Sniper": 0,
+        "Crewman": 0,
+        "TankCommander": 0,
+        "MortarSupport": 0,
+        "MortarObserver": 0,
+        "MortarGunner": 0,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Melee"
+      ]
+    },
+    "NVA_Wrench": {
+      "DisplayName": "Wrench",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Engineer": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "NVA_MortarWrench": {
+      "DisplayName": "Wrench",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarGunner": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "NVA_AAWrench": {
+      "DisplayName": "Anti-Aircraft Gun Wrench",
+      "ItemWeight": 3,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "HeavyMachineGunner": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment"
+      ]
+    },
+    "NVA_MedicAmmoBox": {
+      "DisplayName": "Medical Supplies",
+      "ItemWeight": 2,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Medic": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_NVAFieldPad": {
+      "DisplayName": "FIELD PAD",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "SquadLeader": 0,
+        "TankCommander": 0,
+        "MortarObserver": 0,
+        "Spotter": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "WFL_NVAFieldPadCommander": {
+      "DisplayName": "FIELD PAD",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": []
+    },
+    "WFL_RDG1": {
+      "DisplayName": "RDG-1",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 0,
+        "Medic": 0,
+        "Spotter": 0,
+        "Specialist": 0,
+        "HeavyMachineGunner": 0,
+        "Grenadier": 0,
+        "Engineer": 0,
+        "SquadLeader": 0,
+        "Sniper": 0,
+        "Crewman": 0,
+        "TankCommander": 0,
+        "MortarSupport": 0,
+        "MortarObserver": 0,
+        "MortarGunner": 0,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_NVABinoculars": {
+      "DisplayName": "Binoculars",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "TankCommander": 0,
+        "Crewman": 0,
+        "Specialist": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Role Equipment"
+      ]
+    },
+    "Type56_AK_Bayonet": {
+      "DisplayName": "Type 56 W/ Bayonet",
+      "ItemWeight": 4,
+      "BaseAmmo": 4,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 0,
+        "Assault": 0,
+        "AutomaticRifleman": 0,
+        "Medic": 0,
+        "Spotter": 0,
+        "Specialist": 0,
+        "Grenadier": 0,
+        "Engineer": 0,
+        "SquadLeader": 0,
+        "Crewman": 3,
+        "TankCommander": 3,
+        "MortarSupport": 0,
+        "MortarObserver": 0,
+        "MortarGunner": 0,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Rifle",
+        "Automatic",
+        "Semi-Automatic"
+      ]
+    },
+    "WFL_NVAAmmoBox": {
+      "DisplayName": "Ammo Box",
+      "ItemWeight": 3,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarSupport": 0,
+        "Spotter": 0,
+        "SquadLeader": 0,
+        "Engineer": 0,
+        "Grenadier": 0,
+        "Specialist": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_NVAHEAmmoBox": {
+      "DisplayName": "HE Ammo Box",
+      "ItemWeight": 4,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "SquadLeader": 0,
+        "HeavyMachineGunner": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_NVAHammer": {
+      "DisplayName": "Hammer",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarGunner": 0,
+        "MortarSupport": 0,
+        "Rifleman": 0,
+        "SquadLeader": 0,
+        "Engineer": 0,
+        "HeavyMachineGunner": 0,
+        "Medic": 0,
+        "Specialist": 0,
+        "Grenadier": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Role Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_NVAMedicKit": {
+      "DisplayName": "Revive",
+      "ItemWeight": 1,
+      "BaseAmmo": 20,
+      "MaxAmmo": 20,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Medic": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_NVABandage": {
+      "DisplayName": "Bandage",
+      "ItemWeight": 1,
+      "BaseAmmo": 2,
+      "MaxAmmo": 20,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 0,
+        "Assault": 0,
+        "AutomaticRifleman": 0,
+        "Spotter": 0,
+        "Specialist": 0,
+        "HeavyMachineGunner": 0,
+        "Grenadier": 0,
+        "Engineer": 0,
+        "SquadLeader": 0,
+        "Sniper": 0,
+        "Crewman": 0,
+        "TankCommander": 0,
+        "MortarSupport": 0,
+        "MortarObserver": 0,
+        "MortarGunner": 0,
+        "ArmyCommander": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_NVASupply": {
+      "DisplayName": "Supplies",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Specialist": 0,
+        "MortarSupport": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Role Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_NVASatchel": {
+      "DisplayName": "Satchel Charge",
+      "ItemWeight": 5,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Engineer": 5,
+        "Grenadier": 5
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "Type53_Bayonet": {
+      "DisplayName": "Type 53 w/Bayonet",
+      "ItemWeight": 3,
+      "BaseAmmo": 4,
+      "MaxAmmo": 8,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Grenadier": 4,
+        "Specialist": 4,
+        "Medic": 4,
+        "Engineer": 4,
+        "SquadLeader": 4,
+        "Spotter": 4,
+        "MortarSupport": 4,
+        "MortarGunner": 4,
+        "Rifleman": 4,
+        "MortarObserver": 4,
+        "ArmyCommander": 4
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Primary",
+        "Rifle",
+        "Semi-Automatic"
+      ]
+    },
+    "RUSTorch": {
+      "DisplayName": "BLOW TORCH",
+      "ItemWeight": 1,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Specialist": 0
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_NVAFlare": {
+      "DisplayName": "Chi Com Signal Pistol",
+      "ItemWeight": 4,
+      "BaseAmmo": 1,
+      "MaxAmmo": 1,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "ArmyCommander": 0,
+        "MortarObserver": 0,
+        "Specialist": 9
+      },
+      "ItemLimit": 1,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_RDG1x2": {
+      "DisplayName": "RDG-1 x2",
+      "ItemWeight": 3,
+      "BaseAmmo": 2,
+      "MaxAmmo": 2,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 3,
+        "Medic": 0,
+        "Spotter": 3,
+        "Specialist": 3,
+        "HeavyMachineGunner": 3,
+        "Grenadier": 3,
+        "Engineer": 3,
+        "SquadLeader": 3,
+        "Sniper": 3,
+        "Crewman": 3,
+        "TankCommander": 3,
+        "MortarSupport": 3,
+        "MortarObserver": 3,
+        "MortarGunner": 3,
+        "ArmyCommander": 3
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "WFL_RDG1x3": {
+      "DisplayName": "RDG-1 x3",
+      "ItemWeight": 5,
+      "BaseAmmo": 3,
+      "MaxAmmo": 3,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 5,
+        "Medic": 5,
+        "Spotter": 5,
+        "Specialist": 5,
+        "HeavyMachineGunner": 5,
+        "Grenadier": 5,
+        "Engineer": 5,
+        "SquadLeader": 5,
+        "Sniper": 5,
+        "Crewman": 5,
+        "TankCommander": 5,
+        "MortarSupport": 5,
+        "MortarObserver": 5,
+        "MortarGunner": 5,
+        "ArmyCommander": 5
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    },
+    "DH10_APx2": {
+      "DisplayName": "DH10 AP Mine x2",
+      "ItemWeight": 4,
+      "BaseAmmo": 2,
+      "MaxAmmo": 2,
+      "AmmoWeight": 2,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "MortarSupport": 6,
+        "Spotter": 6,
+        "Sniper": 6,
+        "Engineer": 6,
+        "Grenadier": 6,
+        "MortarObserver": 6,
+        "HeavyMachineGunner": 6,
+        "Specialist": 6
+      },
+      "ItemLimit": 0,
+      "Tags": []
+    },
+    "TM-46x2": {
+      "DisplayName": "TM-46 AT Mine x2",
+      "ItemWeight": 6,
+      "BaseAmmo": 2,
+      "MaxAmmo": 2,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Engineer": 3,
+        "Grenadier": 3
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "Type67x2": {
+      "DisplayName": "Type 67 x2",
+      "ItemWeight": 4,
+      "BaseAmmo": 2,
+      "MaxAmmo": 2,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 5,
+        "Medic": 5,
+        "Spotter": 5,
+        "Specialist": 5,
+        "HeavyMachineGunner": 5,
+        "Grenadier": 5,
+        "Engineer": 5,
+        "SquadLeader": 5,
+        "Sniper": 5,
+        "Crewman": 5,
+        "TankCommander": 5,
+        "MortarSupport": 5,
+        "MortarObserver": 5,
+        "MortarGunner": 5,
+        "ArmyCommander": 5
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "Type67x3": {
+      "DisplayName": "Type 67 x3",
+      "ItemWeight": 6,
+      "BaseAmmo": 3,
+      "MaxAmmo": 3,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Rifleman": 8,
+        "Assault": 0,
+        "AutomaticRifleman": 0,
+        "Spotter": 8,
+        "Specialist": 8,
+        "HeavyMachineGunner": 8,
+        "Grenadier": 8,
+        "Engineer": 8,
+        "Sniper": 8,
+        "MortarSupport": 8,
+        "MortarObserver": 8,
+        "MortarGunner": 8
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Lethal"
+      ]
+    },
+    "WFL_NVABandage_Medic": {
+      "DisplayName": "Bandage",
+      "ItemWeight": 1,
+      "BaseAmmo": 2,
+      "MaxAmmo": 20,
+      "AmmoWeight": 1,
+      "AllRolesLevelRequirement": 0,
+      "RolesLevelRequirement": {
+        "Medic": 0
+      },
+      "ItemLimit": 0,
+      "Tags": [
+        "Equipment",
+        "Utility"
+      ]
+    }
+  },
+  "loadouts": {
+    "Rifleman": [
+      "Type56_AK",
+      "Type67",
+      "WFL_NVAHammer",
+      "WFL_NVABandage",
+      "WFL_NVAAmmoBox",
+      "WFL_NVAHEAmmoBox",
+      "NVA_Knife"
+    ],
+    "Assault": [
+      "N4_Rifle_Launcher",
+      "Type67",
+      "WFL_RDG1",
+      "WFL_NVAHammer",
+      "WFL_NVABandage",
+      "NVA_Knife"
+    ],
+    "AutomaticRifleman": [
+      "Type56_AK",
+      "RG42",
+      "RUHammer",
+      "RUSBandage",
+      "NVA_Knife"
+    ],
+    "Medic": [
+      "Type56_AK",
+      "Type54",
+      "WFL_RDG1",
+      "WFL_NVAMedicKit",
+      "NVA_MedicAmmoBox",
+      "WFL_NVABandage",
+      "NVA_Knife"
+    ],
+    "Spotter": [
+      "K50M",
+      "Type67",
+      "WFL_NVABandage",
+      "DH10_AP",
+      "WFL_NVAAmmoBox",
+      "RUSFlareGun",
+      "WFL_NVAWatch",
+      "WFL_NVABinoculars",
+      "NVA_Knife"
+    ],
+    "MachineGunner": [
+      "RPD",
+      "Type54",
+      "WFL_NVABandage",
+      "WFL_USHAmmer",
+      "WFL_NVAHEAmmoBox",
+      "NVA_Knife"
+    ],
+    "Engineer": [
+      "IZH58",
+      "WFL_NVABandage",
+      "NVA_Wrench",
+      "WFL_NVAHammer",
+      "RUSTorch",
+      "DH10_AP",
+      "WFL_NVASatchel",
+      "TM-46",
+      "NVA_Knife"
+    ],
+    "Sniper": [
+      "Type53_PU",
+      "Type54",
+      "Type67",
+      "WFL_NVABandage",
+      "NVA_Knife"
+    ],
+    "Crewman": [
+      "Type54",
+      "WFL_NVABandage",
+      "RUSTorch",
+      "NVA_Knife"
+    ],
+    "TankCommander": [
+      "K50M",
+      "Type54",
+      "WFL_NVABandage",
+      "WFL_NVABinoculars",
+      "RUSTorch",
+      "NVA_Knife"
+    ],
+    "MortarGunner": [
+      "Type56_AK",
+      "Type67",
+      "WFL_NVAHammer",
+      "WFL_NVABandage",
+      "NVA_MortarWrench",
+      "NVA_Knife"
+    ],
+    "MortarSupport": [
+      "Type56_AK",
+      "WFL_NVASupply",
+      "WFL_NVAHEAmmoBox",
+      "WFL_NVAAmmoBox",
+      "WFL_NVABandage",
+      "WFL_NVAHammer",
+      "NVA_Knife"
+    ],
+    "HelicopterPilot": [],
+    "HelicopterLogisticsOfficer": [],
+    "HelicopterFlightEngineer": [],
+    "HelicopterMedic": [],
+    "ArmyCommander": [
+      "K50M",
+      "Type54",
+      "WFL_RDG1",
+      "WFL_NVABandage",
+      "WFL_NVAWatchCommander",
+      "WFL_NVABinoculars",
+      "RUSFlareGun",
+      "NVA_Knife"
+    ]
+  }
+}

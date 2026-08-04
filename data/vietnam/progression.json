@@ -1,0 +1,890 @@
+{
+  "Default": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 0
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 2
+      }
+    ]
+  },
+  "Medic": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 0
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      }
+    ]
+  },
+  "Specialist": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 0
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      }
+    ]
+  },
+  "SquadLeader": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 0
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      }
+    ]
+  },
+  "MortarGunner": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 0
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      }
+    ]
+  },
+  "Spotter": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 0
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      }
+    ]
+  },
+  "MortarSupport": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 0
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 3,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 4,
+        "LethalCapacity": 2
+      }
+    ]
+  },
+  "Grenadier": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 0,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      }
+    ]
+  },
+  "Engineer": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 0,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      }
+    ]
+  },
+  "HeavyMachineGunner": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 0,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      }
+    ]
+  },
+  "Sniper": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 0,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      }
+    ]
+  },
+  "MortarObserver": {
+    "LevelUnlocks": [
+      {
+        "WeightPoints": 6,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": false,
+        "UtilityCapacity": 0,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 7,
+        "bEnableAdditionalAmmo": false,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 1
+      },
+      {
+        "WeightPoints": 8,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 9,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 2
+      },
+      {
+        "WeightPoints": 10,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 11,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 3
+      },
+      {
+        "WeightPoints": 12,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 13,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 1,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 14,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      },
+      {
+        "WeightPoints": 15,
+        "bEnableAdditionalAmmo": true,
+        "bUnlockSecondarySlot": true,
+        "UtilityCapacity": 2,
+        "LethalCapacity": 4
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to Armor Hub</title>
+    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://hll-armor-hub.com/app.html">
+    <script>
+        (function () {
+            var ALIASES = {
+                "armor/wwii/tactics": "armor/wwii/getting-started",
+                "armor/wwii/ranging": "armor/wwii/calculators",
+                "infantry/wwii/classes": "infantry/wwii/getting-started"
+            };
+            var raw = (location.hash || "").replace(/^#/, "");
+            var qIdx = raw.indexOf("?");
+            var path = (qIdx >= 0 ? raw.slice(0, qIdx) : raw).replace(/^\/?/, "");
+            var query = qIdx >= 0 ? raw.slice(qIdx) : "";
+            if (path && ALIASES[path]) path = ALIASES[path];
+            var dest = "app.html" + (path ? "#/" + path + query : query ? "#" + query : "");
+            location.replace(dest);
+        })();
+    </script>
+</head>
+<body>
+    <p style="font-family:system-ui,sans-serif;text-align:center;margin-top:3rem">
+        Redirecting to <a href="app.html">Armor Hub</a>…
+    </p>
+</body>
+</html>

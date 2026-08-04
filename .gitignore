@@ -1,6 +1,8 @@
 _site/
 .idea/
 /.vs
+.cursor/
 node_modules/
 package-lock.json
 Gemfile.lock
+Hell Let Loose Tank Stats.xlsx

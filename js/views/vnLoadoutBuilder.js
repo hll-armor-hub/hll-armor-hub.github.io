@@ -98,7 +98,7 @@ export const vnLoadoutBuilder = {
             </header>
             <div class="notice" role="status">
                 ${icon("flask")}
-                <span>This is a work in progress. This will be fully updated upon HLLV full release.</span>
+                <span>This is a work in progress.</span>
             </div>
             <div id="lbMount"><div class="loading"><div class="spinner"></div><p>Loading balance data…</p></div></div>
         </div>`;

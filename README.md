@@ -38,6 +38,7 @@ While playing, open a calculator in minimal chrome:
 - Artillery: `app.html#/armor/wwii/calculators?focus=artillery`
 - SPA: `app.html#/armor/wwii/calculators?focus=spa`
 - Tankulator: `app.html#/armor/wwii/tankulator?focus=1`
+- Vietnam Tankulator: `app.html#/armor/vietnam/tankulator?focus=1`
 - Mortar: `app.html#/infantry/vietnam/mortar?focus=1`
 
 Use **Focus** on any calculator page, or install via **Add to Home Screen** (PWA shortcuts in manifest).

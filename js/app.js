@@ -19,7 +19,8 @@ const NAV = {
             ] },
             vietnam: { label: "Vietnam", sections: [
                 { id: "overview", label: "Overview" },
-                { id: "tanks", label: "Tank Roster" }
+                { id: "tanks", label: "Tank Roster" },
+                { id: "tankulator", label: "Tankulator" }
             ] }
         }
     },
@@ -55,6 +56,7 @@ const VIEW_LOADERS = {
     "armor/wwii/identification": function () { return import("./views/identification.js"); },
     "armor/vietnam/overview": function () { return import("./views/armorVietnam.js").then(function (m) { return m.overview; }); },
     "armor/vietnam/tanks": function () { return import("./views/armorVietnam.js").then(function (m) { return m.roster; }); },
+    "armor/vietnam/tankulator": function () { return import("./views/vnTankulator.js"); },
     "infantry/wwii/overview": function () { return import("./views/infantry.js").then(function (m) { return m.wwiiOverview; }); },
     "infantry/wwii/getting-started": function () { return import("./views/infantry.js").then(function (m) { return m.wwiiGettingStarted; }); },
     "infantry/wwii/maps": function () { return import("./views/infantry.js").then(function (m) { return m.wwiiMaps; }); },
@@ -108,7 +110,13 @@ function placeholder(route) {
 function renderBranchTabs(route) {
     branchTabsEl.innerHTML = Object.keys(NAV).map(function (key) {
         const n = NAV[key];
-        const href = n.single ? "#/community" : buildHash(key, "wwii", "overview");
+        let href;
+        if (n.single) {
+            href = "#/community";
+        } else {
+            const era = (route.era && n.eras && n.eras[route.era]) ? route.era : "wwii";
+            href = buildHash(key, era, "overview");
+        }
         const cur = key === route.branch ? ' aria-current="page"' : "";
         return `<a class="branch-tab ${key === route.branch ? "active" : ""}" href="${href}"${cur}>${escapeHtml(n.label)}</a>`;
     }).join("");

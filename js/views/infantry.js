@@ -190,11 +190,11 @@ export const wwiiTips = {
 
 const VN_SYSTEMS = [
     { icon: "fa-person-swimming", t: "Swimming", d: "Double-tap Ctrl to dive. ~6s before the drowning warning, ~6s more to death; up to ~11s if you time surfacing. Vault out of water works." },
-    { icon: "fa-helicopter", t: "Helicopters", d: "M60D side guns (400 rounds + 1 spare). Damage zones: hull, engine, main rotor, tail rotor. Rotors don't hurt on collision but do while piloting." },
+    { icon: "fa-helicopter", t: "Helicopters", d: "M60D side guns (400 rounds + 1 spare). Damage zones: hull, engine, main rotor, tail rotor. Rotor hits on trees and terrain damage the heli and can destroy it. Helicopters can survive two rockets and two tank shells." },
     { icon: "fa-mountain-sun", t: "Map & HQs", d: "A 3D live tactical map. All three HQs start with 150 supplies." },
-    { icon: "fa-dungeon", t: "NVA tunnels", d: "100m build radius, no supply cost, ~120s cooldown. 500m link radius, max 4 links (5 sites), 15 tunnels/team. Instant connect, fast-travel any node." },
+    { icon: "fa-dungeon", t: "NVA tunnels", d: "100m build radius, no supply cost, ~120s cooldown. Max 12 tunnels for NVA only. Squad leaders or the commander can reorganize them. Tunnel range about 300-350m." },
     { icon: "fa-truck", t: "Logistics & spawns", d: "150 HQ supplies; no jeeps/halftracks. Trucks drop 150. Garrisons 200m radius (50 blue / 100 red), not in neutral; OPs & tunnels can be neutral." },
-    { icon: "fa-ship", t: "Boats", d: "Spawn from the deck when the engine is off (halftrack-style). Armed boats: M2 (300 + 1 belt). Drift with engine on." }
+    { icon: "fa-ship", t: "Boats", d: "Spawn from the deck when the engine is off (halftrack-style). Armed boats: M2 (300 + 1 belt)." }
 ];
 
 const VN_MODES = ["Warfare (~1h30m)", "Offensive", "Conquest", "Domination"];
@@ -205,14 +205,17 @@ export const vnOverview = {
             <header class="section-head">
                 <p class="eyebrow">Infantry · Vietnam</p>
                 <h1 class="gold-text">Infantry Overview</h1>
-                <p class="lead">Closed beta details - subject to change at open beta and full release. Vietnam launches August 13th, 2026.</p>
+                <p class="lead">Vietnam infantry tools: systems, maps, squads, loadouts, and the mortar calculator.</p>
             </header>
             <div class="grid cols-3" style="margin-bottom:2.6rem">
                 ${tile("fa-flag", "Getting Started", "Vietnam-specific systems: modes, movement, logistics, and how it differs from WWII.", buildHash("infantry", "vietnam", "getting-started"), "/Vietnam/1920x1080_Camp.webp")}
-                ${tile("fa-map", "Maps", "Vietnam theater maps with key art - tactical overlays coming at full release.", buildHash("infantry", "vietnam", "maps"), "/images/infantry/maps/thanh-hoa-bridge/thanh-hoa-bridge-day.webp")}
+                ${tile("fa-map", "Maps", "Vietnam theater maps with key art. Tactical overlays coming soon.", buildHash("infantry", "vietnam", "maps"), "/images/infantry/maps/thanh-hoa-bridge/thanh-hoa-bridge-day.webp")}
                 ${tile("fa-people-group", "Squads & Equipment", "Every battlefield unit and role, from Commander to mortar crews.", buildHash("infantry", "vietnam", "squads"), "/Vietnam/1920x1080_Jungle.webp")}
                 ${tile("fa-bomb", "Mortar Calculator", "Mil calculator for US & NVA mortars - same range band as in-game.", buildHash("infantry", "vietnam", "mortar"), "/Vietnam/1920x1080_Village.webp")}
             </div>
+            <p class="eyebrow">Featured</p>
+            <h2 class="gold-text" style="font-size:1.8rem;margin:.4rem 0 1.2rem">Infantry gameplay</h2>
+            <div class="grid cols-2">${videoCard("g3DDIiz2XxI", "Here's what infantry gameplay in HLLV looks like")}</div>
         </div>`;
     }
 };
@@ -299,9 +302,8 @@ export const vnMaps = {
             <header class="section-head">
                 <p class="eyebrow">Infantry · Vietnam</p>
                 <h1 class="gold-text">Maps</h1>
-                <p class="lead">Key art for the Vietnam theater maps. Tactical overlays land with full release.</p>
+                <p class="lead">Key art for the Vietnam theater maps. Tactical overlays coming soon.</p>
             </header>
-            <div class="notice" style="margin-bottom:1.6rem">${icon("circle-info")} Per Vietnam open beta. This will be fully updated come full release.</div>
             <div class="map-grid">${cards}</div>
         </div>`;
     },

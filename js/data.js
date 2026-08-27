@@ -14,6 +14,7 @@ const state = {
     promise: null,
     wwii: {},        // faction-slug -> [tanks]
     vietnam: [],
+    vnTankulator: null,
     u20: null,
     spaMeta: { strengths: "", weakSpots: "", type: SPA_TANK_TYPE },
     factions: []
@@ -25,8 +26,9 @@ export function loadData() {
     state.promise = Promise.all([
         fetchJSON(`${DATA_BASE}/tanks-wwii.json`),
         fetchJSON(`${DATA_BASE}/tanks-u20-overrides.json`),
-        fetchJSON(`${DATA_BASE}/tanks-vietnam.json`).catch(() => ({ tanks: [] }))
-    ]).then(function ([wwiiDoc, u20Doc, vnDoc]) {
+        fetchJSON(`${DATA_BASE}/tanks-vietnam.json`).catch(() => ({ tanks: [] })),
+        fetchJSON(`${DATA_BASE}/vietnam-tankulator.json`).catch(() => null)
+    ]).then(function ([wwiiDoc, u20Doc, vnDoc, vnTkDoc]) {
         state.wwii = wwiiDoc.tanks || {};
         state.factions = wwiiDoc.factions || Object.keys(state.wwii);
         state.spaMeta = {
@@ -36,6 +38,7 @@ export function loadData() {
         };
         state.u20 = u20Doc || {};
         state.vietnam = (vnDoc && vnDoc.tanks) || [];
+        state.vnTankulator = vnTkDoc;
         applyU20StatPatches();
         state.ready = true;
         return state;
@@ -74,6 +77,8 @@ export function getAllWWIITanks() {
 }
 
 export function getVietnamTanks() { return state.vietnam.slice(); }
+
+export function getVietnamTankulatorDoc() { return state.vnTankulator; }
 
 export function findTankByName(name) {
     return getAllWWIITanks().find(function (t) { return t.name === name; })

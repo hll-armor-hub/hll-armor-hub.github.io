@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "note": "Hell Let Loose: Vietnam already displays tank health as percentages. This calculator uses the same % format. Both the M48 Patton and T-54 share one damage model.",
+  "sharedModel": true,
+  "rearBaselineHullDamage": 75,
+  "tanks": ["M48 Patton", "T-54"],
+  "locations": [
+    {
+      "key": "front",
+      "label": "Front hull",
+      "kind": "hull",
+      "hullDamagePerShot": 30,
+      "resistanceVsRearPct": 60,
+      "shotsToKill": 4
+    },
+    {
+      "key": "side",
+      "label": "Side hull",
+      "kind": "hull",
+      "hullDamagePerShot": 50,
+      "resistanceVsRearPct": 33.3,
+      "shotsToKill": 2
+    },
+    {
+      "key": "rear",
+      "label": "Rear hull",
+      "kind": "hull",
+      "hullDamagePerShot": 75,
+      "resistanceVsRearPct": 0,
+      "shotsToKill": 2
+    },
+    {
+      "key": "turret",
+      "label": "Turret",
+      "kind": "component",
+      "component": "turret",
+      "shotsToKill": 3,
+      "shots": [
+        { "hullDamage": 0, "componentDamage": 86 },
+        { "hullDamage": 62, "componentDamage": 14 },
+        { "hullDamage": 62, "componentDamage": 0 }
+      ],
+      "postKoHullDamage": 62
+    },
+    {
+      "key": "tracks",
+      "label": "Tracks",
+      "kind": "component",
+      "component": "tracks",
+      "shotsToKill": 4,
+      "shots": [
+        { "hullDamage": 0, "componentDamage": 75 },
+        { "hullDamage": 48, "componentDamage": 25 },
+        { "hullDamage": 40, "componentDamage": 0 },
+        { "hullDamage": 40, "componentDamage": 0 }
+      ],
+      "postKoHullDamage": 40
+    }
+  ],
+  "weakSpots": {
+    "summary": "Best shots: turret from the front (3 to kill), or hull from the sides / rear (2 to kill).",
+    "options": [
+      { "spot": "Turret (front)", "shotsToKill": 3 },
+      { "spot": "Side hull", "shotsToKill": 2 },
+      { "spot": "Rear hull", "shotsToKill": 2 }
+    ]
+  }
+}

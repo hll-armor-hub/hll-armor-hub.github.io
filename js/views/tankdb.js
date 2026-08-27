@@ -5,6 +5,7 @@ import {
 } from "../data.js";
 import { escapeHtml, slug } from "../util.js";
 import { icon } from "../icons.js";
+import { viewer360HTML, initViewers } from "../viewer360.js";
 
 const FACTION_LABELS = { usa: "USA", germany: "Germany", soviet: "Soviet", british: "Britain" };
 const TYPE_FILTERS = [
@@ -16,7 +17,6 @@ const TYPE_FILTERS = [
     { key: "spa", label: "SPA" }
 ];
 const HP_MAX = { hull: 1300, turret: 1120, engine: 720, track: 1000 };
-const ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];
 
 function typeMatches(tank, key) {
     if (key === "all") return true;
@@ -38,29 +38,6 @@ function hpBar(label, val, max, cls) {
 function spec(label, value) {
     if (value == null || value === "") return "";
     return `<div class="spec"><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(String(value))}</dd></div>`;
-}
-
-function rootAbsPrefix(prefix) {
-    if (!prefix) return "";
-    return prefix.charAt(0) === "/" ? prefix : "/" + prefix;
-}
-
-function viewer360(tank, id) {
-    if (!tank.has360View || !tank.images360) return "";
-    const prefix = rootAbsPrefix(tank.images360.prefix);
-    const suffix = tank.images360.suffix || ".webp";
-    const startFrame = 1;
-    return `<div class="viewer360" data-viewer="${id}" data-prefix="${escapeHtml(prefix)}" data-suffix="${escapeHtml(suffix)}" data-frame="${startFrame}">
-        <span class="viewer360__angle">${ANGLES[startFrame]}°</span>
-        <div class="viewer360__stage" role="img" aria-label="${escapeHtml(tank.name)} 360 degree view">
-            <img src="${prefix}${startFrame}${suffix}" alt="${escapeHtml(tank.name)}" draggable="false" loading="lazy" decoding="async">
-        </div>
-        <span class="viewer360__hint">Drag to rotate</span>
-        <div class="viewer360__btns">
-            <button class="viewer360__btn" data-rotate="-1" aria-label="Rotate left">${icon("rotate-left")}</button>
-            <button class="viewer360__btn" data-rotate="1" aria-label="Rotate right">${icon("rotate-right")}</button>
-        </div>
-    </div>`;
 }
 
 function hullPenMatrix(tank) {
@@ -126,7 +103,7 @@ function tankCard(tank, faction, idx) {
             <span class="tank-card__type">${escapeHtml((tank.type || "").replace(/\s*\(.*\)/, ""))}</span>
         </div>
         <div class="tank-card__body">
-            ${viewer360(tank, faction + "-" + idx)}
+            ${viewer360HTML(tank, faction + "-" + idx)}
             ${tank.description ? `<p class="desc">${escapeHtml(tank.description)}</p>` : ""}
             <dl class="spec-grid">${specs}</dl>
             ${bars ? `<div class="hp-bars">${bars}</div>` : ""}
@@ -178,53 +155,6 @@ export function render() {
     </div>`;
 }
 
-function initViewer(viewer) {
-    if (viewer.getAttribute("data-inited") === "1") return;
-    viewer.setAttribute("data-inited", "1");
-    const stage = viewer.querySelector(".viewer360__stage");
-    const img = viewer.querySelector("img");
-    const angleEl = viewer.querySelector(".viewer360__angle");
-    const prefix = viewer.getAttribute("data-prefix");
-    const suffix = viewer.getAttribute("data-suffix");
-    let frame = parseInt(viewer.getAttribute("data-frame"), 10) || 1;
-    let angle = ANGLES[frame];
-
-    function setFrame(n) {
-        frame = ((n % 8) + 8) % 8;
-        img.src = `${prefix}${frame}${suffix}`;
-        angleEl.textContent = ANGLES[frame] + "°";
-    }
-    function setAngle(a) {
-        angle = ((a % 360) + 360) % 360;
-        const n = Math.floor(angle / 45) % 8;
-        if (n !== frame) setFrame(n);
-    }
-
-    viewer.querySelectorAll("[data-rotate]").forEach(function (btn) {
-        btn.addEventListener("click", function (e) {
-            e.preventDefault();
-            setFrame(frame + parseInt(btn.getAttribute("data-rotate"), 10));
-            angle = ANGLES[frame];
-        });
-    });
-
-    let dragging = false, startX = 0, startAngle = 0;
-    const sensitivity = 2;
-    function down(x) { dragging = true; startX = x; startAngle = angle; stage.classList.add("dragging"); }
-    function move(x) { if (!dragging) return; setAngle(startAngle + (x - startX) / sensitivity); }
-    function up() { dragging = false; stage.classList.remove("dragging"); }
-
-    stage.addEventListener("mousedown", function (e) { down(e.clientX); });
-    window.addEventListener("mousemove", function (e) { move(e.clientX); });
-    window.addEventListener("mouseup", up);
-    stage.addEventListener("touchstart", function (e) { down(e.touches[0].clientX); }, { passive: true });
-    stage.addEventListener("touchmove", function (e) {
-        if (dragging) e.preventDefault();
-        move(e.touches[0].clientX);
-    }, { passive: false });
-    stage.addEventListener("touchend", up);
-}
-
 export function mount(root) {
     root.querySelectorAll("[data-faction-filter]").forEach(function (btn) {
         btn.addEventListener("click", function () {
@@ -253,22 +183,6 @@ function refresh(root) {
     grid.innerHTML = renderGrid();
     initViewers(root);
     revealCards(root);
-}
-
-function initViewers(root) {
-    const viewers = root.querySelectorAll(".viewer360");
-    if (!("IntersectionObserver" in window)) {
-        viewers.forEach(initViewer);
-        return;
-    }
-    const io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-            if (!e.isIntersecting) return;
-            initViewer(e.target);
-            io.unobserve(e.target);
-        });
-    }, { rootMargin: "120px 0px", threshold: 0.01 });
-    viewers.forEach(function (v) { io.observe(v); });
 }
 
 function revealCards(root) {

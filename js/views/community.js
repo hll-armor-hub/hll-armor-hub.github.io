@@ -8,9 +8,12 @@ const FEATURES = [
     { icon: "fa-trophy", t: "Community Events", d: "Tank tournaments, competitive matches and AHO-organized events." }
 ];
 
+const YT_RAZBORA = "https://www.youtube.com/@Raz_Bora";
+const YT_TFBG = "https://www.youtube.com/@TheFreshBakedGoods";
+
 const CREATORS = [
-    { name: "RazBora", role: "Tank Specialist", desc: "Expert tank gameplay, advanced tactics and comprehensive HLL tutorials.", links: [["YouTube", "https://www.youtube.com/@Raz_Bora"], ["Twitter", "https://x.com/razborattv"], ["Twitch", "https://www.twitch.tv/raz_bora"], ["TikTok", "https://www.tiktok.com/@raz_bora?lang=en"], ["Discord", "https://discord.gg/Muwg2jZnVW"]] },
-    { name: "TheFreshBakedGoods", role: "Tutorial Master", desc: "In-depth HLL tutorials and strategic gameplay analysis.", links: [["YouTube", "https://www.youtube.com/@TheFreshBakedGoods"], ["TikTok", "https://www.tiktok.com/@thefreshbakedgoods?lang=en"]] },
+    { name: "RazBora", url: YT_RAZBORA, role: "Tank Specialist", desc: "Expert tank gameplay, advanced tactics and comprehensive HLL tutorials.", links: [["YouTube", YT_RAZBORA], ["Twitter", "https://x.com/razborattv"], ["Twitch", "https://www.twitch.tv/raz_bora"], ["TikTok", "https://www.tiktok.com/@raz_bora?lang=en"], ["Discord", "https://discord.gg/Muwg2jZnVW"]] },
+    { name: "TheFreshBakedGoods", url: YT_TFBG, role: "Tutorial Master", desc: "In-depth HLL tutorials and strategic gameplay analysis.", links: [["YouTube", YT_TFBG], ["TikTok", "https://www.tiktok.com/@thefreshbakedgoods?lang=en"]] },
     { name: "sushiicatt", role: "Streamer", desc: "Amelia / sushii - 22, Netherlands, cat lover, metal head.", links: [["Twitch", "https://www.twitch.tv/sushiicattt"]] },
     { name: "makL_", role: "Streamer", desc: "Mike aka makL - punk rocker, 80s books & movies, drinks and curses.", links: [["Twitch", "https://www.twitch.tv/makl_"]] }
 ];
@@ -18,9 +21,16 @@ const CREATORS = [
 const CREDITS = [
     ["Tankulator", "In partnership with WIX", "https://www.youtube.com/@wixstreams"],
     ["Data contributions", "Yuh & Wix", "https://www.youtube.com/@wixstreams"],
-    ["Site creators", "RazBora & TheFreshBakedGoods", "https://www.youtube.com/@Raz_Bora"],
+    ["Site creators", null, null],
     ["Dev support & Maps Let Loose", "Winston", "https://mattw.io/"]
 ];
+
+function creditPeopleHtml(label) {
+    if (label === "Site creators") {
+        return `<a href="${YT_RAZBORA}" target="_blank" rel="noopener noreferrer">RazBora</a> &amp; <a href="${YT_TFBG}" target="_blank" rel="noopener noreferrer">TheFreshBakedGoods</a>`;
+    }
+    return null;
+}
 
 export function render() {
     return `<div class="wrap wrap-wide">
@@ -46,8 +56,11 @@ export function render() {
         <div class="grid cols-2" style="margin-bottom:2.6rem">
             ${CREATORS.map(function (c) {
                 const links = c.links.map(function (l) { return `<a href="${l[1]}" target="_blank" rel="noopener" class="chip" style="font-size:.7rem">${escapeHtml(l[0])}</a>`; }).join("");
+                const nameHtml = c.url
+                    ? `<a href="${escapeHtml(c.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(c.name)}</a>`
+                    : escapeHtml(c.name);
                 return `<div class="tile glass card-hover reveal">
-                    <h3>${escapeHtml(c.name)}</h3>
+                    <h3>${nameHtml}</h3>
                     <span class="tank-card__faction">${escapeHtml(c.role)}</span>
                     <p style="margin:.4rem 0 .8rem">${escapeHtml(c.desc)}</p>
                     <div class="filter-group">${links}</div>
@@ -58,7 +71,13 @@ export function render() {
         <p class="eyebrow">Credits</p>
         <h2 class="gold-text" style="font-size:1.8rem;margin:.4rem 0 1.2rem">Thanks to</h2>
         <div class="grid cols-2">
-            ${CREDITS.map(function (c) { return `<a class="spec card-hover reveal" href="${c[2]}" target="_blank" rel="noopener" style="display:block;padding:1rem 1.2rem"><dt>${escapeHtml(c[0])}</dt><dd style="font-family:var(--font-ui);font-weight:600;font-size:1rem">${escapeHtml(c[1])}</dd></a>`; }).join("")}
+            ${CREDITS.map(function (c) {
+                const peopleHtml = creditPeopleHtml(c[0]);
+                if (peopleHtml) {
+                    return `<div class="spec reveal" style="display:block;padding:1rem 1.2rem"><dt>${escapeHtml(c[0])}</dt><dd style="font-family:var(--font-ui);font-weight:600;font-size:1rem">${peopleHtml}</dd></div>`;
+                }
+                return `<a class="spec card-hover reveal" href="${c[2]}" target="_blank" rel="noopener" style="display:block;padding:1rem 1.2rem"><dt>${escapeHtml(c[0])}</dt><dd style="font-family:var(--font-ui);font-weight:600;font-size:1rem">${escapeHtml(c[1])}</dd></a>`;
+            }).join("")}
         </div>
     </div>`;
 }

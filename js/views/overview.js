@@ -52,6 +52,17 @@ export function render() {
             <p class="lead">Master the art of tank warfare in Hell Let Loose. Everything a crew needs - tuned for Update&nbsp;20.</p>
         </header>
 
+        <a class="tile glass card-hover reveal tile--art tile--tank" href="${buildHash("armor", "vietnam", "overview")}"
+           style="--col:100%; flex-direction:row; align-items:center; gap:1.4rem; margin-bottom:1.4rem; min-height:120px">
+            <span class="tile__bg" style="background-image:url('/images/360/m48-patton/1.webp?v=face')" aria-hidden="true"></span>
+            <span class="tile__icon" style="width:56px;height:56px;font-size:1.4rem;margin:0">${icon("tank")}</span>
+            <div style="flex:1;min-width:0">
+                <h3 style="margin:0 0 .25rem">Looking for Vietnam?</h3>
+                <p style="margin:0">M48 Patton, T-54 roster, and the Vietnam Tankulator (% damage model).</p>
+            </div>
+            <span class="btn btn-primary">Go to Vietnam Armor</span>
+        </a>
+
         <div class="notice">${icon("circle-info")} Update 20 values are now up to date across tank cards and the Tankulator.</div>
 
         <div class="grid cols-3" style="margin-bottom:3rem">${TILES.map(tile).join("")}</div>

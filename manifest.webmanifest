@@ -33,6 +33,12 @@
             "icons": [{ "src": "/images/HLL_Icons/Map Markers/icn_tank_marker.png", "sizes": "192x192" }]
         },
         {
+            "name": "Vietnam Tankulator",
+            "short_name": "VN Tankulator",
+            "url": "/app.html#/armor/vietnam/tankulator?focus=1",
+            "icons": [{ "src": "/images/HLL_Icons/Map Markers/icn_tank_marker.png", "sizes": "192x192" }]
+        },
+        {
             "name": "Mortar Calculator",
             "short_name": "Mortar",
             "url": "/app.html#/infantry/vietnam/mortar?focus=1",

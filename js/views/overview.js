@@ -27,8 +27,7 @@ const U20_CHANGES = [
 
 const VIDEOS = [
     { id: "mh1lbHyKQzI", title: "Update 20 - Massive Armor Rework Explained by a Top Tanker", start: 282 },
-    { id: "ltDPlcPjuD8", title: "Churchill A.V.R.E - the strongest tank in the game", start: 1 },
-    { id: "nrDLLtcZPe0", title: "First matches on the Update 20 tank rework", start: 156 }
+    { id: "ltDPlcPjuD8", title: "Churchill A.V.R.E - the strongest tank in the game", start: 1 }
 ];
 
 function tile(t) {
@@ -47,7 +46,7 @@ export function render() {
     return `
     <div class="wrap wrap-wide">
         <header class="section-head">
-            <p class="eyebrow">Armor · WWII</p>
+            <p class="eyebrow">HLL WWII · Armor</p>
             <h1 class="gold-text">Armor Overview</h1>
             <p class="lead">Master the art of tank warfare in Hell Let Loose. Everything a crew needs - tuned for Update&nbsp;20.</p>
         </header>
@@ -93,7 +92,7 @@ export function render() {
         <section>
             <p class="eyebrow">Featured</p>
             <h2 class="gold-text" style="font-size:clamp(1.6rem,3.5vw,2.4rem); margin:.4rem 0 1.4rem">Watch the rework explained</h2>
-            <div class="grid cols-3">${VIDEOS.map(function (v) { return videoCard(v.id, v.title, v.start); }).join("")}</div>
+            <div class="grid cols-2">${VIDEOS.map(function (v) { return videoCard(v.id, v.title, v.start); }).join("")}</div>
         </section>
     </div>`;
 }

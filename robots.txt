@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /scripts/
+Disallow: /node_modules/
+Disallow: /worker/
+
+Sitemap: https://hll-armor-hub.com/sitemap.xml

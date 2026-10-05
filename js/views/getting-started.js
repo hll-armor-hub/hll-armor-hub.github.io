@@ -4,8 +4,7 @@ import { buildHash } from "../router.js";
 import { icon } from "../icons.js";
 
 const VIDEOS = [
-    { id: "PBzYfTpN7Hs", title: "Tank Tactics - Tank Basics" },
-    { id: "G5vl86AZ1TU", title: "Combat Guide" }
+    { id: "PBzYfTpN7Hs", title: "Tank Tactics - Tank Basics" }
 ];
 
 const ROLES = [
@@ -154,7 +153,7 @@ function atThreatsSection() {
 export function render() {
     return `<div class="wrap wrap-wide">
         <header class="section-head">
-            <p class="eyebrow">Armor · WWII</p>
+            <p class="eyebrow">HLL WWII · Armor</p>
             <h1 class="gold-text">Getting Started in Tanking</h1>
             <p class="lead">Essential fundamentals and beginner-friendly tips for new tank crews.</p>
         </header>

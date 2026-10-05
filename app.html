@@ -8,16 +8,18 @@
     <meta name="theme-color" content="#0C0A09">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Hell Let Loose · Armor Hub">
+    <meta property="og:title" content="After Hours Operators · Hell Let Loose Armor Hub">
     <meta property="og:description" content="Tank database, Tankulator, artillery &amp; SPA calculators, gunnery sights, and infantry guides for WWII and Vietnam.">
-    <meta property="og:image" content="https://hll-armor-hub.com/images/Hell%20Let%20loose%20Logos/Hell%20Let%20Loose-Lockup-Primary-White.png">
-    <meta property="og:image:alt" content="Hell Let Loose Armor Hub - Tank Warfare Guide">
+    <meta property="og:image" content="https://hll-armor-hub.com/images/aho/aho-banner.jpg">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="552">
+    <meta property="og:image:alt" content="After Hours Operators - gaming for the after-hours crowd">
     <meta property="og:url" content="https://hll-armor-hub.com/app.html">
-    <meta property="og:site_name" content="Hell Let Loose Armor Hub">
+    <meta property="og:site_name" content="After Hours Operators · Armor Hub">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hell Let Loose · Armor Hub">
+    <meta name="twitter:title" content="After Hours Operators · Hell Let Loose Armor Hub">
     <meta name="twitter:description" content="Tank database, Tankulator, artillery &amp; SPA calculators, gunnery sights, and infantry guides for WWII and Vietnam.">
-    <meta name="twitter:image" content="https://hll-armor-hub.com/images/Hell%20Let%20loose%20Logos/Hell%20Let%20Loose-Lockup-Primary-White.png">
+    <meta name="twitter:image" content="https://hll-armor-hub.com/images/aho/aho-banner.jpg">
 
     <link rel="icon" type="image/png" href="/images/HLL_Icons/Map Markers/icn_tank_marker.png">
     <link rel="manifest" href="/manifest.webmanifest">
@@ -25,9 +27,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/tokens.css?v=20261005c">
+    <link rel="stylesheet" href="css/base.css?v=20261005c">
+    <link rel="stylesheet" href="css/app.css?v=20261005c">
+    <link rel="stylesheet" href="css/wardogs.css?v=20261005c">
+    <link rel="stylesheet" href="css/wardogs-fire.css?v=20261005c">
+    <link rel="stylesheet" href="css/wardogs-loadouts.css?v=20261005c">
+    <link rel="stylesheet" href="css/wardogs-progression.css?v=20261005c">
+    <link rel="stylesheet" href="css/community.css?v=20261005c">
+    <link rel="stylesheet" href="css/community-live.css?v=20261005c">
+<link rel="stylesheet" href="css/community-wd.css?v=20261005c">
 
     <!-- Cloudflare Web Analytics -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
@@ -39,19 +48,19 @@
 
     <header class="app-topbar">
         <div class="app-topbar__row">
-            <a class="app-brand" href="index.html">
-                <svg class="icon" style="color:var(--gold-glow)" viewBox="0 0 24 24" width="1.1em" height="1.1em" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M12 3v15"/></svg>
-                <span><span class="full">Armor</span><span class="tag">Hub</span></span>
+            <a class="app-brand" href="#/community">
+                <img class="app-brand__aho" src="/images/aho/aho-plaque-64.webp" srcset="/images/aho/aho-plaque-64.webp 1x, /images/aho/aho-plaque-96.webp 1.5x" width="177" height="64" alt="After Hours Operators">
+                <span class="app-brand__name"><span class="full">Armor</span><span class="tag">Hub</span></span>
                 <span class="brand-ver" title="Armor Hub rebuild">v2.0</span>
             </a>
-            <nav class="branch-tabs" id="branchTabs" aria-label="Primary"></nav>
+            <nav class="game-tabs" id="gameTabs" aria-label="Games"></nav>
         </div>
     </header>
 
     <div class="app-subnav" id="appSubnav">
         <div class="app-subnav__row">
-            <div class="era-toggle" id="eraToggle" role="tablist" aria-label="Era"></div>
-            <div class="section-links" id="sectionLinks" aria-label="Sections"></div>
+            <div class="branch-toggle" id="branchToggle" role="group" aria-label="Branch"></div>
+            <nav class="section-links" id="sectionLinks" aria-label="Sections"></nav>
         </div>
     </div>
 
@@ -60,10 +69,11 @@
     <footer class="cover-foot" id="appFoot" style="margin-top:3rem">
         <div class="wrap">
             <p>Hell Let Loose · Armor Hub - a community resource. Not affiliated with Team17 or Expression Games.</p>
+            <p style="margin-top:0.4rem"><a href="https://bifroststats.com" target="_blank" rel="noopener" style="color:var(--gold-glow)">Stats powered by Bifrost</a> · <a href="https://bifrostgaming.com/pricing/" target="_blank" rel="noopener" style="color:var(--gold-glow)">Get Bifrost for your server</a></p>
             <p style="margin-top:0.4rem">Created by <a href="https://www.youtube.com/@Raz_Bora" target="_blank" rel="noopener noreferrer" style="color:var(--gold-glow)">RazBora</a> &copy; <span id="year"></span> Armor Hub v2.0 · <a href="/privacy.html" style="color:var(--gold-glow)">Privacy</a></p>
         </div>
     </footer>
 
-    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/app.js?v=20261005c"></script>
 </body>
 </html>

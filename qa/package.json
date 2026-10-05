@@ -1,0 +1,13 @@
+{
+  "name": "armor-hub-qa",
+  "private": true,
+  "description": "End-to-end smoke tests for the Armor Hub (Playwright + installed Microsoft Edge)",
+  "scripts": {
+    "test": "playwright test",
+    "test:phone": "playwright test --project=phone",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}

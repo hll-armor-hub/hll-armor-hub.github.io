@@ -1,0 +1,16 @@
+{
+  "name": "aho-stats",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --test-scheduled",
+    "deploy": "wrangler deploy",
+    "test": "node --test test/recorder.test.mjs test/nomigration.test.mjs",
+    "db:init:local": "wrangler d1 execute aho-stats --file=schema.sql --local",
+    "db:init:remote": "wrangler d1 execute aho-stats --file=schema.sql --remote"
+  },
+  "devDependencies": {
+    "wrangler": "^4.47.0"
+  }
+}

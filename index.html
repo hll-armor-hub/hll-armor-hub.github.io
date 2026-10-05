@@ -3,228 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Hell Let Loose · Armor Hub</title>
-    <meta name="description" content="The command center for Hell Let Loose tank crews - WWII and Vietnam tank database, Tankulator, artillery &amp; SPA calculators, 360° viewers and gunnery sights.">
+    <title>After Hours Operators · Armor Hub</title>
+    <meta name="description" content="The After Hours Operators community hub - server stats and leaderboards, plus guides and tools for Hell Let Loose WWII, Vietnam and Wardogs.">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Hell Let Loose · Armor Hub">
-    <meta property="og:description" content="Know your steel, read the battlefield, run the numbers. The command center for tank crews.">
-    <meta property="og:image" content="https://hll-armor-hub.com/images/Hell%20Let%20loose%20Logos/Hell%20Let%20Loose-Lockup-Primary-White.png">
-    <meta property="og:image:alt" content="Hell Let Loose Armor Hub - Tank Warfare Guide">
+    <meta property="og:title" content="After Hours Operators · Armor Hub">
+    <meta property="og:description" content="Server stats, leaderboards, and guides and tools for Hell Let Loose WWII, Vietnam and Wardogs.">
+    <meta property="og:image" content="https://hll-armor-hub.com/images/aho/aho-banner.jpg">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="552">
+    <meta property="og:image:alt" content="After Hours Operators - gaming for the after-hours crowd">
     <meta property="og:url" content="https://hll-armor-hub.com/">
-    <meta property="og:site_name" content="Hell Let Loose Armor Hub">
+    <meta property="og:site_name" content="After Hours Operators · Armor Hub">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Hell Let Loose · Armor Hub">
-    <meta name="twitter:description" content="Know your steel, read the battlefield, run the numbers. The command center for tank crews.">
-    <meta name="twitter:image" content="https://hll-armor-hub.com/images/Hell%20Let%20loose%20Logos/Hell%20Let%20Loose-Lockup-Primary-White.png">
+    <meta name="twitter:title" content="After Hours Operators · Armor Hub">
+    <meta name="twitter:description" content="Server stats, leaderboards, and guides and tools for Hell Let Loose WWII, Vietnam and Wardogs.">
+    <meta name="twitter:image" content="https://hll-armor-hub.com/images/aho/aho-banner.jpg">
     <meta name="theme-color" content="#0C0A09">
-
     <link rel="icon" type="image/png" href="/images/HLL_Icons/Map Markers/icn_tank_marker.png">
-    <link rel="manifest" href="/manifest.webmanifest">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/cover.css">
+    <link rel="canonical" href="https://hll-armor-hub.com/app.html">
 
     <script>
-        if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-        if (!location.hash || location.hash === "#top") window.scrollTo(0, 0);
+        (function () {
+            var h = location.hash || "";
+            location.replace("app.html" + (h.indexOf("#/") === 0 ? h : "#/community"));
+        })();
     </script>
-
-    <!-- Cloudflare Web Analytics -->
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
-            data-cf-beacon='{"token": "fef7910526ea46c88da4ff89f58079c3"}'></script>
+    <noscript><meta http-equiv="refresh" content="0; url=app.html"></noscript>
 </head>
-<body class="cover-page">
-    <a class="skip-link" href="#top">Skip to content</a>
-    <div class="atmosphere" aria-hidden="true"></div>
-
-    <!-- Preloader -->
-    <div class="preloader" id="preloader" role="dialog" aria-label="Loading the Armor Hub">
-        <div class="preloader__mark">Hell Let Loose &middot; Armor Hub</div>
-        <div class="preloader__counter"><span id="preCount">0</span><sup>%</sup></div>
-        <div class="preloader__bar"><span id="preBar"></span></div>
-        <div class="preloader__status" id="preStatus">Booting fire control</div>
-        <div class="preloader__enter" id="preEnter"><span class="dot"></span>Click anywhere to enter &amp; enable sound</div>
-    </div>
-
-    <!-- Chrome -->
-    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-    <header class="cover-topbar" id="coverTopbar">
-        <a href="#top" class="cover-topbar__brand">Armor<span class="tag">Hub</span> <span class="brand-ver" title="Armor Hub rebuild">v2.0</span></a>
-        <div class="cover-topbar__actions">
-            <button class="audio-toggle muted" id="audioToggle" aria-label="Toggle ambient sound">
-                <span class="bars"><i></i><i></i><i></i><i></i></span>
-            </button>
-            <a href="app.html" class="btn btn-ghost">Enter Hub</a>
-        </div>
-    </header>
-
-    <nav class="chapter-dots" aria-label="Chapter navigation">
-        <a href="#top" data-label="Top" class="active"></a>
-        <a href="#steel" data-label="The Steel"></a>
-        <a href="#battlefield" data-label="Battlefield"></a>
-        <a href="#numbers" data-label="The Numbers"></a>
-        <a href="#deploy" data-label="Deploy"></a>
-    </nav>
-
-    <main>
-        <!-- HERO -->
-        <section class="chapter hero" id="top">
-            <div class="hero__bg" aria-hidden="true"></div>
-            <div class="wrap">
-                <p class="hero__kicker">Hell Let Loose</p>
-                <h1 class="hero__title">
-                    <span class="line" data-text="ARMOR" data-delay="0.9"></span>
-                    <span class="line" data-text="HUB" data-delay="1.15" data-accent="0,1,2"></span>
-                </h1>
-                <p class="hero__sub">The command center for tank crews across WWII and Vietnam. Know your steel, read the battlefield, and run the numbers.</p>
-                <div class="hero__meta">
-                    <span>Tank Database</span>
-                    <span>Tankulator</span>
-                    <span>Vietnam Armor</span>
-                    <span>360° Viewers</span>
-                </div>
-                <div class="hero__cta">
-                    <a href="app.html" class="btn btn-primary">Enter the Hub</a>
-                    <a href="#steel" class="btn btn-ghost">Take the Tour</a>
-                </div>
-            </div>
-            <div class="scroll-cue" aria-hidden="true">
-                <span class="mouse"></span>
-                <span>Scroll</span>
-            </div>
-        </section>
-
-        <!-- CHAPTER 1 -->
-        <section class="chapter story" id="steel">
-            <div class="wrap">
-                <div class="story__copy reveal">
-                    <div class="story__index">01</div>
-                    <p class="eyebrow">Know your steel</p>
-                    <h2 class="story__title gold-text">Every tank, every plate.</h2>
-                    <p class="lead">A complete armor database for both WWII and Vietnam - hull and turret thickness, gun performance, crew, mobility, and cost. Spin any tank in a full 360° viewer before you commit.</p>
-                    <ul class="story__points">
-                        <li>Front, side, rear &amp; top armor at a glance</li>
-                        <li>360° model viewer for visual identification</li>
-                        <li>Filter by faction, class and era</li>
-                    </ul>
-                </div>
-                <div class="story__media reveal d1">
-                    <div class="story__media-floor" aria-hidden="true"></div>
-                    <img src="/images/360/m48-patton/0.webp" alt="M48 Patton medium tank" width="2500" height="1550" loading="lazy" decoding="async">
-                    <span class="story__tag">M48 Patton · Medium · USA · Vietnam</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- CHAPTER 2 -->
-        <section class="chapter story story--rev" id="battlefield">
-            <div class="wrap">
-                <div class="story__copy reveal">
-                    <div class="story__index">02</div>
-                    <p class="eyebrow">Read the battlefield</p>
-                    <h2 class="story__title gold-text">Identify. Range. React.</h2>
-                    <p class="lead">Learn to spot threats by silhouette, master your gunnery sights, and practice ranging so the first shot counts. Built from the gunner's seat.</p>
-                    <ul class="story__points">
-                        <li>Visual identification trainer</li>
-                        <li>Faction gunnery sights &amp; ranging practice</li>
-                        <li>Getting-started tactics for new crews</li>
-                    </ul>
-                </div>
-                <div class="story__media reveal d1">
-                    <div class="story__media-floor" aria-hidden="true"></div>
-                    <img src="/images/360/panther/0.webp" alt="Panther medium tank" width="2500" height="1550" loading="lazy" decoding="async">
-                    <span class="story__tag">Panther · Medium · Germany</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- CHAPTER 3 -->
-        <section class="chapter story" id="numbers">
-            <div class="wrap">
-                <div class="story__copy reveal">
-                    <div class="story__index">03</div>
-                    <p class="eyebrow">Run the numbers</p>
-                    <h2 class="story__title gold-text">Math wins firefights.</h2>
-                    <p class="lead">The Tankulator simulates shots-to-kill against any target by face, including the Vietnam % damage model. Artillery, SPA and mortar calculators turn grid distance into firing solutions - fast.</p>
-                    <ul class="story__points">
-                        <li>WWII &amp; Vietnam Tankulator shots-to-kill</li>
-                        <li>Artillery &amp; self-propelled gun solutions</li>
-                        <li>Vietnam infantry mortar calculator</li>
-                    </ul>
-                </div>
-                <div class="story__media reveal d1">
-                    <div class="story__media-floor" aria-hidden="true"></div>
-                    <img src="/images/360/t-54/0.webp" alt="T-54 medium tank" width="2500" height="1550" loading="lazy" decoding="async">
-                    <span class="story__tag">T-54 · Medium · NVA · Vietnam</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- MARQUEE -->
-        <div class="marquee" aria-hidden="true">
-            <div class="marquee__track">
-                <span>Tank Database</span><span class="hot">Tankulator</span><span>Vietnam Armor</span>
-                <span class="hot">SPA Calc</span><span>360° Viewer</span><span class="hot">Gunnery Sights</span>
-                <span>Identification</span><span class="hot">Infantry</span>
-                <span>Tank Database</span><span class="hot">Tankulator</span><span>Vietnam Armor</span>
-                <span class="hot">SPA Calc</span><span>360° Viewer</span><span class="hot">Gunnery Sights</span>
-                <span>Identification</span><span class="hot">Infantry</span>
-            </div>
-        </div>
-
-        <!-- STATS -->
-        <section class="chapter" style="min-height:auto">
-            <div class="wrap section-pad">
-                <div class="stats-grid">
-                    <div class="reveal">
-                        <div class="stat__num gold-text"><span data-count="2">0</span></div>
-                        <div class="stat__label">Eras Covered</div>
-                    </div>
-                    <div class="reveal d1">
-                        <div class="stat__num gold-text"><span data-count="6">0</span></div>
-                        <div class="stat__label">Factions</div>
-                    </div>
-                    <div class="reveal d2">
-                        <div class="stat__num gold-text"><span data-count="40" data-suffix="+">0</span></div>
-                        <div class="stat__label">Vehicles</div>
-                    </div>
-                    <div class="reveal d3">
-                        <div class="stat__num gold-text"><span data-count="20">0</span></div>
-                        <div class="stat__label">Update Tuned</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CLIMAX -->
-        <section class="chapter climax" id="deploy">
-            <div class="wrap">
-                <p class="eyebrow center reveal">Crew up</p>
-                <h2 class="climax__title display gold-text reveal d1">Take the seat.</h2>
-                <p class="lead reveal d2">Everything a tank crew needs, in one command center. Step inside the hub and start dominating the armor war.</p>
-                <div class="hero__cta reveal d3" style="margin-top:2.2rem">
-                    <a href="app.html" class="btn btn-primary">Enter the Hub</a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="cover-foot">
-        <div class="wrap">
-            <p>Hell Let Loose &middot; Armor Hub - a community resource. Not affiliated with Team17 or Expression Games.</p>
-            <p style="margin-top:0.4rem">Created by <a href="https://www.youtube.com/@Raz_Bora" target="_blank" rel="noopener noreferrer" style="color:var(--gold-glow)">RazBora</a> &copy; <span id="year"></span> Armor Hub v2.0 · <a href="/privacy.html" style="color:var(--gold-glow)">Privacy</a></p>
-        </div>
-    </footer>
-
-    <audio id="ambient" loop preload="none" src="/audio/Tunnel%20Fire.mp3"></audio>
-
-    <script src="js/cover.js"></script>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<body style="background:#0C0A09">
+    <p style="font-family:system-ui,sans-serif;text-align:center;margin-top:3rem;color:#a8a29e">
+        <a href="app.html#/community" style="color:#FACC15">Open the Armor Hub</a>
+    </p>
 </body>
 </html>

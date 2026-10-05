@@ -142,7 +142,7 @@ export function render() {
 
     return `<div class="wrap wrap-wide">
         <header class="section-head">
-            <p class="eyebrow">Armor · WWII</p>
+            <p class="eyebrow">HLL WWII · Armor</p>
             <h1 class="gold-text">Tank Database</h1>
             <p class="lead">Every WWII tank with U20 stats - armor, gunnery, component HP, and hull penetration by attacker class. Drag any model to inspect it in 360°.</p>
         </header>

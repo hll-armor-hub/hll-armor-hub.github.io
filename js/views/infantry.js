@@ -65,7 +65,7 @@ export const wwiiOverview = {
     render: function () {
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Infantry · WWII</p>
+                <p class="eyebrow">HLL WWII · Infantry</p>
                 <h1 class="gold-text">Infantry Overview</h1>
                 <p class="lead">New to the front? Start here. Servers, modes, comms, spawns and reading the fight.</p>
             </header>
@@ -92,7 +92,7 @@ export const wwiiGettingStarted = {
     render: function () {
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Infantry · WWII</p>
+                <p class="eyebrow">HLL WWII · Infantry</p>
                 <h1 class="gold-text">Getting Started</h1>
                 <p class="lead">The essentials every new infantryman should know before deploying.</p>
             </header>
@@ -143,7 +143,7 @@ export const wwiiMaps = {
         }).join("");
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Infantry · WWII</p>
+                <p class="eyebrow">HLL WWII · Infantry</p>
                 <h1 class="gold-text">Maps</h1>
                 <p class="lead">All 20 WWII maps in Field Manual order, with history and full-screen key art &amp; tactical maps. Interactive planning via <a href="https://mattw.io/maps-let-loose/" target="_blank" rel="noopener" style="color:var(--gold-glow)">Maps Let Loose</a>.</p>
             </header>
@@ -157,7 +157,7 @@ export const wwiiTips = {
     render: function () {
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Infantry · WWII</p>
+                <p class="eyebrow">HLL WWII · Infantry</p>
                 <h1 class="gold-text">Tips from the Front</h1>
                 <p class="lead">Perspective from After Hours Operators regulars. <a href="https://discord.gg/guFSTDfsCb" target="_blank" rel="noopener" style="color:var(--gold-glow)">Join the Discord</a> to share your own.</p>
             </header>
@@ -203,7 +203,7 @@ export const vnOverview = {
     render: function () {
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Infantry · Vietnam</p>
+                <p class="eyebrow">HLL Vietnam · Infantry</p>
                 <h1 class="gold-text">Infantry Overview</h1>
                 <p class="lead">Vietnam infantry tools: systems, maps, squads, loadouts, and the mortar calculator.</p>
             </header>
@@ -215,7 +215,9 @@ export const vnOverview = {
             </div>
             <p class="eyebrow">Featured</p>
             <h2 class="gold-text" style="font-size:1.8rem;margin:.4rem 0 1.2rem">Infantry gameplay</h2>
-            <div class="grid cols-2">${videoCard("g3DDIiz2XxI", "Here's what infantry gameplay in HLLV looks like")}</div>
+            <div class="grid cols-2">
+                ${videoCard("XhJA5iaD7Lo", "This is how teamwork wins games - Hell Let Loose: Vietnam infantry gameplay")}
+            </div>
         </div>`;
     }
 };
@@ -224,7 +226,7 @@ export const vnGettingStarted = {
     render: function () {
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Infantry · Vietnam</p>
+                <p class="eyebrow">HLL Vietnam · Infantry</p>
                 <h1 class="gold-text">Getting Started</h1>
                 <p class="lead">New systems and tweaks in Hell Let Loose: Vietnam for the closed beta.</p>
             </header>
@@ -240,7 +242,7 @@ export const vnSquads = {
     render: function () {
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Infantry · Vietnam</p>
+                <p class="eyebrow">HLL Vietnam · Infantry</p>
                 <h1 class="gold-text">Squads &amp; Equipment</h1>
                 <p class="lead">Closed-playtest classes and weapons — subject to change. For mix-and-match loadouts with the weight system, use the <a href="${buildHash("infantry", "vietnam", "loadout")}">Loadout Builder</a>.</p>
             </header>
@@ -300,7 +302,7 @@ export const vnMaps = {
         }).join("");
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Infantry · Vietnam</p>
+                <p class="eyebrow">HLL Vietnam · Infantry</p>
                 <h1 class="gold-text">Maps</h1>
                 <p class="lead">Key art for the Vietnam theater maps. Tactical overlays coming soon.</p>
             </header>
@@ -318,7 +320,7 @@ export const vnMortar = {
         const focus = isCalcFocus(route);
         const hist = historyCollapsible("Saved results", mortarHistoryTable(vnMortarHistory.all()), focus);
         const header = focus ? "" : `<header class="section-head">
-                <p class="eyebrow">Infantry · Vietnam</p>
+                <p class="eyebrow">HLL Vietnam · Infantry</p>
                 <h1 class="gold-text">Mortar Calculator</h1>
                 <p class="lead">Vietnam replaces WWII artillery with mortar squads. The mil solution is the same for US and NVA.</p>
             </header>`;
@@ -355,6 +357,7 @@ export const vnMortar = {
         const dist = root.querySelector("#vnMortarDist");
         const out = root.querySelector("#vnMortarResult");
         function run() {
+            if (dist.value.trim() === "" && out.querySelector(".mills")) { dist.focus(); return; }
             const r = calcMortar(dist.value);
             if (r.error) { out.innerHTML = `<span class="result-empty" style="color:var(--danger)">${escapeHtml(r.error)}</span>`; return; }
             out.innerHTML = `<span class="mills">${r.mills}</span><span class="ctx">mills · US &amp; NVA at ${escapeHtml(String(dist.value))}m</span>`;

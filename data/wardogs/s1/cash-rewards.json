@@ -1,0 +1,1216 @@
+{
+  "season": "s1",
+  "generated": "2026-10-05",
+  "zones": [
+    {
+      "id": "none",
+      "label": "Anywhere"
+    },
+    {
+      "id": "cz",
+      "label": "Control Zone"
+    },
+    {
+      "id": "hz",
+      "label": "Hot Zone"
+    },
+    {
+      "id": "hzm",
+      "label": "Magnet Zone"
+    }
+  ],
+  "categories": [
+    {
+      "id": "combat",
+      "label": "Combat",
+      "icon": "crosshairs"
+    },
+    {
+      "id": "vehicles",
+      "label": "Vehicle kills",
+      "icon": "explosion"
+    },
+    {
+      "id": "objectives",
+      "label": "Objectives",
+      "icon": "flag"
+    },
+    {
+      "id": "medical",
+      "label": "Medical",
+      "icon": "heart-crack"
+    },
+    {
+      "id": "logistics",
+      "label": "Logistics",
+      "icon": "truck"
+    },
+    {
+      "id": "building",
+      "label": "Building",
+      "icon": "wrench"
+    },
+    {
+      "id": "sabotage",
+      "label": "Sabotage",
+      "icon": "bomb"
+    }
+  ],
+  "actions": [
+    {
+      "id": "playerkill-context-defaultreward",
+      "category": "combat",
+      "label": "Kill an enemy player",
+      "base": 250,
+      "zone": {
+        "cz": 4,
+        "hz": 8,
+        "hzm": 8
+      },
+      "unit": "event",
+      "teamPenalty": -1500
+    },
+    {
+      "id": "playerkill-tnk-01-artillery",
+      "category": "combat",
+      "label": "Artillery kill (gun outside the zone)",
+      "base": 5000,
+      "zone": {
+        "cz": 1.1,
+        "hz": 1.25,
+        "hzm": 1.25
+      },
+      "unit": "event",
+      "teamPenalty": -5000,
+      "img": "artillery"
+    },
+    {
+      "id": "playerkill-vehicle-inzone",
+      "category": "combat",
+      "label": "Artillery kill (gun inside the zone)",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -5000,
+      "note": "Firing from inside the zone pays a fraction of an outside-zone artillery kill.",
+      "img": "artillery"
+    },
+    {
+      "id": "vehicledestroyed-wheeled-bobcat",
+      "category": "vehicles",
+      "label": "Destroy a Bobcat",
+      "base": 100,
+      "zone": {
+        "cz": 2,
+        "hz": 3,
+        "hzm": 3
+      },
+      "unit": "event",
+      "teamPenalty": -100
+    },
+    {
+      "id": "vehicledestroyed-wheeled-kodiak",
+      "category": "vehicles",
+      "label": "Destroy a Kodiak",
+      "base": 500,
+      "zone": {
+        "cz": 1.2,
+        "hz": 1.4,
+        "hzm": 1.4
+      },
+      "unit": "event",
+      "teamPenalty": -500
+    },
+    {
+      "id": "vehicledestroyed-wheeled-humvee",
+      "category": "vehicles",
+      "label": "Destroy a Humvee",
+      "base": 500,
+      "zone": {
+        "cz": 1.2,
+        "hz": 1.4,
+        "hzm": 1.4
+      },
+      "unit": "event",
+      "teamPenalty": -500,
+      "img": "humvee"
+    },
+    {
+      "id": "vehicledestroyed-wheeled-dunebuggy",
+      "category": "vehicles",
+      "label": "Destroy a Dune Buggy",
+      "base": 300,
+      "zone": {
+        "cz": 1.5,
+        "hz": 1.7,
+        "hzm": 1.7
+      },
+      "unit": "event",
+      "teamPenalty": -300,
+      "img": "dune-buggy"
+    },
+    {
+      "id": "vehicledestroyed-rotary-littlebird",
+      "category": "vehicles",
+      "label": "Destroy a Littlebird",
+      "base": 800,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.5
+      },
+      "unit": "event",
+      "teamPenalty": -600,
+      "img": "littlebird"
+    },
+    {
+      "id": "vehicledestroyed-rotary-huey",
+      "category": "vehicles",
+      "label": "Destroy a Huey",
+      "base": 1200,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.5
+      },
+      "unit": "event",
+      "teamPenalty": -900,
+      "img": "huey"
+    },
+    {
+      "id": "vehicledestroyed-rotary-havoc",
+      "category": "vehicles",
+      "label": "Destroy a Havoc",
+      "base": 6000,
+      "zone": {
+        "cz": 1.2,
+        "hz": 1.3,
+        "hzm": 1.3
+      },
+      "unit": "event",
+      "teamPenalty": -4500,
+      "img": "havoc"
+    },
+    {
+      "id": "vehicledestroyed-tracked-spawnvehicle",
+      "category": "vehicles",
+      "label": "Destroy a spawn vehicle",
+      "base": 4000,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.5
+      },
+      "unit": "event",
+      "teamPenalty": -3000
+    },
+    {
+      "id": "vehicledestroyed-tnk-01-heavy",
+      "category": "vehicles",
+      "label": "Destroy a heavy tank",
+      "base": 5000,
+      "zone": {
+        "cz": 1.5,
+        "hz": 2,
+        "hzm": 2
+      },
+      "unit": "event",
+      "teamPenalty": -3750,
+      "img": "heavy-tank"
+    },
+    {
+      "id": "vehicledestroyed-tnk-01-artillery",
+      "category": "vehicles",
+      "label": "Destroy an artillery vehicle",
+      "base": 6000,
+      "zone": {
+        "cz": 1.1,
+        "hz": 1.2,
+        "hzm": 1.2
+      },
+      "unit": "event",
+      "teamPenalty": -4500,
+      "img": "artillery"
+    },
+    {
+      "id": "hotzonemagnet-matchscore-magnetactivatedinstigator",
+      "category": "objectives",
+      "label": "Activate the magnet",
+      "base": 5000,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "hotzonemagnet-matchscore-magnetactivated",
+      "category": "objectives",
+      "label": "Be near the magnet when it activates",
+      "base": 5000,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "hotzonemagnet-matchscore-magnetdestroyedinstigator",
+      "category": "objectives",
+      "label": "Deactivate the magnet",
+      "base": 200,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "hotzonemagnet-matchscore-capturedtowerinstigatorhostile",
+      "category": "objectives",
+      "label": "Capture an enemy tower",
+      "base": 1000,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "hotzonemagnet-matchscore-capturedtowerhostile",
+      "category": "objectives",
+      "label": "Be near an enemy tower capture",
+      "base": 1000,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "hotzonemagnet-matchscore-capturedtowerinstigator",
+      "category": "objectives",
+      "label": "Capture a neutral tower",
+      "base": 250,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "hotzonemagnet-matchscore-capturedtower",
+      "category": "objectives",
+      "label": "Be near a neutral tower capture",
+      "base": 250,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "controlzonereward-objectivescore-controlzoneentered",
+      "category": "objectives",
+      "label": "Enter the Control Zone (once per life)",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "controlzonereward-objectivescore-controlzoneowned",
+      "category": "objectives",
+      "label": "Hold the Control Zone (owned)",
+      "base": 150,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "controlzonereward-objectivescore-controlzonecontested",
+      "category": "objectives",
+      "label": "Hold the Control Zone (contested)",
+      "base": 150,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "controlzonereward-objectivescore-controlzonenotowned",
+      "category": "objectives",
+      "label": "Hold the Control Zone (enemy owned)",
+      "base": 150,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "controlzonereward-objectivescore-hotzoneowned",
+      "category": "objectives",
+      "label": "Hold the Hot Zone (owned)",
+      "base": 600,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "controlzonereward-objectivescore-hotzonecontested",
+      "category": "objectives",
+      "label": "Hold the Hot Zone (contested)",
+      "base": 600,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "controlzonereward-objectivescore-hotzonenotowned",
+      "category": "objectives",
+      "label": "Hold the Hot Zone (enemy owned)",
+      "base": 600,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "controlzonereward-objectivescore-magnetzoneowned",
+      "category": "objectives",
+      "label": "Hold the Magnet Zone (owned)",
+      "base": 700,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "controlzonereward-objectivescore-magnetzonecontested",
+      "category": "objectives",
+      "label": "Hold the Magnet Zone (contested)",
+      "base": 600,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "controlzonereward-objectivescore-magnetzonenotowned",
+      "category": "objectives",
+      "label": "Hold the Magnet Zone (enemy owned)",
+      "base": 600,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "controlzonereward-spawnvehicle-controlzoneentered",
+      "category": "objectives",
+      "label": "Drive a spawn vehicle into the Control Zone",
+      "base": 3000,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "endgamefactionreward-faction-firstplace",
+      "category": "objectives",
+      "label": "Faction finishes 1st",
+      "base": 200,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "endgamefactionreward-faction-secondplace",
+      "category": "objectives",
+      "label": "Faction finishes 2nd",
+      "base": 150,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "endgamefactionreward-faction-thirdplace",
+      "category": "objectives",
+      "label": "Faction finishes 3rd",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "revive-context-defaultreward",
+      "category": "medical",
+      "label": "Revive (no item)",
+      "base": 1500,
+      "zone": {
+        "cz": 1.33,
+        "hz": 2,
+        "hzm": 2
+      },
+      "unit": "event"
+    },
+    {
+      "id": "revive-item-defibrillator",
+      "category": "medical",
+      "label": "Revive with a Defibrillator",
+      "base": 1000,
+      "zone": {
+        "cz": 1.2,
+        "hz": 1.8,
+        "hzm": 1.8
+      },
+      "unit": "event",
+      "note": "Scales with health restored."
+    },
+    {
+      "id": "revive-item-resuscitator",
+      "category": "medical",
+      "label": "Revive with a Resuscitator",
+      "base": 1000,
+      "zone": {
+        "cz": 1.2,
+        "hz": 1.5,
+        "hzm": 1.5
+      },
+      "unit": "event",
+      "note": "Scales with health restored."
+    },
+    {
+      "id": "revive-item-medkit",
+      "category": "medical",
+      "label": "Revive with a Med Kit",
+      "base": 800,
+      "zone": {
+        "cz": 1.25,
+        "hz": 2,
+        "hzm": 2
+      },
+      "unit": "event",
+      "note": "Scales with health restored."
+    },
+    {
+      "id": "revive-item-stimpen",
+      "category": "medical",
+      "label": "Revive with a Stim Pen",
+      "base": 400,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.75
+      },
+      "unit": "event"
+    },
+    {
+      "id": "revive-item-adrenalinepen",
+      "category": "medical",
+      "label": "Revive with an Adrenaline Pen",
+      "base": 100,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.75
+      },
+      "unit": "event",
+      "note": "Scales with health restored."
+    },
+    {
+      "id": "heal-item-defibrillator",
+      "category": "medical",
+      "label": "Heal bonus: Defibrillator revive",
+      "base": 1500,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.5
+      },
+      "unit": "event"
+    },
+    {
+      "id": "heal-item-resuscitator",
+      "category": "medical",
+      "label": "Heal bonus: Resuscitator revive",
+      "base": 1500,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.5
+      },
+      "unit": "event"
+    },
+    {
+      "id": "heal-item-adrenalinepen",
+      "category": "medical",
+      "label": "Heal bonus: Adrenaline Pen revive",
+      "base": 1200,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.5
+      },
+      "unit": "event"
+    },
+    {
+      "id": "heal-item-superbandage",
+      "category": "medical",
+      "label": "Heal with a Super Bandage",
+      "base": 1000,
+      "zone": {
+        "cz": 1.4,
+        "hz": 2,
+        "hzm": 2
+      },
+      "unit": "event"
+    },
+    {
+      "id": "heal-item-bandage",
+      "category": "medical",
+      "label": "Heal with a Bandage",
+      "base": 400,
+      "zone": {
+        "cz": 1.5,
+        "hz": 2,
+        "hzm": 2
+      },
+      "unit": "event"
+    },
+    {
+      "id": "heal-medkit-standard",
+      "category": "medical",
+      "label": "Heal with a Med Kit",
+      "base": 100,
+      "zone": {
+        "cz": 2,
+        "hz": 2.5,
+        "hzm": 2.5
+      },
+      "unit": "event"
+    },
+    {
+      "id": "deployedsupplycrate-vehiclesupplycrate-large",
+      "category": "logistics",
+      "label": "Deploy a large supply crate",
+      "base": 150,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "deployedsupplycrate-large-armoured",
+      "category": "logistics",
+      "label": "Deploy a large armoured supply crate",
+      "base": 150,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "deployedsupplycrate-vehiclesupplycrate-small",
+      "category": "logistics",
+      "label": "Deploy a small supply crate",
+      "base": 50,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "deployedsupplycrate-small-armoured",
+      "category": "logistics",
+      "label": "Deploy a small armoured supply crate",
+      "base": 50,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "deployedsupplycrate-container-free",
+      "category": "logistics",
+      "label": "Deploy a free supply container",
+      "base": 25,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "vehicletransport-vehicle-transported",
+      "category": "logistics",
+      "label": "Transport a passenger",
+      "base": 250,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "vehicletransport-vehicle-spawnedon",
+      "category": "logistics",
+      "label": "Teammate spawns on your vehicle",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "vehicletransport-context-defaultreward",
+      "category": "logistics",
+      "label": "Driving teammates",
+      "base": 20,
+      "zone": {
+        "cz": 1.1,
+        "hz": 1.2,
+        "hzm": 1.3
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "repair-drill-heavy",
+      "category": "logistics",
+      "label": "Repair with a Heavy Drill",
+      "base": 25,
+      "zone": {
+        "cz": 1.6,
+        "hz": 1.8,
+        "hzm": 1.8
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "repair-drill-light",
+      "category": "logistics",
+      "label": "Repair with a Light Drill",
+      "base": 20,
+      "zone": {
+        "cz": 1.5,
+        "hz": 1.75,
+        "hzm": 1.75
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "repair-wrench-standard",
+      "category": "logistics",
+      "label": "Repair with a Wrench",
+      "base": 20,
+      "zone": {
+        "cz": 1,
+        "hz": 1.5,
+        "hzm": 1.5
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "refuel-context-defaultreward",
+      "category": "logistics",
+      "label": "Refuel a vehicle",
+      "base": 10,
+      "zone": {
+        "cz": 1.5,
+        "hz": 2,
+        "hzm": 2
+      },
+      "unit": "tick"
+    },
+    {
+      "id": "buildableplaced-buildable-fob",
+      "category": "building",
+      "label": "Place a FOB",
+      "base": 1000,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "buildableplaced-buildable-hblockquadwall",
+      "category": "building",
+      "label": "Place an H-block quad wall",
+      "base": 500,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "buildableplaced-buildable-airraidshelter",
+      "category": "building",
+      "label": "Place an air raid shelter",
+      "base": 500,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "buildableplaced-buildable-bunker",
+      "category": "building",
+      "label": "Place a bunker",
+      "base": 500,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "buildableplaced-buildable-gate",
+      "category": "building",
+      "label": "Place a gate",
+      "base": 300,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "buildableplaced-buildable-mortar",
+      "category": "building",
+      "label": "Place a mortar",
+      "base": 300,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "buildableplaced-buildable-tallhblock",
+      "category": "building",
+      "label": "Place a tall H-block",
+      "base": 200,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "buildableplaced-buildable-hblock",
+      "category": "building",
+      "label": "Place an H-block",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "buildableplaced-buildable-tanktrap",
+      "category": "building",
+      "label": "Place a tank trap",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "buildableplaced-buildable-barbedwire",
+      "category": "building",
+      "label": "Place barbed wire",
+      "base": 10,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event"
+    },
+    {
+      "id": "deployabledestroyed-buildable-fob",
+      "category": "sabotage",
+      "label": "Destroy an enemy FOB",
+      "base": 5000,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -3750
+    },
+    {
+      "id": "deployabledestroyed-buildable-hotzonemagnet",
+      "category": "sabotage",
+      "label": "Destroy an enemy magnet",
+      "base": 3000,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -2250
+    },
+    {
+      "id": "deployabledestroyed-buildable-bunker",
+      "category": "sabotage",
+      "label": "Destroy an enemy bunker",
+      "base": 1400,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -1050
+    },
+    {
+      "id": "deployabledestroyed-buildable-airraidshelter",
+      "category": "sabotage",
+      "label": "Destroy an enemy air raid shelter",
+      "base": 1400,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -1050
+    },
+    {
+      "id": "deployabledestroyed-buildable-crowsnest",
+      "category": "sabotage",
+      "label": "Destroy an enemy crow's nest",
+      "base": 1400,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -1050
+    },
+    {
+      "id": "deployabledestroyed-buildable-gate",
+      "category": "sabotage",
+      "label": "Destroy an enemy gate",
+      "base": 500,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -375
+    },
+    {
+      "id": "deployabledestroyed-buildable-mortar",
+      "category": "sabotage",
+      "label": "Destroy an enemy mortar",
+      "base": 300,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -225
+    },
+    {
+      "id": "deployabledestroyed-buildable-tanktrap",
+      "category": "sabotage",
+      "label": "Destroy an enemy tank trap",
+      "base": 250,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -187
+    },
+    {
+      "id": "deployabledestroyed-vehiclesupplycrate-large",
+      "category": "sabotage",
+      "label": "Destroy a large supply crate",
+      "base": 200,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -150
+    },
+    {
+      "id": "deployabledestroyed-small-armoured",
+      "category": "sabotage",
+      "label": "Destroy a small armoured supply crate",
+      "base": 200,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -150
+    },
+    {
+      "id": "deployabledestroyed-large-armoured",
+      "category": "sabotage",
+      "label": "Destroy a large armoured supply crate",
+      "base": 200,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -150
+    },
+    {
+      "id": "deployabledestroyed-vehiclesupplycrate-small",
+      "category": "sabotage",
+      "label": "Destroy a small supply crate",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-vehiclesupplycrate-free",
+      "category": "sabotage",
+      "label": "Destroy a free supply crate",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-container-free",
+      "category": "sabotage",
+      "label": "Destroy a free supply container",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-buildable-hblockquadwall",
+      "category": "sabotage",
+      "label": "Destroy an enemy H-block quad wall",
+      "base": 125,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -94
+    },
+    {
+      "id": "deployabledestroyed-buildable-hblock",
+      "category": "sabotage",
+      "label": "Destroy an enemy H-block",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-buildable-tallhblock",
+      "category": "sabotage",
+      "label": "Destroy an enemy tall H-block",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-buildable-sandbagwall",
+      "category": "sabotage",
+      "label": "Destroy an enemy sandbag wall",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-buildable-door",
+      "category": "sabotage",
+      "label": "Destroy an enemy door",
+      "base": 100,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-item-claymore",
+      "category": "sabotage",
+      "label": "Destroy an enemy Claymore",
+      "base": 100,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.75
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-item-c4explosive",
+      "category": "sabotage",
+      "label": "Destroy enemy C4",
+      "base": 100,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.75
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-item-atmine",
+      "category": "sabotage",
+      "label": "Destroy an enemy AT mine",
+      "base": 100,
+      "zone": {
+        "cz": 1.25,
+        "hz": 1.5,
+        "hzm": 1.75
+      },
+      "unit": "event",
+      "teamPenalty": -75
+    },
+    {
+      "id": "deployabledestroyed-buildable-barbedwire",
+      "category": "sabotage",
+      "label": "Destroy enemy barbed wire",
+      "base": 75,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -56
+    },
+    {
+      "id": "deployabledestroyed-buildable-camonettent",
+      "category": "sabotage",
+      "label": "Destroy an enemy camo net tent",
+      "base": 75,
+      "zone": {
+        "cz": 1,
+        "hz": 1,
+        "hzm": 1
+      },
+      "unit": "event",
+      "teamPenalty": -56
+    }
+  ]
+}

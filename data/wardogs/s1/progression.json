@@ -1,0 +1,84 @@
+{
+    "$comment": "Wardogs Season 1 progression. Only figures published by BULKHEAD are \"verified\": true. Anything the site derives (interpolated levels, pace presets) is computed in the view and labelled as an estimate there. Do not add numbers from fan sites.",
+    "version": 1,
+    "season": "s1",
+    "generated": "2026-10-05",
+    "sources": [
+        {
+            "id": "s1-changelog",
+            "title": "Pre-Load Live & Season 1 Changelog",
+            "publisher": "BULKHEAD (official Steam announcement)",
+            "date": "2026-09-09",
+            "url": "https://store.steampowered.com/news/app/1867240/view/1843481262690549",
+            "api": "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1867240&count=40&maxlength=0"
+        },
+        {
+            "id": "patch-012",
+            "title": "WARDOGS | Update 0.1.2 (Minor Patch)",
+            "publisher": "BULKHEAD (official Steam announcement)",
+            "date": "2026-09-30",
+            "url": "https://store.steampowered.com/news/app/1867240/view/1845383656376490"
+        }
+    ],
+    "curve": {
+        "source": "s1-changelog",
+        "appliesTo": ["medic", "support", "recon", "driver", "pilot"],
+        "verified": true,
+        "cumulative": true,
+        "cumulativeVerified": false,
+        "unchangedBelow": 6,
+        "note": "BULKHEAD published XP at every fifth level from 6 to 50 and called it the role track curve. Levels in between, levels 1 to 5 and anything past 50 were not published.",
+        "anchors": [
+            { "level": 6, "xp": 9250, "verified": true },
+            { "level": 10, "xp": 35000, "verified": true },
+            { "level": 15, "xp": 110000, "verified": true },
+            { "level": 20, "xp": 250000, "verified": true },
+            { "level": 25, "xp": 325000, "verified": true },
+            { "level": 30, "xp": 400000, "verified": true },
+            { "level": 35, "xp": 500000, "verified": true },
+            { "level": 40, "xp": 650000, "verified": true },
+            { "level": 45, "xp": 800000, "verified": true },
+            { "level": 50, "xp": 1000000, "verified": true }
+        ]
+    },
+    "tracks": [
+        { "id": "career", "label": "Career", "curveVerified": false, "note": "No Career XP figures have been published, so the role track curve stands in. Career runs to at least level 90 (Artillery Tank)." },
+        { "id": "medic", "label": "Medic", "curveVerified": true },
+        { "id": "support", "label": "Support", "curveVerified": true },
+        { "id": "recon", "label": "Recon", "curveVerified": true },
+        { "id": "driver", "label": "Driver", "curveVerified": true },
+        { "id": "pilot", "label": "Pilot", "curveVerified": true }
+    ],
+    "pace": {
+        "source": "s1-changelog",
+        "verified": true,
+        "level": 20,
+        "hoursMin": 20,
+        "hoursMax": 25,
+        "note": "BULKHEAD's target is that the median player reaches about level 20 after 20 to 25 hours. Which track that refers to was not stated."
+    },
+    "xpEvents": [
+        { "id": "air-vehicle-kill", "label": "Kill a player from an air vehicle", "xp": 250, "source": "s1-changelog", "verified": true },
+        { "id": "crate-item-under-75", "label": "Sell a supply crate item worth under $75", "xp": 1, "source": "s1-changelog", "verified": true }
+    ],
+    "unlocks": [
+        { "id": "sports-parachute", "label": "Sports Parachute", "track": "career", "level": 35, "source": "s1-changelog", "verified": true },
+        { "id": "large-backpack", "label": "Large Backpack", "track": "career", "level": 55, "source": "s1-changelog", "verified": true },
+        { "id": "ap-762x54", "label": "7.62x54mm AP", "track": "career", "level": 82, "source": "s1-changelog", "verified": true },
+        { "id": "ap-556", "label": "5.56mm AP", "track": "career", "level": 83, "source": "s1-changelog", "verified": true },
+        { "id": "deagle", "label": "Deagle", "track": "career", "level": 85, "source": "s1-changelog", "verified": true },
+        { "id": "artillery-tank", "label": "Artillery Tank", "track": "career", "level": 90, "cost": 500000, "source": "s1-changelog", "verified": true },
+        { "id": "pp19-drum", "label": "PP-19 50-round drum", "track": "medic", "level": 29, "source": "s1-changelog", "verified": true },
+        { "id": "large-hammer", "label": "Large Hammer", "track": "support", "level": 8, "cost": 75000, "source": "s1-changelog", "verified": true },
+        { "id": "ural", "label": "URAL", "track": "driver", "level": 3, "cost": 35000, "source": "s1-changelog", "verified": true },
+        { "id": "kodiak-assault", "label": "Kodiak Assault", "track": "driver", "level": 6, "source": "s1-changelog", "verified": true },
+        { "id": "dune-buggy", "label": "Dune Buggy", "track": "driver", "level": 8, "cost": 25000, "source": "s1-changelog", "verified": true },
+        { "id": "kodiak-flatbed", "label": "Kodiak Flatbed", "track": "driver", "level": 10, "cost": 35000, "source": "s1-changelog", "verified": true },
+        { "id": "large-supply-crate", "label": "Large Supply Crate", "track": "driver", "level": 16, "source": "s1-changelog", "verified": true },
+        { "id": "ural-covered", "label": "URAL Covered", "track": "driver", "level": 18, "source": "s1-changelog", "verified": true },
+        { "id": "music-tape-h", "label": "Music Tape H", "track": "driver", "level": 23, "cost": 2500, "source": "s1-changelog", "verified": true },
+        { "id": "ural-attack", "label": "URAL Attack", "track": "driver", "level": 25, "source": "s1-changelog", "verified": true },
+        { "id": "humvee-minigun", "label": "Humvee with minigun", "track": "driver", "level": 30, "source": "s1-changelog", "verified": true },
+        { "id": "heavy-tank", "label": "Heavy Tank", "track": "driver", "level": 35, "source": "s1-changelog", "verified": true }
+    ]
+}

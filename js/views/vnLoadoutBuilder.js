@@ -92,7 +92,7 @@ export const vnLoadoutBuilder = {
     render: function () {
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Infantry · Vietnam</p>
+                <p class="eyebrow">HLL Vietnam · Infantry</p>
                 <h1 class="gold-text">Loadout Builder</h1>
                 <p class="lead">Mix and match gear by class level and weight before you dig through the in-game UI.</p>
             </header>

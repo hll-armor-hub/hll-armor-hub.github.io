@@ -12,6 +12,7 @@ const ICONS = {
     "circle-info": '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
     comments: '<path d="M5 6h10a3 3 0 013 3v4a3 3 0 01-3 3H10l-4 3v-3H5a3 3 0 01-3-3V9a3 3 0 013-3z"/>',
     compress: '<path d="M9 3v6H3M15 3v6h6M9 21v-6H3M15 21v-6h6"/>',
+    copy: '<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/>',
     crosshairs: '<circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>',
     crown: '<path d="M3 18h18l-1.5-9L15 13l-3-7-3 7L4.5 9 3 18z"/>',
     discord: '<path d="M8.5 9.5a1 1 0 100 2 1 1 0 000-2zm7 0a1 1 0 100 2 1 1 0 000-2z"/><path d="M18.5 6c-1.4-.6-2.8-1-4.3-1.2l-.4.8c-1.4-.2-2.8-.2-4.2 0l-.4-.8C7.7 5 6.3 5.4 5 6 2.8 9.3 2.2 12.5 2.5 15.7c1.5 1.1 3 1.8 4.5 2.2l.9-1.4c-.5-.2-.9-.4-1.3-.7.1-.1.2-.1.3-.2 2.3 1.1 4.8 1.1 7.1 0 .1.1.2.1.3.2-.4.3-.8.5-1.3.7l.9 1.4c1.5-.4 3-1.1 4.5-2.2.4-3.6-.6-6.8-2.9-9.7z"/>',
@@ -54,7 +55,9 @@ const ICONS = {
     wrench: '<path d="M14.5 6.5a4 4 0 00-5.5 5.5L4 17l3 3 5-5a4 4 0 005.5-5.5L15 12l-2.5-2.5 2-3z"/>',
     xmark: '<path d="M6 6l12 12M18 6L6 18"/>',
     "rotate-left": '<path d="M3 12a9 9 0 109-9"/><path d="M3 5v5h5"/>',
-    "rotate-right": '<path d="M21 12a9 9 0 11-9-9"/><path d="M21 5v5h-5"/>'
+    "rotate-right": '<path d="M21 12a9 9 0 11-9-9"/><path d="M21 5v5h-5"/>',
+    download: '<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',
+    "share-nodes": '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>'
 };
 
 function normalizeName(name) {

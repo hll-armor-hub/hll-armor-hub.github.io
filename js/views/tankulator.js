@@ -220,7 +220,7 @@ export function render(route) {
         : `<div class="history"><h4>Quick matchups</h4><div class="filter-group" id="tkPresets">${presetBtns}</div></div>`;
 
     const header = focus ? "" : `<header class="section-head">
-            <p class="eyebrow">Armor · WWII</p>
+            <p class="eyebrow">HLL WWII · Armor</p>
             <h1 class="gold-text">Tankulator</h1>
             <p class="lead">Simulate AP shots with Update&nbsp;20 plate resistance - shots-to-kill against hull, turret and rear engine. Built in partnership with WIX.</p>
         </header>`;

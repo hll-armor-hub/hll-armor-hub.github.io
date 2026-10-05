@@ -42,6 +42,9 @@ export function loadData() {
         applyU20StatPatches();
         state.ready = true;
         return state;
+    }).catch(function (err) {
+        state.promise = null;
+        throw err;
     });
     return state.promise;
 }

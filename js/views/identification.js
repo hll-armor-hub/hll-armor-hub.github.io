@@ -247,7 +247,7 @@ function bindGame(root) {
 export function render() {
     return `<div class="wrap wrap-wide">
         <header class="section-head">
-            <p class="eyebrow">Armor · WWII</p>
+            <p class="eyebrow">HLL WWII · Armor</p>
             <h1 class="gold-text">Tank Identification</h1>
             <p class="lead">Spot the tank from its silhouette - the difference between a clean first shot and a brewed-up crew. Pick a difficulty and start identifying.</p>
         </header>

@@ -1,6 +1,6 @@
 /* Lightweight hash router for the Armor Hub app.
    Hash shape: #/branch/era/section/<extra...>
-   Community: #/community */
+   Community (default landing): #/community */
 
 /** Legacy v1 section IDs → v2 (hub.html bookmarks) */
 const SECTION_ALIASES = {
@@ -27,10 +27,7 @@ export function parseHash() {
     const pathRaw = qIdx >= 0 ? raw.slice(0, qIdx) : raw;
     const query = parseQuery(qIdx >= 0 ? raw.slice(qIdx + 1) : "");
     const parts = pathRaw.replace(/^\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
-    if (parts.length === 0) {
-        return { branch: "armor", era: "wwii", section: "overview", extra: [], query: query };
-    }
-    if (parts[0] === "community") {
+    if (parts.length === 0 || parts[0] === "community") {
         return { branch: "community", era: null, section: null, extra: parts.slice(1), query: query };
     }
     const branch = parts[0] || "armor";

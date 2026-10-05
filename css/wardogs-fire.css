@@ -1,0 +1,125 @@
+﻿/* ============================================================
+   Wardogs - Maps & Fire Mission (wdf-*). Colors follow the gold vars,
+   which body.theme-wardogs turns orange.
+   ============================================================ */
+
+.wdf-honest { margin-bottom: 1.4rem; font-size: 0.88rem; display: flex; gap: 0.6rem; align-items: flex-start; }
+.wdf-honest .icon { flex: 0 0 auto; margin-top: 0.2rem; color: var(--gold-glow); }
+
+.wdf-layout { display: grid; grid-template-columns: minmax(340px, 440px) 1fr; gap: 1.4rem; align-items: start; }
+.wdf-calc .calc-panel-head h3,
+.wdf-mappanel .calc-panel-head h3 { display: flex; align-items: center; gap: 0.5rem; color: var(--gold-glow); }
+
+.wdf-inputs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.6rem; align-items: start; margin-top: 0.6rem; }
+.wdf-ref {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 0;
+    width: 100%;
+}
+.wdf-ref[aria-invalid="true"] { border-color: var(--danger); }
+.wdf-msg { min-height: 1.1em; margin-top: 0.3rem; font-size: 0.72rem; color: var(--danger); }
+.wdf-swap {
+    margin-top: 1.55rem;
+    width: 40px; height: 44px;
+    display: grid; place-items: center;
+    border-radius: var(--r-md);
+    border: 1px solid var(--glass-border);
+    background: var(--glass);
+    color: var(--gold-glow);
+    cursor: pointer;
+}
+.wdf-swap:hover { border-color: var(--gold); }
+
+.wdf-out {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    padding: 0.9rem;
+    border-radius: var(--r-md);
+    background: var(--glass-strong);
+    border: 1px solid var(--glass-border);
+    min-height: 6.2rem;
+    align-items: center;
+}
+.wdf-out > .result-empty { grid-column: 1 / -1; text-align: center; }
+.wdf-big { display: grid; justify-items: center; gap: 0.1rem; min-width: 0; }
+.wdf-big__k { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-dim); }
+.wdf-big__v {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
+    line-height: 1.05;
+    color: var(--gold-glow);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.wdf-big__v small { font-family: var(--font-ui); font-weight: 600; font-size: 0.8rem; color: var(--text-muted); margin-left: 0.15rem; }
+.wdf-ctx { grid-column: 1 / -1; text-align: center; font-size: 0.76rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+.wdf-adjusts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.35rem; margin-top: 0.75rem; }
+.wdf-adj {
+    min-height: 40px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--gold-glow);
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.wdf-adj:hover { border-color: var(--gold); background: rgba(var(--wd-rgb), 0.1); }
+.wdf-adj:active { transform: translateY(1px); }
+
+.wdf-weapons { margin-top: 1rem; }
+.wdf-table td, .wdf-table th { padding: 0.55rem 0.7rem; }
+.wdf-table td:last-child { text-align: right; white-space: nowrap; }
+.wdf-table th:last-child { text-align: right; }
+.wdf-elev { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold-glow); }
+.wdf-nodata { color: var(--text-dim); font-style: italic; }
+.wdf-warn { color: var(--danger); }
+
+.wdf-hist { list-style: none; margin: 0 0 0.5rem; padding: 0; display: grid; gap: 0.3rem; }
+.wdf-hist__go {
+    width: 100%;
+    display: flex; justify-content: space-between; align-items: baseline; gap: 0.6rem;
+    padding: 0.45rem 0.7rem;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--glass-border-soft);
+    background: var(--glass);
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    text-align: left;
+    cursor: pointer;
+}
+.wdf-hist__go strong { font-family: var(--font-display); color: var(--gold-glow); letter-spacing: 0.04em; }
+.wdf-hist__go:hover { border-color: var(--gold); }
+
+.wdf-maptools { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin: 0.6rem 0 0.75rem; }
+.wdf-mapselect { flex: 1 1 200px; min-width: 0; }
+.wdf-place { display: flex; gap: 0.35rem; }
+.wdf-place .calc-tab { cursor: pointer; }
+.wdf-canvas-wrap { border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--glass-border); background: #16120f; }
+.wdf-canvas-wrap canvas { display: block; width: 100%; aspect-ratio: 1 / 1; cursor: crosshair; touch-action: manipulation; }
+.wdf-hover { margin-top: 0.5rem; font-size: 0.78rem; color: var(--text-muted); min-height: 1.2em; font-variant-numeric: tabular-nums; }
+.wdf-gridset { margin-top: 0.8rem; border-top: 1px solid var(--hairline); padding-top: 0.7rem; }
+.wdf-gridset summary { cursor: pointer; font-size: 0.82rem; font-weight: 600; color: var(--text-muted); }
+.wdf-gridset .form-row { margin-top: 0.7rem; }
+
+body.calc-focus .wdf-root .tool-panel { padding: 1rem; }
+body.calc-focus .wdf-mappanel { margin-bottom: 0.8rem; }
+body.calc-focus .wdf-maptools { margin-top: 0; }
+
+@media (max-width: 900px) {
+    .wdf-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+    .wdf-ref { font-size: 1.15rem; }
+    .wdf-out { padding: 0.7rem 0.4rem; }
+    .wdf-big__v small { font-size: 0.7rem; }
+}

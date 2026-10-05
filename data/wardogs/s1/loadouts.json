@@ -1,0 +1,116 @@
+{
+    "$comment": "Wardogs loadout builder data. Ids must be lowercase letters and digits only (they go into share links). Only add facts from official sources (BULKHEAD posts, Steam store/news, wardogs.com) or game files, list them in 'sources', and leave \"verified\": false on anything inferred. Prices: buyPrice = in-match vendor price per purchase; trackPrice = price the changelog lists against a role track.",
+    "version": 1,
+    "season": "s1",
+    "updated": "2026-10-05",
+    "gameVersion": "0.1.2 + 2 Oct 2026 balance hotfix",
+    "startingCash": { "value": 10000, "verified": true, "source": ["store", "site"] },
+    "sources": [
+        { "id": "store", "label": "Steam store page", "url": "https://store.steampowered.com/app/1867240/WARDOGS/" },
+        { "id": "site", "label": "Official site", "url": "https://wardogs.com" },
+        { "id": "s1log", "label": "Pre-Load Live & Season 1 Changelog (9 Sep 2026)", "url": "https://store.steampowered.com/news/app/1867240/view/1843481262690549" },
+        { "id": "p012", "label": "Update 0.1.2 patch notes (30 Sep 2026)", "url": "https://store.steampowered.com/news/app/1867240/view/1845383656376490" },
+        { "id": "irfix", "label": "IR Goggles & CIWS Balance Hotfix (2 Oct 2026)", "url": "https://store.steampowered.com/news/app/1867240/view/1845383656386801" },
+        { "id": "supporter", "label": "Pre-order & Supporter Edition post (11 Aug 2026)", "url": "https://store.steampowered.com/news/app/1867240/view/1840310314354505" },
+        { "id": "rewards", "label": "This site's reward table (data/wardogs/s1/cash-rewards.json)", "url": "/data/wardogs/s1/cash-rewards.json" }
+    ],
+    "structureNote": "Official text says each life you buy a loadout from weapons, gear, utility and vehicles, and that some deployables take up more room in your loadout. The exact slot layout and carry limits are not published, so the slots below are our own grouping.",
+    "factions": [
+        { "id": "lonestar", "name": "Lonestar", "color": "#4CB1EF", "image": "lonestar", "verified": true, "source": ["supporter"], "note": "Colour matches the faction colour the game server reports to our stats feed." },
+        { "id": "valkyra", "name": "Valkyra", "color": "#FA503E", "image": "valkyra", "verified": true, "source": ["supporter"], "note": "Colour matches the faction colour the game server reports to our stats feed." },
+        { "id": "manticore", "name": "Manticore", "color": "#1DD65C", "image": "manticore", "verified": true, "source": ["supporter"], "note": "Colour matches the faction colour the game server reports to our stats feed." }
+    ],
+    "roles": [
+        { "id": "career", "name": "Infantry", "track": "Career", "image": "infantry", "verified": false, "source": ["s1log"], "note": "Patch notes call this unlock track Career. That it is the Infantry role is our reading." },
+        { "id": "medic", "name": "Medic", "track": "Medic", "image": "medic", "verified": true, "source": ["s1log"] },
+        { "id": "support", "name": "Support", "track": "Support", "image": "support", "verified": true, "source": ["s1log"] },
+        { "id": "recon", "name": "Recon", "track": "Recon", "image": "recon", "verified": true, "source": ["s1log"] },
+        { "id": "driver", "name": "Driver", "track": "Driver", "image": "driver", "verified": true, "source": ["s1log"] },
+        { "id": "pilot", "name": "Pilot", "track": "Pilot", "image": "pilot", "verified": true, "source": ["s1log"] }
+    ],
+    "slots": [
+        { "id": "primary", "code": "p", "name": "Primary weapon", "group": "Weapons", "max": 1, "icon": "crosshairs" },
+        { "id": "sidearm", "code": "s", "name": "Sidearm", "group": "Weapons", "max": 1, "icon": "crosshairs" },
+        { "id": "launcher", "code": "l", "name": "Launcher", "group": "Weapons", "max": 1, "icon": "rocket" },
+        { "id": "attachments", "code": "a", "name": "Optics & ammo", "group": "Weapons", "max": null, "icon": "bullseye" },
+        { "id": "gear", "code": "g", "name": "Gear", "group": "Gear", "max": null, "icon": "shield-halved" },
+        { "id": "utility", "code": "u", "name": "Throwables & explosives", "group": "Utility", "max": null, "icon": "bomb" },
+        { "id": "medical", "code": "m", "name": "Medical", "group": "Utility", "max": null, "icon": "heart-crack" },
+        { "id": "tools", "code": "t", "name": "Tools", "group": "Utility", "max": null, "icon": "wrench" },
+        { "id": "deployables", "code": "d", "name": "Deployables", "group": "Utility", "max": null, "icon": "box" },
+        { "id": "vehicle", "code": "v", "name": "Vehicle", "group": "Vehicles", "max": 1, "icon": "truck" }
+    ],
+    "items": [
+        { "id": "a91", "name": "A-91", "slot": "primary", "kind": "Rifle", "track": null, "verified": true, "source": ["supporter"], "note": "One of the three starter weapons. The Supporter Edition adds a Valkyra-branded camo for it." },
+        { "id": "bushmaster", "name": "Bushmaster", "slot": "primary", "kind": "Starter weapon", "track": null, "verified": true, "source": ["supporter"], "note": "One of the three starter weapons. The Supporter Edition adds a Lonestar-branded camo for it." },
+        { "id": "kh2002", "name": "KH-2002", "slot": "primary", "kind": "Starter weapon", "track": null, "verified": true, "source": ["supporter"], "note": "One of the three starter weapons. The Supporter Edition adds a Manticore-branded camo for it." },
+        { "id": "pp19", "name": "PP-19", "slot": "primary", "kind": "Weapon", "track": "medic", "verified": false, "source": ["s1log"], "note": "Only named through its 50-round drum, a Medic unlock. Slot and base unlock not published." },
+
+        { "id": "deagle", "name": "Deagle", "slot": "sidearm", "kind": "Pistol", "track": "career", "unlockLevel": 85, "verified": true, "source": ["s1log"], "note": "Moved from Career level 90 to 85 for Season 1." },
+
+        { "id": "rocketlauncher", "name": "Rocket launcher", "slot": "launcher", "kind": "Launcher", "track": null, "verified": false, "source": ["store", "site"], "note": "Official pages mention rocket launchers but do not name the models." },
+
+        { "id": "ammo556ap", "name": "5.56mm AP ammo", "slot": "attachments", "kind": "Ammo", "track": "career", "unlockLevel": 83, "verified": true, "source": ["s1log"] },
+        { "id": "ammo762ap", "name": "7.62x54mm AP ammo", "slot": "attachments", "kind": "Ammo", "track": "career", "unlockLevel": 82, "verified": true, "source": ["s1log"] },
+        { "id": "pp19drum", "name": "PP-19 50-round drum", "slot": "attachments", "kind": "Magazine", "track": "medic", "unlockLevel": 29, "requires": "pp19", "verified": true, "source": ["s1log"] },
+        { "id": "scopemrad", "name": "6-10x scope (MRAD)", "slot": "attachments", "kind": "Optic", "track": "recon", "trackPrice": 40000, "verified": true, "source": ["s1log"] },
+        { "id": "scopemoa", "name": "6-10x scope (MOA)", "slot": "attachments", "kind": "Optic", "track": "recon", "trackPrice": 45000, "verified": true, "source": ["s1log"] },
+
+        { "id": "parachute", "name": "Sports parachute", "slot": "gear", "kind": "Gear", "track": "career", "unlockLevel": 35, "verified": true, "source": ["s1log"] },
+        { "id": "largebackpack", "name": "Large backpack", "slot": "gear", "kind": "Gear", "track": "career", "unlockLevel": 55, "verified": true, "source": ["s1log"] },
+        { "id": "ghillie", "name": "Ghillie suit", "slot": "gear", "kind": "Gear", "track": null, "verified": false, "source": ["store", "site"], "note": "Named on the store page. Track, level and price not published." },
+        { "id": "irrangefinder", "name": "IR rangefinder", "slot": "gear", "kind": "Gear", "track": "vendor", "disabled": true, "verified": true, "source": ["irfix"], "note": "Pulled from the vendor on 2 Oct 2026. Returns in Season 2 needing batteries." },
+
+        { "id": "grenade", "name": "Grenade", "slot": "utility", "kind": "Throwable", "track": null, "verified": true, "source": ["p012"] },
+        { "id": "smoke", "name": "Smoke grenade", "slot": "utility", "kind": "Throwable", "track": null, "verified": true, "source": ["p012"] },
+        { "id": "c4", "name": "C4", "slot": "utility", "kind": "Explosive", "track": null, "verified": true, "source": ["p012"] },
+        { "id": "claymore", "name": "Claymore", "slot": "utility", "kind": "Explosive", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "atmine", "name": "AT mine", "slot": "utility", "kind": "Explosive", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+
+        { "id": "bandage", "name": "Bandage", "slot": "medical", "kind": "Heal", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "superbandage", "name": "Super bandage", "slot": "medical", "kind": "Heal", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "medkit", "name": "Med kit", "slot": "medical", "kind": "Heal / revive", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "stimpen", "name": "Stim pen", "slot": "medical", "kind": "Revive", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "adrenalinepen", "name": "Adrenaline pen", "slot": "medical", "kind": "Revive", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "defibrillator", "name": "Defibrillator", "slot": "medical", "kind": "Revive", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "resuscitator", "name": "Resuscitator", "slot": "medical", "kind": "Revive", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+
+        { "id": "wrench", "name": "Wrench", "slot": "tools", "kind": "Repair", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "lightdrill", "name": "Light drill", "slot": "tools", "kind": "Repair", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "heavydrill", "name": "Heavy drill", "slot": "tools", "kind": "Repair", "track": null, "verified": false, "source": ["rewards"], "note": "In the reward table. Slot and unlock not confirmed." },
+        { "id": "mediumhammer", "name": "Medium hammer", "slot": "tools", "kind": "Building tool", "track": "support", "trackPrice": 25000, "verified": true, "source": ["s1log"] },
+        { "id": "largehammer", "name": "Large hammer", "slot": "tools", "kind": "Building tool", "track": "support", "unlockLevel": 8, "trackPrice": 75000, "buyPrice": 2400, "verified": true, "source": ["s1log"], "note": "Vendor price raised from $1,600 to $2,400 for Season 1." },
+
+        { "id": "fob", "name": "Forward Operating Base", "slot": "deployables", "kind": "Buildable", "track": "vendor", "buyPrice": 7500, "verified": true, "source": ["s1log"], "note": "Vendor price raised from $2,500 to $7,500 for Season 1." },
+        { "id": "dep155", "name": "155mm deployable", "slot": "deployables", "kind": "Deployable", "track": null, "bulky": true, "verified": true, "source": ["s1log"], "note": "Takes more loadout room since Season 1." },
+        { "id": "dep122", "name": "122mm deployable", "slot": "deployables", "kind": "Deployable", "track": null, "bulky": true, "verified": true, "source": ["s1log"], "note": "Takes more loadout room since Season 1." },
+        { "id": "depflare", "name": "Flare deployable", "slot": "deployables", "kind": "Deployable", "track": null, "bulky": true, "verified": true, "source": ["s1log"], "note": "Takes more loadout room since Season 1." },
+        { "id": "smallarmouredcrate", "name": "Small armoured supply crate", "slot": "deployables", "kind": "Supply crate", "track": "pilot", "trackPrice": 10000, "verified": true, "source": ["s1log"] },
+        { "id": "largesupplycrate", "name": "Large supply crate", "slot": "deployables", "kind": "Supply crate", "track": "driver", "unlockLevel": 16, "verified": true, "source": ["s1log"] },
+
+        { "id": "littlebirdminigun", "name": "Little Bird (miniguns)", "slot": "vehicle", "kind": "Helicopter", "track": "pilot", "trackPrice": 50000, "verified": true, "source": ["s1log"] },
+        { "id": "lakota", "name": "Z20 Lakota", "slot": "vehicle", "kind": "Helicopter", "track": "pilot", "trackPrice": 35000, "verified": true, "source": ["s1log"] },
+        { "id": "ural", "name": "URAL", "slot": "vehicle", "kind": "Truck", "track": "driver", "unlockLevel": 3, "trackPrice": 35000, "verified": true, "source": ["s1log"] },
+        { "id": "kodiakassault", "name": "Kodiak Assault", "slot": "vehicle", "kind": "Light vehicle", "track": "driver", "unlockLevel": 6, "verified": true, "source": ["s1log"] },
+        { "id": "dunebuggy", "name": "Dune Buggy", "slot": "vehicle", "kind": "Light vehicle", "track": "driver", "unlockLevel": 8, "trackPrice": 25000, "verified": true, "source": ["s1log"] },
+        { "id": "kodiakflatbed", "name": "Kodiak Flatbed", "slot": "vehicle", "kind": "Light vehicle", "track": "driver", "unlockLevel": 10, "trackPrice": 35000, "verified": true, "source": ["s1log"] },
+        { "id": "uralcovered", "name": "URAL Covered", "slot": "vehicle", "kind": "Truck", "track": "driver", "unlockLevel": 18, "verified": true, "source": ["s1log"] },
+        { "id": "uralattack", "name": "URAL Attack", "slot": "vehicle", "kind": "Truck", "track": "driver", "unlockLevel": 25, "verified": true, "source": ["s1log"] },
+        { "id": "humveeminigun", "name": "Humvee (minigun)", "slot": "vehicle", "kind": "Light vehicle", "track": "driver", "unlockLevel": 30, "verified": true, "source": ["s1log"] },
+        { "id": "heavytank", "name": "Heavy tank", "slot": "vehicle", "kind": "Tank", "track": "driver", "unlockLevel": 35, "verified": true, "source": ["s1log"], "note": "Moved from the Career track to Driver level 35." },
+        { "id": "artillerytank", "name": "Artillery tank", "slot": "vehicle", "kind": "Artillery", "track": "career", "unlockLevel": 90, "trackPrice": 500000, "verified": true, "source": ["s1log"] }
+    ],
+    "presets": [
+        { "id": "lonestarstarter", "name": "Lonestar starter", "faction": "lonestar", "role": "career", "items": { "primary": ["bushmaster"] }, "verified": true, "source": ["supporter"], "note": "Starter weapon that has a Lonestar-branded camo." },
+        { "id": "valkyrastarter", "name": "Valkyra starter", "faction": "valkyra", "role": "career", "items": { "primary": ["a91"] }, "verified": true, "source": ["supporter"], "note": "Starter weapon that has a Valkyra-branded camo." },
+        { "id": "manticorestarter", "name": "Manticore starter", "faction": "manticore", "role": "career", "items": { "primary": ["kh2002"] }, "verified": true, "source": ["supporter"], "note": "Starter weapon that has a Manticore-branded camo." }
+    ],
+    "gaps": [
+        "Carry limits and the real slot layout (how much room each item takes, what the large backpack adds).",
+        "Vendor price per purchase for almost every item. Only the FOB and large hammer are published.",
+        "Unlock level and price for the starter weapons, PP-19, launchers, throwables, medical items and repair tools.",
+        "Which tracks the throwables, medical items and repair tools belong to.",
+        "Whether the starter weapons are tied to a faction or only carry faction-branded camos.",
+        "What the role track prices in the changelog pay for (one-off unlock is our reading)."
+    ]
+}

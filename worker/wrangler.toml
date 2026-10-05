@@ -1,0 +1,42 @@
+name = "aho-stats"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "aho-stats"
+database_id = "a72a8274-2d2b-455b-b2d8-8ac082d84ce7"
+
+[triggers]
+# "*/10" = CRCON match sync; "* * * * *" = Wardogs recorder (live snapshot through the shared
+# live_cache guard, so at most one Bifrost fetch per LIVE_CACHE_SECONDS, then finalize ended matches).
+crons = ["*/10 * * * *", "* * * * *"]
+
+[vars]
+# Per server: "history": false = no match history, "live": false hides it from /v1/live,
+# optional "maxPlayers" (default 100) and "seedingBelow" (overrides SEEDING_BELOW).
+# "historySource": "live" = no CRCON records on Bifrost (Wardogs); history is recorded from the live
+# feed by the per-minute cron instead (needs the PLAYER_ID_SALT secret and migration 0005).
+SERVERS = '[{"key":"aho-hllv","game":"hllv","name":"After Hours Operators | Vietnam","bifrostId":"3b40d468-7833-4694-ac38-4ed3a15c334e","maxPlayers":100},{"key":"aho-hll","game":"hll","name":"After Hours Operators | WWII","bifrostId":"3f1da8e4-e2bf-4ac8-b9ba-b0275d9e6bf4","maxPlayers":100},{"key":"aho-wd","game":"wd","name":"After Hours Operators | Wardogs","bifrostId":"96fabd0b-b739-498b-906b-16ac0529b0a3","maxPlayers":100,"historySource":"live"}]'
+# Live-recorded matches (Wardogs) count toward totals/leaderboards when at least this long and with
+# at least this many players; shorter than 2 minutes are dropped.
+LIVE_MIN_MATCH_SECONDS = "300"
+LIVE_MIN_PLAYERS = "4"
+ALLOWED_ORIGINS = "https://hll-armor-hub.com,https://www.hll-armor-hub.com,http://localhost:8123,http://127.0.0.1:8123"
+# Per cron run (each run syncs one history server, rotating). Lower MATCHES_PER_RUN if logs
+# show "Exceeded CPU" / query-limit errors on the free plan.
+MATCHES_PER_RUN = "2"
+MAX_FETCHES_PER_RUN = "40"
+# /v1/live: a server with fewer players than this (but more than 0) is flagged "seeding".
+SEEDING_BELOW = "70"
+# /v1/live: seconds a Bifrost live snapshot is reused before refetching (floored at 45 in code;
+# Bifrost blocks faster polling). Enforced across isolates via the D1 live_cache table.
+LIVE_CACHE_SECONDS = "60"
+# /v1/potw: seconds a computed Player of the Week result is reused (floored at 3600 in code).
+POTW_CACHE_SECONDS = "3600"
+# /v1/discord: seconds the Discord invite counts are reused (floored at 600 in code).
+DISCORD_CACHE_SECONDS = "600"
+# Weekly POTW Discord post (only runs if the DISCORD_POTW_WEBHOOK secret is set):
+# UTC weekday (0 = Sunday, 1 = Monday) and the first UTC hour it may post. Monday 01:00 UTC = Sunday evening in the US.
+POTW_POST_DAY = "1"
+POTW_POST_HOUR_UTC = "1"

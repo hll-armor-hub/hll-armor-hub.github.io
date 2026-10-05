@@ -1,6 +1,6 @@
 /* Armor - Vietnam (overview + roster) */
 import { getVietnamTanks } from "../data.js";
-import { videoCard, escapeHtml } from "../util.js";
+import { escapeHtml, videoCard } from "../util.js";
 import { buildHash } from "../router.js";
 import { icon } from "../icons.js";
 import { viewer360HTML, initViewers } from "../viewer360.js";
@@ -91,7 +91,8 @@ export const overview = {
 
             <p class="eyebrow">Featured</p>
             <h2 class="gold-text" style="font-size:1.8rem;margin:.4rem 0 1.2rem">Armor gameplay</h2>
-            <div class="grid cols-2">${videoCard("MaMR1B_0H90", "Here's what armor gameplay in HLLV looks like")}</div>
+            <div class="grid cols-2">${videoCard("RlySIaNX3Ug", "How to run a tank column in Hell Let Loose: Vietnam - USA armor gameplay")}</div>
+
             <p style="margin-top:1.4rem;color:var(--text-dim);font-size:.82rem">Damage values as of the current live Vietnam build.</p>
         </div>`;
     }
@@ -129,7 +130,7 @@ export const roster = {
 
         return `<div class="wrap wrap-wide">
             <header class="section-head">
-                <p class="eyebrow">Armor · Vietnam</p>
+                <p class="eyebrow">HLL Vietnam · Armor</p>
                 <h1 class="gold-text">Vietnam Tank Roster</h1>
                 <p class="lead">Two playable gun tanks: the M48 Patton (US) and T-54 (NVA). Drag either model for a full 360°. Both share one damage model; shell load, speed, and reload from live specs.</p>
             </header>

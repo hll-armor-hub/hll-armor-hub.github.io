@@ -1,0 +1,94 @@
+﻿/* ============================================================
+   Community - live server status strip (js/community-live.js)
+   Mobile-first: a swipeable scroll-snap strip on phones, a 3-up grid from 640px.
+   Cards share one fixed min-height in every state (skeleton, live, empty, offline)
+   so refreshes never shift the layout.
+   ============================================================ */
+
+/* --cl-card-h fits the tallest state (seeding card with call-to-action) at each breakpoint. */
+.cl-mount { --cl-card-h: 270px; min-width: 0; max-width: 100%; margin-bottom: 2rem; }
+
+/* Phones: horizontal strip. Overflow stays inside the strip, never the page. */
+.cl-bar {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(250px, 86%);
+    gap: 0.75rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 2px 2px 0.4rem;
+}
+.cl-bar::-webkit-scrollbar { display: none; }
+.cl-empty { display: flex; align-items: center; min-height: var(--cl-card-h); margin: 0; padding: 1rem 1.2rem; border-radius: var(--r-md); background: var(--glass); color: var(--text-muted); font-size: 0.95rem; }
+
+.cl-card { --cl-accent: var(--gold-bright); --cl-accent-soft: rgba(234, 179, 8, 0.12); position: relative; display: flex; flex-direction: column; gap: 0.45rem; min-width: 0; min-height: var(--cl-card-h); padding: 0.9rem 1rem; border-radius: var(--r-md); border-top: 2px solid var(--cl-accent); scroll-snap-align: start; container: cl-card / inline-size; }
+.cl-card--wd { --cl-accent: var(--wd-1); --cl-accent-soft: rgba(var(--wd-rgb-deep), 0.14); }
+.cl-card--skeleton { background: linear-gradient(100deg, var(--glass) 30%, rgba(250, 250, 249, 0.05) 50%, var(--glass) 70%); background-size: 200% 100%; animation: cl-shimmer 1.4s linear infinite; }
+.cl-card.is-stale { opacity: 0.8; }
+
+.cl-card__head { display: flex; align-items: center; justify-content: space-between; gap: 0.6rem; }
+.cl-badge { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.65rem; border-radius: var(--r-pill); color: var(--cl-accent); background: var(--cl-accent-soft); border: 1px solid var(--cl-accent-soft); }
+.cl-card--wd .cl-badge { color: var(--wd-3); }
+.cl-status { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
+.cl-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--text-dim); }
+.is-live .cl-dot { background: var(--success); box-shadow: 0 0 8px rgba(74, 222, 128, 0.7); }
+.is-live .cl-status { color: var(--success); }
+.is-seeding .cl-dot { background: var(--gold-glow); animation: cl-pulse 1.6s var(--ease-out) infinite; }
+.is-seeding .cl-status { color: var(--gold-glow); }
+.is-offline .cl-dot { background: var(--danger); }
+
+.cl-name { font-size: 0.95rem; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cl-pop { display: flex; align-items: baseline; gap: 0.25rem; font-size: 0.875rem; color: var(--text-muted); }
+.cl-pop b { font-family: var(--font-display); font-size: 1.5rem; color: var(--text); font-variant-numeric: tabular-nums; }
+.cl-queue { margin-left: auto; font-size: 0.8rem; color: var(--gold-glow); }
+.cl-track { flex-shrink: 0; height: 6px; border-radius: var(--r-pill); background: var(--stone-800); overflow: hidden; }
+.cl-track span { display: block; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-glow)); transition: width var(--t-slow) var(--ease-fluid); }
+.cl-card--wd .cl-track span { background: linear-gradient(90deg, var(--wd-1), var(--wd-3)); }
+.is-offline .cl-track span, .is-empty .cl-track span { background: var(--stone-600); }
+
+.cl-map { font-size: 0.875rem; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cl-left { color: var(--text-dim); }
+.cl-left::before { content: "Â· "; }
+.cl-note { margin: 0; font-size: 0.875rem; color: var(--text-dim); }
+
+.cl-score { display: flex; align-items: baseline; gap: 0.4rem; font-size: 0.85rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.cl-score b { font-family: var(--font-display); font-size: 1.05rem; color: var(--text); }
+.cl-score__sep { color: var(--text-dim); }
+.cl-score--multi { gap: 0.6rem; font-size: 0.8rem; white-space: nowrap; overflow: hidden; }
+.cl-score--multi b { font-size: 0.95rem; }
+.cl-faction { display: inline-flex; align-items: center; gap: 0.3rem; min-width: 0; }
+.cl-faction__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-dim); }
+.cl-faction__short { display: none; text-transform: uppercase; letter-spacing: 0.06em; }
+/* Narrow cards (small phones, 3-up tablets): 3-letter faction codes keep the row on one line. */
+@container cl-card (max-width: 240px) {
+    .cl-faction__short { display: inline; }
+    .cl-faction__name { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
+/* Pinned to the card bottom so cards with and without it keep the same rhythm. */
+.cl-cta { display: inline-flex; align-items: center; justify-content: center; align-self: stretch; min-height: 44px; margin-top: auto; padding: 0 1rem; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; text-align: center; border-radius: var(--r-pill); color: var(--stone-950); background: linear-gradient(135deg, var(--gold-bright), var(--gold)); box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.6); animation: cl-ring 1.8s var(--ease-out) infinite; touch-action: manipulation; }
+.cl-card--wd .cl-cta { background: linear-gradient(135deg, var(--wd-1), var(--wd-2)); color: var(--paper); }
+a.cl-cta:hover, a.cl-cta:focus-visible { filter: brightness(1.08); }
+a.cl-cta:focus-visible { outline: 2px solid var(--gold-glow); outline-offset: 2px; }
+.is-seeding { border-color: rgba(251, 191, 36, 0.35); box-shadow: var(--shadow-md), var(--glow-gold); }
+.cl-card--wd.is-seeding { border-color: rgba(var(--wd-rgb-deep), 0.4); box-shadow: var(--shadow-md), 0 0 32px rgba(var(--wd-rgb-deep), 0.25); }
+
+/* Small tablets and up: every card visible, no swiping. */
+@media (min-width: 640px) {
+    .cl-mount { --cl-card-h: 264px; }
+    .cl-bar { grid-auto-flow: row; grid-template-columns: repeat(var(--cl-cols, 3), minmax(0, 1fr)); grid-auto-columns: auto; overflow: visible; scroll-snap-type: none; padding: 0; }
+    .cl-cta { align-self: flex-start; min-height: 40px; }
+}
+
+@keyframes cl-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(1.35); } }
+@keyframes cl-ring { 0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.55); } 100% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); } }
+@keyframes cl-shimmer { to { background-position: -200% 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+    .cl-dot, .cl-cta, .cl-card--skeleton { animation: none; }
+    .cl-track span { transition: none; }
+}

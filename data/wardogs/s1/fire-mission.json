@@ -1,0 +1,43 @@
+{
+    "$comment": "Wardogs fire mission data. Schema: README.md > 'Dev: Wardogs fire mission data'. Every entry stays \"verified\": false until its numbers come from the game files. Do not guess values.",
+    "version": 1,
+    "milsPerCircle": 6400,
+    "maps": [
+        {
+            "id": "custom",
+            "name": "Plain grid (no map image)",
+            "image": null,
+            "sizeMeters": 2000,
+            "gridCols": 10,
+            "gridRows": 10,
+            "keypad": true,
+            "yUp": false,
+            "verified": false,
+            "note": "Placeholder. Set map size and grid count to match the in-game map."
+        }
+    ],
+    "weapons": [
+        {
+            "id": "mortar",
+            "name": "Mortar",
+            "type": "mortar",
+            "elevationUnit": "mil",
+            "minRange": null,
+            "maxRange": null,
+            "table": [],
+            "verified": false,
+            "note": "Placeholder. Needs the range-to-elevation table from the game's DataTables."
+        },
+        {
+            "id": "spa",
+            "name": "Self-propelled artillery",
+            "type": "spa",
+            "elevationUnit": "mil",
+            "minRange": null,
+            "maxRange": null,
+            "table": [],
+            "verified": false,
+            "note": "Placeholder. Needs the range-to-elevation table from the game's DataTables."
+        }
+    ]
+}

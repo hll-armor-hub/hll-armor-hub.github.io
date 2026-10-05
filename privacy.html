@@ -12,9 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/legal.css">
+    <link rel="stylesheet" href="css/tokens.css?v=20261005c">
+    <link rel="stylesheet" href="css/base.css?v=20261005c">
+    <link rel="stylesheet" href="css/legal.css?v=20261005c">
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
             data-cf-beacon='{"token": "fef7910526ea46c88da4ff89f58079c3"}'></script>
 </head>
@@ -33,7 +33,7 @@
         <main class="legal-page">
             <div class="section-header">
                 <h1>Privacy Policy</h1>
-                <p style="color:var(--text-muted)">Last updated: June 24, 2026</p>
+                <p style="color:var(--text-muted)">Last updated: October 5, 2026</p>
             </div>
 
             <article class="legal-page-content">
@@ -55,10 +55,25 @@
                     </ul>
                 </section>
 
+                <section class="legal-section" id="community-stats">
+                    <h2>Community server stats</h2>
+                    <p>The Community hub shows match statistics from the After Hours Operators (AHO) game servers: leaderboards, match scoreboards, player profiles, Players of the Week and live server status.</p>
+                    <p><strong>What is shown:</strong></p>
+                    <ul>
+                        <li>In-game player names, plus past in-game names a player has used on our servers</li>
+                        <li>Match stats such as kills, deaths, combat/offense/defense/support scores, weapons used, time played and wins/losses</li>
+                        <li>Who killed whom in a match (for example "most killed" and "killed by" lists)</li>
+                        <li>Live server status: player count, map, mode and score only, with no player names</li>
+                    </ul>
+                    <p><strong>What is never collected or shown:</strong> Steam IDs, IP addresses, country or location, and ban or moderation records. Profile links use an opaque game-account ID from the match records, not a Steam or console account number.</p>
+                    <p><strong>Where the data comes from:</strong> the game servers' CRCON match records, published by <a href="https://bifroststats.com" target="_blank" rel="noopener noreferrer">Bifrost (bifroststats.com)</a>, the RCON and stats service from <a href="https://bifrostgaming.com/pricing/" target="_blank" rel="noopener noreferrer">Bifrost Gaming</a>. Our stats service copies the public match records and computes totals, leaderboards and match scoreboards from them; every stats page on this site, including match lists and scoreboards, is loaded from our stats service, not from Bifrost. "Full match on Bifrost" and "Stats powered by Bifrost" are ordinary links that only open Bifrost if you click them.</p>
+                    <p><strong>Hiding your profile:</strong> if you don't want your stats shown, ask a staff member in the <a href="https://discord.gg/AHO" target="_blank" rel="noopener noreferrer">AHO Discord (discord.gg/AHO)</a>. Hidden profiles are removed from leaderboards, search, Players of the Week, shared stat cards and other players' "most killed" / "killed by" lists, and appear as "Hidden player" (with no profile link) in match scoreboards. Cached pages can take up to 10 minutes to update (up to an hour for individual match scoreboards). Bifrost's own site is separate and not affected.</p>
+                </section>
+
                 <section class="legal-section">
                     <h2>Cookies and local storage</h2>
                     <p>This site may use <strong>cookies</strong> and similar technologies placed by third-party partners, including advertising and analytics providers.</p>
-                    <p>We also store some preferences in your browser's <strong>local storage</strong>, such as calculator faction/type selections and saved calculation history. This data stays on your device and is used only to improve your experience on return visits. It is not sold or shared for advertising on its own.</p>
+                    <p>We also store some preferences in your browser's <strong>local storage</strong>, such as calculator faction/type selections, saved calculation history, which server's stats you last viewed, and the AHO Discord member count (refreshed from discord.com by your browser at most every 10 minutes). This data stays on your device and is used only to improve your experience on return visits. It is not sold or shared for advertising on its own.</p>
                     <p>You can clear cookies and local storage at any time through your browser settings. Doing so may reset site preferences.</p>
                 </section>
 
@@ -120,6 +135,7 @@
         <footer class="legal-foot">
             <p>&copy; 2026 Hell Let Loose Armor Hub. Fan-made resource, not affiliated with Team17 or Expression Games.</p>
             <p style="margin-top:0.4rem"><a href="/">Return to Armor Hub</a> · <a href="/privacy.html">Privacy Policy</a></p>
+            <p style="margin-top:0.4rem"><a href="https://bifroststats.com" target="_blank" rel="noopener noreferrer">Stats powered by Bifrost</a> · <a href="https://bifrostgaming.com/pricing/" target="_blank" rel="noopener noreferrer">Get Bifrost for your server</a></p>
         </footer>
     </div>
 </body>

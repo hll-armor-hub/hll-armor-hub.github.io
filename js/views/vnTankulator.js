@@ -175,7 +175,7 @@ export function render(route) {
         : `<div class="history"><h4>Hit locations</h4><div class="filter-group" id="vnTkLocs">${chips}</div></div>`;
 
     const header = focus ? "" : `<header class="section-head">
-            <p class="eyebrow">Armor · Vietnam</p>
+            <p class="eyebrow">HLL Vietnam · Armor</p>
             <h1 class="gold-text">Tankulator</h1>
             <p class="lead">Vietnam tank vs tank shots-to-kill by hit location. Hull, turret, and tracks use the live <strong>%</strong> health format. M48 Patton and T-54 share the same damage model.</p>
         </header>`;

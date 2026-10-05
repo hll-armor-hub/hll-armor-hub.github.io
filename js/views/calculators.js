@@ -141,7 +141,7 @@ export function render(route) {
 
     return `<div class="wrap wrap-wide">
         <header class="section-head">
-            <p class="eyebrow">Armor · WWII</p>
+            <p class="eyebrow">HLL WWII · Armor</p>
             <h1 class="gold-text">Calculators &amp; Sights</h1>
             <p class="lead">Turn grid distance into firing solutions. Artillery and self-propelled gun mil calculators, tuned to each faction.</p>
         </header>
